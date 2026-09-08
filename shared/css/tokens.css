@@ -1,0 +1,112 @@
+/* ==========================================================================
+   TOKENS — the entire visual identity of a site, in one file.
+   Reskinning a template for a new client is mostly editing this block.
+   ========================================================================== */
+
+:root {
+  /* --- Brand hue engine -------------------------------------------------
+     Change these three numbers and the whole site reskins coherently.
+     Pick the hue off the client's logo/truck wrap/sign.                  */
+  --brand-h: 24;      /* 0-360  hue      */
+  --brand-s: 88%;     /* 0-100% saturation */
+  --brand-l: 52%;     /* 0-100% lightness  */
+
+  --brand:        hsl(var(--brand-h) var(--brand-s) var(--brand-l));
+  --brand-bright: hsl(var(--brand-h) calc(var(--brand-s) + 6%) calc(var(--brand-l) + 10%));
+  --brand-deep:   hsl(var(--brand-h) calc(var(--brand-s) - 8%) calc(var(--brand-l) - 18%));
+  --brand-wash:   hsl(var(--brand-h) 70% 96%);
+  --brand-tint:   hsl(var(--brand-h) 60% 90%);
+
+  /* --- Neutrals (slightly warmed toward the brand hue so nothing reads
+         like default-template grey) ------------------------------------ */
+  --ink-900: hsl(var(--brand-h) 18% 8%);
+  --ink-800: hsl(var(--brand-h) 15% 13%);
+  --ink-700: hsl(var(--brand-h) 12% 20%);
+  --ink-600: hsl(var(--brand-h) 10% 32%);
+  --ink-500: hsl(var(--brand-h)  8% 46%);
+  --ink-400: hsl(var(--brand-h)  8% 62%);
+  --ink-300: hsl(var(--brand-h) 12% 80%);
+  --ink-200: hsl(var(--brand-h) 16% 90%);
+  --ink-100: hsl(var(--brand-h) 22% 96%);
+  --ink-050: hsl(var(--brand-h) 30% 98.5%);
+  --white:   #fff;
+
+  /* --- Semantic surfaces ------------------------------------------------ */
+  --surface:        var(--white);
+  --surface-sunk:   var(--ink-050);
+  --surface-raised: var(--white);
+  --surface-dark:   var(--ink-900);
+  --hairline:       color-mix(in oklab, var(--ink-300) 60%, transparent);
+  --hairline-dark:  color-mix(in oklab, var(--white) 12%, transparent);
+
+  --text:        var(--ink-800);
+  --text-muted:  var(--ink-500);
+  --text-invert: var(--ink-050);
+
+  --success: hsl(152 55% 38%);
+  --star:    hsl(42 96% 52%);
+
+  /* --- Type -------------------------------------------------------------
+     Display face carries the personality; body face carries the money.   */
+  --font-display: 'Bricolage Grotesque', 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Fluid scale — clamp() so it never needs a mobile breakpoint */
+  --t-xs:   0.78rem;
+  --t-sm:   0.875rem;
+  --t-base: 1rem;
+  --t-lg:   clamp(1.06rem, 0.99rem + 0.34vw, 1.2rem);
+  --t-xl:   clamp(1.28rem, 1.14rem + 0.68vw, 1.6rem);
+  --t-2xl:  clamp(1.6rem,  1.34rem + 1.28vw, 2.3rem);
+  --t-3xl:  clamp(2.05rem, 1.55rem + 2.4vw,  3.3rem);
+  --t-4xl:  clamp(2.6rem,  1.7rem + 4.2vw,   5rem);
+
+  --lead-tight: 1.06;
+  --lead-snug:  1.22;
+  --lead-body:  1.65;
+
+  /* --- Space (4px base, geometric-ish) ---------------------------------- */
+  --s-1: 0.25rem; --s-2: 0.5rem;  --s-3: 0.75rem; --s-4: 1rem;
+  --s-5: 1.5rem;  --s-6: 2rem;    --s-7: 3rem;    --s-8: 4rem;
+  --s-9: 6rem;    --s-10: 8rem;
+
+  --section-y: clamp(3.5rem, 2rem + 7vw, 7.5rem);
+  --gutter:    clamp(1.15rem, 0.6rem + 2.4vw, 2.5rem);
+  --measure:   66ch;
+  --page:      1200px;
+  --page-wide: 1400px;
+
+  /* --- Radii ------------------------------------------------------------ */
+  --r-sm: 6px; --r-md: 12px; --r-lg: 20px; --r-xl: 28px; --r-pill: 999px;
+
+  /* --- Elevation — tinted, layered, never pure black ------------------- */
+  --sh-1: 0 1px 2px hsl(var(--brand-h) 20% 12% / .06),
+          0 2px 6px hsl(var(--brand-h) 20% 12% / .05);
+  --sh-2: 0 2px 4px hsl(var(--brand-h) 20% 12% / .05),
+          0 8px 20px hsl(var(--brand-h) 20% 12% / .08);
+  --sh-3: 0 4px 8px hsl(var(--brand-h) 20% 12% / .05),
+          0 18px 44px hsl(var(--brand-h) 20% 12% / .12);
+  --sh-brand: 0 8px 28px hsl(var(--brand-h) var(--brand-s) 40% / .28);
+
+  /* --- Motion ----------------------------------------------------------- */
+  --ease-out:  cubic-bezier(.2, .7, .25, 1);
+  --ease-soft: cubic-bezier(.36, .1, .2, 1);
+  --dur-1: 140ms; --dur-2: 260ms; --dur-3: 480ms;
+
+  /* --- Background hooks -------------------------------------------------
+     Drop a Canva / Higgsfield export into assets/backgrounds/ and point
+     one of these at it. Everything else keeps working.                   */
+  --bg-hero-image:    none;
+  --bg-section-image: none;
+  --bg-cta-image:     none;
+  --bg-image-blend:   overlay;
+  --bg-image-opacity: .35;
+}
+
+/* Handy pre-tuned palettes — swap the three brand numbers per client. */
+[data-palette="copper"] { --brand-h: 24;  --brand-s: 88%; --brand-l: 52%; }
+[data-palette="forest"] { --brand-h: 152; --brand-s: 46%; --brand-l: 34%; }
+[data-palette="ocean"]  { --brand-h: 205; --brand-s: 72%; --brand-l: 42%; }
+[data-palette="wine"]   { --brand-h: 348; --brand-s: 56%; --brand-l: 42%; }
+[data-palette="ink"]    { --brand-h: 232; --brand-s: 60%; --brand-l: 50%; }
+[data-palette="gold"]   { --brand-h: 42;  --brand-s: 82%; --brand-l: 48%; }

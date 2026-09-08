@@ -1,0 +1,35 @@
+/* ==========================================================================
+   THEME — home-services
+   Per-client overrides live here. Everything above this file stays untouched
+   so a fix to the shared system reaches every site you've sold.
+   ========================================================================== */
+
+:root {
+  /* Brand hue for this build. Sample it off the client's logo or truck wrap. */
+  --brand-h: 24;
+  --brand-s: 88%;
+  --brand-l: 52%;
+
+  /* --- Canva / Higgsfield background slots ------------------------------
+     Uncomment and point at a file in assets/backgrounds/ to replace the
+     generated texture on that section. Keep exports under ~300KB (webp).
+
+     --bg-hero-image:    url('../../assets/backgrounds/hero-texture.webp');
+     --bg-cta-image:     url('../../assets/backgrounds/cta-texture.webp');
+     --bg-image-blend:   overlay;   * try: soft-light, multiply, normal *
+     --bg-image-opacity: .35;
+  --------------------------------------------------------------------- */
+}
+
+/* Hero sits under the sticky header, so pull the texture up behind it. */
+.hero { margin-top: -4.75rem; padding-top: calc(4.75rem + clamp(2.5rem, 2rem + 6vw, 6rem)); }
+
+/* Slightly heavier grain in the hero — reads as print, not as noise. */
+.hero { --grain-opacity: .58; }
+
+/* The dark sections stack back-to-back; kill the doubled arc between them. */
+#areas + .section { padding-top: calc(var(--section-y) * 1.15); }
+
+/* Gallery placeholders alternate tint so the mosaic reads before photos land. */
+.gallery .shot:nth-child(even) .shot__placeholder { filter: hue-rotate(14deg) saturate(.9); }
+.gallery .shot:nth-child(3n) .shot__placeholder { filter: hue-rotate(-12deg); }

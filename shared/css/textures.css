@@ -1,0 +1,166 @@
+/* ==========================================================================
+   TEXTURES & BACKGROUNDS
+   Every surface treatment here is generated in CSS/SVG — no image files, no
+   external requests, nothing to license. Combine ONE pattern class (uses
+   ::before) with the grain class (uses ::after) on the same element.
+
+     <section class="section tx-mesh tx-grain"> … </section>
+
+   To swap in a Canva / Higgsfield export instead, see .bg-slot at the bottom.
+   ========================================================================== */
+
+.tx-mesh, .tx-grid, .tx-topo, .tx-weave, .tx-dots, .tx-glow,
+.tx-rays, .tx-blueprint, .tx-grain, .bg-slot {
+  position: relative;
+  isolation: isolate;
+}
+.tx-mesh::before, .tx-grid::before, .tx-topo::before, .tx-weave::before,
+.tx-dots::before, .tx-glow::before, .tx-rays::before, .tx-blueprint::before,
+.tx-grain::after, .bg-slot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* --- Mesh gradient: soft overlapping brand-tinted blooms ----------------- */
+.tx-mesh::before {
+  background:
+    radial-gradient(58% 62% at 12% 8%,  hsl(var(--brand-h) 82% 62% / .20), transparent 62%),
+    radial-gradient(48% 55% at 92% 18%, hsl(calc(var(--brand-h) + 42) 76% 60% / .16), transparent 60%),
+    radial-gradient(64% 70% at 78% 96%, hsl(calc(var(--brand-h) - 34) 70% 56% / .14), transparent 64%),
+    radial-gradient(50% 50% at 30% 88%, hsl(var(--brand-h) 60% 70% / .12), transparent 60%);
+}
+.on-dark.tx-mesh::before {
+  background:
+    radial-gradient(60% 65% at 10% 0%,  hsl(var(--brand-h) 90% 52% / .30), transparent 62%),
+    radial-gradient(52% 58% at 96% 12%, hsl(calc(var(--brand-h) + 46) 74% 44% / .26), transparent 60%),
+    radial-gradient(70% 72% at 72% 100%, hsl(calc(var(--brand-h) - 30) 68% 38% / .28), transparent 66%);
+}
+
+/* --- Topographic contours: layered ring gradients ------------------------ */
+.tx-topo::before {
+  opacity: .5;
+  background:
+    repeating-radial-gradient(circle at 18% 22%,
+      transparent 0 26px, currentColor 26px 27px, transparent 27px 54px),
+    repeating-radial-gradient(circle at 82% 74%,
+      transparent 0 34px, currentColor 34px 35px, transparent 35px 70px),
+    repeating-radial-gradient(circle at 52% 4%,
+      transparent 0 44px, currentColor 44px 45px, transparent 45px 92px);
+  color: hsl(var(--brand-h) 30% 50% / .13);
+  mask-image: radial-gradient(120% 100% at 50% 50%, #000 30%, transparent 82%);
+}
+.on-dark.tx-topo::before { color: hsl(var(--brand-h) 40% 70% / .10); opacity: .7; }
+
+/* --- Blueprint / engineering grid ---------------------------------------- */
+.tx-grid::before {
+  background-image:
+    linear-gradient(to right,  var(--_line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--_line) 1px, transparent 1px);
+  background-size: 68px 68px;
+  --_line: hsl(var(--brand-h) 22% 46% / .09);
+  mask-image: linear-gradient(to bottom, #000, transparent 92%);
+}
+.on-dark.tx-grid::before { --_line: hsl(var(--brand-h) 30% 78% / .07); }
+
+.tx-blueprint::before {
+  --_fine: hsl(var(--brand-h) 24% 50% / .06);
+  --_bold: hsl(var(--brand-h) 24% 50% / .12);
+  background-image:
+    linear-gradient(to right,  var(--_fine) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--_fine) 1px, transparent 1px),
+    linear-gradient(to right,  var(--_bold) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--_bold) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
+  mask-image: radial-gradient(110% 90% at 50% 0%, #000 20%, transparent 78%);
+}
+
+/* --- Diagonal weave / hatch ---------------------------------------------- */
+.tx-weave::before {
+  background-image:
+    repeating-linear-gradient( 45deg, hsl(var(--brand-h) 26% 44% / .055) 0 2px, transparent 2px 11px),
+    repeating-linear-gradient(-45deg, hsl(var(--brand-h) 26% 44% / .04)  0 2px, transparent 2px 11px);
+  mask-image: linear-gradient(160deg, #000 10%, transparent 70%);
+}
+.on-dark.tx-weave::before {
+  background-image:
+    repeating-linear-gradient( 45deg, hsl(0 0% 100% / .045) 0 2px, transparent 2px 11px),
+    repeating-linear-gradient(-45deg, hsl(0 0% 100% / .03)  0 2px, transparent 2px 11px);
+}
+
+/* --- Halftone dot field --------------------------------------------------- */
+.tx-dots::before {
+  background-image: radial-gradient(hsl(var(--brand-h) 30% 44% / .16) 1.4px, transparent 1.5px);
+  background-size: 20px 20px;
+  mask-image: radial-gradient(80% 80% at 100% 0%, #000, transparent 72%);
+}
+.on-dark.tx-dots::before { background-image: radial-gradient(hsl(0 0% 100% / .14) 1.4px, transparent 1.5px); }
+
+/* --- Brand bloom / light source ------------------------------------------ */
+.tx-glow::before {
+  background:
+    radial-gradient(46% 46% at var(--glow-x, 50%) var(--glow-y, 0%),
+      hsl(var(--brand-h) var(--brand-s) 56% / .34), transparent 68%);
+  filter: blur(6px);
+}
+
+/* --- Light rays / god-beams ---------------------------------------------- */
+.tx-rays::before {
+  background: repeating-conic-gradient(from 200deg at 50% -18%,
+    hsl(0 0% 100% / .07) 0deg 3deg, transparent 3deg 11deg);
+  mask-image: radial-gradient(80% 70% at 50% 0%, #000, transparent 76%);
+}
+
+/* --- Film grain (pairs with any pattern above) --------------------------- */
+.tx-grain::after {
+  opacity: var(--grain-opacity, .5);
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+.on-dark.tx-grain::after { opacity: var(--grain-opacity, .32); mix-blend-mode: overlay; }
+
+/* --- Surface fills -------------------------------------------------------- */
+.bg-sunk  { background: var(--surface-sunk); }
+.bg-wash  { background: linear-gradient(180deg, var(--brand-wash), var(--surface)); }
+.bg-dark  { background: var(--ink-900); }
+.bg-deep  {
+  background:
+    linear-gradient(165deg, var(--ink-900) 0%, hsl(var(--brand-h) 24% 11%) 55%, var(--ink-800) 100%);
+}
+
+/* --- Section edge shapes -------------------------------------------------- */
+.edge-fade-b { mask-image: linear-gradient(to bottom, #000 82%, transparent); }
+.edge-arc-b  { border-end-start-radius: clamp(2rem, 6vw, 5rem);
+               border-end-end-radius:   clamp(2rem, 6vw, 5rem); overflow: hidden; }
+.edge-arc-t  { border-start-start-radius: clamp(2rem, 6vw, 5rem);
+               border-start-end-radius:   clamp(2rem, 6vw, 5rem); overflow: hidden; }
+
+/* Hairline rule that glows at the brand hue in the middle */
+.rule-brand {
+  height: 1px; border: 0;
+  background: linear-gradient(90deg, transparent, var(--hairline) 18%,
+              var(--brand) 50%, var(--hairline) 82%, transparent);
+  opacity: .55;
+}
+
+/* ==========================================================================
+   .bg-slot — the drop-in for a Canva / Higgsfield background export.
+   1. Save the export to assets/backgrounds/  (webp or jpg, ~2000px wide)
+   2. Add class="bg-slot" to the section
+   3. Set the variable, inline or in the template's theme.css:
+        style="--bg-section-image: url('../../assets/backgrounds/yours.webp')"
+   Blend mode and opacity keep it sitting *under* the type instead of
+   fighting it. Set --bg-image-blend: normal for a full-bleed photo look.
+   ========================================================================== */
+.bg-slot::before {
+  background-image: var(--bg-section-image);
+  background-size: cover;
+  background-position: center;
+  mix-blend-mode: var(--bg-image-blend);
+  opacity: var(--bg-image-opacity);
+}
+.bg-slot--hero::before { background-image: var(--bg-hero-image); }
+.bg-slot--cta::before  { background-image: var(--bg-cta-image); }

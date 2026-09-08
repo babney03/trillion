@@ -1,0 +1,540 @@
+<title>Surface Catalogue No. 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400;75..125,600;75..125,700&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+
+<style>
+@property --h{syntax:'<number>';inherits:true;initial-value:168}
+
+/* ── Tokens ─────────────────────────────────────────────────────────────── */
+:root{
+  --paper:#E9E7E0;
+  --chip:#F6F5F1;
+  --sunk:#DEDBD3;
+  --ink:#191D1B;
+  --ink-soft:#5C625F;
+  --ink-faint:#8E938F;
+  --rule:#C9C6BC;
+  --pine:#0F6B5C;
+  --ochre:#B0761A;
+  --shadow:18 24 21;
+
+  --f-display:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --f-body:'Newsreader',Georgia,'Times New Roman',serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
+
+  --plate:1180px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#131614; --chip:#1C201E; --sunk:#0E110F;
+    --ink:#E7E9E5; --ink-soft:#9AA19C; --ink-faint:#6E756F;
+    --rule:#2C322E; --pine:#4FD1B4; --ochre:#E3AC4C;
+    --shadow:0 0 0;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#131614; --chip:#1C201E; --sunk:#0E110F;
+  --ink:#E7E9E5; --ink-soft:#9AA19C; --ink-faint:#6E756F;
+  --rule:#2C322E; --pine:#4FD1B4; --ochre:#E3AC4C;
+  --shadow:0 0 0;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+:focus-visible{outline:2px solid var(--pine);outline-offset:3px}
+
+.wrap{max-width:var(--plate);margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+
+/* ── Type ───────────────────────────────────────────────────────────────── */
+h1,h2,h3{font-family:var(--f-display);font-stretch:118%;font-weight:700;line-height:1.02;letter-spacing:-.018em;margin:0;text-wrap:balance}
+h1{font-size:clamp(2.6rem,1.3rem+5.4vw,5.1rem);font-stretch:125%}
+h2{font-size:clamp(1.55rem,1.1rem+1.8vw,2.35rem)}
+h3{font-size:1.06rem;font-stretch:112%;letter-spacing:-.008em}
+p{margin:0}
+
+.mono{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;font-variant-numeric:tabular-nums;color:var(--ink-faint)}
+.lead{font-size:clamp(1.06rem,.98rem+.4vw,1.28rem);line-height:1.55;color:var(--ink-soft);max-width:60ch}
+
+/* ── Masthead ───────────────────────────────────────────────────────────── */
+.masthead{padding:clamp(38px,7vw,84px) 0 clamp(28px,4vw,44px)}
+.tagline{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:baseline;margin-bottom:26px}
+.tagline .mono{color:var(--pine)}
+.masthead .lead{margin-top:26px}
+
+.specsheet{
+  display:grid;gap:0;margin-top:38px;
+  border-top:1.5px solid var(--ink);border-bottom:1px solid var(--rule);
+}
+@media(min-width:720px){.specsheet{grid-template-columns:repeat(4,1fr)}}
+.spec{padding:16px 0;border-bottom:1px solid var(--rule)}
+@media(min-width:720px){
+  .spec{padding:18px 20px 20px;border-bottom:0;border-right:1px solid var(--rule)}
+  .spec:first-child{padding-left:0}
+  .spec:last-child{border-right:0;padding-right:0}
+}
+.spec b{display:block;font-family:var(--f-display);font-stretch:112%;font-size:1.5rem;font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:5px}
+.spec span{display:block;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-faint)}
+
+.note{
+  margin-top:34px;padding:18px 20px;
+  border-left:3px solid var(--ochre);background:var(--chip);
+  font-size:.97rem;line-height:1.55;color:var(--ink-soft);max-width:72ch;
+}
+.note b{color:var(--ink);font-family:var(--f-display);font-stretch:110%;font-weight:600}
+
+/* ── Section framing ────────────────────────────────────────────────────── */
+section{padding:clamp(48px,7vw,90px) 0}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px 24px;margin-bottom:34px;padding-bottom:14px;border-bottom:1.5px solid var(--ink)}
+.sec-head .mono{margin-left:auto}
+.sec-head p{flex-basis:100%;color:var(--ink-soft);font-size:1rem;max-width:66ch}
+
+/* ── Swatch plates ──────────────────────────────────────────────────────── */
+.plates{display:grid;gap:26px 22px;grid-template-columns:repeat(auto-fill,minmax(248px,1fr))}
+.plate{display:flex;flex-direction:column;gap:11px}
+.sw{
+  position:relative;aspect-ratio:4/3;overflow:hidden;
+  background:var(--sunk);
+  box-shadow:0 1px 0 rgb(var(--shadow)/.10),0 6px 18px rgb(var(--shadow)/.07);
+}
+.sw::before,.sw::after{content:"";position:absolute;inset:0;pointer-events:none}
+.plate figcaption{display:flex;gap:12px;align-items:baseline;border-top:1px solid var(--rule);padding-top:9px}
+.plate figcaption h3{flex:1}
+.plate .mono{white-space:nowrap}
+.plate p{font-size:.88rem;line-height:1.5;color:var(--ink-soft)}
+
+/* — the surfaces themselves — */
+#s01::before{background:
+  radial-gradient(58% 62% at 14% 6%,hsl(168 62% 44%/.55),transparent 62%),
+  radial-gradient(50% 56% at 92% 20%,hsl(38 78% 56%/.5),transparent 60%),
+  radial-gradient(66% 70% at 74% 98%,hsl(196 64% 46%/.5),transparent 64%),
+  radial-gradient(46% 46% at 34% 86%,hsl(142 44% 52%/.42),transparent 60%);
+  background-color:#F2EFE6}
+
+#s02::before{background:#8E9A94}
+#s02::after{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='170'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  opacity:.85;mix-blend-mode:multiply}
+
+#s03::before{
+  background-color:#0F1F1B;
+  background-image:
+    repeating-radial-gradient(circle at 20% 26%,transparent 0 17px,hsl(166 46% 62%/.5) 17px 18px,transparent 18px 35px),
+    repeating-radial-gradient(circle at 84% 76%,transparent 0 23px,hsl(166 46% 62%/.38) 23px 24px,transparent 24px 47px),
+    repeating-radial-gradient(circle at 52% 2%,transparent 0 31px,hsl(40 60% 66%/.3) 31px 32px,transparent 32px 63px)}
+
+#s04::before{
+  background-color:#EEEBE2;
+  background-image:
+    linear-gradient(to right,hsl(168 30% 38%/.16) 1px,transparent 1px),
+    linear-gradient(to bottom,hsl(168 30% 38%/.16) 1px,transparent 1px),
+    linear-gradient(to right,hsl(168 34% 34%/.34) 1px,transparent 1px),
+    linear-gradient(to bottom,hsl(168 34% 34%/.34) 1px,transparent 1px);
+  background-size:15px 15px,15px 15px,75px 75px,75px 75px}
+
+#s05::before{
+  background-color:#E4E0D5;
+  background-image:
+    repeating-linear-gradient(45deg,hsl(30 34% 34%/.2) 0 2px,transparent 2px 9px),
+    repeating-linear-gradient(-45deg,hsl(30 34% 34%/.14) 0 2px,transparent 2px 9px)}
+
+#s06::before{
+  background-color:#123F38;
+  background-image:radial-gradient(hsl(42 82% 62%/.9) 1.5px,transparent 1.6px);
+  background-size:13px 13px;
+  mask-image:linear-gradient(115deg,#000 8%,transparent 88%)}
+
+#s07::before{
+  background:linear-gradient(180deg,#0B1512,#16302A);}
+#s07::after{
+  background:repeating-conic-gradient(from 202deg at 50% -20%,hsl(160 60% 78%/.14) 0deg 3.4deg,transparent 3.4deg 11deg);
+  mask-image:radial-gradient(78% 74% at 50% 0%,#000,transparent 78%)}
+
+#s08::before{
+  background:
+    conic-gradient(from 210deg at 32% 18%,hsl(174 66% 48%/.7),hsl(206 62% 52%/.6),hsl(46 78% 58%/.65),hsl(174 66% 48%/.7));
+  filter:blur(14px);transform:scale(1.25)}
+#s08::after{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='170'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  opacity:.4;mix-blend-mode:overlay}
+
+#s09::before{
+  background-color:#D9D4C7;
+  background-image:repeating-linear-gradient(90deg,
+    hsl(30 22% 40%/.22) 0 1px,
+    hsl(0 0% 100%/.5) 1px 3px,
+    transparent 3px 11px)}
+
+#s10::before{
+  background-color:#F1EEE6;
+  background-image:
+    radial-gradient(circle at 12% 22%,#0F6B5C 0 4px,transparent 5px),
+    radial-gradient(circle at 68% 12%,#B0761A 0 3px,transparent 4px),
+    radial-gradient(circle at 84% 58%,#1E3A34 0 5px,transparent 6px),
+    radial-gradient(circle at 32% 72%,#B0761A 0 2.5px,transparent 3.5px),
+    radial-gradient(circle at 54% 44%,#0F6B5C 0 3px,transparent 4px),
+    radial-gradient(circle at 8% 84%,#1E3A34 0 3.5px,transparent 4.5px),
+    radial-gradient(circle at 92% 90%,#0F6B5C 0 2.5px,transparent 3.5px),
+    radial-gradient(circle at 44% 6%,#1E3A34 0 2px,transparent 3px);
+  background-size:52px 52px;background-position:0 0}
+
+#s11::before{background:linear-gradient(160deg,#1B3D36,#0C1A17 70%)}
+#s11::after{
+  background:
+    radial-gradient(42% 44% at 50% 8%,hsl(44 88% 60%/.5),transparent 68%),
+    radial-gradient(120% 100% at 50% 50%,transparent 42%,rgb(0 0 0/.62) 100%)}
+
+#s12::before{
+  background:
+    radial-gradient(56% 60% at 18% 10%,hsl(168 58% 46%/.5),transparent 62%),
+    radial-gradient(52% 56% at 88% 24%,hsl(40 74% 58%/.45),transparent 60%);
+  background-color:#EFEBE1}
+#s12::after{
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='170'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(0deg,hsl(30 20% 30%/.05) 0 1px,transparent 1px 4px);
+  opacity:.55;mix-blend-mode:multiply}
+
+/* ── Reskin plate ───────────────────────────────────────────────────────── */
+.reskin{display:grid;gap:26px}
+@media(min-width:900px){.reskin{grid-template-columns:300px 1fr;gap:40px;align-items:start}}
+
+.hues{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 22px}
+.hue{
+  width:44px;height:44px;border:0;padding:0;cursor:pointer;
+  border-radius:50%;
+  box-shadow:inset 0 0 0 1px rgb(var(--shadow)/.15);
+  transition:transform .16s cubic-bezier(.2,.7,.25,1),box-shadow .16s;
+}
+.hue:hover{transform:scale(1.09)}
+.hue[aria-pressed="true"]{box-shadow:0 0 0 2px var(--paper),0 0 0 4px var(--ink);transform:scale(1.06)}
+.readout{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.05em;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.readout b{color:var(--ink)}
+
+/* the live-reskinning demo card */
+.demo{
+  --h:168;--s:58%;--l:34%;
+  --brand:hsl(var(--h) var(--s) var(--l));
+  --brand-lift:hsl(var(--h) calc(var(--s) + 6%) calc(var(--l) + 16%));
+  --brand-deep:hsl(var(--h) calc(var(--s) - 6%) calc(var(--l) - 14%));
+  --brand-wash:hsl(var(--h) 44% 95%);
+  --demo-ink:hsl(var(--h) 22% 12%);
+  --demo-soft:hsl(var(--h) 10% 40%);
+  position:relative;overflow:hidden;background:#fff;color:var(--demo-ink);
+  box-shadow:0 2px 4px rgb(var(--shadow)/.06),0 20px 44px rgb(var(--shadow)/.13);
+  transition:--h .45s cubic-bezier(.4,0,.2,1);
+}
+.demo::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(58% 64% at 8% 0%,hsl(var(--h) 74% 56%/.22),transparent 62%),
+    radial-gradient(52% 56% at 98% 14%,hsl(calc(var(--h) + 44) 68% 58%/.18),transparent 60%);
+}
+.demo__bar{position:relative;display:flex;align-items:center;gap:7px;padding:11px 14px;background:hsl(var(--h) 16% 96%);border-bottom:1px solid hsl(var(--h) 14% 88%)}
+.demo__bar i{width:9px;height:9px;border-radius:50%;background:hsl(var(--h) 12% 78%)}
+.demo__bar span{margin-left:8px;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.05em;color:hsl(var(--h) 12% 52%)}
+.demo__body{position:relative;padding:clamp(24px,4vw,44px)}
+.demo__eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-deep)}
+.demo__eyebrow::before{content:"";width:26px;height:2px;background:var(--brand)}
+.demo h3.demo__h{font-family:var(--f-display);font-stretch:122%;font-size:clamp(1.7rem,1.1rem+2.2vw,2.6rem);font-weight:700;letter-spacing:-.026em;line-height:1.04;margin:14px 0 12px;color:var(--demo-ink)}
+.demo__sub{font-size:1rem;color:var(--demo-soft);max-width:44ch;line-height:1.55}
+.demo__row{display:flex;flex-wrap:wrap;gap:11px;margin-top:24px}
+.dbtn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 22px;border-radius:999px;border:1px solid transparent;
+  font-family:var(--f-display);font-stretch:108%;font-weight:600;font-size:.92rem;
+  background:var(--brand);color:#fff;cursor:pointer;
+  box-shadow:0 8px 22px hsl(var(--h) var(--s) 40%/.3);
+  transition:transform .15s cubic-bezier(.2,.7,.25,1),box-shadow .2s;
+}
+.dbtn:hover{transform:translateY(-2px);box-shadow:0 13px 30px hsl(var(--h) var(--s) 40%/.38)}
+.dbtn--ghost{background:transparent;color:var(--demo-ink);border-color:hsl(var(--h) 12% 82%);box-shadow:none}
+.dbtn--ghost:hover{background:var(--brand-wash);border-color:var(--brand)}
+.demo__stats{display:flex;flex-wrap:wrap;gap:26px;margin-top:30px;padding-top:22px;border-top:1px solid hsl(var(--h) 12% 90%)}
+.demo__stat b{display:block;font-family:var(--f-display);font-stretch:115%;font-size:1.5rem;font-weight:700;letter-spacing:-.02em;line-height:1;color:var(--brand-deep)}
+.demo__stat span{font-family:var(--f-mono);font-size:.63rem;letter-spacing:.09em;text-transform:uppercase;color:var(--demo-soft)}
+
+/* ── Component shelf ────────────────────────────────────────────────────── */
+.shelf{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+.bay{background:var(--chip);padding:22px;display:flex;flex-direction:column;gap:15px;box-shadow:0 1px 0 rgb(var(--shadow)/.07)}
+.bay > .mono{color:var(--pine)}
+
+.ui-row{display:flex;flex-wrap:wrap;gap:9px;align-items:center}
+.ui-btn{display:inline-flex;align-items:center;gap:7px;padding:11px 19px;border:1px solid transparent;border-radius:999px;background:var(--pine);color:#F6F5F1;font-family:var(--f-display);font-stretch:108%;font-weight:600;font-size:.85rem;cursor:pointer;transition:transform .15s,filter .15s}
+.ui-btn:hover{transform:translateY(-2px);filter:brightness(1.07)}
+.ui-btn--ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
+.ui-btn--ghost:hover{border-color:var(--pine);color:var(--pine)}
+.ui-btn--sq{border-radius:4px;background:var(--ink);color:var(--paper)}
+
+.ui-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border:1px solid var(--rule);border-radius:999px;font-family:var(--f-mono);font-size:.64rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft)}
+.ui-badge i{width:6px;height:6px;border-radius:50%;background:var(--pine)}
+
+.quote{border-left:2px solid var(--ochre);padding-left:15px}
+.quote p{font-size:1.02rem;line-height:1.5}
+.quote footer{margin-top:11px;display:flex;align-items:center;gap:10px}
+.av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--pine);color:#F6F5F1;font-family:var(--f-mono);font-size:.7rem;font-weight:600}
+.quote cite{font-style:normal;font-family:var(--f-display);font-stretch:108%;font-weight:600;font-size:.88rem;display:block;line-height:1.25}
+.quote small{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+.stars{display:inline-flex;gap:2px;color:var(--ochre)}
+.stars svg{width:14px;height:14px;fill:currentColor}
+
+.fld{display:grid;gap:6px}
+.fld label{font-family:var(--f-mono);font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.fld input{padding:11px 13px;border:1px solid var(--rule);border-radius:4px;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:.95rem}
+.fld input:focus{outline:none;border-color:var(--pine);box-shadow:0 0 0 3px color-mix(in oklab,var(--pine) 22%,transparent)}
+
+.acc{border-top:1px solid var(--rule)}
+.acc details{border-bottom:1px solid var(--rule)}
+.acc summary{list-style:none;cursor:pointer;padding:12px 0;display:flex;align-items:center;gap:12px;font-family:var(--f-display);font-stretch:110%;font-weight:600;font-size:.95rem}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"+";margin-left:auto;font-family:var(--f-mono);color:var(--pine);font-size:1.1rem;transition:transform .2s}
+.acc details[open] summary::after{transform:rotate(45deg)}
+.acc .body{padding:0 0 14px;font-size:.92rem;color:var(--ink-soft);line-height:1.55}
+
+.meter{display:grid;gap:7px}
+.meter .bar{height:7px;background:var(--sunk);overflow:hidden;border-radius:99px}
+.meter .bar i{display:block;height:100%;background:var(--pine);border-radius:99px}
+.meter .row{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.65rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.meter .row b{color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* ── Limits colophon ────────────────────────────────────────────────────── */
+.colophon{border-top:1.5px solid var(--ink);padding:clamp(38px,6vw,68px) 0 clamp(50px,8vw,90px)}
+.cols{display:grid;gap:30px}
+@media(min-width:820px){.cols{grid-template-columns:1fr 1fr}}
+.ledger{display:grid;gap:0;border-top:1px solid var(--rule)}
+.ledger div{display:flex;gap:16px;padding:13px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.ledger .mono{flex:none;width:74px;color:var(--pine)}
+.ledger.no .mono{color:var(--ochre)}
+.ledger p{font-size:.95rem;line-height:1.5;color:var(--ink-soft)}
+.ledger p b{color:var(--ink);font-family:var(--f-display);font-stretch:110%;font-weight:600}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="tagline">
+      <span class="mono">Surface Catalogue No. 1</span>
+      <span class="mono">Edition 2026.09</span>
+      <span class="mono">Rendered in CSS · 0 image files</span>
+    </div>
+
+    <h1>Everything here is<br>drawn by the browser.</h1>
+
+    <p class="lead">A working sample of the design layer I can put behind a local-business site — grounds, textures, palette, type and interface parts. No stock art, no licence, no asset pipeline. Every surface below is live CSS you are looking at right now, not a screenshot of one.</p>
+
+    <div class="specsheet">
+      <div class="spec"><b>12</b><span>Surfaces on plate</span></div>
+      <div class="spec"><b>0 KB</b><span>Image weight</span></div>
+      <div class="spec"><b>3</b><span>Numbers to reskin</span></div>
+      <div class="spec"><b>2</b><span>Themes, light &amp; dark</span></div>
+    </div>
+
+    <p class="note"><b>On Canva and Higgsfield —</b> I can't reach either one from here; there's no connection to them in this environment. So rather than pretend, I generate the backgrounds and textures in code instead. If you'd still rather use a Canva or Higgsfield export, that works too: you hand me the file and I drop it in as the ground for any section, with these generated surfaces layered over or under it.</p>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <h2>Grounds &amp; textures</h2>
+      <span class="mono">Plate 01–12</span>
+      <p>The background of a section is what separates a site that looks bought from one that looks made. These are the raw surfaces — each one is a handful of gradient stops, and each retints itself to whatever colour a client's logo happens to be.</p>
+    </div>
+
+    <div class="plates">
+      <figure class="plate"><div class="sw" id="s01"></div><figcaption><h3>Mesh bloom</h3><span class="mono">01</span></figcaption><p>Four soft colour fields overlapping. The default ground for a hero.</p></figure>
+      <figure class="plate"><div class="sw" id="s02"></div><figcaption><h3>Film grain</h3><span class="mono">02</span></figcaption><p>Fractal noise, generated inline. Kills the plastic look on flat colour.</p></figure>
+      <figure class="plate"><div class="sw" id="s03"></div><figcaption><h3>Contour</h3><span class="mono">03</span></figcaption><p>Topographic rings. Reads as survey map — good for land, roofing, paving.</p></figure>
+      <figure class="plate"><div class="sw" id="s04"></div><figcaption><h3>Drafting grid</h3><span class="mono">04</span></figcaption><p>Two grid scales stacked. Quietly says blueprint without shouting it.</p></figure>
+      <figure class="plate"><div class="sw" id="s05"></div><figcaption><h3>Crosshatch</h3><span class="mono">05</span></figcaption><p>Woven diagonals. Warm, tactile, near-invisible until you look.</p></figure>
+      <figure class="plate"><div class="sw" id="s06"></div><figcaption><h3>Halftone</h3><span class="mono">06</span></figcaption><p>Dot field with a directional fade. Print-shop energy.</p></figure>
+      <figure class="plate"><div class="sw" id="s07"></div><figcaption><h3>Rays</h3><span class="mono">07</span></figcaption><p>Light beams from an off-canvas source. Dark sections stop feeling flat.</p></figure>
+      <figure class="plate"><div class="sw" id="s08"></div><figcaption><h3>Aurora</h3><span class="mono">08</span></figcaption><p>Blurred conic sweep with grain over it. The loudest one here.</p></figure>
+      <figure class="plate"><div class="sw" id="s09"></div><figcaption><h3>Corduroy</h3><span class="mono">09</span></figcaption><p>Fine ribbing with a lit edge. Behaves like a material, not a pattern.</p></figure>
+      <figure class="plate"><div class="sw" id="s10"></div><figcaption><h3>Terrazzo</h3><span class="mono">10</span></figcaption><p>Scattered chips on a tile. Reads well behind menus and price lists.</p></figure>
+      <figure class="plate"><div class="sw" id="s11"></div><figcaption><h3>Spotlight</h3><span class="mono">11</span></figcaption><p>Bloom plus vignette. Pulls the eye to one headline and holds it.</p></figure>
+      <figure class="plate"><div class="sw" id="s12"></div><figcaption><h3>Paper stock</h3><span class="mono">12</span></figcaption><p>Grain and fibre over a warm wash. The whole page can sit on this.</p></figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>One number reskins it</h2>
+      <span class="mono">Live</span>
+      <p>Colour isn't picked per element, it's derived. Every shade — button, glow, wash, shadow, heading ink — comes off a single hue. Pick the colour off the client's van or their sign, and the site follows. Try it.</p>
+    </div>
+
+    <div class="reskin">
+      <div>
+        <p class="mono" style="color:var(--pine)">Choose a hue</p>
+        <div class="hues" id="hues" role="group" aria-label="Brand hue"></div>
+        <p class="readout" id="readout">hue <b>168</b> · sat <b>58%</b> · lum <b>34%</b></p>
+        <p style="margin-top:16px;font-size:.94rem;line-height:1.55;color:var(--ink-soft)">Nothing in the card to the right is hand-coloured. Change the hue and the shadow under the button, the tint behind the heading and the wash on the hover state all move with it — which is why re-skinning a finished site for the next client takes minutes, not a rebuild.</p>
+      </div>
+
+      <div class="demo" id="demo">
+        <div class="demo__bar"><i></i><i></i><i></i><span>example-client.com</span></div>
+        <div class="demo__body">
+          <span class="demo__eyebrow">Licensed &amp; insured · Est. 1998</span>
+          <h3 class="demo__h">Water heater out? We're there today.</h3>
+          <p class="demo__sub">Same-day repair across the valley, flat-rate pricing quoted before we start, and no charge if we can't fix it.</p>
+          <div class="demo__row">
+            <button class="dbtn" type="button">Get a free quote</button>
+            <button class="dbtn dbtn--ghost" type="button">(509) 555‑0142</button>
+          </div>
+          <div class="demo__stats">
+            <div class="demo__stat"><b>4.9★</b><span>212 reviews</span></div>
+            <div class="demo__stat"><b>27 yrs</b><span>In business</span></div>
+            <div class="demo__stat"><b>&lt;90 min</b><span>Response</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>Interface parts</h2>
+      <span class="mono">Bay A–F</span>
+      <p>The pieces a small-business site is actually assembled from, built to the same standard as the backgrounds. All keyboard-operable, all readable in both themes.</p>
+    </div>
+
+    <div class="shelf">
+      <div class="bay">
+        <span class="mono">Bay A · Actions</span>
+        <div class="ui-row">
+          <button class="ui-btn" type="button">Book now</button>
+          <button class="ui-btn ui-btn--ghost" type="button">See pricing</button>
+        </div>
+        <div class="ui-row">
+          <button class="ui-btn ui-btn--sq" type="button">Call the shop</button>
+          <span class="ui-badge"><i></i>Open till 6</span>
+        </div>
+      </div>
+
+      <div class="bay">
+        <span class="mono">Bay B · Testimonial</span>
+        <blockquote class="quote">
+          <span class="stars" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg></span>
+          <p>They found the leak in ten minutes after two other outfits couldn't. Cleaned up after themselves too.</p>
+          <footer><span class="av">DR</span><span><cite>Denise R.</cite><small>Google · verified</small></span></footer>
+        </blockquote>
+      </div>
+
+      <div class="bay">
+        <span class="mono">Bay C · Capture</span>
+        <div class="fld"><label for="d1">Your name</label><input id="d1" type="text" value="Marcus Webb"></div>
+        <div class="fld"><label for="d2">Phone</label><input id="d2" type="tel" value="(509) 555-0188"></div>
+        <button class="ui-btn" type="button" style="align-self:flex-start">Request callback</button>
+      </div>
+
+      <div class="bay">
+        <span class="mono">Bay D · Questions</span>
+        <div class="acc">
+          <details open><summary>Do you charge for estimates?</summary><div class="body">No. We quote on site, in writing, before any work starts.</div></details>
+          <details><summary>How fast can you get here?</summary><div class="body">Most calls inside the valley are same-day; emergencies average 90 minutes.</div></details>
+          <details><summary>Are you insured?</summary><div class="body">Fully licensed, bonded and insured. Certificate on request.</div></details>
+        </div>
+      </div>
+
+      <div class="bay">
+        <span class="mono">Bay E · Proof</span>
+        <div class="meter">
+          <div class="row"><span>Jobs completed 2025</span><b>1,340</b></div>
+          <div class="bar"><i style="width:92%"></i></div>
+        </div>
+        <div class="meter">
+          <div class="row"><span>Same-day response</span><b>87%</b></div>
+          <div class="bar"><i style="width:87%"></i></div>
+        </div>
+        <div class="meter">
+          <div class="row"><span>Repeat customers</span><b>64%</b></div>
+          <div class="bar"><i style="width:64%"></i></div>
+        </div>
+      </div>
+
+      <div class="bay">
+        <span class="mono">Bay F · Type</span>
+        <p style="font-family:var(--f-display);font-stretch:125%;font-weight:700;font-size:2.1rem;line-height:1;letter-spacing:-.03em">Aa Bb Cc</p>
+        <p class="mono">Archivo · display · 125 width</p>
+        <p style="font-family:var(--f-body);font-size:1.05rem;line-height:1.5">The body face is a serif, on purpose — it reads warmer than the sans every competitor uses.</p>
+        <p class="mono">Newsreader · body · IBM Plex Mono · spec</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="colophon">
+    <div class="sec-head" style="border-bottom:0;padding-bottom:0;margin-bottom:26px">
+      <h2>What I can and can't do</h2>
+      <span class="mono">Straight answer</span>
+    </div>
+
+    <div class="cols">
+      <div>
+        <p class="mono" style="color:var(--pine);margin-bottom:12px">Yes</p>
+        <div class="ledger">
+          <div><span class="mono">Design</span><p><b>Full pages, built in code.</b> Layout, type, colour, motion, responsive down to a phone, light and dark.</p></div>
+          <div><span class="mono">Surfaces</span><p><b>Backgrounds and textures</b> like the twelve above, retinted per client, plus any Canva or Higgsfield file you hand me.</p></div>
+          <div><span class="mono">Content</span><p><b>Slots for their stuff.</b> Photos, reviews, hours, service list — you send them, I place them and adjust the fit.</p></div>
+          <div><span class="mono">Found</span><p><b>Local SEO groundwork.</b> Business schema, page titles, service-area markup — what makes them show up in map results.</p></div>
+        </div>
+      </div>
+      <div>
+        <p class="mono" style="color:var(--ochre);margin-bottom:12px">No</p>
+        <div class="ledger no">
+          <div><span class="mono">Tools</span><p><b>No Canva or Higgsfield access</b> from this environment. I can't log in or export from them — only take what you export.</p></div>
+          <div><span class="mono">Photos</span><p><b>I don't produce imagery.</b> Which matches your plan: real photos from the real business always sell better than generated ones.</p></div>
+          <div><span class="mono">Server</span><p><b>No backend by default.</b> Forms need a service wiring up — a few minutes, but it's a step, and usually a small monthly cost.</p></div>
+          <div><span class="mono">Live</span><p><b>I can't buy domains or hosting.</b> I can hand you a finished site and tell you exactly where to put it.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var HUES=[
+    {h:168,s:58,l:34,name:'Pine'},
+    {h:24,s:82,l:50,name:'Copper'},
+    {h:210,s:70,l:42,name:'Ocean'},
+    {h:348,s:56,l:44,name:'Brick'},
+    {h:42,s:80,l:46,name:'Gold'},
+    {h:268,s:44,l:48,name:'Iris'},
+    {h:96,s:44,l:36,name:'Moss'},
+    {h:200,s:14,l:32,name:'Slate'}
+  ];
+  var box=document.getElementById('hues');
+  var demo=document.getElementById('demo');
+  var readout=document.getElementById('readout');
+  if(!box||!demo||!readout)return;
+
+  function apply(c,btn){
+    demo.style.setProperty('--h',c.h);
+    demo.style.setProperty('--s',c.s+'%');
+    demo.style.setProperty('--l',c.l+'%');
+    readout.innerHTML='hue <b>'+c.h+'</b> · sat <b>'+c.s+'%</b> · lum <b>'+c.l+'%</b> &nbsp;— '+c.name;
+    box.querySelectorAll('.hue').forEach(function(b){b.setAttribute('aria-pressed',String(b===btn))});
+  }
+
+  HUES.forEach(function(c,i){
+    var b=document.createElement('button');
+    b.type='button';
+    b.className='hue';
+    b.style.background='hsl('+c.h+' '+c.s+'% '+c.l+'%)';
+    b.setAttribute('aria-label',c.name);
+    b.setAttribute('aria-pressed',String(i===0));
+    b.addEventListener('click',function(){apply(c,b)});
+    box.appendChild(b);
+  });
+})();
+</script>
