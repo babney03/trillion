@@ -25,6 +25,12 @@
       "skillPath": ".agents/skills/impeccable/SKILL.md",
       "computedHash": "a80e96114cca1a7324c3b5b72586b93687a12a2a05302563fa81e1e30987a049"
     },
+    "motion-design": {
+      "source": "lottiefiles/motion-design-skill",
+      "sourceType": "github",
+      "skillPath": "skills/motion-design/SKILL.md",
+      "computedHash": "9fcf9130cc46ee8fd1d8e09a9263347a9d76efbcbfa46591cc4cefaf19bbb453"
+    },
     "playwright-cli": {
       "source": "microsoft/playwright-cli",
       "sourceType": "github",
