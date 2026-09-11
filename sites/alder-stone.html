@@ -1,0 +1,789 @@
+<meta charset="utf-8">
+<title>Alder &amp; Stone Landscape</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300..800;1,400&family=Young+Serif&display=swap">
+
+<style>
+/* ══════════════════════════════════════════════════════════════════
+   ALDER & STONE — full-service landscape co. (Pacific Northwest)
+   Palette derives from: fir needle, wet basalt, split cedar, fog.
+   ══════════════════════════════════════════════════════════════════ */
+:root{
+  --ground:#F2F0EA; --card:#FFFFFF; --sunk:#E7E4DB;
+  --ink:#16211C; --ink-soft:#525D57; --ink-faint:#5C645E;
+  --rule:#D6D2C7;
+  --deep:#1B3A30; --deep-2:#27503F; --on-deep:#EDF1EC;
+  --moss:#7E9B79;
+  --cedar:#B0692F; --cedar-text:#8A5122; --cedar-lift:#C9823F;
+  --shade:22 33 28;
+
+  --f-d:'Young Serif',Georgia,'Times New Roman',serif;
+  --f-b:'Karla',system-ui,-apple-system,'Segoe UI',sans-serif;
+
+  --page:1180px;
+  --sec:clamp(56px,7vw,104px);
+  --gut:clamp(18px,4vw,40px);
+  --r:14px; --r-lg:22px;
+  --ease:cubic-bezier(.2,.7,.25,1);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#101816; --card:#18221E; --sunk:#0B110F;
+    --ink:#E9EBE5; --ink-soft:#9BA59E; --ink-faint:#8B948C;
+    --rule:#27332C;
+    --deep:#0D1512; --deep-2:#16241D; --on-deep:#E9EBE5;
+    --moss:#96B591;
+    --cedar:#D98F51; --cedar-text:#E0A068; --cedar-lift:#E8A470;
+    --shade:0 0 0;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101816; --card:#18221E; --sunk:#0B110F;
+  --ink:#E9EBE5; --ink-soft:#9BA59E; --ink-faint:#8B948C;
+  --rule:#27332C;
+  --deep:#0D1512; --deep-2:#16241D; --on-deep:#E9EBE5;
+  --moss:#96B591;
+  --cedar:#D98F51; --cedar-text:#E0A068; --cedar-lift:#E8A470;
+  --shade:0 0 0;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);
+  font-family:var(--f-b);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--f-d);font-weight:400;line-height:1.06;margin:0;text-wrap:balance;letter-spacing:-.005em}
+h1{font-size:clamp(2.5rem,1.3rem+4.6vw,4.3rem)}
+h2{font-size:clamp(1.8rem,1.2rem+2.4vw,2.9rem)}
+h3{font-size:1.22rem;line-height:1.2}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+:focus-visible{outline:2.5px solid var(--cedar);outline-offset:3px;border-radius:4px}
+::selection{background:var(--cedar);color:#fff}
+
+.wrap{max-width:var(--page);margin:0 auto;padding:0 var(--gut)}
+.sec{padding:var(--sec) 0}
+.lede{font-size:clamp(1.05rem,.98rem+.36vw,1.22rem);line-height:1.58;color:var(--ink-soft);max-width:58ch}
+
+.label{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cedar-text)}
+.label--q{color:var(--ink-faint)}
+
+/* ── demo strip — DELETE THIS BLOCK when handing to a real client ── */
+.demo-strip{background:var(--deep);color:var(--on-deep);font-size:.76rem;
+  letter-spacing:.05em;text-align:center;padding:8px 16px}
+.demo-strip b{color:var(--cedar-lift);font-weight:700}
+
+/* ── header ── */
+header.bar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--ground) 88%,transparent);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+.nav{display:flex;align-items:center;gap:22px;min-height:72px}
+.logo{display:flex;align-items:center;gap:11px;margin-right:auto;font-family:var(--f-d);font-size:1.12rem;line-height:1.05}
+.logo svg{width:34px;height:34px;flex:none;color:var(--deep-2)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .logo svg{color:var(--moss)}}
+:root[data-theme="dark"] .logo svg{color:var(--moss)}
+.logo small{display:block;font-family:var(--f-b);font-size:.6rem;font-weight:700;
+  letter-spacing:.17em;text-transform:uppercase;color:var(--ink-faint);margin-top:3px}
+.navlinks{display:none;gap:22px}
+.navlinks a{font-size:.9rem;font-weight:600;color:var(--ink-soft);padding:6px 0;border-bottom:2px solid transparent;white-space:nowrap}
+.navlinks a:hover{color:var(--ink);border-bottom-color:var(--cedar)}
+.navend{display:none;align-items:center;gap:14px;white-space:nowrap}
+.tel{font-weight:700;font-size:.92rem;white-space:nowrap}
+@media(min-width:1040px){.navlinks,.navend{display:flex}}
+.burger{margin-left:auto;width:44px;height:44px;display:grid;place-items:center;
+  border:1px solid var(--rule);border-radius:10px;background:var(--card);color:var(--ink)}
+.drawer{display:grid;gap:2px;padding:8px 0 20px;border-top:1px solid var(--rule)}
+.drawer[hidden]{display:none}
+.drawer a{padding:13px 2px;font-weight:600;border-bottom:1px solid var(--rule)}
+@media(min-width:1040px){.drawer{display:none!important}.burger{display:none}}
+
+/* ── buttons ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:14px 24px;border:1.5px solid transparent;border-radius:999px;
+  font-family:var(--f-b);font-weight:700;font-size:.95rem;cursor:pointer;
+  background:var(--cedar);color:#fff;
+  transition:transform 160ms var(--ease),box-shadow 200ms var(--ease),background-color 160ms var(--ease);
+  box-shadow:0 6px 18px rgb(var(--shade)/.16)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgb(var(--shade)/.22);background:var(--cedar-lift)}
+.btn:active{transform:translateY(0) scale(.975);box-shadow:0 3px 10px rgb(var(--shade)/.18)}
+.btn--out{background:transparent;color:var(--ink);border-color:var(--rule);box-shadow:none}
+.btn--out:hover{background:var(--card);border-color:var(--ink-faint);box-shadow:0 4px 14px rgb(var(--shade)/.1)}
+.btn--deep{background:var(--deep-2);color:var(--on-deep)}
+.btn--deep:hover{background:var(--deep)}
+.btn--sm{padding:10px 18px;font-size:.86rem}
+.btn--wide{width:100%}
+.btn svg{width:17px;height:17px;flex:none}
+
+/* ── hero ── */
+.hero{position:relative;overflow:hidden;padding:clamp(38px,5vw,70px) 0 var(--sec)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(62% 54% at 6% -6%,color-mix(in srgb,var(--moss) 34%,transparent),transparent 64%),
+    radial-gradient(46% 44% at 98% 6%,color-mix(in srgb,var(--cedar) 20%,transparent),transparent 62%)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.45;
+  mix-blend-mode:soft-light;background-size:150px 150px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero h1{margin:18px 0 20px;max-width:15ch}
+.hero .lede{max-width:52ch}
+.trustline{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:26px;font-size:.84rem;color:var(--ink-soft)}
+.trustline span{display:inline-flex;align-items:center;gap:7px}
+.trustline svg{width:15px;height:15px;color:var(--moss);flex:none}
+
+/* two front doors — the structural thesis */
+.doors{display:grid;gap:16px;margin-top:44px}
+@media(min-width:780px){.doors{grid-template-columns:1fr 1fr;gap:20px}}
+.door{position:relative;display:flex;flex-direction:column;gap:13px;padding:26px;
+  border-radius:var(--r-lg);border:1px solid var(--rule);background:var(--card);
+  transition:transform 200ms var(--ease),box-shadow 220ms var(--ease),border-color 200ms var(--ease)}
+.door:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgb(var(--shade)/.13);border-color:var(--moss)}
+.door--build{background:var(--deep);color:var(--on-deep);border-color:transparent}
+.door--build .lede,.door--build p{color:color-mix(in srgb,var(--on-deep) 74%,transparent)}
+.door--build .label{color:var(--cedar-lift)}
+.door h3{font-size:1.55rem}
+.door ul{list-style:none;padding:0;margin:0;display:grid;gap:8px;font-size:.92rem;color:var(--ink-soft)}
+.door--build ul{color:color-mix(in srgb,var(--on-deep) 74%,transparent)}
+.door li{display:flex;gap:9px;align-items:flex-start}
+.door li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--moss);margin-top:8px;flex:none}
+.door .btn{margin-top:6px;align-self:flex-start}
+
+/* ── strip of numbers ── */
+.strip{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;
+  padding:30px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+@media(min-width:800px){.strip{grid-template-columns:repeat(4,1fr)}}
+.stat b{display:block;font-family:var(--f-d);font-size:2rem;line-height:1;color:var(--deep-2)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .stat b{color:var(--moss)}}
+:root[data-theme="dark"] .stat b{color:var(--moss)}
+.stat span{display:block;margin-top:7px;font-size:.72rem;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-faint)}
+
+/* ── section heads ── */
+.head{max-width:58ch;margin-bottom:38px}
+.head h2{margin:14px 0 16px}
+
+/* ── services ── */
+.svc{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--r-lg);overflow:hidden}
+@media(min-width:660px){.svc{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.svc{grid-template-columns:repeat(3,1fr)}}
+.svc article{background:var(--card);padding:26px 24px;display:flex;flex-direction:column;gap:9px;
+  transition:background-color 200ms var(--ease)}
+.svc article:hover{background:var(--sunk)}
+.svc svg{width:26px;height:26px;color:var(--cedar-text);margin-bottom:4px}
+.svc h3{font-size:1.1rem}
+.svc p{font-size:.9rem;color:var(--ink-soft);line-height:1.55}
+.svc .tag{margin-top:auto;padding-top:12px;font-size:.68rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-faint)}
+
+/* ── seasons ── */
+.seasons{border:1px solid var(--rule);border-radius:var(--r-lg);overflow:hidden;background:var(--card)}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);background:var(--sunk)}
+.tab{padding:16px 8px;border:0;background:transparent;cursor:pointer;font-family:var(--f-b);
+  font-weight:700;font-size:.82rem;letter-spacing:.04em;color:var(--ink-soft);
+  border-bottom:3px solid transparent;transition:color 160ms var(--ease),border-color 160ms var(--ease),background-color 160ms var(--ease)}
+.tab:hover{color:var(--ink);background:color-mix(in srgb,var(--moss) 14%,transparent)}
+.tab[aria-selected="true"]{background:var(--card);color:var(--ink);border-bottom-color:var(--cedar)}
+.panel{padding:clamp(22px,3.4vw,38px)}
+.panel[hidden]{display:none}
+.panel .months{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cedar-text)}
+.panel h3{margin:10px 0 12px;font-size:1.5rem}
+.panel p{color:var(--ink-soft);max-width:60ch}
+.panel ul{margin:20px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+@media(min-width:700px){.panel ul{grid-template-columns:1fr 1fr;gap:10px 28px}}
+.panel li{display:flex;gap:10px;font-size:.93rem;align-items:flex-start}
+.panel li svg{width:17px;height:17px;color:var(--moss);flex:none;margin-top:4px}
+
+/* ── gallery ── */
+.gal{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:820px){.gal{grid-template-columns:repeat(4,1fr);grid-auto-rows:176px}
+  .gal figure:nth-child(1){grid-column:span 2;grid-row:span 2}
+  .gal figure:nth-child(6){grid-column:span 2}}
+.gal figure{margin:0;position:relative;min-height:150px;border-radius:var(--r);overflow:hidden;
+  background:linear-gradient(150deg,color-mix(in srgb,var(--moss) 46%,var(--sunk)),var(--sunk));
+  display:grid;place-content:center;text-align:center;padding:16px;gap:5px;
+  border:1px dashed color-mix(in srgb,var(--ink-faint) 50%,transparent)}
+.gal b{font-family:var(--f-d);font-size:.98rem;font-weight:400}
+.gal span{font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* ── reviews ── */
+.revs{display:grid;gap:16px}
+@media(min-width:760px){.revs{grid-template-columns:repeat(3,1fr)}}
+.rev{position:relative;background:var(--card);border:1px solid var(--rule);border-radius:var(--r-lg);
+  padding:24px;display:flex;flex-direction:column;gap:13px}
+.rev .sample{position:absolute;top:12px;right:12px;font-size:.58rem;font-weight:700;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);
+  border-radius:999px;padding:3px 8px;background:var(--ground)}
+.stars{display:inline-flex;gap:2px;color:var(--cedar)}
+.stars svg{width:15px;height:15px;fill:currentColor}
+.rev p{font-size:1rem;line-height:1.5}
+.rev footer{margin-top:auto;display:flex;align-items:center;gap:11px}
+.rev .who{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;flex:none;
+  background:var(--deep-2);color:var(--on-deep);font-size:.76rem;font-weight:700}
+.rev cite{font-style:normal;font-weight:700;font-size:.9rem;display:block;line-height:1.25}
+.rev small{font-size:.72rem;color:var(--ink-faint)}
+
+/* ── area ── */
+.area{background:var(--deep);color:var(--on-deep);border-radius:var(--r-lg);
+  padding:clamp(26px,4vw,52px);display:grid;gap:30px}
+@media(min-width:880px){.area{grid-template-columns:1fr 1fr;gap:52px;align-items:center}}
+.area .lede{color:color-mix(in srgb,var(--on-deep) 76%,transparent)}
+.area .label{color:var(--cedar-lift)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{padding:8px 15px;border-radius:999px;font-size:.86rem;font-weight:600;
+  background:color-mix(in srgb,var(--on-deep) 9%,transparent);
+  border:1px solid color-mix(in srgb,var(--on-deep) 17%,transparent)}
+.mapslot{min-height:240px;border-radius:var(--r);display:grid;place-content:center;gap:6px;text-align:center;
+  border:1px dashed color-mix(in srgb,var(--on-deep) 26%,transparent);
+  background-image:repeating-linear-gradient(0deg,color-mix(in srgb,var(--on-deep) 7%,transparent) 0 1px,transparent 1px 38px),
+    repeating-linear-gradient(90deg,color-mix(in srgb,var(--on-deep) 7%,transparent) 0 1px,transparent 1px 38px)}
+.mapslot b{font-family:var(--f-d);font-weight:400}
+.mapslot span{font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;opacity:.72}
+
+/* ── faq ── */
+.faq{display:grid;gap:10px;max-width:800px}
+.faq details{border:1px solid var(--rule);border-radius:var(--r);background:var(--card);overflow:hidden}
+.faq details[open]{border-color:var(--moss)}
+.faq summary{list-style:none;cursor:pointer;padding:18px 22px;display:flex;align-items:center;gap:16px;
+  font-family:var(--f-d);font-size:1.06rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";margin-left:auto;width:14px;height:14px;flex:none;
+  border-right:2px solid var(--cedar);border-bottom:2px solid var(--cedar);
+  transform:rotate(45deg) translate(-3px,-3px);transition:transform 220ms var(--ease)}
+.faq details[open] summary::after{transform:rotate(225deg) translate(-2px,-2px)}
+.faq .ans{padding:0 22px 20px;color:var(--ink-soft);font-size:.95rem;max-width:66ch}
+
+/* ── quote ── */
+.quote{display:grid;gap:34px}
+@media(min-width:900px){.quote{grid-template-columns:.85fr 1.15fr;gap:52px;align-items:start}}
+.form{background:var(--card);border:1px solid var(--rule);border-radius:var(--r-lg);
+  padding:clamp(22px,3vw,34px);display:grid;gap:15px}
+.row{display:grid;gap:15px}
+@media(min-width:560px){.row{grid-template-columns:1fr 1fr}}
+.f{display:grid;gap:6px}
+.f label{font-size:.78rem;font-weight:700;letter-spacing:.03em;color:var(--ink-soft)}
+.f input,.f select,.f textarea{padding:12px 14px;border:1.5px solid var(--rule);border-radius:9px;
+  background:var(--ground);color:var(--ink);font-family:var(--f-b);font-size:.96rem}
+.f textarea{min-height:104px;resize:vertical}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--cedar);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--cedar) 24%,transparent)}
+.fine{font-size:.76rem;color:var(--ink-faint)}
+.okmsg{font-size:.9rem;font-weight:700;color:var(--deep-2)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .okmsg{color:var(--moss)}}
+:root[data-theme="dark"] .okmsg{color:var(--moss)}
+.okmsg[hidden]{display:none}
+.contact{display:grid;gap:20px;list-style:none;padding:0;margin:0}
+.contact li{display:flex;gap:14px;align-items:flex-start}
+.contact svg{width:20px;height:20px;color:var(--cedar-text);flex:none;margin-top:3px}
+.contact b{display:block;font-size:.9rem}
+.contact span,.contact a{font-size:.92rem;color:var(--ink-soft)}
+.hrs{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:6px}
+.hrs td{padding:7px 0;border-bottom:1px solid var(--rule);color:var(--ink-soft)}
+.hrs td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.hrs tr:last-child td{border-bottom:0}
+
+/* ── footer ── */
+footer.site{background:var(--deep);color:var(--on-deep);padding:52px 0 30px;margin-top:var(--sec)}
+.fgrid{display:grid;gap:30px}
+@media(min-width:800px){.fgrid{grid-template-columns:1.7fr 1fr 1fr}}
+footer.site h4{font-family:var(--f-b);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;
+  color:color-mix(in srgb,var(--on-deep) 58%,transparent);margin:0 0 14px}
+footer.site ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+footer.site a{font-size:.91rem;color:color-mix(in srgb,var(--on-deep) 80%,transparent)}
+footer.site a:hover{color:var(--cedar-lift)}
+footer.site .logo{color:var(--on-deep)}
+footer.site .logo svg{color:var(--moss)}
+footer.site .logo small{color:color-mix(in srgb,var(--on-deep) 55%,transparent)}
+.fbot{margin-top:34px;padding-top:20px;border-top:1px solid color-mix(in srgb,var(--on-deep) 15%,transparent);
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:.76rem;
+  color:color-mix(in srgb,var(--on-deep) 55%,transparent)}
+
+/* ── sticky mobile call bar ── */
+.callbar{position:fixed;inset-inline:0;bottom:0;z-index:60;display:grid;grid-template-columns:1fr 1fr;gap:8px;
+  padding:9px 12px calc(9px + env(safe-area-inset-bottom));
+  background:color-mix(in srgb,var(--ground) 92%,transparent);backdrop-filter:blur(12px);
+  border-top:1px solid var(--rule)}
+.callbar .btn{padding:12px;font-size:.88rem;box-shadow:none}
+@media(min-width:1040px){.callbar{display:none}}
+@media(max-width:1039px){body{padding-bottom:74px}}
+
+/* touch targets: footer + contact links need 44px on a phone */
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .door--build{
+    border:1.5px solid color-mix(in srgb,var(--cedar) 42%,transparent);
+    background:linear-gradient(158deg,var(--deep-2),var(--deep))}
+}
+:root[data-theme="dark"] .door--build{
+  border:1.5px solid color-mix(in srgb,var(--cedar) 42%,transparent);
+  background:linear-gradient(158deg,var(--deep-2),var(--deep))}
+
+@media(max-width:1039px){
+  footer.site ul{gap:0}
+  footer.site ul a,.contact a{display:inline-flex;align-items:center;min-height:44px}
+  .logo{min-height:44px}
+}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<!-- DEMO STRIP — delete this one element when handing to a real client -->
+<div class="demo-strip">Demonstration site · <b>Alder &amp; Stone</b> is a sample business — photos, reviews and details get replaced with the real ones</div>
+
+<header class="bar">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="logo" href="#top">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M16 28V13"/><path d="M16 17c-4 0-7-2.6-7-6.4 0-3 2.4-5.6 7-8.6 4.6 3 7 5.6 7 8.6 0 3.8-3 6.4-7 6.4Z"/>
+          <path d="M5 28h22"/><path d="M8.5 24.5h7"/><path d="M17 24.5h6.5"/>
+        </svg>
+        <span>Alder &amp; Stone<small>Landscape Co.</small></span>
+      </a>
+      <div class="navlinks">
+        <a href="#care">Grounds care</a>
+        <a href="#build">Design &amp; build</a>
+        <a href="#work">Our work</a>
+        <a href="#area">Service area</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="navend">
+        <a class="tel" href="tel:+14255550188">(425) 555‑0188</a>
+        <a class="btn btn--sm" href="#quote">Book a walkthrough</a>
+      </div>
+      <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+    <div class="drawer" id="drawer" hidden>
+      <a href="#care">Grounds care</a>
+      <a href="#build">Design &amp; build</a>
+      <a href="#work">Our work</a>
+      <a href="#area">Service area</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn--wide" style="margin-top:14px" href="tel:+14255550188">Call (425) 555‑0188</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <span class="label">Serving the Eastside since 2009</span>
+    <h1>Two things a yard needs: someone who keeps it, and someone who changes it.</h1>
+    <p class="lede">We do both. Year-round grounds care on a set schedule, and design-build work when it's time for something bigger — patios, walls, drainage, planting. Same crews, same standards.</p>
+
+    <div class="trustline">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Licensed, bonded &amp; insured · WA #ALDERSL842QK</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Same crew every visit</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Free on-site walkthrough</span>
+    </div>
+
+    <div class="doors">
+      <div class="door" id="care">
+        <span class="label">Door one · recurring</span>
+        <h3>Keep it looking after</h3>
+        <p style="color:var(--ink-soft);font-size:.98rem">A scheduled route, the same two-person crew, and a yard that never gets away from you. Most properties land between $180 and $340 a month.</p>
+        <ul>
+          <li>Mow, edge, blow — weekly Mar–Oct, biweekly Nov–Feb</li>
+          <li>Bed weeding, pruning and seasonal cleanups</li>
+          <li>Moss treatment, aeration, overseed and lime</li>
+          <li>Gutter clears and storm debris after wind events</li>
+        </ul>
+        <a class="btn btn--deep" href="#quote">Get a monthly quote
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div class="door door--build" id="build">
+        <span class="label">Door two · project</span>
+        <h3>Build something new</h3>
+        <p style="font-size:.98rem">Drawn, priced and built by us — no subcontracted mystery. You see a plan and a fixed number before anyone breaks ground.</p>
+        <ul>
+          <li>Paver and flagstone patios, paths, steps</li>
+          <li>Segmental retaining walls and regrading</li>
+          <li>French drains and downspout tightlining</li>
+          <li>Planting design for wet shade and clay soil</li>
+        </ul>
+        <a class="btn" href="#quote">Start a project
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="strip">
+    <div class="stat"><b>16 yrs</b><span>On the Eastside</span></div>
+    <div class="stat"><b>210+</b><span>Properties on route</span></div>
+    <div class="stat"><b>4.9★</b><span>Across 148 reviews</span></div>
+    <div class="stat"><b>48 hrs</b><span>Typical quote turnaround</span></div>
+  </div>
+</div>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="head">
+      <span class="label">What we handle</span>
+      <h2>The list, without the padding</h2>
+      <p class="lede">Everything here is work our own crews do. If a job needs a licensed electrician or an arborist with a climbing cert, we'll tell you and hand you a name.</p>
+    </div>
+
+    <div class="svc">
+      <article>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18h18"/><path d="M5 18c0-4 3-7 7-7s7 3 7 7"/><path d="M12 11V4"/></svg>
+        <h3>Mowing &amp; edging</h3>
+        <p>Weekly through the growing season, biweekly once growth slows. Blades sharpened every 20 hours so the cut heals instead of browning.</p>
+        <span class="tag">Grounds care</span>
+      </article>
+      <article>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3.6 4 6 6.8 6 10a6 6 0 0 1-12 0c0-3.2 2.4-6 6-10Z"/></svg>
+        <h3>Moss &amp; drainage</h3>
+        <p>The two things that define a Northwest yard. Iron-based moss control, aeration, and proper tightlining so water leaves instead of pooling.</p>
+        <span class="tag">Grounds care</span>
+      </article>
+      <article>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20V9"/><path d="M7 9c0-3 2-5 5-6 0 3-1.6 5-5 6Z"/><path d="M7 13c-2.4-.6-4-2.2-4.4-4.6C5 8.8 6.6 10.4 7 13Z"/><path d="M4 20h16"/><path d="M15 20v-6"/><path d="M15 14c0-2.4 1.6-4 4-4.4-.4 2.4-2 4-4 4.4Z"/></svg>
+        <h3>Pruning &amp; beds</h3>
+        <p>Structural pruning on the right calendar — not whenever we happen to be there. Beds weeded, edged and re-mulched twice a year.</p>
+        <span class="tag">Grounds care</span>
+      </article>
+      <article>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h18v11H3z"/><path d="M3 13.5h18"/><path d="M8.5 9v4.5M15.5 9v4.5M6 13.5V20M12 13.5V20M18 13.5V20"/><path d="M3 9 12 4l9 5"/></svg>
+        <h3>Patios &amp; walls</h3>
+        <p>Paver, flagstone and segmental block. Compacted base, proper drainage behind every wall, and a plan you approve before we order stone.</p>
+        <span class="tag">Design &amp; build</span>
+      </article>
+      <article>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16"/><path d="M6 6v11a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V6"/><path d="M10 10v6M14 10v6"/></svg>
+        <h3>Planting design</h3>
+        <p>Plants chosen for wet shade, clay and deer pressure — the three things that kill most Eastside plantings. Drawn to scale, priced per plant.</p>
+        <span class="tag">Design &amp; build</span>
+      </article>
+      <article>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 4 7v7c0 4.6 3.3 8.6 8 9.5 4.7-.9 8-4.9 8-9.5V7Z"/><path d="m9 12 2.2 2.2L15.4 10"/></svg>
+        <h3>Seasonal cleanups</h3>
+        <p>Spring open-up and fall leaf work, hauled off-site. Booked as part of a route or standalone if you handle the rest yourself.</p>
+        <span class="tag">Either</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--sunk)">
+  <div class="wrap">
+    <div class="head">
+      <span class="label">The Northwest year</span>
+      <h2>What's happening in your yard right now</h2>
+      <p class="lede">A wet, mild climate has its own calendar. Here's what we're doing each stretch of the year, and what it's for.</p>
+    </div>
+
+    <div class="seasons">
+      <div class="tabs" role="tablist" aria-label="Season">
+        <button class="tab" role="tab" id="t-sp" aria-controls="p-sp" aria-selected="true">Spring</button>
+        <button class="tab" role="tab" id="t-su" aria-controls="p-su" aria-selected="false">Summer</button>
+        <button class="tab" role="tab" id="t-fa" aria-controls="p-fa" aria-selected="false">Fall</button>
+        <button class="tab" role="tab" id="t-wi" aria-controls="p-wi" aria-selected="false">Winter</button>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-sp" aria-labelledby="t-sp">
+        <span class="months">March – May</span>
+        <h3>Waking it up, and getting ahead of the moss</h3>
+        <p>Growth goes vertical almost overnight here. Everything this season is about getting the lawn dense enough to crowd weeds out before summer, and clearing the winter's moss while it's still soft.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Moss treatment, then rake and overseed the bare patches</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Core aeration and lime to fight our acidic soil</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Bed cleanup, fresh edges and the first mulch round</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Weekly mowing resumes, cut high to shade out weeds</li>
+        </ul>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-su" aria-labelledby="t-su" hidden>
+        <span class="months">June – August</span>
+        <h3>The dry stretch nobody plans for</h3>
+        <p>Our summers are drier than people expect. Lawns go dormant, new plantings die fast, and irrigation problems only show up when it's already too late. This is a watching season more than a cutting one.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Mow height raised — shorter grass burns first</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Irrigation checks: heads, coverage, controller schedule</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Summer pruning on shrubs that flowered in spring</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Best window for patio and wall builds — dry ground</li>
+        </ul>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-fa" aria-labelledby="t-fa" hidden>
+        <span class="months">September – November</span>
+        <h3>The busiest eight weeks of the year</h3>
+        <p>Leaves and rain arrive together. Everything now is about moving water and organic matter off the property before it mats down, holds moisture against the lawn, and starts next spring's moss.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Repeat leaf passes — not one big cleanup in December</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Gutters and downspouts cleared before the first real storm</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Best planting window of the year — roots set over winter</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Drainage fixes while we can see exactly where water sits</li>
+        </ul>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-wi" aria-labelledby="t-wi" hidden>
+        <span class="months">December – February</span>
+        <h3>Quiet above ground, busy below it</h3>
+        <p>Mild and wet rather than frozen, so the work never fully stops. This is when structure gets fixed and the next year gets planned, at lower rates than peak season.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Biweekly visits — growth slows but debris doesn't</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Dormant pruning on fruit trees and deciduous structure</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Storm response — windthrow and blocked drains</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Design work drawn now, built first thing in spring</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="head">
+      <span class="label">Recent work</span>
+      <h2>Jobs from the last two seasons</h2>
+      <p class="lede">Photo slots below — each one is sized and captioned for the kind of shot that actually sells the job. Before-and-after pairs convert better than beauty shots.</p>
+    </div>
+    <div class="gal">
+      <figure><b>Hero project shot</b><span>Patio, wide, late light</span></figure>
+      <figure><b>Before / after pair</b><span>Same angle, both seasons</span></figure>
+      <figure><b>Retaining wall</b><span>Detail, coursing visible</span></figure>
+      <figure><b>Crew at work</b><span>Faces, branded shirts</span></figure>
+      <figure><b>Planting bed</b><span>Close, texture</span></figure>
+      <figure><b>Drainage install</b><span>Trench open, gravel</span></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--sunk)">
+  <div class="wrap">
+    <div class="head">
+      <span class="label">What clients say</span>
+      <h2>4.9 across 148 reviews</h2>
+      <p class="lede">Marked as samples on purpose. Real Google reviews get pasted in here verbatim — never rewritten, because the plain wording is what makes them believable.</p>
+    </div>
+    <div class="revs">
+      <div class="rev">
+        <span class="sample">Sample</span>
+        <span class="stars" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg></span>
+        <p>Placeholder for a real review. The ones that work best mention a specific problem and how it got solved — drainage, a deadline, a mess cleaned up.</p>
+        <footer><span class="who">—</span><span><cite>Client name</cite><small>Google · neighbourhood</small></span></footer>
+      </div>
+      <div class="rev">
+        <span class="sample">Sample</span>
+        <span class="stars" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg></span>
+        <p>Placeholder for a real review. Aim for three: one maintenance client, one project client, one who mentions the crew by name.</p>
+        <footer><span class="who">—</span><span><cite>Client name</cite><small>Google · neighbourhood</small></span></footer>
+      </div>
+      <div class="rev">
+        <span class="sample">Sample</span>
+        <span class="stars" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg></span>
+        <p>Placeholder for a real review. If they have fewer than ten, show what they have and drop the review count from the heading rather than inflating it.</p>
+        <footer><span class="who">—</span><span><cite>Client name</cite><small>Google · neighbourhood</small></span></footer>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="area">
+  <div class="wrap">
+    <div class="area">
+      <div>
+        <span class="label">Where we work</span>
+        <h2 style="margin:14px 0 16px">A tight route, on purpose</h2>
+        <p class="lede">We stay inside a twenty-minute radius so crews arrive on schedule and storm calls get answered the same day. If you're just outside it, ask — we'll say yes or give you a straight no.</p>
+        <div class="chips">
+          <span class="chip">Kirkland</span><span class="chip">Bothell</span><span class="chip">Woodinville</span>
+          <span class="chip">Redmond</span><span class="chip">Sammamish</span><span class="chip">Kenmore</span>
+          <span class="chip">Duvall</span><span class="chip">Juanita</span><span class="chip">Totem Lake</span>
+        </div>
+      </div>
+      <div class="mapslot"><b>Google Maps embed</b><span>service-area map</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="head">
+      <span class="label">Before you call</span>
+      <h2>Straight answers</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>What does monthly grounds care actually cost?</summary>
+        <div class="ans">Most Eastside properties run $180–$340 a month, averaged across the year so you pay the same in February as in June. The number depends on lot size, bed area and how much tree cover drops on you in the fall. We price it at the walkthrough, in writing.</div>
+      </details>
+      <details>
+        <summary>Do you charge for estimates?</summary>
+        <div class="ans">No. Walkthroughs are free for both grounds care and project work. For design-build over about $15,000 we charge a design fee, credited in full against the build if you go ahead.</div>
+      </details>
+      <details>
+        <summary>Is it the same crew every time?</summary>
+        <div class="ans">Yes, and that's the whole point of a set route. You'll meet your crew lead at the walkthrough. If they're out, we tell you before the visit rather than sending strangers into your back garden.</div>
+      </details>
+      <details>
+        <summary>Can you fix a yard that floods every winter?</summary>
+        <div class="ans">Usually. Most Eastside flooding is downspouts dumping at the foundation and compacted clay with nowhere to drain. We'll come out during a wet stretch — seeing where water actually sits beats guessing in August.</div>
+      </details>
+      <details>
+        <summary>Do you take one-off jobs, or contracts only?</summary>
+        <div class="ans">Both. Seasonal cleanups, a single pruning day and project work are all standalone. Recurring care is a rolling agreement you can end with thirty days' notice — no annual lock-in.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="quote" style="background:var(--sunk)">
+  <div class="wrap">
+    <div class="quote">
+      <div>
+        <span class="label">Free walkthrough</span>
+        <h2 style="margin:14px 0 16px">Tell us what the yard's doing</h2>
+        <p class="lede" style="margin-bottom:30px">We'll come out, walk it with you, and send a written number within two business days. No pressure and no subscription pitch.</p>
+
+        <ul class="contact">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+            <span><b>Call or text</b><a href="tel:+14255550188">(425) 555‑0188</a></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+            <span><b>Email</b><a href="mailto:hello@alderandstone.example">hello@alderandstone.example</a></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><b>Yard &amp; shop</b><span>11420 Slater Ave NE, Kirkland, WA 98033</span></span></li>
+        </ul>
+
+        <table class="hrs">
+          <tr><td>Monday – Friday</td><td>7:00 – 5:30</td></tr>
+          <tr><td>Saturday</td><td>8:00 – 2:00</td></tr>
+          <tr><td>Sunday</td><td>Storm calls only</td></tr>
+        </table>
+      </div>
+
+      <form class="form" id="quoteform" novalidate>
+        <div class="row">
+          <div class="f"><label for="n">Name</label><input id="n" name="name" type="text" autocomplete="name" required></div>
+          <div class="f"><label for="p">Phone</label><input id="p" name="phone" type="tel" autocomplete="tel" required></div>
+        </div>
+        <div class="f"><label for="a">Property address</label><input id="a" name="address" type="text" autocomplete="street-address"></div>
+        <div class="f">
+          <label for="s">What are you after?</label>
+          <select id="s" name="service">
+            <option>Recurring grounds care</option>
+            <option>Seasonal cleanup only</option>
+            <option>Patio, path or steps</option>
+            <option>Retaining wall or regrading</option>
+            <option>Drainage problem</option>
+            <option>Planting design</option>
+            <option>Not sure yet — need advice</option>
+          </select>
+        </div>
+        <div class="f">
+          <label for="m">Anything we should know?</label>
+          <textarea id="m" name="message" placeholder="Lot size, what's gone wrong, when you'd like it done…"></textarea>
+          <span class="fine">Photos help — text them to (425) 555‑0188.</span>
+        </div>
+        <button class="btn btn--wide" type="submit">Book my free walkthrough</button>
+        <p class="okmsg" id="ok" hidden role="status"></p>
+        <p class="fine">We answer every enquiry within one business day. We don't sell or share your details.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a class="logo" href="#top">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 28V13"/><path d="M16 17c-4 0-7-2.6-7-6.4 0-3 2.4-5.6 7-8.6 4.6 3 7 5.6 7 8.6 0 3.8-3 6.4-7 6.4Z"/>
+            <path d="M5 28h22"/><path d="M8.5 24.5h7"/><path d="M17 24.5h6.5"/>
+          </svg>
+          <span>Alder &amp; Stone<small>Landscape Co.</small></span>
+        </a>
+        <p style="margin-top:16px;font-size:.91rem;max-width:38ch;color:color-mix(in srgb,var(--on-deep) 72%,transparent)">Grounds care and design-build for Eastside properties. Same crews, same standards, sixteen years running.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#care">Grounds care</a></li>
+          <li><a href="#build">Design &amp; build</a></li>
+          <li><a href="#work">Recent work</a></li>
+          <li><a href="#area">Service area</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="tel:+14255550188">(425) 555‑0188</a></li>
+          <li><a href="mailto:hello@alderandstone.example">hello@alderandstone.example</a></li>
+          <li><a href="#quote">Book a walkthrough</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© <span id="yr">2026</span> Alder &amp; Stone Landscape Co. · WA #ALDERSL842QK</span>
+      <span>Sample site — not a real business</span>
+    </div>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn--out" href="#quote">Free quote</a>
+  <a class="btn" href="tel:+14255550188">Call now</a>
+</div>
+
+<script>
+(function(){
+  // mobile drawer
+  var b=document.getElementById('burger'), d=document.getElementById('drawer');
+  if(b&&d){
+    b.addEventListener('click',function(){
+      var open=d.hidden; d.hidden=!open;
+      b.setAttribute('aria-expanded',String(open));
+      b.setAttribute('aria-label',open?'Close menu':'Open menu');
+    });
+    d.addEventListener('click',function(e){ if(e.target.closest('a')){d.hidden=true;b.setAttribute('aria-expanded','false');} });
+  }
+
+  // season tabs — roving focus, arrow keys, first panel visible at rest
+  var tabs=Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  function select(t){
+    tabs.forEach(function(x){
+      var on=x===t;
+      x.setAttribute('aria-selected',String(on));
+      x.tabIndex=on?0:-1;
+      document.getElementById(x.getAttribute('aria-controls')).hidden=!on;
+    });
+  }
+  tabs.forEach(function(t,i){
+    t.tabIndex=t.getAttribute('aria-selected')==='true'?0:-1;
+    t.addEventListener('click',function(){select(t)});
+    t.addEventListener('keydown',function(e){
+      var n=null;
+      if(e.key==='ArrowRight')n=tabs[(i+1)%tabs.length];
+      if(e.key==='ArrowLeft')n=tabs[(i-1+tabs.length)%tabs.length];
+      if(e.key==='Home')n=tabs[0];
+      if(e.key==='End')n=tabs[tabs.length-1];
+      if(n){e.preventDefault();select(n);n.focus();}
+    });
+  });
+
+  // quote form — no backend on a static host; wire `action` to a real endpoint
+  var f=document.getElementById('quoteform');
+  if(f){
+    f.addEventListener('submit',function(e){
+      if(f.getAttribute('action'))return;
+      e.preventDefault();
+      if(!f.reportValidity())return;
+      var ok=document.getElementById('ok'), btn=f.querySelector('button[type=submit]');
+      btn.disabled=true; btn.textContent='Sending…';
+      setTimeout(function(){
+        ok.hidden=false;
+        ok.textContent='Thanks — we’ve got it. Expect a call within one business day.';
+        f.reset(); btn.disabled=false; btn.textContent='Book my free walkthrough';
+      },600);
+    });
+  }
+
+  document.getElementById('yr').textContent=new Date().getFullYear();
+})();
+</script>
