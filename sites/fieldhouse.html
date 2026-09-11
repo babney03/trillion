@@ -1,0 +1,589 @@
+<meta charset="utf-8">
+<title>Fieldhouse Kitchen &amp; Taproom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..900,50,1&family=Chivo:wght@300..800&family=DM+Mono:wght@400;500&display=swap">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BarOrPub","name":"Fieldhouse Kitchen & Taproom",
+"servesCuisine":"Modern American","priceRange":"$$",
+"address":{"@type":"PostalAddress","streetAddress":"218 Mill Street","addressLocality":"Riverside Arts District"},
+"telephone":"(555) 014-7720",
+"openingHoursSpecification":[
+{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday"],"opens":"16:00","closes":"23:00"},
+{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"15:00","closes":"01:00"},
+{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"11:00","closes":"01:00"},
+{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"11:00","closes":"22:00"}]}
+</script>
+
+<style>
+/* ═══════════════════════════════════════════════════════════════════
+   FIELDHOUSE — kitchen & taproom
+   A deliberately single-world design: the room is dim, so the site is.
+   Ground is warm near-black (brown bias, never blue), ember for heat,
+   sage for anything that grew.
+   ═══════════════════════════════════════════════════════════════════ */
+:root{
+  --night:#14110E; --night-2:#1F1A15; --night-3:#0C0A08; --night-4:#2A231C;
+  --bone:#F3ECE0; --bone-soft:#BDB1A0; --bone-faint:#93887A;
+  --rule:#332B23;
+  --ember:#E59433; --ember-deep:#C0731D; --ember-glow:229 148 51;
+  --sage:#8CA06F;
+  --f-d:'Fraunces',Georgia,serif;
+  --f-b:'Chivo',system-ui,-apple-system,sans-serif;
+  --f-m:'DM Mono',ui-monospace,Menlo,monospace;
+  --page:1140px; --gut:clamp(18px,4vw,38px); --sec:clamp(56px,7vw,100px);
+  --ease:cubic-bezier(.2,.7,.25,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--night);color:var(--bone);
+  font-family:var(--f-b);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--f-d);font-weight:600;line-height:1.02;margin:0;
+  font-variation-settings:'SOFT' 50,'WONK' 1;text-wrap:balance;letter-spacing:-.015em}
+h1{font-size:clamp(2.6rem,1.4rem+5vw,4.8rem);font-weight:700}
+h2{font-size:clamp(1.85rem,1.25rem+2.5vw,3rem)}
+h3{font-size:1.2rem;line-height:1.15}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+:focus-visible{outline:2.5px solid var(--ember);outline-offset:3px;border-radius:3px}
+::selection{background:var(--ember);color:var(--night)}
+
+.wrap{max-width:var(--page);margin:0 auto;padding:0 var(--gut)}
+.sec{padding:var(--sec) 0}
+.lede{font-size:clamp(1.04rem,.98rem+.34vw,1.2rem);line-height:1.58;color:var(--bone-soft);max-width:58ch}
+.kicker{font-family:var(--f-m);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ember)}
+.kicker--q{color:var(--bone-faint)}
+
+/* demo strip — DELETE when handing to a real client */
+.demo{background:var(--night-3);color:var(--bone-faint);font-size:.74rem;text-align:center;
+  padding:8px 16px;border-bottom:1px solid var(--rule)}
+.demo b{color:var(--ember)}
+
+/* ── header ── */
+.bar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--night) 90%,transparent);
+  backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav{display:flex;align-items:center;gap:20px;min-height:70px}
+.mark{margin-right:auto;display:flex;align-items:center;gap:11px;min-height:44px}
+.mark .fh{font-family:var(--f-d);font-weight:700;font-size:1.18rem;letter-spacing:.02em;line-height:1}
+.mark small{display:block;font-family:var(--f-m);font-size:.56rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--bone-faint);margin-top:4px}
+.mark svg{width:30px;height:30px;color:var(--ember);flex:none}
+.links{display:none;gap:22px}
+.links a{font-size:.89rem;font-weight:500;color:var(--bone-soft);white-space:nowrap;padding:5px 0;border-bottom:2px solid transparent}
+.links a:hover{color:var(--bone);border-bottom-color:var(--ember)}
+.navend{display:none;align-items:center;gap:13px;white-space:nowrap}
+@media(min-width:1040px){.links,.navend{display:flex}}
+.burger{margin-left:auto;width:44px;height:44px;display:grid;place-items:center;
+  border:1px solid var(--rule);border-radius:9px;background:var(--night-2);color:var(--bone)}
+.drawer{display:grid;padding:6px 0 18px;border-top:1px solid var(--rule)}
+.drawer[hidden]{display:none}
+.drawer a{padding:14px 2px;font-weight:600;border-bottom:1px solid var(--rule);min-height:44px;display:flex;align-items:center}
+@media(min-width:1040px){.drawer{display:none!important}.burger{display:none}}
+
+/* ── buttons ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:14px 24px;min-height:44px;border:1.5px solid transparent;border-radius:2px;cursor:pointer;
+  font-family:var(--f-b);font-weight:700;font-size:.92rem;letter-spacing:.02em;
+  background:var(--ember);color:#1A1206;
+  transition:transform 150ms var(--ease),background-color 150ms var(--ease),box-shadow 200ms var(--ease);
+  box-shadow:0 4px 18px rgb(var(--ember-glow)/.18)}
+.btn:hover{background:#F0A443;transform:translateY(-2px);box-shadow:0 8px 26px rgb(var(--ember-glow)/.26)}
+.btn:active{transform:translateY(0) scale(.975)}
+.btn--ghost{background:transparent;color:var(--bone);border-color:var(--rule);box-shadow:none}
+.btn--ghost:hover{background:var(--night-2);border-color:var(--bone-faint)}
+.btn--sm{padding:10px 17px;font-size:.83rem}
+.btn--wide{width:100%}
+
+/* ── tonight panel — the thesis ── */
+.tonight{border:1px solid var(--rule);border-radius:4px;background:
+  linear-gradient(168deg,var(--night-2),var(--night-3));overflow:hidden}
+.tonight__top{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;
+  padding:18px 22px;border-bottom:1px solid var(--rule);background:rgb(var(--ember-glow)/.05)}
+.status{display:inline-flex;align-items:center;gap:9px;font-family:var(--f-m);
+  font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--sage);flex:none;
+  box-shadow:0 0 0 0 rgb(140 160 111/.6);animation:pulse 2.6s var(--ease) infinite}
+.status--shut .dot{background:var(--bone-faint);animation:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgb(140 160 111/.5)}70%{box-shadow:0 0 0 9px rgb(140 160 111/0)}100%{box-shadow:0 0 0 0 rgb(140 160 111/0)}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
+.status__note{color:var(--bone-soft);font-family:var(--f-b);font-size:.86rem;letter-spacing:0;text-transform:none}
+.tonight__top .btn{margin-left:auto}
+.tonight__grid{display:grid;gap:1px;background:var(--rule)}
+@media(min-width:760px){.tonight__grid{grid-template-columns:repeat(3,1fr)}}
+.cell{background:var(--night-2);padding:22px}
+.cell h3{font-size:1.05rem;margin-bottom:7px}
+.cell p{font-size:.92rem;color:var(--bone-soft);line-height:1.5}
+.cell .when{font-family:var(--f-m);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ember);display:block;margin-bottom:9px}
+
+/* ── hero ── */
+.hero{position:relative;padding:clamp(40px,5vw,74px) 0 var(--sec);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(58% 48% at 12% -8%,rgb(var(--ember-glow)/.16),transparent 66%),
+             radial-gradient(44% 40% at 96% 4%,rgb(140 160 111/.09),transparent 62%)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.4;
+  mix-blend-mode:overlay;background-size:150px 150px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.84' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero h1{margin:16px 0 20px;max-width:16ch}
+.hero .lede{max-width:50ch}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 42px}
+
+/* ── tap board ── */
+.board{border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--night-2)}
+.board__head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 18px;padding:16px 20px;
+  border-bottom:1px solid var(--rule);background:var(--night-3)}
+.board__head h3{font-size:1.1rem}
+.board__head .upd{margin-left:auto;font-family:var(--f-m);font-size:.68rem;color:var(--bone-faint);letter-spacing:.08em}
+.tap{display:grid;grid-template-columns:1fr auto;gap:4px 14px;padding:15px 20px;border-bottom:1px solid var(--rule);
+  transition:background-color 160ms var(--ease)}
+.tap:last-child{border-bottom:0}
+.tap:hover{background:var(--night-4)}
+@media(min-width:680px){.tap{grid-template-columns:1.6fr 1fr auto auto;align-items:baseline;gap:16px}}
+.tap b{font-weight:700;font-size:.97rem}
+.tap .style{font-size:.87rem;color:var(--bone-soft)}
+.tap .abv,.tap .price{font-family:var(--f-m);font-size:.83rem;font-variant-numeric:tabular-nums;
+  color:var(--bone-faint);text-align:right}
+.tap .price{color:var(--ember);font-weight:500}
+.tap .tagline{grid-column:1/-1;font-size:.8rem;color:var(--bone-faint);font-style:italic}
+
+/* ── menu ── */
+.menu{display:grid;gap:34px}
+@media(min-width:820px){.menu{grid-template-columns:1fr 1fr;gap:34px 56px}}
+.course h3{font-family:var(--f-m);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ember);font-weight:500;padding-bottom:10px;border-bottom:1px solid var(--rule);margin-bottom:16px}
+.dish{display:grid;grid-template-columns:1fr auto;gap:2px 14px;padding:11px 0}
+.dish b{font-weight:600;font-size:1rem}
+.dish .p{font-family:var(--f-m);font-size:.86rem;font-variant-numeric:tabular-nums;color:var(--bone-soft)}
+.dish span.d{grid-column:1/2;font-size:.86rem;color:var(--bone-faint);line-height:1.45}
+
+/* ── week ── */
+.week{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+@media(min-width:680px){.week{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.week{grid-template-columns:repeat(3,1fr)}}
+.day{background:var(--night-2);padding:20px;display:flex;flex-direction:column;gap:7px;
+  transition:background-color 180ms var(--ease)}
+.day:hover{background:var(--night-4)}
+.day.is-today{background:linear-gradient(160deg,rgb(var(--ember-glow)/.13),var(--night-2));
+  box-shadow:inset 3px 0 0 var(--ember)}
+.day .dn{font-family:var(--f-m);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--bone-faint)}
+.day.is-today .dn{color:var(--ember)}
+.day h3{font-size:1.06rem}
+.day p{font-size:.88rem;color:var(--bone-soft);line-height:1.5}
+.day .tm{margin-top:auto;padding-top:8px;font-family:var(--f-m);font-size:.78rem;color:var(--bone-faint)}
+
+/* ── gallery ── */
+.gal{display:grid;gap:10px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:820px){.gal{grid-template-columns:repeat(4,1fr);grid-auto-rows:168px}
+  .gal figure:nth-child(1){grid-column:span 2;grid-row:span 2}
+  .gal figure:nth-child(6){grid-column:span 4}}
+.gal figure{margin:0;min-height:145px;border-radius:3px;display:grid;place-content:center;text-align:center;
+  gap:5px;padding:14px;border:1px dashed var(--rule);
+  background:linear-gradient(155deg,var(--night-4),var(--night-3))}
+.shot{margin:0;min-height:320px;border-radius:3px;display:grid;place-content:center;text-align:center;
+  gap:5px;padding:14px;border:1px dashed var(--rule);
+  background:linear-gradient(155deg,var(--night-4),var(--night-3))}
+.shot b{font-family:var(--f-d);font-weight:600;font-size:.95rem}
+.shot span{font-family:var(--f-m);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bone-faint)}
+.gal b{font-family:var(--f-d);font-weight:600;font-size:.95rem}
+.gal span{font-family:var(--f-m);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bone-faint)}
+
+/* ── split / private ── */
+.split{display:grid;gap:30px}
+@media(min-width:880px){.split{grid-template-columns:1fr 1fr;gap:54px;align-items:center}}
+.ticks{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:11px}
+.ticks li{display:flex;gap:11px;font-size:.95rem;align-items:flex-start}
+.ticks svg{width:17px;height:17px;color:var(--sage);flex:none;margin-top:5px}
+
+/* ── find us ── */
+.hrs{width:100%;border-collapse:collapse;font-size:.92rem;margin-top:8px}
+.hrs td{padding:10px 0;border-bottom:1px solid var(--rule);color:var(--bone-soft)}
+.hrs td:last-child{text-align:right;font-family:var(--f-m);font-size:.85rem;font-variant-numeric:tabular-nums}
+.hrs tr:last-child td{border-bottom:0}
+.hrs tr.now td{color:var(--bone)}
+.hrs tr.now td:first-child::before{content:"›";color:var(--ember);margin-right:7px;font-weight:700}
+.info{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:17px}
+.info li{display:flex;gap:13px;align-items:flex-start}
+.info svg{width:19px;height:19px;color:var(--ember);flex:none;margin-top:3px}
+.info b{display:block;font-size:.89rem}
+.info a,.info span.v{font-size:.91rem;color:var(--bone-soft);min-height:44px;display:inline-flex;align-items:center}
+.mapslot{min-height:250px;border-radius:3px;display:grid;place-content:center;gap:6px;text-align:center;
+  border:1px dashed var(--rule);
+  background-image:repeating-linear-gradient(0deg,rgb(243 236 224/.05) 0 1px,transparent 1px 36px),
+    repeating-linear-gradient(90deg,rgb(243 236 224/.05) 0 1px,transparent 1px 36px)}
+.mapslot b{font-family:var(--f-d);font-weight:600}
+.mapslot span{font-family:var(--f-m);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bone-faint)}
+
+/* ── footer ── */
+footer.site{border-top:1px solid var(--rule);background:var(--night-3);padding:46px 0 28px;margin-top:var(--sec)}
+.fgrid{display:grid;gap:28px}
+@media(min-width:800px){.fgrid{grid-template-columns:1.6fr 1fr 1fr}}
+footer.site h4{font-family:var(--f-m);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--bone-faint);margin:0 0 13px;font-weight:500}
+footer.site ul{list-style:none;padding:0;margin:0;display:grid}
+footer.site ul a{font-size:.9rem;color:var(--bone-soft);min-height:44px;display:inline-flex;align-items:center}
+footer.site ul a:hover{color:var(--ember)}
+.fbot{margin-top:30px;padding-top:18px;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;
+  gap:10px;justify-content:space-between;font-size:.74rem;color:var(--bone-faint)}
+
+/* ── sticky mobile bar ── */
+.callbar{position:fixed;inset-inline:0;bottom:0;z-index:60;display:grid;grid-template-columns:1fr 1fr;gap:8px;
+  padding:9px 12px calc(9px + env(safe-area-inset-bottom));
+  background:color-mix(in srgb,var(--night) 94%,transparent);backdrop-filter:blur(12px);
+  border-top:1px solid var(--rule)}
+.callbar .btn{padding:12px;font-size:.86rem;box-shadow:none}
+@media(min-width:1040px){.callbar{display:none}}
+@media(max-width:1039px){body{padding-bottom:74px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<!-- DEMO STRIP — delete this one element for a real client -->
+<div class="demo">Demonstration site · <b>Fieldhouse</b> is a sample business — photos, menu and details get replaced with the real ones</div>
+
+<header class="bar">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="mark" href="#top">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 4h11l-1 8.5a5.5 5.5 0 0 1-4.5 4.6V24"/><path d="M10.5 28h8"/><path d="M14.5 24v4"/>
+          <path d="M19.6 7.5h2.9a3 3 0 0 1 0 6h-2.2"/>
+        </svg>
+        <span class="fh">FIELDHOUSE<small>Kitchen &amp; Taproom</small></span>
+      </a>
+      <div class="links">
+        <a href="#tap">On tap</a><a href="#menu">Menu</a><a href="#week">This week</a>
+        <a href="#room">Private room</a><a href="#find">Find us</a>
+      </div>
+      <div class="navend">
+        <a class="btn btn--sm btn--ghost" href="tel:+15550147720">(555) 014‑7720</a>
+        <a class="btn btn--sm" href="#book">Book a table</a>
+      </div>
+      <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="dr" aria-label="Open menu">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+    <div class="drawer" id="dr" hidden>
+      <a href="#tap">On tap</a><a href="#menu">Menu</a><a href="#week">This week</a>
+      <a href="#room">Private room</a><a href="#find">Find us</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <span class="kicker">218 Mill Street · Riverside Arts District</span>
+    <h1>Good beer, a short menu, and nobody rushing you out.</h1>
+    <p class="lede">Twelve rotating taps, a kitchen that cooks whatever the farms sent this week, and a back room you can have to yourself. Open late Thursday through Saturday.</p>
+
+    <div class="hero__cta">
+      <a class="btn" href="#book">Book a table</a>
+      <a class="btn btn--ghost" href="#menu">See this week's menu</a>
+    </div>
+
+    <!-- TONIGHT — live status, computed from the real hours below -->
+    <div class="tonight">
+      <div class="tonight__top">
+        <span class="status" id="status">
+          <span class="dot" aria-hidden="true"></span>
+          <span id="statusText">Open now</span>
+        </span>
+        <span class="status__note" id="statusNote">Kitchen until 10pm · bar until 11pm</span>
+        <a class="btn btn--sm" href="#book">Get a table</a>
+      </div>
+      <div class="tonight__grid">
+        <div class="cell">
+          <span class="when" id="todayName">Tonight</span>
+          <h3 id="todayEvent">Trivia, 7pm</h3>
+          <p id="todayNote">Six rounds, teams up to six, winner takes a bar tab. Turn up by 6:30 if you want a decent table.</p>
+        </div>
+        <div class="cell">
+          <span class="when">Pouring now</span>
+          <h3>Northbound Pale Ale</h3>
+          <p>Local, 5.2%, and the one we sell most of. Ask for a taster if you're not sure — we don't mind.</p>
+        </div>
+        <div class="cell">
+          <span class="when">In the kitchen</span>
+          <h3>Brassica &amp; brown butter</h3>
+          <p>This week's plate, on until it runs out. The menu changes when the delivery does, not on a schedule.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="tap">
+  <div class="wrap">
+    <div style="max-width:56ch;margin-bottom:32px">
+      <span class="kicker">Twelve lines</span>
+      <h2 style="margin:13px 0 14px">On tap</h2>
+      <p class="lede">Six regulars, six that rotate. Prices are for a pint; two-thirds and halves are poured for less.</p>
+    </div>
+
+    <div class="board">
+      <div class="board__head">
+        <h3>Draught list</h3>
+        <span class="upd">Updated Tuesday</span>
+      </div>
+      <div class="tap"><b>Northbound</b><span class="style">Pale ale · Riverside</span><span class="abv">5.2%</span><span class="price">$7</span></div>
+      <div class="tap"><b>Mill Street Pils</b><span class="style">German pilsner · house</span><span class="abv">4.8%</span><span class="price">$7</span></div>
+      <div class="tap"><b>Low Bridge</b><span class="style">Dry stout · nitro</span><span class="abv">4.4%</span><span class="price">$7</span></div>
+      <div class="tap"><b>Second Shift</b><span class="style">West coast IPA</span><span class="abv">6.8%</span><span class="price">$8</span></div>
+      <div class="tap"><b>Orchard Road</b><span class="style">Dry cider · still</span><span class="abv">6.0%</span><span class="price">$8</span>
+        <span class="tagline">Pressed forty minutes from here.</span></div>
+      <div class="tap"><b>Quarry Lager</b><span class="style">Amber lager</span><span class="abv">5.0%</span><span class="price">$7</span></div>
+      <div class="tap"><b>Rotating · saison</b><span class="style">Ask what's on</span><span class="abv">—</span><span class="price">$8</span></div>
+      <div class="tap"><b>Rotating · sour</b><span class="style">Ask what's on</span><span class="abv">—</span><span class="price">$9</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="menu" style="background:var(--night-3)">
+  <div class="wrap">
+    <div style="max-width:58ch;margin-bottom:34px">
+      <span class="kicker" id="weekOf">This week</span>
+      <h2 style="margin:13px 0 14px">The menu changes when the delivery does</h2>
+      <p class="lede">Short on purpose. Everything is cooked to order by two people, so it takes as long as it takes.</p>
+    </div>
+
+    <div class="menu">
+      <div class="course">
+        <h3>Snacks</h3>
+        <div class="dish"><b>Warm olives, orange, fennel</b><span class="p">7</span></div>
+        <div class="dish"><b>Bar nuts, rosemary, maple</b><span class="p">6</span></div>
+        <div class="dish"><b>Whipped cod roe, grilled bread</b><span class="p">11</span></div>
+        <div class="dish"><b>Pickled vegetables of the week</b><span class="p">8</span><span class="d">Whatever came in and needed using.</span></div>
+      </div>
+      <div class="course">
+        <h3>Plates</h3>
+        <div class="dish"><b>Brassica &amp; brown butter</b><span class="p">16</span><span class="d">Charred greens, hazelnut, aged sheep's cheese.</span></div>
+        <div class="dish"><b>Chicken liver parfait</b><span class="p">14</span><span class="d">Sourdough toast, cider jelly.</span></div>
+        <div class="dish"><b>Grilled trout, brown shrimp butter</b><span class="p">24</span></div>
+        <div class="dish"><b>Squash, sage, ricotta dumplings</b><span class="p">19</span></div>
+      </div>
+      <div class="course">
+        <h3>Bigger</h3>
+        <div class="dish"><b>Fieldhouse burger</b><span class="p">18</span><span class="d">Dry-aged chuck, raclette, pickle. Fries included.</span></div>
+        <div class="dish"><b>Pork chop, apples, mustard</b><span class="p">28</span><span class="d">For two, carved at the table.</span></div>
+        <div class="dish"><b>Fish &amp; chips, Friday only</b><span class="p">21</span></div>
+      </div>
+      <div class="course">
+        <h3>Sunday roast</h3>
+        <div class="dish"><b>Beef sirloin</b><span class="p">29</span><span class="d">Yorkshire pudding, roast potatoes, greens, gravy.</span></div>
+        <div class="dish"><b>Mushroom &amp; ale pie</b><span class="p">23</span></div>
+        <div class="dish"><b>All the sides, for the table</b><span class="p">12</span></div>
+        <p style="margin-top:14px;font-size:.84rem;color:var(--bone-faint)">Served 11 till it's gone. It goes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="week">
+  <div class="wrap">
+    <div style="max-width:56ch;margin-bottom:32px">
+      <span class="kicker">Every week</span>
+      <h2 style="margin:13px 0 14px">What's on</h2>
+      <p class="lede">Same things, same nights, so you don't have to check. Today is marked. Closed Mondays.</p>
+    </div>
+    <div class="week" id="week">
+      <div class="day" data-day="2"><span class="dn">Tuesday</span><h3>Trivia</h3><p>Six rounds, teams up to six, bar tab for the winners. It gets full.</p><span class="tm">7pm · free</span></div>
+      <div class="day" data-day="3"><span class="dn">Wednesday</span><h3>Vinyl night</h3><p>Bring a record, we'll play it. A dollar off every draught until close.</p><span class="tm">From 6pm</span></div>
+      <div class="day" data-day="4"><span class="dn">Thursday</span><h3>Live music</h3><p>Usually two acts, usually local, always free. Kitchen runs late.</p><span class="tm">8pm · free</span></div>
+      <div class="day" data-day="5"><span class="dn">Friday</span><h3>Fish &amp; chips, late bar</h3><p>The one night we do fish. Bar goes to one, kitchen to eleven.</p><span class="tm">Till 1am</span></div>
+      <div class="day" data-day="6"><span class="dn">Saturday</span><h3>Brunch, then a band</h3><p>Brunch 11 to 2. Music from nine. The loudest night of the week.</p><span class="tm">11am – 1am</span></div>
+      <div class="day" data-day="0"><span class="dn">Sunday</span><h3>Roast</h3><p>From 11 until it runs out, which is usually around four. Book it.</p><span class="tm">11am – 10pm</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--night-3)">
+  <div class="wrap">
+    <div style="max-width:56ch;margin-bottom:30px">
+      <span class="kicker">The room</span>
+      <h2 style="margin:13px 0 14px">What it looks like when it's full</h2>
+      <p class="lede">Photo slots — captioned for the shot each one needs. Warm, busy, people in frame. Empty rooms never sell a bar.</p>
+    </div>
+    <div class="gal">
+      <figure><b>The bar, full, evening</b><span>wide · people in frame</span></figure>
+      <figure><b>Taps close up</b><span>detail · warm light</span></figure>
+      <figure><b>A plate, on the pass</b><span>overhead · no flash</span></figure>
+      <figure><b>Band playing</b><span>Thursday or Saturday</span></figure>
+      <figure><b>The back room set up</b><span>private hire</span></figure>
+      <figure><b>Street frontage at dusk</b><span>so people find it</span></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="room">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <span class="kicker">Private hire</span>
+        <h2 style="margin:13px 0 15px">The back room holds thirty</h2>
+        <p class="lede">Separate entrance, its own bar, and a door that shuts. Birthdays, wakes, work things, and the occasional band rehearsal.</p>
+        <ul class="ticks">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg><span>No room fee — we set a bar minimum instead, and it's lower than you'd think</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg><span>Set menus from $32 a head, or just snacks and a tab</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg><span>Own sound system — plug your phone in, nobody minds</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg><span>Thursday to Saturday books up a month out. Sundays rarely do.</span></li>
+        </ul>
+        <div class="hero__cta" style="margin:28px 0 0">
+          <a class="btn" href="mailto:events@fieldhouse.example">Ask about the room</a>
+        </div>
+      </div>
+      <figure class="shot"><b>The back room</b><span>set for a party of twenty</span></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="find" style="background:var(--night-3)">
+  <div class="wrap">
+    <div class="split" id="book">
+      <div>
+        <span class="kicker">Find us</span>
+        <h2 style="margin:13px 0 15px">Corner of Mill and Fourth</h2>
+        <p class="lede">Walk-ins always welcome and we keep the bar unbookable. Tables you can reserve up to six weeks out.</p>
+
+        <table class="hrs" id="hrs">
+          <tr data-d="1"><td>Monday</td><td>Closed</td></tr>
+          <tr data-d="2"><td>Tuesday</td><td>4pm – 11pm</td></tr>
+          <tr data-d="3"><td>Wednesday</td><td>4pm – 11pm</td></tr>
+          <tr data-d="4"><td>Thursday</td><td>4pm – 11pm</td></tr>
+          <tr data-d="5"><td>Friday</td><td>3pm – 1am</td></tr>
+          <tr data-d="6"><td>Saturday</td><td>11am – 1am</td></tr>
+          <tr data-d="0"><td>Sunday</td><td>11am – 10pm</td></tr>
+        </table>
+
+        <ul class="info">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><b>Address</b><span class="v">218 Mill Street, Riverside Arts District</span></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+            <span><b>Book or ask</b><a href="tel:+15550147720">(555) 014‑7720</a></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+            <span><b>Private hire</b><a href="mailto:events@fieldhouse.example">events@fieldhouse.example</a></span></li>
+        </ul>
+
+        <div class="hero__cta" style="margin:26px 0 0">
+          <a class="btn" href="tel:+15550147720">Call to book</a>
+          <a class="btn btn--ghost" href="#top">Back to top</a>
+        </div>
+        <p style="margin-top:16px;font-size:.8rem;color:var(--bone-faint)">Booking widget slot — OpenTable, Resy or SevenRooms drops in here.</p>
+      </div>
+      <div class="mapslot"><b>Google Maps embed</b><span>corner of Mill &amp; Fourth</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <span class="fh" style="font-family:var(--f-d);font-weight:700;font-size:1.15rem">FIELDHOUSE</span>
+        <p style="margin-top:12px;font-size:.9rem;color:var(--bone-soft);max-width:36ch">Kitchen and taproom on Mill Street. Twelve taps, a short menu, and a back room that's yours if you ask.</p>
+      </div>
+      <div>
+        <h4>Here</h4>
+        <ul><li><a href="#tap">On tap</a></li><li><a href="#menu">Menu</a></li><li><a href="#week">This week</a></li><li><a href="#room">Private room</a></li></ul>
+      </div>
+      <div>
+        <h4>Reach us</h4>
+        <ul><li><a href="tel:+15550147720">(555) 014‑7720</a></li><li><a href="mailto:events@fieldhouse.example">events@fieldhouse.example</a></li><li><a href="#find">218 Mill Street</a></li></ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© <span id="yr">2026</span> Fieldhouse Kitchen &amp; Taproom</span>
+      <span>Sample site — not a real business</span>
+    </div>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn--ghost" href="#menu">Menu</a>
+  <a class="btn" href="tel:+15550147720">Call to book</a>
+</div>
+
+<script>
+(function(){
+  // ── opening hours, one source of truth ──────────────────────────────
+  // [openMin, closeMin] in minutes from midnight; close past 24h runs into
+  // the next morning. null = shut. Kitchen closes before the bar does.
+  var HOURS={0:[660,1320,1260],1:null,2:[960,1380,1320],3:[960,1380,1320],
+             4:[960,1380,1350],5:[900,1500,1380],6:[660,1500,1380]};
+  var NAMES=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var EVENTS={0:['Sunday roast','From 11 until it runs out, which is usually around four. Worth booking.'],
+    1:['Closed today','We’re washing up and doing the ordering. Back Tuesday at four.'],
+    2:['Trivia, 7pm','Six rounds, teams up to six, winner takes a bar tab. Turn up by 6:30 if you want a decent table.'],
+    3:['Vinyl night','Bring a record and we’ll play it. A dollar off every draught until close.'],
+    4:['Live music, 8pm','Usually two acts, usually local, always free. The kitchen runs late tonight.'],
+    5:['Fish & chips, late bar','The one night we do fish. Bar until one, kitchen until eleven.'],
+    6:['Brunch, then a band','Brunch 11 to 2, music from nine. The loudest night of the week.']};
+
+  function fmt(m){
+    m=((m%1440)+1440)%1440;
+    var h=Math.floor(m/60),mi=m%60,ap=h>=12?'pm':'am',hh=h%12===0?12:h%12;
+    return hh+(mi?':'+('0'+mi).slice(-2):'')+ap;
+  }
+
+  function render(){
+    var now=new Date(), d=now.getDay(), mins=now.getHours()*60+now.getMinutes();
+    // A session that started yesterday and runs past midnight still counts.
+    var open=false, today=HOURS[d], prev=HOURS[(d+6)%7], active=null;
+    if(prev && prev[1]>1440 && mins < prev[1]-1440){ open=true; active=prev; }
+    else if(today && mins>=today[0] && mins<Math.min(today[1],1440)){ open=true; active=today; }
+
+    var st=document.getElementById('status'),
+        tx=document.getElementById('statusText'),
+        nt=document.getElementById('statusNote');
+    if(open){
+      st.classList.remove('status--shut');
+      tx.textContent='Open now';
+      nt.textContent='Kitchen until '+fmt(active[2])+' · bar until '+fmt(active[1]);
+    }else{
+      st.classList.add('status--shut');
+      tx.textContent='Closed';
+      // next opening
+      for(var i=0;i<8;i++){
+        var nd=(d+i)%7, h=HOURS[nd];
+        if(!h) continue;
+        if(i===0 && mins>=h[0]) continue;
+        nt.textContent=(i===0?'Opens today at ':'Opens '+NAMES[nd]+' at ')+fmt(h[0]);
+        break;
+      }
+    }
+
+    var ev=EVENTS[d];
+    document.getElementById('todayName').textContent=(mins>=900?'Tonight · ':'Today · ')+NAMES[d];
+    document.getElementById('todayEvent').textContent=ev[0];
+    document.getElementById('todayNote').textContent=ev[1];
+
+    var dayEl=document.querySelector('.day[data-day="'+d+'"]');
+    if(dayEl)dayEl.classList.add('is-today');
+    var row=document.querySelector('#hrs tr[data-d="'+d+'"]');
+    if(row)row.classList.add('now');
+  }
+  render();
+  setInterval(render,60000);
+
+  // ── drawer ──
+  var b=document.getElementById('burger'), dr=document.getElementById('dr');
+  b.addEventListener('click',function(){
+    var o=dr.hidden; dr.hidden=!o;
+    b.setAttribute('aria-expanded',String(o));
+    b.setAttribute('aria-label',o?'Close menu':'Open menu');
+  });
+  dr.addEventListener('click',function(e){if(e.target.closest('a')){dr.hidden=true;b.setAttribute('aria-expanded','false');}});
+
+  // menu date: the Monday of the current week, so it never reads stale
+  var wo=document.getElementById('weekOf');
+  if(wo){
+    var t=new Date(), off=(t.getDay()+6)%7, mon=new Date(t);
+    mon.setDate(t.getDate()-off);
+    wo.textContent='Week of '+mon.toLocaleDateString(undefined,{month:'long',day:'numeric'});
+  }
+
+  document.getElementById('yr').textContent=new Date().getFullYear();
+})();
+</script>
