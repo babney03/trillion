@@ -1,0 +1,9 @@
+{
+  "browser": {
+    "launchOptions": {
+      "executablePath": "/opt/pw-browsers/chromium-1194/chrome-linux/chrome",
+      "chromiumSandbox": false,
+      "args": ["--no-sandbox", "--disable-setuid-sandbox"]
+    }
+  }
+}
