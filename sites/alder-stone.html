@@ -10,9 +10,9 @@
    Palette derives from: fir needle, wet basalt, split cedar, fog.
    ══════════════════════════════════════════════════════════════════ */
 :root{
-  --ground:#F2F0EA; --card:#FFFFFF; --sunk:#E7E4DB;
+  --ground:#F4F1EA; --card:#FFFFFF; --sunk:#EAE7DE;
   --ink:#16211C; --ink-soft:#525D57; --ink-faint:#5C645E;
-  --rule:#D6D2C7;
+  --rule:#DEDACE;
   --deep:#1B3A30; --deep-2:#27503F; --on-deep:#EDF1EC;
   --moss:#7E9B79;
   --cedar:#B0692F; --cedar-text:#8A5122; --cedar-lift:#C9823F;
@@ -24,7 +24,7 @@
   --page:1180px;
   --sec:clamp(56px,7vw,104px);
   --gut:clamp(18px,4vw,40px);
-  --r:14px; --r-lg:22px;
+  --r:18px; --r-lg:28px; --r-sm:12px;
   --ease:cubic-bezier(.2,.7,.25,1);
 }
 @media (prefers-color-scheme:dark){
@@ -122,6 +122,14 @@ header.bar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--g
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.45;
   mix-blend-mode:soft-light;background-size:150px 150px;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero__top{display:grid;gap:34px}
+@media(min-width:980px){.hero__top{grid-template-columns:1.04fr .96fr;gap:54px;align-items:center}}
+.shot{margin:0;min-height:300px;border-radius:var(--r-lg);display:grid;place-content:center;
+  text-align:center;gap:6px;padding:18px;border:1px dashed color-mix(in srgb,var(--ink-faint) 45%,transparent);
+  background:linear-gradient(152deg,color-mix(in srgb,var(--moss) 42%,var(--sunk)),var(--sunk))}
+.shot--hero{min-height:clamp(280px,34vw,420px)}
+.shot b{font-family:var(--f-d);font-weight:400;font-size:1.05rem}
+.shot span{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
 .hero h1{margin:18px 0 20px;max-width:15ch}
 .hero .lede{max-width:52ch}
 .trustline{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:26px;font-size:.84rem;color:var(--ink-soft)}
@@ -131,7 +139,7 @@ header.bar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--g
 /* two front doors — the structural thesis */
 .doors{display:grid;gap:16px;margin-top:44px}
 @media(min-width:780px){.doors{grid-template-columns:1fr 1fr;gap:20px}}
-.door{position:relative;display:flex;flex-direction:column;gap:13px;padding:26px;
+.door{position:relative;display:flex;flex-direction:column;gap:14px;padding:30px 28px;
   border-radius:var(--r-lg);border:1px solid var(--rule);background:var(--card);
   transition:transform 200ms var(--ease),box-shadow 220ms var(--ease),border-color 200ms var(--ease)}
 .door:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgb(var(--shade)/.13);border-color:var(--moss)}
@@ -157,15 +165,18 @@ header.bar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--g
 
 /* ── section heads ── */
 .head{max-width:58ch;margin-bottom:38px}
+.head--mid{margin-inline:auto;text-align:center;max-width:60ch}
 .head h2{margin:14px 0 16px}
 
 /* ── services ── */
-.svc{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--r-lg);overflow:hidden}
+.svc{display:grid;gap:16px}
 @media(min-width:660px){.svc{grid-template-columns:1fr 1fr}}
 @media(min-width:1000px){.svc{grid-template-columns:repeat(3,1fr)}}
-.svc article{background:var(--card);padding:26px 24px;display:flex;flex-direction:column;gap:9px;
-  transition:background-color 200ms var(--ease)}
-.svc article:hover{background:var(--sunk)}
+.svc article{background:var(--card);border:1px solid var(--rule);border-radius:var(--r-lg);
+  padding:30px 28px;display:flex;flex-direction:column;gap:10px;
+  transition:transform 220ms var(--ease),box-shadow 220ms var(--ease),border-color 220ms var(--ease)}
+.svc article:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgb(var(--shade)/.11);
+  border-color:color-mix(in srgb,var(--moss) 55%,transparent)}
 .svc svg{width:26px;height:26px;color:var(--cedar-text);margin-bottom:4px}
 .svc h3{font-size:1.1rem}
 .svc p{font-size:.9rem;color:var(--ink-soft);line-height:1.55}
@@ -206,7 +217,7 @@ header.bar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--g
 .revs{display:grid;gap:16px}
 @media(min-width:760px){.revs{grid-template-columns:repeat(3,1fr)}}
 .rev{position:relative;background:var(--card);border:1px solid var(--rule);border-radius:var(--r-lg);
-  padding:24px;display:flex;flex-direction:column;gap:13px}
+  padding:28px 26px;display:flex;flex-direction:column;gap:13px}
 .rev .sample{position:absolute;top:12px;right:12px;font-size:.58rem;font-weight:700;letter-spacing:.11em;
   text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);
   border-radius:999px;padding:3px 8px;background:var(--ground)}
@@ -229,7 +240,7 @@ header.bar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--g
 .chip{padding:8px 15px;border-radius:999px;font-size:.86rem;font-weight:600;
   background:color-mix(in srgb,var(--on-deep) 9%,transparent);
   border:1px solid color-mix(in srgb,var(--on-deep) 17%,transparent)}
-.mapslot{min-height:240px;border-radius:var(--r);display:grid;place-content:center;gap:6px;text-align:center;
+.mapslot{min-height:240px;border-radius:var(--r-lg);display:grid;place-content:center;gap:6px;text-align:center;
   border:1px dashed color-mix(in srgb,var(--on-deep) 26%,transparent);
   background-image:repeating-linear-gradient(0deg,color-mix(in srgb,var(--on-deep) 7%,transparent) 0 1px,transparent 1px 38px),
     repeating-linear-gradient(90deg,color-mix(in srgb,var(--on-deep) 7%,transparent) 0 1px,transparent 1px 38px)}
@@ -240,7 +251,7 @@ header.bar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--g
 .faq{display:grid;gap:10px;max-width:800px}
 .faq details{border:1px solid var(--rule);border-radius:var(--r);background:var(--card);overflow:hidden}
 .faq details[open]{border-color:var(--moss)}
-.faq summary{list-style:none;cursor:pointer;padding:18px 22px;display:flex;align-items:center;gap:16px;
+.faq summary{list-style:none;cursor:pointer;padding:20px 24px;display:flex;align-items:center;gap:16px;
   font-family:var(--f-d);font-size:1.06rem}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"";margin-left:auto;width:14px;height:14px;flex:none;
@@ -258,7 +269,7 @@ header.bar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--g
 @media(min-width:560px){.row{grid-template-columns:1fr 1fr}}
 .f{display:grid;gap:6px}
 .f label{font-size:.78rem;font-weight:700;letter-spacing:.03em;color:var(--ink-soft)}
-.f input,.f select,.f textarea{padding:12px 14px;border:1.5px solid var(--rule);border-radius:9px;
+.f input,.f select,.f textarea{padding:13px 15px;border:1.5px solid var(--rule);border-radius:var(--r-sm);
   background:var(--ground);color:var(--ink);font-family:var(--f-b);font-size:.96rem}
 .f textarea{min-height:104px;resize:vertical}
 .f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--cedar);
@@ -365,6 +376,8 @@ footer.site .logo small{color:color-mix(in srgb,var(--on-deep) 55%,transparent)}
 
 <section class="hero">
   <div class="wrap">
+    <div class="hero__top">
+    <div class="hero__text">
     <span class="label">Serving the Eastside since 2009</span>
     <h1>Two things a yard needs: someone who keeps it, and someone who changes it.</h1>
     <p class="lede">We do both. Year-round grounds care on a set schedule, and design-build work when it's time for something bigger — patios, walls, drainage, planting. Same crews, same standards.</p>
@@ -373,7 +386,10 @@ footer.site .logo small{color:color-mix(in srgb,var(--on-deep) 55%,transparent)}
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Licensed, bonded &amp; insured · WA #ALDERSL842QK</span>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Same crew every visit</span>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Free on-site walkthrough</span>
-    </div>
+      </div>
+      </div>
+      <figure class="shot shot--hero"><b>Hero photo</b><span>their best finished yard · wide · late light</span></figure>
+      </div>
 
     <div class="doors">
       <div class="door" id="care">
@@ -420,7 +436,7 @@ footer.site .logo small{color:color-mix(in srgb,var(--on-deep) 55%,transparent)}
 
 <section class="sec">
   <div class="wrap">
-    <div class="head">
+    <div class="head head--mid">
       <span class="label">What we handle</span>
       <h2>The list, without the padding</h2>
       <p class="lede">Everything here is work our own crews do. If a job needs a licensed electrician or an arborist with a climbing cert, we'll tell you and hand you a name.</p>
@@ -469,7 +485,7 @@ footer.site .logo small{color:color-mix(in srgb,var(--on-deep) 55%,transparent)}
 
 <section class="sec" style="background:var(--sunk)">
   <div class="wrap">
-    <div class="head">
+    <div class="head head--mid">
       <span class="label">The Northwest year</span>
       <h2>What's happening in your yard right now</h2>
       <p class="lede">A wet, mild climate has its own calendar. Here's what we're doing each stretch of the year, and what it's for.</p>
@@ -536,7 +552,7 @@ footer.site .logo small{color:color-mix(in srgb,var(--on-deep) 55%,transparent)}
 
 <section class="sec" id="work">
   <div class="wrap">
-    <div class="head">
+    <div class="head head--mid">
       <span class="label">Recent work</span>
       <h2>Jobs from the last two seasons</h2>
       <p class="lede">Photo slots below — each one is sized and captioned for the kind of shot that actually sells the job. Before-and-after pairs convert better than beauty shots.</p>
@@ -554,7 +570,7 @@ footer.site .logo small{color:color-mix(in srgb,var(--on-deep) 55%,transparent)}
 
 <section class="sec" style="background:var(--sunk)">
   <div class="wrap">
-    <div class="head">
+    <div class="head head--mid">
       <span class="label">What clients say</span>
       <h2>4.9 across 148 reviews</h2>
       <p class="lede">Marked as samples on purpose. Real Google reviews get pasted in here verbatim — never rewritten, because the plain wording is what makes them believable.</p>

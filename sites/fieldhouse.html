@@ -24,11 +24,12 @@
    sage for anything that grew.
    ═══════════════════════════════════════════════════════════════════ */
 :root{
-  --night:#14110E; --night-2:#1F1A15; --night-3:#0C0A08; --night-4:#2A231C;
+  --night:#191410; --night-2:#251E18; --night-3:#120E0B; --night-4:#322920;
   --bone:#F3ECE0; --bone-soft:#BDB1A0; --bone-faint:#93887A;
-  --rule:#332B23;
-  --ember:#E59433; --ember-deep:#C0731D; --ember-glow:229 148 51;
+  --rule:#3B322A;
+  --ember:#E9A055; --ember-deep:#C87E30; --ember-glow:233 160 85;
   --sage:#8CA06F;
+  --r:16px; --r-lg:24px; --r-sm:12px;
   --f-d:'Fraunces',Georgia,serif;
   --f-b:'Chivo',system-ui,-apple-system,sans-serif;
   --f-m:'DM Mono',ui-monospace,Menlo,monospace;
@@ -75,7 +76,7 @@ img{display:block;max-width:100%}
 .navend{display:none;align-items:center;gap:13px;white-space:nowrap}
 @media(min-width:1040px){.links,.navend{display:flex}}
 .burger{margin-left:auto;width:44px;height:44px;display:grid;place-items:center;
-  border:1px solid var(--rule);border-radius:9px;background:var(--night-2);color:var(--bone)}
+  border:1px solid var(--rule);border-radius:var(--r-sm);background:var(--night-2);color:var(--bone)}
 .drawer{display:grid;padding:6px 0 18px;border-top:1px solid var(--rule)}
 .drawer[hidden]{display:none}
 .drawer a{padding:14px 2px;font-weight:600;border-bottom:1px solid var(--rule);min-height:44px;display:flex;align-items:center}
@@ -83,7 +84,7 @@ img{display:block;max-width:100%}
 
 /* ── buttons ── */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
-  padding:14px 24px;min-height:44px;border:1.5px solid transparent;border-radius:2px;cursor:pointer;
+  padding:14px 26px;min-height:44px;border:1.5px solid transparent;border-radius:999px;cursor:pointer;
   font-family:var(--f-b);font-weight:700;font-size:.92rem;letter-spacing:.02em;
   background:var(--ember);color:#1A1206;
   transition:transform 150ms var(--ease),background-color 150ms var(--ease),box-shadow 200ms var(--ease);
@@ -96,10 +97,10 @@ img{display:block;max-width:100%}
 .btn--wide{width:100%}
 
 /* ── tonight panel — the thesis ── */
-.tonight{border:1px solid var(--rule);border-radius:4px;background:
+.tonight{border:1px solid var(--rule);border-radius:var(--r-lg);background:
   linear-gradient(168deg,var(--night-2),var(--night-3));overflow:hidden}
 .tonight__top{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;
-  padding:18px 22px;border-bottom:1px solid var(--rule);background:rgb(var(--ember-glow)/.05)}
+  padding:20px 26px;border-bottom:1px solid var(--rule);background:rgb(var(--ember-glow)/.05)}
 .status{display:inline-flex;align-items:center;gap:9px;font-family:var(--f-m);
   font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
 .dot{width:9px;height:9px;border-radius:50%;background:var(--sage);flex:none;
@@ -111,7 +112,7 @@ img{display:block;max-width:100%}
 .tonight__top .btn{margin-left:auto}
 .tonight__grid{display:grid;gap:1px;background:var(--rule)}
 @media(min-width:760px){.tonight__grid{grid-template-columns:repeat(3,1fr)}}
-.cell{background:var(--night-2);padding:22px}
+.cell{background:var(--night-2);padding:26px 24px}
 .cell h3{font-size:1.05rem;margin-bottom:7px}
 .cell p{font-size:.92rem;color:var(--bone-soft);line-height:1.5}
 .cell .when{font-family:var(--f-m);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
@@ -125,17 +126,20 @@ img{display:block;max-width:100%}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.4;
   mix-blend-mode:overlay;background-size:150px 150px;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.84' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero__top{display:grid;gap:32px}
+@media(min-width:980px){.hero__top{grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}}
+.shot--hero{min-height:clamp(270px,32vw,400px)}
 .hero h1{margin:16px 0 20px;max-width:16ch}
 .hero .lede{max-width:50ch}
 .hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 42px}
 
 /* ── tap board ── */
-.board{border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--night-2)}
+.board{border:1px solid var(--rule);border-radius:var(--r-lg);overflow:hidden;background:var(--night-2)}
 .board__head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 18px;padding:16px 20px;
   border-bottom:1px solid var(--rule);background:var(--night-3)}
 .board__head h3{font-size:1.1rem}
 .board__head .upd{margin-left:auto;font-family:var(--f-m);font-size:.68rem;color:var(--bone-faint);letter-spacing:.08em}
-.tap{display:grid;grid-template-columns:1fr auto;gap:4px 14px;padding:15px 20px;border-bottom:1px solid var(--rule);
+.tap{display:grid;grid-template-columns:1fr auto;gap:4px 14px;padding:17px 24px;border-bottom:1px solid var(--rule);
   transition:background-color 160ms var(--ease)}
 .tap:last-child{border-bottom:0}
 .tap:hover{background:var(--night-4)}
@@ -158,14 +162,15 @@ img{display:block;max-width:100%}
 .dish span.d{grid-column:1/2;font-size:.86rem;color:var(--bone-faint);line-height:1.45}
 
 /* ── week ── */
-.week{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.week{display:grid;gap:14px}
 @media(min-width:680px){.week{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1000px){.week{grid-template-columns:repeat(3,1fr)}}
-.day{background:var(--night-2);padding:20px;display:flex;flex-direction:column;gap:7px;
-  transition:background-color 180ms var(--ease)}
-.day:hover{background:var(--night-4)}
-.day.is-today{background:linear-gradient(160deg,rgb(var(--ember-glow)/.13),var(--night-2));
-  box-shadow:inset 3px 0 0 var(--ember)}
+.day{background:var(--night-2);border:1px solid var(--rule);border-radius:var(--r-lg);
+  padding:24px 22px;display:flex;flex-direction:column;gap:8px;
+  transition:transform 200ms var(--ease),border-color 200ms var(--ease),background-color 200ms var(--ease)}
+.day:hover{background:var(--night-4);transform:translateY(-3px)}
+.day.is-today{background:linear-gradient(160deg,rgb(var(--ember-glow)/.14),var(--night-2));
+  border-color:color-mix(in srgb,var(--ember) 48%,transparent)}
 .day .dn{font-family:var(--f-m);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--bone-faint)}
 .day.is-today .dn{color:var(--ember)}
 .day h3{font-size:1.06rem}
@@ -177,10 +182,10 @@ img{display:block;max-width:100%}
 @media(min-width:820px){.gal{grid-template-columns:repeat(4,1fr);grid-auto-rows:168px}
   .gal figure:nth-child(1){grid-column:span 2;grid-row:span 2}
   .gal figure:nth-child(6){grid-column:span 4}}
-.gal figure{margin:0;min-height:145px;border-radius:3px;display:grid;place-content:center;text-align:center;
+.gal figure{margin:0;min-height:145px;border-radius:var(--r);display:grid;place-content:center;text-align:center;
   gap:5px;padding:14px;border:1px dashed var(--rule);
   background:linear-gradient(155deg,var(--night-4),var(--night-3))}
-.shot{margin:0;min-height:320px;border-radius:3px;display:grid;place-content:center;text-align:center;
+.shot{margin:0;min-height:320px;border-radius:var(--r-lg);display:grid;place-content:center;text-align:center;
   gap:5px;padding:14px;border:1px dashed var(--rule);
   background:linear-gradient(155deg,var(--night-4),var(--night-3))}
 .shot b{font-family:var(--f-d);font-weight:600;font-size:.95rem}
@@ -207,7 +212,7 @@ img{display:block;max-width:100%}
 .info svg{width:19px;height:19px;color:var(--ember);flex:none;margin-top:3px}
 .info b{display:block;font-size:.89rem}
 .info a,.info span.v{font-size:.91rem;color:var(--bone-soft);min-height:44px;display:inline-flex;align-items:center}
-.mapslot{min-height:250px;border-radius:3px;display:grid;place-content:center;gap:6px;text-align:center;
+.mapslot{min-height:250px;border-radius:var(--r-lg);display:grid;place-content:center;gap:6px;text-align:center;
   border:1px dashed var(--rule);
   background-image:repeating-linear-gradient(0deg,rgb(243 236 224/.05) 0 1px,transparent 1px 36px),
     repeating-linear-gradient(90deg,rgb(243 236 224/.05) 0 1px,transparent 1px 36px)}
@@ -273,6 +278,8 @@ footer.site ul a:hover{color:var(--ember)}
 
 <section class="hero">
   <div class="wrap">
+    <div class="hero__top">
+    <div class="hero__text">
     <span class="kicker">218 Mill Street · Riverside Arts District</span>
     <h1>Good beer, a short menu, and nobody rushing you out.</h1>
     <p class="lede">Twelve rotating taps, a kitchen that cooks whatever the farms sent this week, and a back room you can have to yourself. Open late Thursday through Saturday.</p>
@@ -280,6 +287,9 @@ footer.site ul a:hover{color:var(--ember)}
     <div class="hero__cta">
       <a class="btn" href="#book">Book a table</a>
       <a class="btn btn--ghost" href="#menu">See this week's menu</a>
+    </div>
+    </div>
+    <figure class="shot shot--hero"><b>The bar, full, evening</b><span>warm light · people in frame</span></figure>
     </div>
 
     <!-- TONIGHT — live status, computed from the real hours below -->
@@ -315,7 +325,7 @@ footer.site ul a:hover{color:var(--ember)}
 
 <section class="sec" id="tap">
   <div class="wrap">
-    <div style="max-width:56ch;margin-bottom:32px">
+    <div style="max-width:58ch;margin:0 auto 34px;text-align:center">
       <span class="kicker">Twelve lines</span>
       <h2 style="margin:13px 0 14px">On tap</h2>
       <p class="lede">Six regulars, six that rotate. Prices are for a pint; two-thirds and halves are poured for less.</p>
@@ -381,7 +391,7 @@ footer.site ul a:hover{color:var(--ember)}
 
 <section class="sec" id="week">
   <div class="wrap">
-    <div style="max-width:56ch;margin-bottom:32px">
+    <div style="max-width:58ch;margin:0 auto 34px;text-align:center">
       <span class="kicker">Every week</span>
       <h2 style="margin:13px 0 14px">What's on</h2>
       <p class="lede">Same things, same nights, so you don't have to check. Today is marked. Closed Mondays.</p>
@@ -399,7 +409,7 @@ footer.site ul a:hover{color:var(--ember)}
 
 <section class="sec" style="background:var(--night-3)">
   <div class="wrap">
-    <div style="max-width:56ch;margin-bottom:30px">
+    <div style="max-width:58ch;margin:0 auto 32px;text-align:center">
       <span class="kicker">The room</span>
       <h2 style="margin:13px 0 14px">What it looks like when it's full</h2>
       <p class="lede">Photo slots — captioned for the shot each one needs. Warm, busy, people in frame. Empty rooms never sell a bar.</p>
