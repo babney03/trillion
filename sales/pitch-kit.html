@@ -1,0 +1,328 @@
+<meta charset="utf-8">
+<title>The Already-Built Pitch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@85..110,400;85..110,600;85..110,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+:root{
+  --paper:#F5F4F1; --card:#FFFFFF; --sunk:#EAE8E3;
+  --ink:#16191A; --ink-soft:#4E5558; --ink-faint:#6A7174;
+  --rule:#D9D6CF;
+  --steel:#1F5A78; --steel-lift:#2A7399; --steel-wash:#E6EEF2;
+  --amber:#8A6214; --amber-wash:#FBF2DF;
+  --good:#2D6A4A;
+  --f-d:'Archivo',system-ui,sans-serif;
+  --f-b:'Source Serif 4',Georgia,serif;
+  --f-m:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --r:12px; --ease:cubic-bezier(.2,.7,.25,1);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#141618; --card:#1C2023; --sunk:#0E1012;
+    --ink:#E9ECEC; --ink-soft:#A3ACAF; --ink-faint:#8A9397;
+    --rule:#2A3034;
+    --steel:#6FB3D4; --steel-lift:#8AC4E0; --steel-wash:#17262E;
+    --amber:#D9AC55; --amber-wash:#2A2316;
+    --good:#6FBF93;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#141618; --card:#1C2023; --sunk:#0E1012;
+  --ink:#E9ECEC; --ink-soft:#A3ACAF; --ink-faint:#8A9397;
+  --rule:#2A3034;
+  --steel:#6FB3D4; --steel-lift:#8AC4E0; --steel-wash:#17262E;
+  --amber:#D9AC55; --amber-wash:#2A2316;
+  --good:#6FBF93;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-b);
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:840px;margin:0 auto;padding:0 clamp(18px,4vw,34px)}
+h1,h2,h3{font-family:var(--f-d);font-weight:700;line-height:1.1;margin:0;letter-spacing:-.018em;text-wrap:balance}
+h1{font-size:clamp(2.1rem,1.4rem+3vw,3.2rem);font-stretch:105%}
+h2{font-size:clamp(1.3rem,1.1rem+1vw,1.7rem);margin-top:0}
+h3{font-size:1.02rem;font-weight:600}
+p{margin:0}
+a{color:var(--steel)}
+:focus-visible{outline:2.5px solid var(--steel);outline-offset:3px;border-radius:4px}
+
+header.top{padding:clamp(40px,6vw,76px) 0 clamp(26px,3vw,38px)}
+.kick{font-family:var(--f-m);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
+header.top p.sub{margin-top:18px;font-size:1.15rem;line-height:1.55;color:var(--ink-soft);max-width:62ch}
+
+section{padding-bottom:clamp(34px,4vw,54px)}
+.secnum{font-family:var(--f-m);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-faint);display:block;margin-bottom:9px}
+section > p{color:var(--ink-soft);max-width:66ch}
+section > p + p{margin-top:12px}
+
+hr{border:0;border-top:1px solid var(--rule);margin:0 0 clamp(30px,4vw,46px)}
+
+/* copy blocks */
+.block{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);margin-top:18px;overflow:hidden}
+.block__bar{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--sunk);
+  border-bottom:1px solid var(--rule)}
+.block__bar b{font-family:var(--f-d);font-size:.84rem;font-weight:600}
+.block__bar .when{font-family:var(--f-m);font-size:.68rem;color:var(--ink-faint);letter-spacing:.04em}
+.copy{margin-left:auto;font-family:var(--f-d);font-size:.76rem;font-weight:600;padding:7px 14px;
+  min-height:34px;border:1px solid var(--rule);border-radius:999px;background:var(--card);color:var(--ink);
+  cursor:pointer;transition:background-color 140ms var(--ease),border-color 140ms var(--ease),transform 120ms var(--ease)}
+.copy:hover{border-color:var(--steel);color:var(--steel)}
+.copy:active{transform:scale(.96)}
+.copy.done{background:var(--steel);border-color:var(--steel);color:#fff}
+.block pre{margin:0;padding:20px 18px;font-family:var(--f-m);font-size:.84rem;line-height:1.7;
+  white-space:pre-wrap;word-wrap:break-word;color:var(--ink)}
+.block pre em{font-style:normal;background:var(--steel-wash);color:var(--steel);
+  padding:1px 5px;border-radius:4px;font-weight:500}
+
+/* subject list */
+.subs{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px}
+.subs li{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:15px 17px}
+.subs .s{font-family:var(--f-m);font-size:.88rem;color:var(--ink);font-weight:500}
+.subs .why{display:block;margin-top:6px;font-size:.9rem;color:var(--ink-soft)}
+.subs li.best{border-color:var(--steel);background:var(--steel-wash)}
+.subs .tag{font-family:var(--f-d);font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--steel);display:block;margin-bottom:5px}
+
+/* price table */
+.price{width:100%;border-collapse:collapse;margin-top:18px;font-size:.95rem}
+.price th{text-align:left;font-family:var(--f-d);font-size:.7rem;font-weight:700;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink-faint);padding:0 0 10px;border-bottom:1px solid var(--rule)}
+.price th:last-child,.price td:last-child{text-align:right}
+.price td{padding:14px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+.price td b{font-family:var(--f-d);font-weight:600;display:block}
+.price td small{color:var(--ink-faint);font-size:.86rem;display:block;margin-top:3px}
+.price .amt{font-family:var(--f-m);font-weight:500;white-space:nowrap;font-variant-numeric:tabular-nums}
+.price tr:last-child td{border-bottom:0}
+
+.note{border-left:3px solid var(--amber);background:var(--amber-wash);padding:16px 18px;
+  border-radius:0 var(--r) var(--r) 0;margin-top:18px}
+.note b{font-family:var(--f-d);font-weight:700}
+.note p{font-size:.94rem;color:var(--ink-soft);margin-top:6px}
+
+.swap{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:9px}
+.swap li{display:flex;gap:11px;align-items:flex-start;font-size:.96rem}
+.swap code{font-family:var(--f-m);font-size:.82rem;background:var(--steel-wash);color:var(--steel);
+  padding:2px 6px;border-radius:4px;flex:none}
+
+footer.end{border-top:1px solid var(--rule);padding:26px 0 60px;font-size:.86rem;color:var(--ink-faint)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="top">
+  <span class="kick">Outreach kit · local business</span>
+  <h1>The already-built pitch</h1>
+  <p class="sub">Most cold emails ask for a meeting to discuss building something. Yours doesn't have to — the site already exists and they can look at it in one click. That single difference is what gets this read instead of binned. Everything below is built around it.</p>
+</header>
+
+<hr>
+
+<section>
+  <span class="secnum">01 — Why this works</span>
+  <h2>You're not selling. You're showing.</h2>
+  <p>An owner can smell a pitch in half a line. What they can't dismiss as easily is a finished thing with their own business name on it, made by someone who clearly looked at them first.</p>
+  <p>So the email does three things in order: proves you looked, hands over the link with nothing to agree to, then states the price plainly so they're not braced for a sales call. No "quick chat", no "hop on a call", no calendar link. The link does the selling.</p>
+</section>
+
+<hr>
+
+<section>
+  <span class="secnum">02 — Subject lines</span>
+  <h2>Short, specific, obviously written by a person</h2>
+  <p>No capitals, no exclamation marks, nothing that reads like a campaign. The best one names the business or the problem.</p>
+
+  <ul class="subs">
+    <li class="best">
+      <span class="tag">Use this one</span>
+      <span class="s">I built <em>[Business]</em> a website</span>
+      <span class="why">Flatly strange in a good way. It's not an offer, it's a statement, and the only way to resolve it is to open the email. Works for any trade.</span>
+    </li>
+    <li>
+      <span class="s">Nobody knows you're open for dinner</span>
+      <span class="why">Problem-first. Devastating when it's true and specific — use it where you've spotted a real gap. Needs rewriting per business.</span>
+    </li>
+    <li>
+      <span class="s">Made something for <em>[Business]</em> — link inside</span>
+      <span class="why">Softer. Good if the blunt version feels too forward for your area.</span>
+    </li>
+    <li>
+      <span class="s">Your reviews are better than your website</span>
+      <span class="why">Only where it's clearly true. It's a compliment first, which stops it reading as an insult.</span>
+    </li>
+    <li>
+      <span class="s">Quick one about <em>[Business]</em>'s booking page</span>
+      <span class="why">Lowest-key option. Lower open rate, but almost never marked as spam.</span>
+    </li>
+  </ul>
+</section>
+
+<hr>
+
+<section>
+  <span class="secnum">03 — The email</span>
+  <h2>The main one</h2>
+  <p>Roughly 180 words. Everything in <em style="font-style:normal;background:var(--steel-wash);color:var(--steel);padding:1px 5px;border-radius:4px;font-family:var(--f-m);font-size:.84rem">highlight</em> gets swapped per business. Don't lengthen it.</p>
+
+  <div class="block">
+    <div class="block__bar"><b>Cold email — first contact</b><span class="when">~180 words</span>
+      <button class="copy" type="button" data-copy="e1">Copy</button></div>
+    <pre id="e1">Subject: I built <em>[Business]</em> a website
+
+Hi <em>[Name]</em>,
+
+I'm local to <em>[town]</em> and ended up on your Google listing <em>[looking for somewhere to eat / after a storm took half my fence down]</em>. Two things stood out: your reviews are genuinely excellent, and <em>[the specific gap — e.g. nothing online makes it obvious you're open Wednesday to Sunday evenings]</em>.
+
+So I built you a website. It's finished — you can look at it right now:
+
+<em>[LINK]</em>
+
+<em>[One sentence on the single best thing it does — e.g. It opens with a panel that tells people whether you're open right now, including the gap between 2 and 4, so nobody sees "closed" and goes elsewhere.]</em> It's built for a phone first, because that's where nearly all of this traffic comes from.
+
+No catch and nothing to sign up for. I built it on spec because showing beats describing. If you want it, I'll put your real photos and <em>[menu / project shots]</em> in and have it live inside a week — <em>$850</em>, one time. Hosting, domain and changes after that are <em>$35</em> a month if you want me to handle them. If it's not for you, ignore this and I won't chase you.
+
+The link stays up either way.
+
+<em>[Your name]</em>
+<em>[Phone]</em> · <em>[Town]</em>
+</pre>
+  </div>
+</section>
+
+<section>
+  <span class="secnum">04 — Short version</span>
+  <h2>For a DM, a text, or handing it over in person</h2>
+  <div class="block">
+    <div class="block__bar"><b>Instagram / Facebook / SMS</b><span class="when">~55 words</span>
+      <button class="copy" type="button" data-copy="e2">Copy</button></div>
+    <pre id="e2">Hi — I'm local and I built a website for <em>[Business]</em>. It's already done, you can see it here: <em>[LINK]</em>
+
+Free to look at, nothing to sign. If you want it live with your own photos it's <em>$850</em> one time. If not, no hard feelings — just ignore this.
+
+<em>[Your name]</em>, <em>[phone]</em>
+</pre>
+  </div>
+</section>
+
+<section>
+  <span class="secnum">05 — Follow-ups</span>
+  <h2>Two, then stop</h2>
+  <p>Most replies to cold outreach come from the second and third message, not the first. But three total is the limit — past that you're the thing they complain about.</p>
+
+  <div class="block">
+    <div class="block__bar"><b>Follow-up 1</b><span class="when">4–5 days later · same thread</span>
+      <button class="copy" type="button" data-copy="e3">Copy</button></div>
+    <pre id="e3">Hi <em>[Name]</em> — just making sure this didn't get buried.
+
+The site's still up: <em>[LINK]</em>
+
+If you only look at one thing, make it <em>[the single best feature — e.g. the panel at the top that shows whether you're open right now]</em>.
+
+Happy to leave it at that if it's not for you — just say so and I'll stop.
+
+<em>[Your name]</em>
+</pre>
+  </div>
+
+  <div class="block">
+    <div class="block__bar"><b>Follow-up 2 — the close-out</b><span class="when">10 days later · highest reply rate</span>
+      <button class="copy" type="button" data-copy="e4">Copy</button></div>
+    <pre id="e4">Hi <em>[Name]</em> — I'll take the link down at the end of the week and leave you alone.
+
+If you ever want it, it's <em>[LINK]</em> and my number's below.
+
+Either way — <em>[genuine specific wish, e.g. good luck with patio season]</em>.
+
+<em>[Your name]</em>
+<em>[Phone]</em>
+</pre>
+  </div>
+  <p style="margin-top:16px">The close-out pulls the most replies of the three, because it removes the pressure and gives a deadline at the same time. Mean it — actually stop after this one.</p>
+</section>
+
+<hr>
+
+<section>
+  <span class="secnum">06 — Pricing</span>
+  <h2>Put the number in the email</h2>
+  <p>Hiding the price to "get them on a call" is why most of these go unanswered. An owner who sees a number can decide in ten seconds, and the ones who reply are already half sold.</p>
+
+  <table class="price">
+    <tr><th>What</th><th>Price</th></tr>
+    <tr>
+      <td><b>Site, built and launched</b><small>The page as shown, their photos and copy placed, mobile, contact form, Google business listing markup, live inside a week.</small></td>
+      <td class="amt">$850 one time</td>
+    </tr>
+    <tr>
+      <td><b>Care plan — optional</b><small>Hosting, domain, SSL, backups, and up to two content changes a month. Cancel whenever.</small></td>
+      <td class="amt">$35 / month</td>
+    </tr>
+    <tr>
+      <td><b>Extra page</b><small>A second or third page — services detail, a full menu, a booking page.</small></td>
+      <td class="amt">$150 each</td>
+    </tr>
+    <tr>
+      <td><b>Rush</b><small>Live in under five days.</small></td>
+      <td class="amt">+$200</td>
+    </tr>
+  </table>
+
+  <div class="note">
+    <b>These are my suggestion, not your price.</b>
+    <p>$850 is pitched where a small local business will say yes without a board meeting, and high enough not to read as amateur. Below about $500 owners assume it's a template farm; above about $1,500 they'll want a portfolio and references you don't have yet. Raise it once you've got three live sites and a testimonial — the work doesn't change, the proof does.</p>
+  </div>
+
+  <h3 style="margin-top:26px">When they say it's too expensive</h3>
+  <p style="margin-top:8px">Don't discount. Shrink the scope or point at the maths: one extra table a month, or one extra job a year, covers it. If they still won't, take the care plan off and leave the one-time price alone — dropping your build price teaches them the first number wasn't real.</p>
+</section>
+
+<hr>
+
+<section>
+  <span class="secnum">07 — Before you send</span>
+  <h2>Swap these every time</h2>
+  <ul class="swap">
+    <li><code>[Name]</code><span>The owner's actual name. "Hi there" halves your reply rate. It's usually on the About page, their Facebook, or the Google listing.</span></li>
+    <li><code>[the specific gap]</code><span>The one real observation. This is the whole email — it's the proof you didn't blast 500 of these. Never reuse the same line twice.</span></li>
+    <li><code>[one sentence on the best thing]</code><span>One feature, in their language, phrased as what a customer gets. Not a list.</span></li>
+    <li><code>[LINK]</code><span>The live site. Check it opens on your own phone before you send.</span></li>
+    <li><code>$850 / $35</code><span>Your numbers, in your currency.</span></li>
+  </ul>
+
+  <div class="note" style="border-left-color:var(--steel);background:var(--steel-wash)">
+    <b>Canadian anti-spam law — worth two minutes</b>
+    <p>CASL covers commercial email in Canada and the penalties are not small. The route that fits what you're doing: emailing an address the business has <em style="font-style:italic;background:none;color:inherit;padding:0">conspicuously published</em> (on their site or listing), where it isn't marked as refusing unsolicited mail, and your message relates to their business. That's the published-address provision, and it's the reason this works where mass consumer email wouldn't.</p>
+    <p>To stay on the right side of it regardless: use your real name, include a working phone number and your town or mailing address in every message, make opting out trivial ("say so and I'll stop"), and honour it immediately. Keep a simple list of anyone who says no. This is practical guidance, not legal advice — if you scale past a few dozen a week, read the CRTC's own CASL page.</p>
+  </div>
+</section>
+
+<footer class="end">
+  Swap the placeholders, send three a day rather than thirty a week, and keep a note of who you contacted and when. Three messages per business, then stop.
+</footer>
+
+</div>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var pre=document.getElementById(btn.dataset.copy);
+    if(!pre)return;
+    var text=pre.innerText;
+    var done=function(){
+      var old=btn.textContent;
+      btn.textContent='Copied';btn.classList.add('done');
+      setTimeout(function(){btn.textContent=old;btn.classList.remove('done')},1600);
+    };
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done,function(){fallback(pre,done)});
+    }else{fallback(pre,done);}
+  });
+});
+function fallback(pre,done){
+  var r=document.createRange();r.selectNodeContents(pre);
+  var s=window.getSelection();s.removeAllRanges();s.addRange(r);
+  try{document.execCommand('copy');done();}catch(e){}
+}
+</script>
