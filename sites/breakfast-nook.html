@@ -283,7 +283,99 @@ footer.site .mark small{color:var(--on-deep-soft)}
 @media(min-width:1020px){.callbar{display:none}}
 @media(max-width:1019px){body{padding-bottom:76px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ══════════════════════════════════════════════════════════════════
+   UPGRADE PASS — details that belong to this business, not to any site
+   Everything below keeps the page fully readable at rest: nothing is
+   parked at opacity 0 waiting on a scroll, so the first frame is whole.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* 1 — THE DAY ARC.  The light on the page travels from dawn to evening
+   as you scroll, because that is literally this restaurant's story:
+   two sittings, one room, fourteen hours apart. Pure CSS scroll
+   timeline, no JS, and it simply doesn't run where unsupported. */
+.daylight{position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(70% 55% at 12% 0%,color-mix(in srgb,var(--yolk) 22%,transparent),transparent 66%),
+    radial-gradient(60% 50% at 96% 8%,color-mix(in srgb,var(--plum) 10%,transparent),transparent 62%)}
+@supports (animation-timeline:scroll()){
+  @media (prefers-reduced-motion:no-preference){
+    .daylight{animation:dayarc linear both;animation-timeline:scroll(root block)}
+    @keyframes dayarc{
+      0%{background:
+        radial-gradient(70% 55% at 10% -4%,color-mix(in srgb,var(--yolk) 30%,transparent),transparent 66%),
+        radial-gradient(55% 45% at 96% 4%,color-mix(in srgb,var(--sky) 12%,transparent),transparent 60%)}
+      45%{background:
+        radial-gradient(80% 60% at 50% -10%,color-mix(in srgb,var(--yolk) 16%,transparent),transparent 70%),
+        radial-gradient(55% 45% at 4% 20%,color-mix(in srgb,var(--sky) 9%,transparent),transparent 60%)}
+      100%{background:
+        radial-gradient(74% 58% at 88% 4%,color-mix(in srgb,var(--plum) 24%,transparent),transparent 66%),
+        radial-gradient(60% 48% at 6% 12%,color-mix(in srgb,var(--yolk) 10%,transparent),transparent 62%)}
+    }
+  }
+}
+
+/* 2 — PAPER.  A linen tooth over the whole page so it reads as a printed
+   menu card rather than a screen. */
+.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
+  background-size:160px 160px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .grain{mix-blend-mode:overlay;opacity:.3}}
+:root[data-theme="dark"] .grain{mix-blend-mode:overlay;opacity:.3}
+
+/* 3 — RISE.  Sections lift a few pixels as they come into view. Transform
+   only — never opacity — so every word is on screen before it moves. */
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    .rise{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 60%}
+    @keyframes rise{from{transform:translateY(18px)}to{transform:none}}
+  }
+}
+
+/* 4 — THE STATUS PILL FOLLOWS YOU.  Scroll past the hero and "open until
+   2pm" docks into the header. For a restaurant that is the one fact a
+   visitor came for, and it should never be more than a glance away. */
+.pill{display:none;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;
+  background:color-mix(in srgb,var(--yolk) 16%,var(--card));border:1px solid color-mix(in srgb,var(--yolk) 42%,transparent);
+  font-size:.78rem;font-weight:700;white-space:nowrap;color:var(--ink);
+  animation:pillIn .32s var(--ease) both}
+.pill.is-eve{background:color-mix(in srgb,var(--plum) 14%,var(--card));border-color:color-mix(in srgb,var(--plum) 42%,transparent)}
+.pill.is-shut{background:var(--sunk);border-color:var(--rule);color:var(--ink-soft)}
+.pill i{width:7px;height:7px;border-radius:50%;background:var(--yolk);flex:none}
+.pill.is-eve i{background:var(--plum)}
+.pill.is-shut i{background:var(--ink-faint)}
+.pill.show{display:inline-flex}
+@keyframes pillIn{from{opacity:0;transform:translateY(-6px) scale(.94)}to{opacity:1;transform:none}}
+@media (max-width:719px){.pill.show{display:none}}
+
+/* 5 — DOT LEADERS.  Real menus run a dotted rule from the dish to the
+   price. Costs nothing, and it is the detail that says "menu" instantly. */
+.dish{grid-template-columns:1fr auto;align-items:baseline}
+.dish b{position:relative;padding-right:.4em}
+.dish .lead{flex:1;border-bottom:1.5px dotted color-mix(in srgb,var(--ink-faint) 55%,transparent);
+  margin:0 .55em .26em;min-width:1.6rem}
+.dish .nm{display:flex;align-items:baseline;grid-column:1/-1}
+.dish .pr{font-weight:700;color:var(--ink-faint);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* 6 — PHOTO RAIL.  On a phone the gallery becomes a swipeable rail with
+   snap points, which is how people actually look at food photos. */
+.railhint{display:none}
+@media (max-width:819px){
+  .gal{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+    padding-bottom:10px;margin-inline:calc(var(--gut) * -1);padding-inline:var(--gut);
+    scrollbar-width:thin}
+  .gal figure{flex:0 0 78%;scroll-snap-align:center;min-height:210px}
+  .railhint{display:block;margin-top:10px;font-size:.78rem;color:var(--ink-faint);text-align:center}
+}
+
+/* 7 — Warmer, softer elevation on the cards that carry the two services. */
+.card{box-shadow:0 1px 2px rgb(var(--shade)/.04),0 12px 30px rgb(var(--shade)/.07)}
+.card:hover{box-shadow:0 3px 6px rgb(var(--shade)/.05),0 20px 46px rgb(var(--shade)/.13)}
+
 </style>
+
+<div class="daylight" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
 
 <!-- PROPOSAL STRIP -->
 <div class="proposal">Concept proposal for <b>The Breakfast Nook</b> · built from public listings · hours, photos and reviews to be confirmed by the owners</div>
@@ -303,6 +395,7 @@ footer.site .mark small{color:var(--on-deep-soft)}
         <a href="#breakfast">Breakfast</a><a href="#evening">Evenings</a><a href="#menu">Menu</a>
         <a href="#patio">Patio</a><a href="#find">Find us</a>
       </div>
+      <span class="pill" id="pill" aria-hidden="true"><i></i><span id="pillText">Open</span></span>
       <div class="navend">
         <a class="btn btn--sm btn--out" href="tel:+12505911720">(250) 591‑1720</a>
         <a class="btn btn--sm" href="#find">Hours &amp; address</a>
@@ -364,13 +457,13 @@ footer.site .mark small{color:var(--on-deep-soft)}
 
 <section class="sec">
   <div class="wrap">
-    <div class="head head--mid">
+    <div class="rise head head--mid">
       <span class="label">Two sittings</span>
       <h2>One room, two entirely different meals</h2>
       <p class="lede">Most people know us for breakfast. Rather fewer know we're here in the evening — so here's both, plainly.</p>
     </div>
 
-    <div class="pair">
+    <div class="rise pair">
       <div class="card" id="breakfast">
         <span class="label">Daily · 7am – 2pm</span>
         <h3 style="font-size:1.5rem">Breakfast, and it doesn't stop</h3>
@@ -402,36 +495,36 @@ footer.site .mark small{color:var(--on-deep-soft)}
 
 <section class="sec" id="menu" style="background:var(--sunk)">
   <div class="wrap">
-    <div class="head head--mid">
+    <div class="rise head head--mid">
       <span class="label">A taste of it</span>
       <h2>What people order</h2>
       <p class="lede">A sample only — the real menu, prices and any daily specials get dropped straight in from the kitchen.</p>
     </div>
 
-    <div class="menu">
+    <div class="rise menu">
       <div class="course">
         <h3>Benedicts</h3>
-        <div class="dish"><b>Classic benny</b><span class="d">Poached eggs, hollandaise, your choice of side.</span></div>
-        <div class="dish"><b>Smoked salmon benny</b></div>
-        <div class="dish"><b>Veggie benny</b><span class="d">Greens, tomato, avocado.</span></div>
+        <div class="dish"><span class="nm"><b>Classic benny</b><span class="lead"></span><span class="pr">—</span></span><span class="d">Poached eggs, hollandaise, your choice of side.</span></div>
+        <div class="dish"><span class="nm"><b>Smoked salmon benny</b><span class="lead"></span><span class="pr">—</span></span></div>
+        <div class="dish"><span class="nm"><b>Veggie benny</b><span class="lead"></span><span class="pr">—</span></span><span class="d">Greens, tomato, avocado.</span></div>
       </div>
       <div class="course">
         <h3>From the skillet</h3>
-        <div class="dish"><b>Veggie hash</b><span class="d">The one regulars order without looking at the menu.</span></div>
-        <div class="dish"><b>Big breakfast</b><span class="d">Eggs how you like them, the full plate.</span></div>
-        <div class="dish"><b>Omelettes</b></div>
+        <div class="dish"><span class="nm"><b>Veggie hash</b><span class="lead"></span><span class="pr">—</span></span><span class="d">The one regulars order without looking at the menu.</span></div>
+        <div class="dish"><span class="nm"><b>Big breakfast</b><span class="lead"></span><span class="pr">—</span></span><span class="d">Eggs how you like them, the full plate.</span></div>
+        <div class="dish"><span class="nm"><b>Omelettes</b><span class="lead"></span><span class="pr">—</span></span></div>
       </div>
       <div class="course">
         <h3>Sweet</h3>
-        <div class="dish"><b>Waffles</b><span class="d">With fruit, or with everything.</span></div>
-        <div class="dish"><b>Pancakes</b></div>
-        <div class="dish"><b>French toast</b></div>
+        <div class="dish"><span class="nm"><b>Waffles</b><span class="lead"></span><span class="pr">—</span></span><span class="d">With fruit, or with everything.</span></div>
+        <div class="dish"><span class="nm"><b>Pancakes</b><span class="lead"></span><span class="pr">—</span></span></div>
+        <div class="dish"><span class="nm"><b>French toast</b><span class="lead"></span><span class="pr">—</span></span></div>
       </div>
       <div class="course">
         <h3>Coffee</h3>
-        <div class="dish"><b>Espresso &amp; the usual builds</b></div>
-        <div class="dish"><b>Filter, brewed properly</b></div>
-        <div class="dish"><b>Loose-leaf tea</b></div>
+        <div class="dish"><span class="nm"><b>Espresso &amp; the usual builds</b><span class="lead"></span><span class="pr">—</span></span></div>
+        <div class="dish"><span class="nm"><b>Filter, brewed properly</b><span class="lead"></span><span class="pr">—</span></span></div>
+        <div class="dish"><span class="nm"><b>Loose-leaf tea</b><span class="lead"></span><span class="pr">—</span></span></div>
         <p style="margin-top:12px;font-size:.87rem;color:var(--ink-faint)">Menu section is a placeholder — swap in the real items, prices and any rotating specials.</p>
       </div>
     </div>
@@ -459,12 +552,12 @@ footer.site .mark small{color:var(--on-deep-soft)}
 
 <section class="sec" style="background:var(--sunk)">
   <div class="wrap">
-    <div class="head head--mid">
+    <div class="rise head head--mid">
       <span class="label">The room</span>
       <h2>What it looks like when it's busy</h2>
       <p class="lede">Photo slots, captioned for the shot each one needs. A breakfast place lives or dies on looking warm and full.</p>
     </div>
-    <div class="gal">
+    <div class="rise gal">
       <figure class="shot"><b>The room, full, morning</b><span>wide · warm · people</span></figure>
       <figure class="shot"><b>A benny, close</b><span>overhead · no flash</span></figure>
       <figure class="shot"><b>Coffee being poured</b><span>detail</span></figure>
@@ -472,17 +565,18 @@ footer.site .mark small{color:var(--on-deep-soft)}
       <figure class="shot"><b>Evening table</b><span>drinks · low light</span></figure>
       <figure class="shot"><b>Street frontage</b><span>so people can find the new spot</span></figure>
     </div>
+    <span class="railhint">Swipe for more →</span>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
-    <div class="head head--mid">
+    <div class="rise head head--mid">
       <span class="label">What people say</span>
       <h2>4.7 on Tripadvisor, 4.6 across 800+ reviews</h2>
       <p class="lede">Placeholders on purpose. Real reviews get pasted in verbatim, or better, pulled live — nothing here is put in a customer's mouth.</p>
     </div>
-    <div class="revs">
+    <div class="rise revs">
       <div class="rev">
         <span class="tagx">Placeholder</span>
         <span class="stars" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg></span>
@@ -544,11 +638,11 @@ footer.site .mark small{color:var(--on-deep-soft)}
 
 <section class="sec" style="background:var(--sunk)">
   <div class="wrap">
-    <div class="head head--mid">
+    <div class="rise head head--mid">
       <span class="label">Good questions</span>
       <h2>Straight answers</h2>
     </div>
-    <div class="faq">
+    <div class="rise faq">
       <details open>
         <summary>Are you open for dinner?</summary>
         <div class="ans">Wednesday through Sunday, 4pm to 9pm. Monday and Tuesday we're breakfast only. It's the thing most people don't know about us.</div>
@@ -652,11 +746,29 @@ footer.site .mark small{color:var(--on-deep-soft)}
       else note.textContent='Opens '+NAMES[(d+1)%7]+' at '+fmt(AM[0])+' for breakfast';
     }
 
+    // the header pill mirrors the same single source of truth
+    var pill=document.getElementById('pill'), pillText=document.getElementById('pillText');
+    if(pill){
+      pill.classList.remove('is-eve','is-shut');
+      if(t>=AM[0]&&t<AM[1]){pillText.textContent='Open till '+fmt(AM[1]);}
+      else if(hasEve(d)&&t>=PM[0]&&t<PM[1]){pill.classList.add('is-eve');pillText.textContent='Dinner till '+fmt(PM[1]);}
+      else if(hasEve(d)&&t>=AM[1]&&t<PM[0]){pill.classList.add('is-shut');pillText.textContent='Back at '+fmt(PM[0]);}
+      else{pill.classList.add('is-shut');pillText.textContent='Closed';}
+    }
+
     var row=document.querySelector('#hrs tr[data-d="'+d+'"]');
     if(row)row.classList.add('now-row');
   }
   render();
   setInterval(render,60000);
+
+  // dock the pill once the hero status panel scrolls away
+  var nowPanel=document.getElementById('now'), pillEl=document.getElementById('pill');
+  if(nowPanel&&pillEl&&'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      pillEl.classList.toggle('show',!es[0].isIntersecting);
+    },{threshold:0}).observe(nowPanel);
+  }
 
   var b=document.getElementById('burger'), dr=document.getElementById('dr');
   b.addEventListener('click',function(){
