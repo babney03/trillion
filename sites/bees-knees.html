@@ -1,0 +1,593 @@
+<meta charset="utf-8">
+<title>The Bee's Knees Café</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Rubik:wght@300..700&display=swap">
+
+<style>
+/* ══════════════════════════════════════════════════════════════════
+   THE BEE'S KNEES CAFÉ & CATERING — concept proposal
+   Palette taken from Persian ceramic tile: turquoise, saffron,
+   pomegranate on cream. The geometry in the section grounds is an
+   eight-point star tessellation, drawn once and tiled — restraint
+   rather than pastiche.
+   ══════════════════════════════════════════════════════════════════ */
+:root{
+  --cream:#FAF5EB; --card:#FFFFFF; --sunk:#F1E9D9;
+  --ink:#241C15; --ink-soft:#574B3D; --ink-faint:#6B5F50;
+  --rule:#E3D7C1;
+  --turq:#14807F; --turq-lift:#1A9E9D; --turq-wash:#E2F0EF; --turq-text:#0F6B6A;
+  --saff:#C27C10; --saff-lift:#DB9220; --saff-wash:#FAEFD9; --saff-text:#875307;
+  --pom:#95293A; --pom-lift:#B03448; --pom-wash:#F8E7E9;
+  --deep:#17322F; --on-deep:#F3EFE5; --on-deep-soft:#BFC9C2;
+  --shade:36 28 21;
+  --f-d:'Instrument Serif',Georgia,serif;
+  --f-b:'Rubik',system-ui,-apple-system,sans-serif;
+  --page:1140px; --gut:clamp(18px,4vw,38px); --sec:clamp(54px,7vw,98px);
+  --r:16px; --r-lg:26px; --r-sm:12px;
+  --ease:cubic-bezier(.2,.7,.25,1);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --cream:#15120E; --card:#1E1A15; --sunk:#0E0C09;
+    --ink:#F2ECE1; --ink-soft:#B2A896; --ink-faint:#9B9180;
+    --rule:#2F2920;
+    --turq:#4FC0BE; --turq-lift:#6BD2D0; --turq-wash:#12302F; --turq-text:#5FCCCA;
+    --saff:#E2A23D; --saff-lift:#EFB255; --saff-wash:#2C2314; --saff-text:#EDB152;
+    --pom:#D8788A; --pom-lift:#E68F9E; --pom-wash:#2E181C;
+    --deep:#0D201E; --on-deep:#F2ECE1; --on-deep-soft:#A9B3AC;
+    --shade:0 0 0;
+  }
+}
+:root[data-theme="dark"]{
+  --cream:#15120E; --card:#1E1A15; --sunk:#0E0C09;
+  --ink:#F2ECE1; --ink-soft:#B2A896; --ink-faint:#9B9180;
+  --rule:#2F2920;
+  --turq:#4FC0BE; --turq-lift:#6BD2D0; --turq-wash:#12302F; --turq-text:#5FCCCA;
+  --saff:#E2A23D; --saff-lift:#EFB255; --saff-wash:#2C2314; --saff-text:#EDB152;
+  --pom:#D8788A; --pom-lift:#E68F9E; --pom-wash:#2E181C;
+  --deep:#0D201E; --on-deep:#F2ECE1; --on-deep-soft:#A9B3AC;
+  --shade:0 0 0;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);
+  font-family:var(--f-b);font-size:17px;line-height:1.64;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--f-d);font-weight:400;line-height:1.06;margin:0;text-wrap:balance;letter-spacing:-.005em}
+h1{font-size:clamp(2.7rem,1.5rem+5vw,4.6rem)}
+h2{font-size:clamp(1.95rem,1.3rem+2.5vw,3rem)}
+h3{font-size:1.35rem;line-height:1.16}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+:focus-visible{outline:2.5px solid var(--turq);outline-offset:3px;border-radius:6px}
+::selection{background:var(--saff);color:#241804}
+
+.wrap{max-width:var(--page);margin:0 auto;padding:0 var(--gut)}
+.sec{padding:var(--sec) 0;position:relative}
+.lede{font-size:clamp(1.06rem,.99rem+.36vw,1.24rem);line-height:1.6;color:var(--ink-soft);max-width:58ch}
+.label{display:inline-block;font-size:.71rem;font-weight:600;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--turq-text)}
+.label--pom{color:var(--pom)}
+.label--saff{color:var(--saff-text)}
+.head{max-width:58ch;margin-bottom:38px}
+.head--mid{margin-inline:auto;text-align:center;max-width:60ch}
+.head h2{margin:12px 0 15px}
+
+/* ── Persian tile ground: an eight-point star, tiled ─────────────── */
+.tile{position:relative;isolation:isolate}
+.tile::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.42;
+  background-size:92px 92px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='92' height='92' viewBox='0 0 92 92'%3E%3Cg fill='none' stroke='%2314807F' stroke-width='1.1' opacity='.55'%3E%3Crect x='23' y='23' width='46' height='46'/%3E%3Crect x='23' y='23' width='46' height='46' transform='rotate(45 46 46)'/%3E%3Crect x='-23' y='-23' width='46' height='46'/%3E%3Crect x='-23' y='-23' width='46' height='46' transform='rotate(45 0 0)'/%3E%3Crect x='69' y='69' width='46' height='46'/%3E%3Crect x='69' y='69' width='46' height='46' transform='rotate(45 92 92)'/%3E%3Crect x='69' y='-23' width='46' height='46'/%3E%3Crect x='-23' y='69' width='46' height='46'/%3E%3C/g%3E%3C/svg%3E");
+  mask-image:radial-gradient(110% 90% at 50% 0%,#000 10%,transparent 72%)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tile::before{opacity:.22}}
+:root[data-theme="dark"] .tile::before{opacity:.22}
+
+/* proposal strip */
+.proposal{background:var(--deep);color:var(--on-deep);font-size:.76rem;text-align:center;padding:9px 16px;line-height:1.45}
+.proposal b{color:var(--saff-lift)}
+
+/* header */
+.bar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--cream) 90%,transparent);
+  backdrop-filter:blur(13px);border-bottom:1px solid var(--rule)}
+.nav{display:flex;align-items:center;gap:20px;min-height:74px}
+.mark{margin-right:auto;display:flex;align-items:center;gap:11px;min-height:44px}
+.mark svg{width:33px;height:33px;color:var(--saff);flex:none}
+.mark .n{font-family:var(--f-d);font-size:1.3rem;line-height:1}
+.mark small{display:block;font-size:.58rem;font-weight:600;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--ink-faint);margin-top:4px;font-family:var(--f-b)}
+.links{display:none;gap:22px}
+.links a{font-size:.9rem;font-weight:500;color:var(--ink-soft);white-space:nowrap;padding:6px 0;border-bottom:2px solid transparent}
+.links a:hover{color:var(--ink);border-bottom-color:var(--saff)}
+.navend{display:none;align-items:center;gap:12px;white-space:nowrap}
+@media(min-width:1040px){.links,.navend{display:flex}}
+.burger{margin-left:auto;width:44px;height:44px;display:grid;place-items:center;
+  border:1px solid var(--rule);border-radius:var(--r-sm);background:var(--card);color:var(--ink)}
+.drawer{display:grid;padding:6px 0 18px;border-top:1px solid var(--rule)}
+.drawer[hidden]{display:none}
+.drawer a{padding:14px 2px;font-weight:500;border-bottom:1px solid var(--rule);min-height:44px;display:flex;align-items:center}
+@media(min-width:1040px){.drawer{display:none!important}.burger{display:none}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:14px 26px;min-height:48px;border:1.5px solid transparent;border-radius:999px;cursor:pointer;
+  font-family:var(--f-b);font-weight:600;font-size:.94rem;
+  background:var(--saff);color:#241804;
+  transition:transform 150ms var(--ease),background-color 150ms var(--ease),box-shadow 200ms var(--ease);
+  box-shadow:0 5px 18px rgb(var(--shade)/.14)}
+.btn:hover{background:var(--saff-lift);transform:translateY(-2px);box-shadow:0 10px 26px rgb(var(--shade)/.2)}
+.btn:active{transform:translateY(0) scale(.975)}
+.btn--out{background:transparent;color:var(--ink);border-color:var(--rule);box-shadow:none}
+.btn--out:hover{background:var(--card);border-color:var(--ink-faint)}
+.btn--turq{background:var(--turq);color:#F2FBFA}
+.btn--turq:hover{background:var(--turq-lift)}
+.btn--pom{background:var(--pom);color:#FFF4F5}
+.btn--pom:hover{background:var(--pom-lift)}
+.btn--sm{padding:10px 18px;min-height:44px;font-size:.85rem}
+.btn--wide{width:100%}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:clamp(36px,5vw,66px) 0 var(--sec)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(56% 48% at 8% -8%,color-mix(in srgb,var(--saff) 24%,transparent),transparent 64%),
+             radial-gradient(48% 42% at 98% 4%,color-mix(in srgb,var(--turq) 20%,transparent),transparent 62%)}
+.hero__top{display:grid;gap:34px}
+@media(min-width:980px){.hero__top{grid-template-columns:1.04fr .96fr;gap:50px;align-items:center}}
+.hero h1{margin:16px 0 20px;max-width:14ch}
+.hero h1 em{font-style:italic;color:var(--turq)}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.trustline{display:flex;flex-wrap:wrap;gap:9px 20px;margin-top:26px;font-size:.88rem;color:var(--ink-soft)}
+.trustline span{display:inline-flex;align-items:center;gap:7px}
+.trustline svg{width:16px;height:16px;color:var(--turq);flex:none}
+
+.shot{margin:0;min-height:300px;border-radius:var(--r-lg);display:grid;place-content:center;
+  text-align:center;gap:7px;padding:18px;border:1.5px dashed color-mix(in srgb,var(--ink-faint) 42%,transparent);
+  background:linear-gradient(152deg,color-mix(in srgb,var(--saff) 24%,var(--sunk)),var(--sunk))}
+.shot--hero{min-height:clamp(290px,35vw,430px)}
+.shot b{font-family:var(--f-d);font-size:1.12rem}
+.shot span{font-size:.69rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* ── the address block — the single most important thing here ───── */
+.where{margin-top:36px;border:1.5px solid color-mix(in srgb,var(--turq) 40%,transparent);
+  border-radius:var(--r-lg);background:var(--turq-wash);overflow:hidden}
+.where__top{padding:20px 26px;border-bottom:1px solid color-mix(in srgb,var(--turq) 26%,transparent);
+  display:flex;flex-wrap:wrap;gap:10px 18px;align-items:baseline}
+.where__top b{font-family:var(--f-d);font-size:1.3rem}
+.where__top .tag{font-size:.69rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--turq-text)}
+.where__grid{display:grid;gap:1px;background:color-mix(in srgb,var(--turq) 22%,transparent)}
+@media(min-width:720px){.where__grid{grid-template-columns:1fr 1fr}}
+.where__cell{background:var(--card);padding:22px 24px}
+.where__cell h3{font-size:1.02rem;font-family:var(--f-b);font-weight:600;margin-bottom:6px}
+.where__cell p{font-size:.93rem;color:var(--ink-soft)}
+.slot{display:inline-block;margin-top:8px;padding:6px 12px;border-radius:999px;font-size:.78rem;
+  font-weight:500;background:var(--saff-wash);color:var(--saff-text);border:1px dashed color-mix(in srgb,var(--saff) 50%,transparent)}
+
+/* ── menu with dietary filter ───────────────────────────────────── */
+.filters{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-bottom:30px}
+.filt{padding:10px 18px;min-height:44px;border-radius:999px;border:1.5px solid var(--rule);
+  background:var(--card);color:var(--ink-soft);font-family:var(--f-b);font-weight:600;font-size:.86rem;
+  cursor:pointer;transition:all 160ms var(--ease)}
+.filt:hover{border-color:var(--turq);color:var(--ink)}
+.filt[aria-pressed="true"]{background:var(--turq);border-color:var(--turq);color:#F2FBFA}
+.menu{display:grid;gap:30px}
+@media(min-width:820px){.menu{grid-template-columns:1fr 1fr;gap:30px 52px}}
+.course h3{font-size:.73rem;font-family:var(--f-b);font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--saff-text);padding-bottom:10px;border-bottom:1px solid var(--rule);margin-bottom:12px}
+.dish{padding:11px 0;border-bottom:1px solid color-mix(in srgb,var(--rule) 60%,transparent)}
+.dish:last-child{border-bottom:0}
+.dish .nm{display:flex;align-items:baseline;gap:.5em}
+.dish b{font-weight:600;font-size:1rem}
+.dish .lead{flex:1;border-bottom:1.5px dotted color-mix(in srgb,var(--ink-faint) 48%,transparent);
+  margin:0 .4em .26em;min-width:1.4rem}
+.dish .pr{font-weight:600;color:var(--ink-faint);font-variant-numeric:tabular-nums}
+.dish .d{display:block;font-size:.87rem;color:var(--ink-faint);line-height:1.45;margin-top:2px}
+.tags{display:flex;gap:5px;margin-top:7px;flex-wrap:wrap}
+.dt{font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:3px 8px;border-radius:999px}
+.dt-v{background:var(--turq-wash);color:var(--turq-text)}
+.dt-vg{background:var(--saff-wash);color:var(--saff-text)}
+.dt-gf{background:var(--pom-wash);color:var(--pom)}
+.dish[hidden]{display:none}
+.emptynote{text-align:center;color:var(--ink-faint);font-size:.92rem;margin-top:18px}
+
+/* ── story ──────────────────────────────────────────────────────── */
+.split{display:grid;gap:32px}
+@media(min-width:880px){.split{grid-template-columns:1fr 1fr;gap:54px;align-items:center}}
+.pull{font-family:var(--f-d);font-size:clamp(1.4rem,1.1rem+1.4vw,2rem);line-height:1.25;
+  color:var(--ink);border-left:3px solid var(--saff);padding-left:20px;margin:24px 0}
+
+/* ── catering ───────────────────────────────────────────────────── */
+.cater{background:var(--deep);color:var(--on-deep);border-radius:var(--r-lg);
+  padding:clamp(26px,4vw,52px);display:grid;gap:30px}
+@media(min-width:880px){.cater{grid-template-columns:1fr 1fr;gap:52px;align-items:center}}
+.cater .lede{color:var(--on-deep-soft)}
+.cater .label{color:var(--saff-lift)}
+.cater h2{color:var(--on-deep)}
+.ticks{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:11px}
+.ticks li{display:flex;gap:11px;font-size:.96rem;align-items:flex-start;color:var(--on-deep-soft)}
+.ticks svg{width:18px;height:18px;color:var(--saff-lift);flex:none;margin-top:5px}
+
+/* gallery */
+.gal{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:820px){.gal{grid-template-columns:repeat(4,1fr);grid-auto-rows:174px}
+  .gal figure:nth-child(1){grid-column:span 2;grid-row:span 2}
+  .gal figure:nth-child(6){grid-column:span 4}}
+.gal figure{min-height:150px;border-radius:var(--r)}
+
+/* reviews */
+.revs{display:grid;gap:16px}
+@media(min-width:760px){.revs{grid-template-columns:repeat(3,1fr)}}
+.rev{position:relative;background:var(--card);border:1px solid var(--rule);border-radius:var(--r-lg);
+  padding:28px 26px;display:flex;flex-direction:column;gap:13px}
+.rev .tagx{position:absolute;top:14px;right:14px;font-size:.6rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);border-radius:999px;
+  padding:3px 9px;background:var(--cream)}
+.stars{display:inline-flex;gap:2px;color:var(--saff)}
+.stars svg{width:16px;height:16px;fill:currentColor}
+.rev p{font-size:1rem;line-height:1.5}
+.rev footer{margin-top:auto;display:flex;align-items:center;gap:11px}
+.rev .av{width:37px;height:37px;border-radius:50%;display:grid;place-items:center;flex:none;
+  background:var(--turq);color:#F2FBFA;font-weight:600;font-size:.8rem}
+.rev cite{font-style:normal;font-weight:600;font-size:.9rem;display:block;line-height:1.25}
+.rev small{font-size:.74rem;color:var(--ink-faint)}
+
+/* faq */
+.faq{display:grid;gap:11px;max-width:820px;margin-inline:auto}
+.faq details{border:1px solid var(--rule);border-radius:var(--r);background:var(--card);overflow:hidden}
+.faq details[open]{border-color:color-mix(in srgb,var(--turq) 46%,transparent)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 24px;display:flex;align-items:center;gap:16px;
+  font-family:var(--f-d);font-size:1.18rem;min-height:48px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";margin-left:auto;width:13px;height:13px;flex:none;
+  border-right:2.5px solid var(--turq);border-bottom:2.5px solid var(--turq);
+  transform:rotate(45deg) translate(-3px,-3px);transition:transform 220ms var(--ease)}
+.faq details[open] summary::after{transform:rotate(225deg) translate(-2px,-2px)}
+.faq .ans{padding:0 24px 20px;color:var(--ink-soft);font-size:.96rem;max-width:66ch}
+
+/* footer */
+footer.site{background:var(--deep);color:var(--on-deep);padding:50px 0 28px;margin-top:var(--sec)}
+.fgrid{display:grid;gap:28px}
+@media(min-width:800px){.fgrid{grid-template-columns:1.6fr 1fr 1fr}}
+footer.site h4{font-size:.69rem;letter-spacing:.17em;text-transform:uppercase;font-weight:700;
+  color:var(--on-deep-soft);margin:0 0 12px}
+footer.site ul{list-style:none;padding:0;margin:0;display:grid}
+footer.site ul a{font-size:.92rem;color:var(--on-deep-soft);min-height:44px;display:inline-flex;align-items:center}
+footer.site ul a:hover{color:var(--saff-lift)}
+footer.site .mark small{color:var(--on-deep-soft)}
+.fbot{margin-top:30px;padding-top:18px;border-top:1px solid color-mix(in srgb,var(--on-deep) 18%,transparent);
+  display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-size:.76rem;color:var(--on-deep-soft)}
+
+/* sticky mobile bar */
+.callbar{position:fixed;inset-inline:0;bottom:0;z-index:60;display:grid;grid-template-columns:1fr 1fr;gap:8px;
+  padding:9px 12px calc(9px + env(safe-area-inset-bottom));
+  background:color-mix(in srgb,var(--cream) 93%,transparent);backdrop-filter:blur(12px);
+  border-top:1px solid var(--rule)}
+.callbar .btn{padding:12px;font-size:.87rem;box-shadow:none}
+@media(min-width:1040px){.callbar{display:none}}
+@media(max-width:1039px){body{padding-bottom:76px}}
+
+/* scroll rise — transform only, never opacity */
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    .rise{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 60%}
+    @keyframes rise{from{transform:translateY(18px)}to{transform:none}}
+  }
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="proposal">Concept proposal for <b>The Bee's Knees Café &amp; Catering</b> · built from public listings · address, hours, menu and photos to be confirmed by the owner</div>
+
+<header class="bar">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="mark" href="#top">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M16 6.5 24.5 11v10L16 25.5 7.5 21V11Z"/><path d="M16 6.5 7.5 11l8.5 4.6 8.5-4.6Z"/><path d="M16 15.6V25.5"/>
+          <path d="M11 3.5c1.4 1 2.2 2 2.4 3M21 3.5c-1.4 1-2.2 2-2.4 3"/>
+        </svg>
+        <span class="n">The Bee's Knees<small>Café &amp; Catering · Nanaimo</small></span>
+      </a>
+      <div class="links">
+        <a href="#menu">Menu</a><a href="#story">Our story</a><a href="#catering">Catering</a>
+        <a href="#room">The café</a><a href="#find">Find us</a>
+      </div>
+      <div class="navend">
+        <a class="btn btn--sm btn--out" href="tel:+12505915250">(250) 591‑5250</a>
+        <a class="btn btn--sm btn--turq" href="#find">Where we are</a>
+      </div>
+      <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="dr" aria-label="Open menu">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+    <div class="drawer" id="dr" hidden>
+      <a href="#menu">Menu</a><a href="#story">Our story</a><a href="#catering">Catering</a>
+      <a href="#room">The café</a><a href="#find">Find us</a>
+      <a class="btn btn--wide" style="margin-top:14px" href="tel:+12505915250">Call (250) 591‑5250</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero tile">
+  <div class="wrap">
+    <div class="hero__top">
+      <div>
+        <span class="label">Persian kitchen · vegetarian, vegan &amp; gluten free</span>
+        <h1>Everything from scratch. <em>Everyone</em> welcome.</h1>
+        <p class="lede">A café built on the idea that every culture belongs at the same table — and one of the only kitchens on Vancouver Island cooking Persian food. Breakfast, baking, lunch, and catering for whatever you're hosting.</p>
+
+        <div class="hero__cta">
+          <a class="btn" href="#menu">See the menu</a>
+          <a class="btn btn--out" href="tel:+12505915250">(250) 591‑5250</a>
+        </div>
+
+        <div class="trustline">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>4.6 from 107 reviews</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Made from scratch, daily</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Catering across Nanaimo</span>
+        </div>
+      </div>
+      <figure class="shot shot--hero"><b>Hero photo</b><span>the counter, full, morning light</span></figure>
+    </div>
+
+    <!-- THE ADDRESS BLOCK — the whole reason this site needs to exist -->
+    <div class="where">
+      <div class="where__top">
+        <span class="tag">One café · one address</span>
+        <b>Here is exactly where we are</b>
+      </div>
+      <div class="where__grid">
+        <div class="where__cell">
+          <h3>The address</h3>
+          <p>Stated once, here, and kept right. If a listing somewhere sends you to a different street, this page is the one that's correct.</p>
+          <span class="slot">Owner to confirm — listings currently show three</span>
+        </div>
+        <div class="where__cell">
+          <h3>Today's hours</h3>
+          <p>Open and close times, every day of the week, so nobody arrives to a locked door on the strength of an old directory entry.</p>
+          <span class="slot">Owner to confirm — listings currently show three</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="menu" style="background:var(--sunk)">
+  <div class="wrap">
+    <div class="rise head head--mid">
+      <span class="label">The kitchen</span>
+      <h2>Menu</h2>
+      <p class="lede">Vegetarian, vegan and gluten free aren't an afterthought here — filter the whole menu and see what's actually left for you.</p>
+    </div>
+
+    <div class="filters" role="group" aria-label="Filter menu by diet">
+      <button class="filt" type="button" data-diet="all" aria-pressed="true">Everything</button>
+      <button class="filt" type="button" data-diet="v" aria-pressed="false">Vegetarian</button>
+      <button class="filt" type="button" data-diet="vg" aria-pressed="false">Vegan</button>
+      <button class="filt" type="button" data-diet="gf" aria-pressed="false">Gluten free</button>
+    </div>
+
+    <div class="menu rise">
+      <div class="course">
+        <h3>Breakfast</h3>
+        <div class="dish" data-diet="v"><span class="nm"><b>Savoury breakfast sandwich</b><span class="lead"></span><span class="pr">—</span></span><span class="d">On house-baked bread.</span><span class="tags"><span class="dt dt-v">Veg</span></span></div>
+        <div class="dish" data-diet="v gf"><span class="nm"><b>Breakfast bowl</b><span class="lead"></span><span class="pr">—</span></span><span class="tags"><span class="dt dt-v">Veg</span><span class="dt dt-gf">GF</span></span></div>
+        <div class="dish" data-diet="vg gf"><span class="nm"><b>Seasonal fruit &amp; seeds</b><span class="lead"></span><span class="pr">—</span></span><span class="tags"><span class="dt dt-vg">Vegan</span><span class="dt dt-gf">GF</span></span></div>
+      </div>
+      <div class="course">
+        <h3>From the oven</h3>
+        <div class="dish" data-diet="v"><span class="nm"><b>Blueberry lemon muffin</b><span class="lead"></span><span class="pr">—</span></span><span class="d">The one people come back for.</span><span class="tags"><span class="dt dt-v">Veg</span></span></div>
+        <div class="dish" data-diet="v"><span class="nm"><b>Scones &amp; daily pastries</b><span class="lead"></span><span class="pr">—</span></span><span class="tags"><span class="dt dt-v">Veg</span></span></div>
+        <div class="dish" data-diet="vg"><span class="nm"><b>Vegan cookie of the day</b><span class="lead"></span><span class="pr">—</span></span><span class="tags"><span class="dt dt-vg">Vegan</span></span></div>
+      </div>
+      <div class="course">
+        <h3>Persian plates</h3>
+        <div class="dish" data-diet="v gf"><span class="nm"><b>Persian plate of the day</b><span class="lead"></span><span class="pr">—</span></span><span class="d">Changes with what the kitchen has in.</span><span class="tags"><span class="dt dt-v">Veg</span><span class="dt dt-gf">GF</span></span></div>
+        <div class="dish" data-diet="vg gf"><span class="nm"><b>Herb &amp; bean stew</b><span class="lead"></span><span class="pr">—</span></span><span class="tags"><span class="dt dt-vg">Vegan</span><span class="dt dt-gf">GF</span></span></div>
+        <div class="dish"><span class="nm"><b>Daily special</b><span class="lead"></span><span class="pr">—</span></span><span class="d">Ask at the counter.</span></div>
+      </div>
+      <div class="course">
+        <h3>Soup, salad &amp; drinks</h3>
+        <div class="dish" data-diet="vg gf"><span class="nm"><b>Soup of the day</b><span class="lead"></span><span class="pr">—</span></span><span class="tags"><span class="dt dt-vg">Vegan</span><span class="dt dt-gf">GF</span></span></div>
+        <div class="dish" data-diet="v gf"><span class="nm"><b>Garden salad</b><span class="lead"></span><span class="pr">—</span></span><span class="tags"><span class="dt dt-v">Veg</span><span class="dt dt-gf">GF</span></span></div>
+        <div class="dish" data-diet="vg gf"><span class="nm"><b>Coffee, tea &amp; cold drinks</b><span class="lead"></span><span class="pr">—</span></span><span class="tags"><span class="dt dt-vg">Vegan</span><span class="dt dt-gf">GF</span></span></div>
+        <p class="d" style="margin-top:14px;font-size:.86rem;color:var(--ink-faint)">Menu shown is a placeholder — real dishes, prices and dietary tags get dropped straight in from the kitchen.</p>
+      </div>
+    </div>
+    <p class="emptynote" id="emptynote" hidden>Nothing on that filter yet — the real menu will have more.</p>
+  </div>
+</section>
+
+<section class="sec tile" id="story">
+  <div class="wrap">
+    <div class="split">
+      <figure class="shot" style="min-height:360px"><b>Shrin, in the café</b><span>portrait · the founder sells this place</span></figure>
+      <div>
+        <span class="label label--pom">Our story</span>
+        <h2 style="margin:12px 0 16px">It started with a table everyone could sit at</h2>
+        <p class="lede">Shrin Younessian opened The Bee's Knees on a simple idea she'd had since she was young: a room where every culture and every walk of life is welcome, and where the food says so.</p>
+        <p class="pull">One of the only kitchens on Vancouver Island serving Persian food — alongside the vegetarian, vegan and gluten free cooking we're known for.</p>
+        <p class="lede">Everything is made from scratch, in house, including everything that goes out on the catering side. We cook for fundraisers around town too, because a café that talks about community should probably turn up for it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="catering">
+  <div class="wrap">
+    <div class="cater rise">
+      <div>
+        <span class="label">Catering</span>
+        <h2 style="margin:12px 0 16px">We'll cook for your thirty people</h2>
+        <p class="lede">Weddings, work lunches, memorials, fundraisers. Delivered hot, set up in chafing dishes, and made in the same kitchen as everything on the café menu.</p>
+        <ul class="ticks">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg><span>Vegetarian, vegan and gluten free handled properly, not as a side plate</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg><span>Persian menus for an event that should taste of somewhere</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg><span>Delivered hot and kept hot — chafing dishes included</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg><span>Fundraisers and community events — ask, we usually say yes</span></li>
+        </ul>
+        <div class="hero__cta" style="margin-top:28px">
+          <a class="btn" href="tel:+12505915250">Talk about your event</a>
+        </div>
+      </div>
+      <figure class="shot" style="min-height:300px;background:linear-gradient(152deg,#24453F,#17322F);border-color:color-mix(in srgb,var(--on-deep) 28%,transparent)">
+        <b style="color:var(--on-deep)">Catering photo</b><span style="color:var(--on-deep-soft)">a spread, set up, people around it</span></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="room" style="background:var(--sunk)">
+  <div class="wrap">
+    <div class="rise head head--mid">
+      <span class="label">The café</span>
+      <h2>What it looks like when it's full</h2>
+      <p class="lede">Photo slots, captioned for the shot each one needs.</p>
+    </div>
+    <div class="gal rise">
+      <figure class="shot"><b>The room, busy</b><span>wide · warm · people</span></figure>
+      <figure class="shot"><b>A Persian plate</b><span>overhead · no flash</span></figure>
+      <figure class="shot"><b>The bake case</b><span>detail · full</span></figure>
+      <figure class="shot"><b>Coffee being made</b><span>hands · close</span></figure>
+      <figure class="shot"><b>Catering spread</b><span>event · set up</span></figure>
+      <figure class="shot"><b>The storefront</b><span>so people find the right door</span></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="rise head head--mid">
+      <span class="label">What people say</span>
+      <h2>4.6 from 107 reviews</h2>
+      <p class="lede">Placeholders on purpose — real reviews go in word for word, or better, pulled live.</p>
+    </div>
+    <div class="revs rise">
+      <div class="rev"><span class="tagx">Placeholder</span>
+        <span class="stars" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg></span>
+        <p>A real review, word for word. Best ones name a dish and a person.</p>
+        <footer><span class="av">—</span><span><cite>Customer name</cite><small>Google</small></span></footer></div>
+      <div class="rev"><span class="tagx">Placeholder</span>
+        <span class="stars" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg></span>
+        <p>Pick one about the catering — that's the side this site is trying to grow.</p>
+        <footer><span class="av">—</span><span><cite>Customer name</cite><small>Google</small></span></footer></div>
+      <div class="rev"><span class="tagx">Placeholder</span>
+        <span class="stars" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg></span>
+        <p>The 4.6 and the count above come from public listings and should be checked against Google first.</p>
+        <footer><span class="av">—</span><span><cite>Customer name</cite><small>Google</small></span></footer></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec tile" id="find" style="background:var(--sunk)">
+  <div class="wrap">
+    <div class="rise head head--mid">
+      <span class="label">Find us</span>
+      <h2>One address, kept right</h2>
+      <p class="lede">The single job this page has to do. Right now a search turns up three different streets for this café — whichever is correct goes here, and everywhere else gets corrected to match.</p>
+    </div>
+    <div class="split">
+      <div>
+        <div class="where" style="margin-top:0">
+          <div class="where__top"><span class="tag">To confirm with the owner</span><b>Address &amp; hours</b></div>
+          <div class="where__grid">
+            <div class="where__cell"><h3>Street address</h3><p>Listings currently show 3200 Island Hwy North, 525 Third Street and 208 Wallace Street.</p><span class="slot">Which one is right?</span></div>
+            <div class="where__cell"><h3>Opening hours</h3><p>Three different sets are published across Tripadvisor and other directories.</p><span class="slot">Owner to confirm</span></div>
+          </div>
+        </div>
+        <ul class="ticks" style="margin-top:24px">
+          <li style="color:var(--ink-soft)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" style="color:var(--turq)" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg><span>Hours marked up so Google shows the right ones in search</span></li>
+          <li style="color:var(--ink-soft)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" style="color:var(--turq)" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg><span>One phone number, one address, one source of truth</span></li>
+        </ul>
+        <div class="hero__cta" style="margin-top:22px">
+          <a class="btn btn--turq" href="tel:+12505915250">(250) 591‑5250</a>
+        </div>
+      </div>
+      <figure class="shot" style="min-height:300px"><b>Google Maps embed</b><span>once the address is confirmed</span></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="rise head head--mid"><span class="label">Good questions</span><h2>Straight answers</h2></div>
+    <div class="faq rise">
+      <details open><summary>Do you have vegan and gluten free options?</summary>
+        <div class="ans">They're a specialty, not an afterthought. Use the filter on the menu above and you'll see exactly what's available rather than hunting through a list.</div></details>
+      <details><summary>What is Persian food, if I've not had it?</summary>
+        <div class="ans">Herbs, slow-cooked stews, rice, and a lot of things that happen to be naturally vegetarian. We're one of very few kitchens cooking it on Vancouver Island — ask at the counter and we'll point you at something.</div></details>
+      <details><summary>Do you cater?</summary>
+        <div class="ans">Yes — weddings, work lunches, memorials and fundraisers. Delivered hot in chafing dishes, cooked in the same kitchen as the café menu. Give us a ring to talk it through.</div></details>
+      <details><summary>Where exactly are you?</summary>
+        <div class="ans">The address at the top of this page is the correct one. If a directory sends you somewhere else, it's out of date — this page is the one we keep right.</div></details>
+      <details><summary>Can I order ahead?</summary>
+        <div class="ans">Call the café. Online ordering can be wired into this page if that's useful.</div></details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a class="mark" href="#top" style="color:var(--on-deep)">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--saff-lift)">
+            <path d="M16 6.5 24.5 11v10L16 25.5 7.5 21V11Z"/><path d="M16 6.5 7.5 11l8.5 4.6 8.5-4.6Z"/><path d="M16 15.6V25.5"/>
+            <path d="M11 3.5c1.4 1 2.2 2 2.4 3M21 3.5c-1.4 1-2.2 2-2.4 3"/>
+          </svg>
+          <span class="n">The Bee's Knees<small>Café &amp; Catering · Nanaimo</small></span>
+        </a>
+        <p style="margin-top:14px;font-size:.92rem;max-width:38ch;color:var(--on-deep-soft)">Persian cooking, scratch baking, and a table everyone is welcome at. Catering across Nanaimo.</p>
+      </div>
+      <div><h4>The café</h4>
+        <ul><li><a href="#menu">Menu</a></li><li><a href="#story">Our story</a></li><li><a href="#catering">Catering</a></li><li><a href="#room">The room</a></li></ul></div>
+      <div><h4>Find us</h4>
+        <ul><li><a href="tel:+12505915250">(250) 591‑5250</a></li><li><a href="#find">Address &amp; hours</a></li></ul></div>
+    </div>
+    <div class="fbot">
+      <span>© <span id="yr">2026</span> The Bee's Knees Café &amp; Catering</span>
+      <span>Concept proposal — not the live site</span>
+    </div>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn--out" href="#menu">Menu</a>
+  <a class="btn" href="tel:+12505915250">Call</a>
+</div>
+
+<script>
+(function(){
+  // dietary filter — the one feature this café's customers actually need
+  var filts=[].slice.call(document.querySelectorAll('.filt'));
+  var dishes=[].slice.call(document.querySelectorAll('.dish'));
+  var empty=document.getElementById('emptynote');
+  function apply(diet){
+    var shown=0;
+    dishes.forEach(function(d){
+      var tags=(d.getAttribute('data-diet')||'').split(/\s+/);
+      var on=diet==='all'||tags.indexOf(diet)>-1;
+      d.hidden=!on; if(on)shown++;
+    });
+    if(empty)empty.hidden=shown>0;
+  }
+  filts.forEach(function(f){
+    f.addEventListener('click',function(){
+      filts.forEach(function(x){x.setAttribute('aria-pressed',String(x===f))});
+      apply(f.dataset.diet);
+    });
+  });
+
+  var b=document.getElementById('burger'), dr=document.getElementById('dr');
+  b.addEventListener('click',function(){
+    var o=dr.hidden; dr.hidden=!o;
+    b.setAttribute('aria-expanded',String(o));
+    b.setAttribute('aria-label',o?'Close menu':'Open menu');
+  });
+  dr.addEventListener('click',function(e){if(e.target.closest('a')){dr.hidden=true;b.setAttribute('aria-expanded','false');}});
+  document.getElementById('yr').textContent=new Date().getFullYear();
+})();
+</script>
