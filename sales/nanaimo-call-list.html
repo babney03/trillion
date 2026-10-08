@@ -1,0 +1,222 @@
+<meta charset="utf-8">
+<title>Nanaimo Call List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@85..110,400;85..110,600;85..110,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+:root{
+  --paper:#F6F5F2; --card:#FFFFFF; --sunk:#ECEAE4;
+  --ink:#191B19; --ink-soft:#4F5551; --ink-faint:#656C67;
+  --rule:#DBD8D0;
+  --go:#1E6A4A; --go-wash:#E4F0EA;
+  --warn:#8A5A12; --warn-wash:#FAF1DF;
+  --cool:#2B5D78; --cool-wash:#E6EFF4;
+  --f-d:'Archivo',system-ui,sans-serif;
+  --f-b:'Source Serif 4',Georgia,serif;
+  --f-m:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --r:12px; --ease:cubic-bezier(.2,.7,.25,1);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#141614; --card:#1C201D; --sunk:#0E100F;
+    --ink:#EAECEA; --ink-soft:#A5ADA8; --ink-faint:#8C948F;
+    --rule:#2A302C;
+    --go:#6FC39A; --go-wash:#16261F;
+    --warn:#D9A95A; --warn-wash:#262016;
+    --cool:#78B2CE; --cool-wash:#17262E;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#141614; --card:#1C201D; --sunk:#0E100F;
+  --ink:#EAECEA; --ink-soft:#A5ADA8; --ink-faint:#8C948F;
+  --rule:#2A302C; --go:#6FC39A; --go-wash:#16261F;
+  --warn:#D9A95A; --warn-wash:#262016; --cool:#78B2CE; --cool-wash:#17262E;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-b);
+  font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:0 clamp(18px,4vw,34px)}
+h1,h2,h3{font-family:var(--f-d);font-weight:700;line-height:1.1;margin:0;letter-spacing:-.018em;text-wrap:balance}
+h1{font-size:clamp(2rem,1.4rem+2.8vw,3rem);font-stretch:105%}
+h2{font-size:clamp(1.25rem,1.1rem+.9vw,1.6rem)}
+h3{font-size:1.14rem;font-family:var(--f-d);font-weight:700}
+p{margin:0}
+a{color:var(--cool)}
+:focus-visible{outline:2.5px solid var(--cool);outline-offset:3px;border-radius:4px}
+
+header.top{padding:clamp(38px,6vw,70px) 0 26px}
+.kick{font-family:var(--f-m);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--go)}
+header.top p.sub{margin-top:16px;font-size:1.12rem;line-height:1.55;color:var(--ink-soft);max-width:64ch}
+
+.insight{background:var(--go-wash);border:1px solid color-mix(in srgb,var(--go) 34%,transparent);
+  border-radius:var(--r);padding:clamp(18px,2.6vw,26px);margin:28px 0 36px}
+.insight b{font-family:var(--f-d);font-weight:700;font-size:1.08rem;display:block;color:var(--ink)}
+.insight p{margin-top:10px;color:var(--ink-soft);font-size:.98rem;max-width:68ch}
+.insight p + p{margin-top:10px}
+
+hr{border:0;border-top:1px solid var(--rule);margin:0 0 30px}
+section{padding-bottom:34px}
+.secnum{font-family:var(--f-m);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-faint);display:block;margin-bottom:9px}
+
+.tier{font-family:var(--f-m);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-faint);margin:26px 0 12px;display:flex;align-items:center;gap:12px}
+.tier::after{content:"";flex:1;height:1px;background:var(--rule)}
+
+.biz{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);
+  padding:22px 22px;margin-bottom:14px}
+.biz__head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px}
+.biz__head h3{flex:1 1 auto}
+.rank{font-family:var(--f-m);font-size:.74rem;color:var(--ink-faint);flex:none}
+.what{font-size:.9rem;color:var(--ink-faint);margin-top:2px;flex-basis:100%}
+.meta{display:flex;flex-wrap:wrap;gap:7px;margin:13px 0}
+.chip{font-family:var(--f-m);font-size:.71rem;padding:4px 10px;border-radius:999px;
+  border:1px solid var(--rule);background:var(--sunk);color:var(--ink-soft);white-space:nowrap}
+.chip.rev{background:var(--go-wash);border-color:color-mix(in srgb,var(--go) 30%,transparent);color:var(--go)}
+.chip.site{background:var(--cool-wash);border-color:color-mix(in srgb,var(--cool) 30%,transparent);color:var(--cool)}
+.angle{border-left:3px solid var(--warn);background:var(--warn-wash);padding:12px 15px;
+  border-radius:0 8px 8px 0;margin-top:4px}
+.angle b{font-family:var(--f-d);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--warn);display:block;margin-bottom:5px}
+.angle p{font-size:.95rem;color:var(--ink-soft)}
+.check{margin-top:12px;font-size:.88rem;color:var(--ink-faint)}
+.check b{font-family:var(--f-d);font-weight:600;color:var(--ink-soft)}
+
+.note{border-left:3px solid var(--cool);background:var(--cool-wash);padding:16px 18px;
+  border-radius:0 var(--r) var(--r) 0;margin-top:20px}
+.note b{font-family:var(--f-d);font-weight:700}
+.note p{font-size:.94rem;color:var(--ink-soft);margin-top:7px}
+.note p + p{margin-top:9px}
+
+ol.steps{margin:16px 0 0;padding-left:1.2em;color:var(--ink-soft)}
+ol.steps li{margin-bottom:9px;font-size:.96rem}
+ol.steps b{color:var(--ink);font-family:var(--f-d);font-weight:600}
+
+footer.end{border-top:1px solid var(--rule);padding:24px 0 60px;font-size:.86rem;color:var(--ink-faint)}
+</style>
+
+<div class="wrap">
+
+<header class="top">
+  <span class="kick">Prospecting · Nanaimo BC</span>
+  <h1>Nanaimo call list</h1>
+  <p class="sub">Six businesses with real reviews and a findable weakness, pulled from public listings. Ranked by how sellable they look, not by how good they are.</p>
+</header>
+
+<div class="insight">
+  <b>The thing they all have in common — lead with this.</b>
+  <p>Every single business below has <em>conflicting opening hours across its listings</em>. COCO Café's own site says open seven days; Yelp says closed Mondays and Tuesdays. Shear Agony's hours differ between two directories, and so does its street address. Bodhi's Saturday hours vary by hours depending on which site you read.</p>
+  <p>That is not a cosmetic problem. A customer who drives to a bakery on a day a listing said it was open does not come back, and the owner never finds out why. It costs them money quietly, which is exactly the kind of thing an owner will sit still for ninety seconds to hear about.</p>
+  <p>It is also the thing you already solve better than anyone pitching them: a live open/closed panel reading from one schedule, plus correct opening-hours markup feeding Google. You have built it twice. It demos in five seconds on a phone.</p>
+</div>
+
+<hr>
+
+<section>
+  <span class="secnum">The list</span>
+
+  <div class="tier">Tier one — pitch these first</div>
+
+  <div class="biz">
+    <div class="biz__head"><h3>The Bee's Knees Café &amp; Catering</h3><span class="rank">01</span>
+      <span class="what">Café and catering business, Nanaimo</span></div>
+    <div class="meta">
+      <span class="chip rev">4.6 · 107 Tripadvisor</span><span class="chip rev">232 reviews elsewhere</span>
+      <span class="chip">(250) 591‑5250</span><span class="chip site">domain unclear</span>
+    </div>
+    <div class="angle"><b>Your opening line</b>
+      <p>Their web identity is scattered. Listings give two different domains for them — beeskneescafe.ca and beeskneesnanaimo.ca — ordering is pushed to a third-party site, and a similarly named Vancouver business is muddying their search results. A customer searching for them can land in three different places, one of which isn't them.</p></div>
+    <p class="check"><b>Also worth knowing:</b> they run catering alongside the café. That's a second revenue line that almost certainly isn't being sold properly online, and catering enquiries are worth far more per head than coffee.</p>
+  </div>
+
+  <div class="biz">
+    <div class="biz__head"><h3>Bodhi's Artisan Bakery</h3><span class="rank">02</span>
+      <span class="what">Bakery, 5299 Rutherford Rd</span></div>
+    <div class="meta">
+      <span class="chip rev">4.5 · 63 Tripadvisor</span><span class="chip rev">182 reviews elsewhere</span>
+      <span class="chip">(250) 585‑6015</span><span class="chip site">site unconfirmed</span>
+    </div>
+    <div class="angle"><b>Your opening line</b>
+      <p>Strong review count and I could not confirm they have a working website at all — a Tripadvisor link exists but no URL surfaced anywhere. Meanwhile their hours disagree across every single listing, and they're closed Sunday and Monday, which is exactly the kind of thing a customer gets wrong.</p></div>
+    <p class="check"><b>Check first:</b> whether they actually have a site. If they don't, this is the best prospect on the list and the pitch writes itself.</p>
+  </div>
+
+  <div class="tier">Tier two — good, slightly harder</div>
+
+  <div class="biz">
+    <div class="biz__head"><h3>Hearthstone Artisan Bakery</h3><span class="rank">03</span>
+      <span class="what">Bakery, 50 Tenth Street</span></div>
+    <div class="meta">
+      <span class="chip rev">4.6 · 37 Tripadvisor</span>
+      <span class="chip">(250) 591‑9944</span><span class="chip site">hearthstonebakery.ca</span>
+    </div>
+    <div class="angle"><b>Your opening line</b>
+      <p>Custom orders are booked two to three weeks out <em>by phone only</em>. For a small bakery that is hours a week of someone standing at a counter taking orders by hand. Their Facebook also points at a separate Square site, so there are two parallel web presences competing.</p></div>
+    <p class="check"><b>Angle:</b> not "new website" — an order form that takes the custom-cake details once, properly, instead of a phone call.</p>
+  </div>
+
+  <div class="biz">
+    <div class="biz__head"><h3>Shear Agony Barber Shop</h3><span class="rank">04</span>
+      <span class="what">Barbershop, 1150 Estevan Road</span></div>
+    <div class="meta">
+      <span class="chip rev">5.0 · 168 on Fresha</span><span class="chip rev">149 reviews elsewhere</span>
+      <span class="chip">(250) 716‑1967</span><span class="chip site">shearagonybarbershop.com</span>
+    </div>
+    <div class="angle"><b>Your opening line</b>
+      <p>Directories disagree on their <em>address</em> — Estevan Road in some, Terminal Avenue North in others — as well as their hours. For a walk-in barbershop, being hard to find is the whole problem. One listing also says first-time clients need a phone consultation before they can book, which is friction a booking page removes.</p></div>
+    <p class="check"><b>Note:</b> reviews are excellent and overwhelmingly about one barber by name. People-led businesses sell well on a site with faces on it.</p>
+  </div>
+
+  <div class="tier">Tier three — worth a look, lower odds</div>
+
+  <div class="biz">
+    <div class="biz__head"><h3>COCO Café</h3><span class="rank">05</span>
+      <span class="what">Café, Cedar Road — plus a food truck at Port Way</span></div>
+    <div class="meta">
+      <span class="chip rev">4.7 · 138 Tripadvisor</span><span class="chip rev">202 reviews elsewhere</span>
+      <span class="chip">(250) 323‑2223</span><span class="chip site">cococafe.ca</span>
+    </div>
+    <div class="angle"><b>Your opening line</b>
+      <p>The sharpest single example on this list: their own site says open seven days a week, Yelp says closed Mondays and Tuesdays. Someone checking Yelp is being told they're shut on days they're open. They also run a second location as a food truck, which is a real content problem most small sites handle badly.</p></div>
+    <p class="check"><b>Harder sell:</b> they already have a working site with a proper contact page, so this is a fix-and-improve pitch, not a replacement.</p>
+  </div>
+
+  <div class="biz">
+    <div class="biz__head"><h3>Accents Hair Studio</h3><span class="rank">06</span>
+      <span class="what">Hair salon, 2‑1451 Estevan Rd</span></div>
+    <div class="meta">
+      <span class="chip rev">5.0 · ~1,197 on Fresha</span>
+      <span class="chip">(250) 754‑6777</span><span class="chip site">accentshairstudio.ca</span>
+    </div>
+    <div class="angle"><b>Your opening line</b>
+      <p>By far the largest review count I found in Nanaimo — close to twelve hundred. But they already have a website <em>and</em> working Fresha booking, so there is no obvious hole. Listed because that much social proof is worth a look in person, not because the pitch is easy.</p></div>
+    <p class="check"><b>Realistic:</b> lowest odds on the list. Don't spend your first week here.</p>
+  </div>
+</section>
+
+<hr>
+
+<section>
+  <span class="secnum">Before you contact anyone</span>
+  <h2>Ten minutes that stops you looking foolish</h2>
+  <ol class="steps">
+    <li><b>Open their website on your phone.</b> I could not — my connection blocks outbound traffic, so every judgement above about their site is inference from listings, not a review. This is the one step you cannot skip.</li>
+    <li><b>Check their Google listing against their own site.</b> Where the hours disagree, screenshot both. That screenshot is your entire pitch and it takes thirty seconds.</li>
+    <li><b>Find the owner's name.</b> About page, Facebook, or the Google listing. "Hi there" halves your reply rate.</li>
+    <li><b>Confirm the numbers.</b> Review counts above come from Tripadvisor, Yelp, Fresha and aggregator sites — different platforms, not comparable, and some are stale. Quote Google's figure, not mine.</li>
+    <li><b>Build the site before you write.</b> The whole approach depends on having something finished to hand over.</li>
+  </ol>
+
+  <div class="note">
+    <b>What I could not verify</b>
+    <p>I have not seen any of these websites. Outbound traffic from my environment is blocked — I tested a known-good address as a control and it failed identically — so everything here comes from search listings and directory data.</p>
+    <p>That cuts both ways. The hours and addresses I'm citing as inconsistent are themselves from those directories, so some may simply be out of date rather than wrong on the business's end. Verify before you put any of it in an email. Being corrected on a fact in your opening line costs you the meeting.</p>
+  </div>
+</section>
+
+<footer class="end">
+  Six names, four of them worth a real attempt. Work top-down, three messages per business, then stop.
+</footer>
+
+</div>
