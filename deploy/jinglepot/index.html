@@ -1,0 +1,732 @@
+<meta charset="utf-8">
+<title>Jinglepot Landscaping &amp; Irrigation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Source+Sans+3:ital,wght@0,300..700;1,400&display=swap">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LandscapingBusiness",
+"name":"Jinglepot Landscaping & Irrigation","foundingDate":"2016",
+"address":{"@type":"PostalAddress","streetAddress":"3721 Belaire Dr","addressLocality":"Nanaimo","addressRegion":"BC","postalCode":"V9T 5A1","addressCountry":"CA"},
+"telephone":"(250) 734-3949","url":"https://www.jinglepotlandscaping.com/","priceRange":"$$",
+"areaServed":[{"@type":"City","name":"Nanaimo"},{"@type":"Place","name":"Cedar"},{"@type":"Place","name":"Lantzville"}],
+"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"34"}}
+</script>
+
+<style>
+/* ══════════════════════════════════════════════════════════════════
+   JINGLEPOT LANDSCAPING & IRRIGATION — concept proposal
+   Coastal Vancouver Island: deep water blue leads (irrigation is in the
+   name, and every competitor uses green), leaf green second, sunlit gold
+   for anything you click. Rounded, roomy, warm.
+   ══════════════════════════════════════════════════════════════════ */
+:root{
+  --paper:#F5F2EA; --card:#FFFFFF; --sunk:#EBE7DC;
+  --ink:#172220; --ink-soft:#4F5A56; --ink-faint:#5C655F;
+  --rule:#DCD7C9;
+  --deep:#103A4A; --deep-2:#175A70; --on-deep:#EEF4F3; --on-deep-soft:#C3D2D4;
+  --water:#2E8FA8; --water-soft:#7FB9C7;
+  --leaf:#6E9B56;
+  --sun:#D39429; --sun-lift:#E5A63C; --sun-text:#8A5D12;
+  --shade:16 34 40;
+  --f-d:'Outfit',system-ui,sans-serif;
+  --f-b:'Source Sans 3',system-ui,-apple-system,sans-serif;
+  --page:1160px; --gut:clamp(18px,4vw,38px); --sec:clamp(56px,7vw,100px);
+  --r:16px; --r-lg:26px; --r-sm:12px;
+  --ease:cubic-bezier(.2,.7,.25,1);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#101917; --card:#182321; --sunk:#0B1211;
+    --ink:#EAEEEB; --ink-soft:#A2ADA8; --ink-faint:#8E9994;
+    --rule:#28332F;
+    --deep:#0B1E26; --deep-2:#123D4C; --on-deep:#EAEEEB; --on-deep-soft:#AFC0C4;
+    --water:#5FB6CC; --water-soft:#8ECBD8;
+    --leaf:#8FB878;
+    --sun:#E5A63C; --sun-lift:#F0B44E; --sun-text:#E8B65C;
+    --shade:0 0 0;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#101917; --card:#182321; --sunk:#0B1211;
+  --ink:#EAEEEB; --ink-soft:#A2ADA8; --ink-faint:#8E9994;
+  --rule:#28332F;
+  --deep:#0B1E26; --deep-2:#123D4C; --on-deep:#EAEEEB; --on-deep-soft:#AFC0C4;
+  --water:#5FB6CC; --water-soft:#8ECBD8; --leaf:#8FB878;
+  --sun:#E5A63C; --sun-lift:#F0B44E; --sun-text:#E8B65C;
+  --shade:0 0 0;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--f-b);font-size:17.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--f-d);font-weight:700;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.022em}
+h1{font-size:clamp(2.4rem,1.3rem+4.4vw,4rem);font-weight:800}
+h2{font-size:clamp(1.75rem,1.2rem+2.2vw,2.7rem)}
+h3{font-size:1.2rem;line-height:1.2}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+:focus-visible{outline:2.5px solid var(--water);outline-offset:3px;border-radius:6px}
+::selection{background:var(--sun);color:#1A1206}
+
+.wrap{max-width:var(--page);margin:0 auto;padding:0 var(--gut)}
+.sec{padding:var(--sec) 0}
+.lede{font-size:clamp(1.05rem,.99rem+.36vw,1.22rem);line-height:1.58;color:var(--ink-soft);max-width:58ch}
+.label{display:inline-block;font-family:var(--f-d);font-size:.72rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--sun-text)}
+.head{max-width:58ch;margin-bottom:36px}
+.head--mid{margin-inline:auto;text-align:center;max-width:60ch}
+.head h2{margin:12px 0 14px}
+
+/* proposal strip — DELETE if this ever becomes their live site */
+.proposal{background:var(--deep);color:var(--on-deep);font-size:.76rem;text-align:center;padding:9px 16px;line-height:1.45}
+.proposal b{color:var(--sun-lift)}
+
+/* header */
+.bar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(13px);border-bottom:1px solid var(--rule)}
+.nav{display:flex;align-items:center;gap:20px;min-height:72px}
+.mark{margin-right:auto;display:flex;align-items:center;gap:11px;min-height:44px}
+.mark svg{width:32px;height:32px;color:var(--deep-2);flex:none}
+.mark .n{font-family:var(--f-d);font-weight:800;font-size:1.1rem;letter-spacing:-.02em;line-height:1.05}
+.mark small{display:block;font-size:.62rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-faint);margin-top:3px;font-family:var(--f-d)}
+.links{display:none;gap:22px}
+.links a{font-family:var(--f-d);font-size:.91rem;font-weight:600;color:var(--ink-soft);
+  white-space:nowrap;padding:6px 0;border-bottom:2px solid transparent}
+.links a:hover{color:var(--ink);border-bottom-color:var(--sun)}
+.navend{display:none;align-items:center;gap:13px;white-space:nowrap}
+@media(min-width:1060px){.links,.navend{display:flex}}
+.burger{margin-left:auto;width:44px;height:44px;display:grid;place-items:center;
+  border:1px solid var(--rule);border-radius:var(--r-sm);background:var(--card);color:var(--ink)}
+.drawer{display:grid;padding:6px 0 18px;border-top:1px solid var(--rule)}
+.drawer[hidden]{display:none}
+.drawer a{padding:14px 2px;font-weight:600;border-bottom:1px solid var(--rule);min-height:44px;display:flex;align-items:center}
+@media(min-width:1060px){.drawer{display:none!important}.burger{display:none}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:14px 26px;min-height:48px;border:1.5px solid transparent;border-radius:999px;cursor:pointer;
+  font-family:var(--f-d);font-weight:700;font-size:.95rem;
+  background:var(--sun);color:#1C1305;
+  transition:transform 150ms var(--ease),background-color 150ms var(--ease),box-shadow 200ms var(--ease);
+  box-shadow:0 5px 18px rgb(var(--shade)/.16)}
+.btn:hover{background:var(--sun-lift);transform:translateY(-2px);box-shadow:0 10px 26px rgb(var(--shade)/.22)}
+.btn:active{transform:translateY(0) scale(.975)}
+.btn--out{background:transparent;color:var(--ink);border-color:var(--rule);box-shadow:none}
+.btn--out:hover{background:var(--card);border-color:var(--ink-faint)}
+.btn--deep{background:var(--deep-2);color:var(--on-deep)}
+.btn--deep:hover{background:var(--deep)}
+.btn--sm{padding:10px 18px;min-height:44px;font-size:.86rem}
+.btn--wide{width:100%}
+.btn svg{width:17px;height:17px;flex:none}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:clamp(36px,5vw,68px) 0 var(--sec)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(58% 52% at 8% -6%,color-mix(in srgb,var(--water) 26%,transparent),transparent 64%),
+             radial-gradient(46% 42% at 98% 4%,color-mix(in srgb,var(--leaf) 22%,transparent),transparent 62%)}
+.hero__top{display:grid;gap:34px}
+@media(min-width:980px){.hero__top{grid-template-columns:1.04fr .96fr;gap:52px;align-items:center}}
+.hero h1{margin:16px 0 20px;max-width:17ch}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.trustline{display:flex;flex-wrap:wrap;gap:9px 20px;margin-top:26px;font-size:.89rem;color:var(--ink-soft)}
+.trustline span{display:inline-flex;align-items:center;gap:7px}
+.trustline svg{width:16px;height:16px;color:var(--leaf);flex:none}
+
+.shot{margin:0;min-height:300px;border-radius:var(--r-lg);display:grid;place-content:center;
+  text-align:center;gap:7px;padding:18px;border:1.5px dashed color-mix(in srgb,var(--ink-faint) 42%,transparent);
+  background:linear-gradient(152deg,color-mix(in srgb,var(--water-soft) 46%,var(--sunk)),var(--sunk))}
+.shot--hero{min-height:clamp(280px,34vw,410px)}
+.shot b{font-family:var(--f-d);font-weight:700;font-size:1.02rem}
+.shot span{font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* three lanes */
+.lanes{display:grid;gap:18px;margin-top:44px}
+@media(min-width:900px){.lanes{grid-template-columns:repeat(3,1fr)}}
+.lane{display:flex;flex-direction:column;gap:12px;padding:30px 28px;border-radius:var(--r-lg);
+  background:var(--card);border:1px solid var(--rule);
+  transition:transform 210ms var(--ease),box-shadow 210ms var(--ease),border-color 210ms var(--ease)}
+.lane:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgb(var(--shade)/.12);border-color:var(--water-soft)}
+.lane--water{background:var(--deep);color:var(--on-deep);
+  border-color:color-mix(in srgb,var(--water) 52%,transparent)}
+.lane__ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;
+  background:color-mix(in srgb,var(--water) 16%,transparent);color:var(--deep-2)}
+.lane--water .lane__ico{background:color-mix(in srgb,var(--on-deep) 12%,transparent);color:var(--sun-lift)}
+.lane__ico svg{width:23px;height:23px}
+.lane h3{font-size:1.32rem}
+.lane p{font-size:.95rem;color:var(--ink-soft);line-height:1.55}
+.lane ul{list-style:none;padding:0;margin:2px 0 0;display:grid;gap:8px;font-size:.92rem;color:var(--ink-soft)}
+.lane li{display:flex;gap:9px;align-items:flex-start}
+.lane li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--leaf);margin-top:8px;flex:none}
+/* water-lane overrides sit AFTER the base .lane rules so they actually win */
+.lane.lane--water p,.lane.lane--water ul,.lane.lane--water li{color:var(--on-deep-soft)}
+.lane.lane--water h3{color:var(--on-deep)}
+.lane.lane--water .label{color:var(--sun-lift)}
+/* dark mode flattens the three lanes to one tone; keep irrigation the focal one */
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .lane--water{
+    background:linear-gradient(158deg,var(--deep-2),var(--deep))}
+}
+:root[data-theme="dark"] .lane--water{
+  background:linear-gradient(158deg,var(--deep-2),var(--deep))}
+.lane .btn{margin-top:auto;align-self:flex-start}
+
+/* stats */
+.strip{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;padding:32px 0;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+@media(min-width:820px){.strip{grid-template-columns:repeat(4,1fr)}}
+.stat b{display:block;font-family:var(--f-d);font-weight:800;font-size:2rem;line-height:1;color:var(--deep-2)}
+.stat span{display:block;margin-top:7px;font-size:.74rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-faint)}
+
+/* straight-talk pricing */
+.plain{display:grid;gap:16px}
+@media(min-width:760px){.plain{grid-template-columns:repeat(3,1fr)}}
+.plain div{background:var(--card);border:1px solid var(--rule);border-radius:var(--r-lg);padding:26px 24px}
+.plain b{display:block;font-family:var(--f-d);font-weight:700;font-size:1.08rem;margin-bottom:7px}
+.plain p{font-size:.93rem;color:var(--ink-soft);line-height:1.55}
+
+/* seasons */
+.seasons{border:1px solid var(--rule);border-radius:var(--r-lg);overflow:hidden;background:var(--card)}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);background:var(--sunk)}
+.tab{padding:17px 8px;border:0;background:transparent;cursor:pointer;font-family:var(--f-d);
+  font-weight:700;font-size:.86rem;color:var(--ink-soft);border-bottom:3px solid transparent;min-height:48px;
+  transition:color 160ms var(--ease),border-color 160ms var(--ease),background-color 160ms var(--ease)}
+.tab:hover{color:var(--ink);background:color-mix(in srgb,var(--water) 12%,transparent)}
+.tab[aria-selected="true"]{background:var(--card);color:var(--ink);border-bottom-color:var(--sun)}
+.panel{padding:clamp(22px,3.4vw,38px)}
+.panel[hidden]{display:none}
+.panel .mo{font-size:.74rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--sun-text)}
+.panel h3{margin:10px 0 12px;font-size:1.5rem}
+.panel p{color:var(--ink-soft);max-width:62ch}
+.panel ul{margin:20px 0 0;padding:0;list-style:none;display:grid;gap:11px}
+@media(min-width:700px){.panel ul{grid-template-columns:1fr 1fr;gap:11px 28px}}
+.panel li{display:flex;gap:10px;font-size:.94rem;align-items:flex-start}
+.panel li svg{width:18px;height:18px;color:var(--leaf);flex:none;margin-top:4px}
+
+/* gallery */
+.gal{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:820px){.gal{grid-template-columns:repeat(4,1fr);grid-auto-rows:176px}
+  .gal figure:nth-child(1){grid-column:span 2;grid-row:span 2}
+  .gal figure:nth-child(6){grid-column:span 4}}
+.gal figure{min-height:150px;border-radius:var(--r)}
+
+/* reviews */
+.revs{display:grid;gap:16px}
+@media(min-width:760px){.revs{grid-template-columns:repeat(3,1fr)}}
+.rev{position:relative;background:var(--card);border:1px solid var(--rule);border-radius:var(--r-lg);
+  padding:28px 26px;display:flex;flex-direction:column;gap:13px}
+.rev .tagx{position:absolute;top:14px;right:14px;font-size:.6rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);border-radius:999px;
+  padding:3px 9px;background:var(--paper)}
+.stars{display:inline-flex;gap:2px;color:var(--sun)}
+.stars svg{width:16px;height:16px;fill:currentColor}
+.rev p{font-size:1rem;line-height:1.5}
+.rev footer{margin-top:auto;display:flex;align-items:center;gap:11px}
+.rev .av{width:37px;height:37px;border-radius:50%;display:grid;place-items:center;flex:none;
+  background:var(--deep-2);color:var(--on-deep);font-weight:700;font-size:.8rem}
+.rev cite{font-style:normal;font-weight:700;font-size:.9rem;display:block;line-height:1.25;font-family:var(--f-d)}
+.rev small{font-size:.74rem;color:var(--ink-faint)}
+
+/* area */
+.area{background:var(--deep);color:var(--on-deep);border-radius:var(--r-lg);
+  padding:clamp(26px,4vw,52px);display:grid;gap:30px}
+@media(min-width:880px){.area{grid-template-columns:1fr 1fr;gap:52px;align-items:center}}
+.area .lede{color:var(--on-deep-soft)}
+.area .label{color:var(--sun-lift)}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+.chip{padding:9px 17px;border-radius:999px;font-size:.89rem;font-weight:600;
+  background:color-mix(in srgb,var(--on-deep) 10%,transparent);
+  border:1px solid color-mix(in srgb,var(--on-deep) 18%,transparent)}
+.chip--out{opacity:.72;border-style:dashed}
+.mapslot{min-height:250px;border-radius:var(--r);display:grid;place-content:center;gap:6px;text-align:center;
+  border:1.5px dashed color-mix(in srgb,var(--on-deep) 28%,transparent);
+  background-image:repeating-linear-gradient(0deg,rgb(238 244 243/.055) 0 1px,transparent 1px 38px),
+    repeating-linear-gradient(90deg,rgb(238 244 243/.055) 0 1px,transparent 1px 38px)}
+.mapslot b{font-family:var(--f-d);font-weight:700}
+.mapslot span{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+
+/* faq */
+.faq{display:grid;gap:11px;max-width:820px}
+.faq details{border:1px solid var(--rule);border-radius:var(--r);background:var(--card);overflow:hidden}
+.faq details[open]{border-color:var(--water-soft)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 24px;display:flex;align-items:center;gap:16px;
+  font-family:var(--f-d);font-weight:600;font-size:1.06rem;min-height:48px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";margin-left:auto;width:13px;height:13px;flex:none;
+  border-right:2.5px solid var(--sun);border-bottom:2.5px solid var(--sun);
+  transform:rotate(45deg) translate(-3px,-3px);transition:transform 220ms var(--ease)}
+.faq details[open] summary::after{transform:rotate(225deg) translate(-2px,-2px)}
+.faq .ans{padding:0 24px 20px;color:var(--ink-soft);font-size:.96rem;max-width:66ch}
+
+/* quote */
+.quote{display:grid;gap:34px}
+@media(min-width:900px){.quote{grid-template-columns:.9fr 1.1fr;gap:52px;align-items:start}}
+.form{background:var(--card);border:1px solid var(--rule);border-radius:var(--r-lg);
+  padding:clamp(22px,3vw,34px);display:grid;gap:15px}
+.row{display:grid;gap:15px}
+@media(min-width:560px){.row{grid-template-columns:1fr 1fr}}
+.f{display:grid;gap:6px}
+.f label{font-family:var(--f-d);font-size:.82rem;font-weight:600;color:var(--ink-soft)}
+.f input,.f select,.f textarea{padding:13px 15px;border:1.5px solid var(--rule);border-radius:var(--r-sm);
+  background:var(--paper);color:var(--ink);font-family:var(--f-b);font-size:.98rem}
+.f textarea{min-height:108px;resize:vertical}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--water);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--water) 26%,transparent)}
+.fine{font-size:.8rem;color:var(--ink-faint)}
+.okmsg{font-size:.93rem;font-weight:700;color:var(--leaf)}
+.okmsg[hidden]{display:none}
+.info{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:18px}
+.info li{display:flex;gap:13px;align-items:flex-start}
+.info svg{width:20px;height:20px;color:var(--water);flex:none;margin-top:3px}
+.info b{display:block;font-family:var(--f-d);font-size:.92rem}
+.info a,.info span.v{font-size:.94rem;color:var(--ink-soft);min-height:44px;display:inline-flex;align-items:center}
+
+/* footer */
+footer.site{background:var(--deep);color:var(--on-deep);padding:50px 0 28px;margin-top:var(--sec)}
+.fgrid{display:grid;gap:28px}
+@media(min-width:800px){.fgrid{grid-template-columns:1.6fr 1fr 1fr}}
+footer.site h4{font-family:var(--f-d);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+  color:color-mix(in srgb,var(--on-deep) 60%,transparent);margin:0 0 12px}
+footer.site ul{list-style:none;padding:0;margin:0;display:grid}
+footer.site ul a{font-size:.92rem;color:color-mix(in srgb,var(--on-deep) 80%,transparent);
+  min-height:44px;display:inline-flex;align-items:center}
+footer.site ul a:hover{color:var(--sun-lift)}
+footer.site .mark svg{color:var(--water-soft)}
+footer.site .mark small{color:color-mix(in srgb,var(--on-deep) 58%,transparent)}
+.fbot{margin-top:30px;padding-top:18px;border-top:1px solid color-mix(in srgb,var(--on-deep) 16%,transparent);
+  display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-size:.76rem;
+  color:color-mix(in srgb,var(--on-deep) 60%,transparent)}
+
+/* sticky mobile bar */
+.callbar{position:fixed;inset-inline:0;bottom:0;z-index:60;display:grid;grid-template-columns:1fr 1fr;gap:8px;
+  padding:9px 12px calc(9px + env(safe-area-inset-bottom));
+  background:color-mix(in srgb,var(--paper) 93%,transparent);backdrop-filter:blur(12px);
+  border-top:1px solid var(--rule)}
+.callbar .btn{padding:12px;font-size:.88rem;box-shadow:none}
+@media(min-width:1060px){.callbar{display:none}}
+@media(max-width:1059px){body{padding-bottom:76px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<!-- PROPOSAL STRIP — this is a pitch piece, not their live site -->
+<div class="proposal">Concept proposal for <b>Jinglepot Landscaping &amp; Irrigation</b> · built from public information · photos, reviews and hours to be supplied by the owners</div>
+
+<header class="bar">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="mark" href="#top">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M16 29V15"/><path d="M16 19c-4.3 0-7.5-2.8-7.5-6.9 0-3.2 2.6-6 7.5-9.1 4.9 3.1 7.5 5.9 7.5 9.1 0 4.1-3.2 6.9-7.5 6.9Z"/>
+          <path d="M7 26c1.8-1.6 3.6-1.6 5.4 0M19.6 26c1.8-1.6 3.6-1.6 5.4 0"/>
+        </svg>
+        <span class="n">Jinglepot<small>Landscaping &amp; Irrigation</small></span>
+      </a>
+      <div class="links">
+        <a href="#build">Design &amp; build</a><a href="#irrigation">Irrigation</a>
+        <a href="#care">Garden care</a><a href="#work">Our work</a><a href="#area">Service area</a><a href="#faq">FAQ</a>
+      </div>
+      <div class="navend">
+        <a class="btn btn--sm btn--out" href="tel:+12507343949">(250) 734‑3949</a>
+        <a class="btn btn--sm" href="#quote">Get a quote</a>
+      </div>
+      <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="dr" aria-label="Open menu">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+    <div class="drawer" id="dr" hidden>
+      <a href="#build">Design &amp; build</a><a href="#irrigation">Irrigation</a>
+      <a href="#care">Garden care</a><a href="#work">Our work</a><a href="#area">Service area</a><a href="#faq">FAQ</a>
+      <a class="btn btn--wide" style="margin-top:14px" href="tel:+12507343949">Call (250) 734‑3949</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero__top">
+      <div>
+        <span class="label">Nanaimo · Cedar · Lantzville · since 2016</span>
+        <h1>A garden that looks good, and a system that keeps it alive.</h1>
+        <p class="lede">Josie and Finn grew up on Vancouver Island and have run Jinglepot since 2016. We design and build gardens, and we install and repair the irrigation that carries them through a dry Island summer.</p>
+
+        <div class="hero__cta">
+          <a class="btn" href="#quote">Get a free quote
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn--out" href="tel:+12507343949">(250) 734‑3949</a>
+        </div>
+
+        <div class="trustline">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>4.9 stars from 34 reviews</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Family run, not a franchise</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Free quotes in Nanaimo</span>
+        </div>
+      </div>
+      <figure class="shot shot--hero"><b>Hero photo</b><span>best finished garden · wide · late light</span></figure>
+    </div>
+
+    <div class="lanes">
+      <div class="lane" id="build">
+        <span class="lane__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg></span>
+        <span class="label">Design &amp; build</span>
+        <h3>Build something new</h3>
+        <p>Drawn, priced and installed by us. Patios, walls, planting plans and full garden rebuilds.</p>
+        <ul>
+          <li>Paver and flagstone patios, paths and steps</li>
+          <li>Retaining walls, regrading and drainage</li>
+          <li>Garden design and planting</li>
+          <li>Mulching, seeding and new lawns</li>
+        </ul>
+        <a class="btn btn--deep" href="#quote">Start a project</a>
+      </div>
+
+      <div class="lane lane--water" id="irrigation">
+        <span class="lane__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.6c3.6 4.2 6.2 7.2 6.2 10.3a6.2 6.2 0 0 1-12.4 0c0-3.1 2.6-6.1 6.2-10.3Z"/><path d="M9.4 13.4a2.6 2.6 0 0 0 2.6 2.6"/></svg></span>
+        <span class="label">Irrigation</span>
+        <h3>Keep it alive</h3>
+        <p>It's in our name for a reason. Island summers are drier than people expect, and a good system pays for itself in plants you don't replace.</p>
+        <ul>
+          <li>Full system design and installation</li>
+          <li>Drip irrigation for beds and hedges</li>
+          <li>Repairs, leaks and controller problems</li>
+          <li>Spring start-ups and fall blow-outs</li>
+        </ul>
+        <a class="btn" href="#quote">Ask about irrigation</a>
+      </div>
+
+      <div class="lane" id="care">
+        <span class="lane__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4c0 9-5.4 13.6-11 13.6A5 5 0 0 1 4 12.6C4 7 8.6 4 20 4Z"/><path d="M4.5 20C7 15 11 11.6 16 9.5"/></svg></span>
+        <span class="label">Garden care</span>
+        <h3>Keep it tidy</h3>
+        <p>Maintenance for gardens that deserve it — including the ones we built.</p>
+        <ul>
+          <li>Garden and bed maintenance</li>
+          <li>Hedge trimming and shaping</li>
+          <li>Tree trimming and removal</li>
+          <li>Weed control and seasonal tidy-ups</li>
+        </ul>
+        <a class="btn btn--deep" href="#quote">Ask about upkeep</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="strip">
+    <div class="stat"><b>2016</b><span>Family run since</span></div>
+    <div class="stat"><b>4.9★</b><span>From 34 reviews</span></div>
+    <div class="stat"><b>3</b><span>Communities served</span></div>
+    <div class="stat"><b>Free</b><span>Quotes within Nanaimo</span></div>
+  </div>
+</div>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="head head--mid">
+      <span class="label">No surprises</span>
+      <h2>What it costs, said up front</h2>
+      <p class="lede">Most landscapers make you phone to find out whether you're even a fit. We'd rather you knew now.</p>
+    </div>
+    <div class="plain">
+      <div><b>$2,000 project minimum</b><p>For landscaping work. It keeps the schedule on real projects and keeps our pricing honest for the people who book them.</p></div>
+      <div><b>Free quotes in Nanaimo</b><p>For landscaping and complete irrigation installations inside town. No charge, no obligation, no sales visit dressed up as a consultation.</p></div>
+      <div><b>$100 outside the area</b><p>More than fifteen minutes from our base near North Jinglepot, quotes carry a $100 fee. Ladysmith, Qualicum, Parksville and Gabriola — ask us first.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--sunk)">
+  <div class="wrap">
+    <div class="head head--mid">
+      <span class="label">The Island year</span>
+      <h2>What your garden needs, and when</h2>
+      <p class="lede">Wet winters, a genuinely dry summer, and a narrow window for the work that matters. Here's how the year runs.</p>
+    </div>
+
+    <div class="seasons">
+      <div class="tabs" role="tablist" aria-label="Season">
+        <button class="tab" role="tab" id="t1" aria-controls="p1" aria-selected="true">Spring</button>
+        <button class="tab" role="tab" id="t2" aria-controls="p2" aria-selected="false">Summer</button>
+        <button class="tab" role="tab" id="t3" aria-controls="p3" aria-selected="false">Fall</button>
+        <button class="tab" role="tab" id="t4" aria-controls="p4" aria-selected="false">Winter</button>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1">
+        <span class="mo">March – May</span>
+        <h3>Turn the water back on before you need it</h3>
+        <p>Everything wakes at once here. The jobs this season are about getting irrigation tested while a fault is still cheap to fix, and getting beds under control before growth outruns you.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Irrigation start-up: charge the system, check every head</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Bed clean-up, fresh edges and the first mulch</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Moss treatment, seeding and lawn repair</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Planting, while the ground still holds moisture</li>
+        </ul>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+        <span class="mo">June – August</span>
+        <h3>The dry stretch people underestimate</h3>
+        <p>Island summers get genuinely dry, and watering restrictions arrive right when plants need it most. A properly zoned system uses less water than a hose and keeps new planting alive.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Controller scheduling around watering restrictions</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Drip conversion for beds and hedges — less waste</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Hedge trimming and shaping</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Best window for patios and walls — dry ground</li>
+        </ul>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+        <span class="mo">September – November</span>
+        <h3>Blow the lines out before the first freeze</h3>
+        <p>The busiest weeks of our year. Water left in a line splits it, and you won't find out until spring. Fall is also the best planting window on the coast — roots establish all winter.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Irrigation blow-outs and winterizing — book early</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Best planting window of the year</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Leaf clearing and seasonal tidy-ups</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Drainage fixes while you can see where water sits</li>
+        </ul>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p4" aria-labelledby="t4" hidden>
+        <span class="mo">December – February</span>
+        <h3>Quiet season, and the right time to plan</h3>
+        <p>Mild and wet rather than frozen, so structural work carries on. Design drawn now gets built first thing in spring, ahead of the queue.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Design and planning for spring builds</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Dormant pruning and tree work</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Storm damage and blocked drains</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Hardscape work — ground handles it fine</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="head head--mid">
+      <span class="label">Recent work</span>
+      <h2>Gardens we've built on the Island</h2>
+      <p class="lede">Photo slots, each captioned for the shot that sells the job. Jinglepot already has plenty of project photos — these get swapped in.</p>
+    </div>
+    <div class="gal">
+      <figure class="shot"><b>Hero project</b><span>finished garden · wide</span></figure>
+      <figure class="shot"><b>Before / after</b><span>same angle, both stages</span></figure>
+      <figure class="shot"><b>Paver patio</b><span>detail · laying pattern</span></figure>
+      <figure class="shot"><b>Irrigation install</b><span>trench open · heads in</span></figure>
+      <figure class="shot"><b>Planting</b><span>close · texture</span></figure>
+      <figure class="shot"><b>Josie &amp; Finn on site</b><span>faces sell a family business</span></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--sunk)">
+  <div class="wrap">
+    <div class="head head--mid">
+      <span class="label">What clients say</span>
+      <h2>4.9 stars from 34 reviews</h2>
+      <p class="lede">Left as placeholders on purpose. The right fix is a live Google reviews feed so the page updates itself — and nothing here is ever put in a customer's mouth.</p>
+    </div>
+    <div class="revs">
+      <div class="rev">
+        <span class="tagx">Placeholder</span>
+        <span class="stars" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg></span>
+        <p>A real Google review goes here, word for word. The strongest ones name the problem and how it was handled.</p>
+        <footer><span class="av">—</span><span><cite>Customer name</cite><small>Google review</small></span></footer>
+      </div>
+      <div class="rev">
+        <span class="tagx">Placeholder</span>
+        <span class="stars" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg></span>
+        <p>Aim for a spread: one irrigation job, one full build, one that mentions Josie or Finn by name.</p>
+        <footer><span class="av">—</span><span><cite>Customer name</cite><small>Google review</small></span></footer>
+      </div>
+      <div class="rev">
+        <span class="tagx">Placeholder</span>
+        <span class="stars" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg></span>
+        <p>The 4.9 and the count above should be confirmed against their live Google profile before this goes anywhere.</p>
+        <footer><span class="av">—</span><span><cite>Customer name</cite><small>Google review</small></span></footer>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="area">
+  <div class="wrap">
+    <div class="area">
+      <div>
+        <span class="label">Where we work</span>
+        <h2 style="margin:13px 0 15px">Nanaimo, Cedar and Lantzville</h2>
+        <p class="lede">We keep the route tight so crews turn up when we said we would. Outside that, ask — we'll give you a straight answer rather than a maybe.</p>
+        <div class="chips">
+          <span class="chip">Nanaimo</span><span class="chip">Cedar</span><span class="chip">Lantzville</span>
+          <span class="chip chip--out">Ladysmith — ask</span><span class="chip chip--out">Parksville — ask</span>
+          <span class="chip chip--out">Qualicum — ask</span><span class="chip chip--out">Gabriola — ask</span>
+        </div>
+        <p class="lede" style="margin-top:20px;font-size:.92rem">Quotes more than fifteen minutes outside our base near North Jinglepot carry a $100 fee.</p>
+      </div>
+      <div class="mapslot"><b>Google Maps embed</b><span>service area</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="head head--mid">
+      <span class="label">Before you call</span>
+      <h2>Straight answers</h2>
+    </div>
+    <div class="faq" style="margin-inline:auto">
+      <details open>
+        <summary>Is there a minimum project size?</summary>
+        <div class="ans">Yes — $2,000 for landscaping projects. It means we can schedule properly and price fairly for the work we do take on. Irrigation repairs and smaller garden care jobs are handled separately, so ask.</div>
+      </details>
+      <details>
+        <summary>Do you charge for quotes?</summary>
+        <div class="ans">Not inside Nanaimo, for landscaping or complete irrigation installations. More than fifteen minutes outside our base near North Jinglepot there's a $100 fee, and for Ladysmith, Qualicum, Parksville or Gabriola it's worth asking before you book.</div>
+      </details>
+      <details>
+        <summary>Do I really need irrigation on the Island?</summary>
+        <div class="ans">Our summers are drier than the reputation suggests, and watering restrictions land exactly when new planting is most vulnerable. A zoned system uses less water than hand-watering and it runs whether or not you're home. It's the difference between replacing plants and keeping them.</div>
+      </details>
+      <details>
+        <summary>When should I book a fall blow-out?</summary>
+        <div class="ans">Early. Water left sitting in a line splits it over winter and you won't know until spring, when the repair costs more than the blow-out would have. Fall is our busiest stretch, so the calendar fills.</div>
+      </details>
+      <details>
+        <summary>Do you maintain gardens you didn't build?</summary>
+        <div class="ans">Yes. Garden and bed maintenance, hedge trimming, tree work and weed control, whether or not the garden started with us.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="quote" style="background:var(--sunk)">
+  <div class="wrap">
+    <div class="quote">
+      <div>
+        <span class="label">Free quote</span>
+        <h2 style="margin:13px 0 15px">Tell us about the property</h2>
+        <p class="lede">Send it over and we'll come and look. Free inside Nanaimo for landscaping and complete irrigation installs.</p>
+
+        <ul class="info">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+            <span><b>Call or text</b><a href="tel:+12507343949">(250) 734‑3949</a></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><b>Based at</b><span class="v">3721 Belaire Dr, Nanaimo, BC V9T 5A1</span></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
+            <span><b>Hours</b><span class="v">To be confirmed by the owners</span></span></li>
+        </ul>
+      </div>
+
+      <form class="form" id="qf" novalidate>
+        <div class="row">
+          <div class="f"><label for="n">Name</label><input id="n" name="name" type="text" autocomplete="name" required></div>
+          <div class="f"><label for="p">Phone</label><input id="p" name="phone" type="tel" autocomplete="tel" required></div>
+        </div>
+        <div class="f"><label for="a">Property address</label><input id="a" name="address" type="text" autocomplete="street-address"></div>
+        <div class="f">
+          <label for="s">What do you need?</label>
+          <select id="s" name="service">
+            <option>Landscape design &amp; build</option>
+            <option>Irrigation — new system</option>
+            <option>Irrigation — repair or fault</option>
+            <option>Irrigation — start-up or blow-out</option>
+            <option>Garden or bed maintenance</option>
+            <option>Hedge or tree trimming</option>
+            <option>Not sure yet — need advice</option>
+          </select>
+        </div>
+        <div class="f">
+          <label for="m">Tell us a bit more</label>
+          <textarea id="m" name="message" placeholder="Size of the property, what you're after, and when you'd like it done…"></textarea>
+          <span class="fine">Photos help — text them to (250) 734‑3949.</span>
+        </div>
+        <button class="btn btn--wide" type="submit">Request my free quote</button>
+        <p class="okmsg" id="ok" hidden role="status"></p>
+        <p class="fine">Landscaping projects start at $2,000. Quotes outside the Nanaimo area carry a $100 fee.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a class="mark" href="#top" style="color:var(--on-deep)">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 29V15"/><path d="M16 19c-4.3 0-7.5-2.8-7.5-6.9 0-3.2 2.6-6 7.5-9.1 4.9 3.1 7.5 5.9 7.5 9.1 0 4.1-3.2 6.9-7.5 6.9Z"/>
+            <path d="M7 26c1.8-1.6 3.6-1.6 5.4 0M19.6 26c1.8-1.6 3.6-1.6 5.4 0"/>
+          </svg>
+          <span class="n">Jinglepot<small>Landscaping &amp; Irrigation</small></span>
+        </a>
+        <p style="margin-top:14px;font-size:.92rem;max-width:38ch;color:color-mix(in srgb,var(--on-deep) 76%,transparent)">Family run in Nanaimo since 2016. Gardens designed and built, and the irrigation that keeps them going.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul><li><a href="#build">Design &amp; build</a></li><li><a href="#irrigation">Irrigation</a></li><li><a href="#care">Garden care</a></li><li><a href="#work">Our work</a></li></ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul><li><a href="tel:+12507343949">(250) 734‑3949</a></li><li><a href="#area">Nanaimo · Cedar · Lantzville</a></li><li><a href="#quote">Request a quote</a></li></ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© <span id="yr">2026</span> Jinglepot Landscaping &amp; Irrigation</span>
+      <span>Concept proposal — not the live site</span>
+    </div>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn--out" href="#quote">Free quote</a>
+  <a class="btn" href="tel:+12507343949">Call now</a>
+</div>
+
+<script>
+(function(){
+  var b=document.getElementById('burger'), dr=document.getElementById('dr');
+  b.addEventListener('click',function(){
+    var o=dr.hidden; dr.hidden=!o;
+    b.setAttribute('aria-expanded',String(o));
+    b.setAttribute('aria-label',o?'Close menu':'Open menu');
+  });
+  dr.addEventListener('click',function(e){if(e.target.closest('a')){dr.hidden=true;b.setAttribute('aria-expanded','false');}});
+
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  function sel(t){tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',String(on));
+    x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});}
+  tabs.forEach(function(t,i){
+    t.tabIndex=t.getAttribute('aria-selected')==='true'?0:-1;
+    t.addEventListener('click',function(){sel(t)});
+    t.addEventListener('keydown',function(e){
+      var n=null;
+      if(e.key==='ArrowRight')n=tabs[(i+1)%tabs.length];
+      if(e.key==='ArrowLeft')n=tabs[(i-1+tabs.length)%tabs.length];
+      if(e.key==='Home')n=tabs[0];
+      if(e.key==='End')n=tabs[tabs.length-1];
+      if(n){e.preventDefault();sel(n);n.focus();}
+    });
+  });
+
+  var f=document.getElementById('qf');
+  f.addEventListener('submit',function(e){
+    if(f.getAttribute('action'))return;
+    e.preventDefault();
+    if(!f.reportValidity())return;
+    var ok=document.getElementById('ok'), btn=f.querySelector('button[type=submit]');
+    btn.disabled=true; btn.textContent='Sending…';
+    setTimeout(function(){ok.hidden=false;
+      ok.textContent='Thanks — we’ve got it. We’ll be in touch shortly.';
+      f.reset();btn.disabled=false;btn.textContent='Request my free quote';},600);
+  });
+  document.getElementById('yr').textContent=new Date().getFullYear();
+})();
+</script>
