@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cmoneycuts Barbershop</title>
+<meta name="description" content="Cmoneycuts Barbershop, 2980 Island Hwy N, Nanaimo. Fades, classic cuts, beard trims and hot towel shaves. Book online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   CMONEYCUTS BARBERSHOP — concept proposal
+   A barbershop with ~600 reviews and nowhere of its own online.
+   Direction: barber-pole stripe used once, as a rule, not a theme.
+   Ink-black and bone with one deep green — money, without the
+   dollar signs. Anton for the shout, DM Sans for everything else.
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --bone:#F4F1EA; --card:#FFFFFF; --sunk:#E9E4D8;
+  --ink:#121412; --ink-soft:#4A4E4A; --ink-faint:#5F645F;
+  --rule:#D9D3C4;
+  --green:#1F6B45; --green-lift:#26834F; --green-wash:#E1EFE6; --green-text:#195C3A;
+  --red:#B0282E; --red-text:#9A1F25;
+  --night:#0F1311; --on-night:#F1EEE6; --on-night-soft:#B9BFB9;
+  --f-d:'Anton',Impact,sans-serif;
+  --f-b:'DM Sans',system-ui,-apple-system,sans-serif;
+  --f-m:'DM Mono',ui-monospace,Menlo,monospace;
+  --page:1120px; --gut:clamp(16px,4vw,36px); --sec:clamp(56px,8vw,104px);
+  --r:14px; --ease:cubic-bezier(.2,.7,.25,1);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bone:#111311; --card:#1A1D1A; --sunk:#0B0C0B;
+    --ink:#EFEDE6; --ink-soft:#B4B9B3; --ink-faint:#9AA09A;
+    --rule:#2A2E2A;
+    --green:#4DBF84; --green-lift:#66CF97; --green-wash:#15291E; --green-text:#6FD49F;
+    --red:#E0656A; --red-text:#EE8287;
+    --night:#070908; --on-night:#F1EEE6; --on-night-soft:#AEB4AE;
+  }
+}
+:root[data-theme="dark"]{
+  --bone:#111311; --card:#1A1D1A; --sunk:#0B0C0B;
+  --ink:#EFEDE6; --ink-soft:#B4B9B3; --ink-faint:#9AA09A;
+  --rule:#2A2E2A;
+  --green:#4DBF84; --green-lift:#66CF97; --green-wash:#15291E; --green-text:#6FD49F;
+  --red:#E0656A; --red-text:#EE8287;
+  --night:#070908; --on-night:#F1EEE6; --on-night-soft:#AEB4AE;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bone);color:var(--ink);font-family:var(--f-b);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--green-lift);outline-offset:3px;border-radius:6px}
+h1,h2,h3{margin:0;line-height:1.02;letter-spacing:.005em}
+h1,h2{font-family:var(--f-d);font-weight:400;text-transform:uppercase}
+h3{font-family:var(--f-b);font-weight:700;font-size:1.12rem;line-height:1.25}
+p{margin:0}
+.wrap{max-width:var(--page);margin:0 auto;padding:0 var(--gut)}
+.eyebrow{font-family:var(--f-m);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green-text)}
+
+/* proposal strip */
+.proposal{background:var(--night);color:var(--on-night-soft);font-size:.82rem;text-align:center;padding:9px var(--gut)}
+.proposal b{color:var(--on-night)}
+
+/* pole rule — the one decorative device */
+.pole{height:10px;background:repeating-linear-gradient(-45deg,var(--red) 0 12px,var(--bone) 12px 24px,var(--green) 24px 36px,var(--bone) 36px 48px)}
+
+/* header */
+header.bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bone) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+.bar__in{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.logo{font-family:var(--f-d);font-size:1.5rem;text-transform:uppercase;text-decoration:none;letter-spacing:.02em}
+.logo span{color:var(--green-text)}
+.bar nav{display:flex;gap:4px;align-items:center}
+.bar nav a.l{display:none;text-decoration:none;font-weight:500;font-size:.95rem;padding:10px 12px;border-radius:8px;color:var(--ink-soft)}
+.bar nav a.l:hover{color:var(--ink);background:var(--sunk)}
+@media (min-width:760px){.bar nav a.l{display:inline-block}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;font-weight:700;font-size:1rem;text-decoration:none;border:2px solid transparent;transition:transform .2s var(--ease),background .2s var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn--go{background:var(--green);color:#fff}
+.btn--go:hover{background:var(--green-lift)}
+:root[data-theme="dark"] .btn--go{color:#08130D}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn--go{color:#08130D}}
+.btn--line{border-color:var(--ink);color:var(--ink)}
+.btn--line:hover{background:var(--ink);color:var(--bone)}
+.btn--sm{min-height:44px;padding:0 18px;font-size:.92rem}
+
+/* hero */
+.hero{padding:clamp(48px,8vw,96px) 0 clamp(40px,6vw,72px)}
+.hero h1{font-size:clamp(3.2rem,1.6rem+8vw,7.4rem);margin-top:14px}
+.hero h1 em{font-style:normal;color:var(--green-text)}
+.hero .lede{margin-top:22px;font-size:clamp(1.08rem,1rem+.4vw,1.28rem);color:var(--ink-soft);max-width:46ch}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.proof{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:40px;padding-top:24px;border-top:1px solid var(--rule)}
+.proof div{display:flex;flex-direction:column}
+.proof b{font-family:var(--f-d);font-weight:400;font-size:2.2rem;line-height:1}
+.proof span{font-size:.86rem;color:var(--ink-faint)}
+
+/* sections */
+section.s{padding:var(--sec) 0}
+.s__head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:34px}
+.s__head h2{font-size:clamp(2.2rem,1.4rem+3.6vw,3.8rem);margin-top:8px}
+.s__head p{color:var(--ink-soft);max-width:42ch}
+
+/* price menu — signature */
+.menu{display:grid;gap:14px}
+@media (min-width:820px){.menu{grid-template-columns:1fr 1fr}}
+.menu__col{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:8px 22px}
+.menu__col h3{font-family:var(--f-m);font-weight:500;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);padding:16px 0 6px}
+.item{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:14px 0;border-top:1px solid var(--rule)}
+.item b{font-weight:700}
+.item .price{font-family:var(--f-d);font-size:1.5rem;line-height:1;align-self:center}
+.item small{grid-column:1/-1;color:var(--ink-faint);font-size:.88rem}
+.note{margin-top:16px;font-size:.88rem;color:var(--ink-faint)}
+
+/* barbers */
+.team{display:grid;gap:14px}
+@media (min-width:700px){.team{grid-template-columns:repeat(3,1fr)}}
+.barber{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.portrait{aspect-ratio:4/5;background:
+  linear-gradient(160deg,color-mix(in srgb,var(--green) 18%,var(--sunk)),var(--sunk));
+  display:flex;align-items:end;padding:16px;font-family:var(--f-m);font-size:.76rem;color:var(--ink-faint)}
+.barber__b{padding:18px 20px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.barber__b p{color:var(--ink-soft);font-size:.95rem;flex:1}
+.barber__b .btn{align-self:start;margin-top:6px}
+
+/* reviews */
+.dark{background:var(--night);color:var(--on-night)}
+.dark .eyebrow{color:var(--green-lift)}
+.dark .s__head p{color:var(--on-night-soft)}
+.quotes{display:grid;gap:14px}
+@media (min-width:760px){.quotes{grid-template-columns:repeat(3,1fr)}}
+.q{border:1px solid #2A302C;border-radius:var(--r);padding:22px}
+.q p{font-size:1.05rem;line-height:1.5}
+.q span{display:block;margin-top:14px;font-size:.84rem;color:var(--on-night-soft)}
+.stars{color:var(--green-lift);letter-spacing:2px;margin-bottom:10px}
+.slot{display:inline-block;margin-top:10px;padding:5px 11px;border-radius:999px;font-size:.78rem;font-family:var(--f-m);border:1px dashed currentColor;opacity:.85}
+
+/* visit */
+.visit{display:grid;gap:14px}
+@media (min-width:820px){.visit{grid-template-columns:1.1fr 1fr}}
+.panel{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:24px}
+.panel dl{margin:0;display:grid;gap:18px}
+.panel dt{font-family:var(--f-m);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
+.panel dd{margin:4px 0 0;font-size:1.08rem}
+.panel dd a{font-weight:700}
+.map{min-height:260px;border-radius:var(--r);border:1px dashed var(--rule);background:var(--sunk);display:grid;place-items:center;text-align:center;color:var(--ink-faint);font-size:.92rem;padding:20px}
+
+footer{border-top:1px solid var(--rule);padding:30px 0 110px;font-size:.88rem;color:var(--ink-faint)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+
+/* mobile book bar */
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--bone);border-top:1px solid var(--rule)}
+.callbar .btn{flex:1}
+@media (min-width:760px){.callbar{display:none}footer{padding-bottom:30px}}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<div class="proposal">Concept proposal for <b>Cmoneycuts Barbershop</b> · built from public listings · prices, hours and photos to be confirmed</div>
+<div class="pole" aria-hidden="true"></div>
+
+<header class="bar">
+  <div class="wrap bar__in">
+    <a class="logo" href="#top">Cmoney<span>cuts</span></a>
+    <nav aria-label="Main">
+      <a class="l" href="#prices">Prices</a>
+      <a class="l" href="#barbers">Barbers</a>
+      <a class="l" href="#visit">Visit</a>
+      <a class="btn btn--go btn--sm" href="https://booksy.com/en-ca/6708_cmoneycuts-barbershop_barbershop_565115_nanaimo">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Barbershop · Island Hwy N · Nanaimo</span>
+      <h1>Sharp fades.<br><em>No guesswork.</em></h1>
+      <p class="lede">Fades, classic cuts, beard work and hot towel shaves on the north end. Prices are right here, and booking takes about thirty seconds.</p>
+      <div class="cta">
+        <a class="btn btn--go" href="https://booksy.com/en-ca/6708_cmoneycuts-barbershop_barbershop_565115_nanaimo">Book a cut</a>
+        <a class="btn btn--line" href="tel:+12505853636">Call (250) 585‑3636</a>
+      </div>
+      <div class="proof">
+        <div><b>4.9</b><span>average rating</span></div>
+        <div><b>600+</b><span>reviews across booking sites</span></div>
+        <div><b>10–7</b><span>listed hours, to confirm</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="prices" style="padding-top:0">
+    <div class="wrap">
+      <div class="s__head reveal">
+        <div><span class="eyebrow">The menu</span><h2>Prices</h2></div>
+        <p>What it costs before you sit down. No surprises at the till.</p>
+      </div>
+      <div class="menu reveal">
+        <div class="menu__col">
+          <h3>Cuts</h3>
+          <div class="item"><b>Classic gentleman's cut</b><span class="price">$35</span><small>Scissor and clipper, finished and styled</small></div>
+          <div class="item"><b>Skin fade</b><span class="price">$40</span><small>Taken down to the skin, blended clean</small></div>
+          <div class="item"><b>Haircut + beard trim</b><span class="price">$50</span><small>The full job, one appointment</small></div>
+          <div class="item"><b>Kids' cut</b><span class="price">$25</span><small>For the little ones</small></div>
+        </div>
+        <div class="menu__col">
+          <h3>Beard &amp; shave</h3>
+          <div class="item"><b>Beard trim</b><span class="price">from $15</span><small>Shape, line-up and tidy</small></div>
+          <div class="item"><b>Hot towel shave</b><span class="price">ask</span><small>Price to confirm with the shop</small></div>
+          <div class="item"><b>Head shave</b><span class="price">ask</span><small>Price to confirm with the shop</small></div>
+        </div>
+      </div>
+      <p class="note">Prices taken from the shop's current Booksy menu. Individual barbers may price differently.</p>
+    </div>
+  </section>
+
+  <section class="s" id="barbers" style="padding-top:0">
+    <div class="wrap">
+      <div class="s__head reveal">
+        <div><span class="eyebrow">The chairs</span><h2>Barbers</h2></div>
+        <p>Reviewers ask for people by name. Pick yours and book straight into their chair.</p>
+      </div>
+      <div class="team reveal">
+        <article class="barber"><div class="portrait">Photo — Mitch at the chair</div>
+          <div class="barber__b"><h3>Mitch</h3><p>Named again and again in reviews for fades.</p>
+          <a class="btn btn--line btn--sm" href="https://booksy.com/en-ca/6708_cmoneycuts-barbershop_barbershop_565115_nanaimo">Book Mitch</a></div></article>
+        <article class="barber"><div class="portrait">Photo — Karma at the chair</div>
+          <div class="barber__b"><h3>Karma</h3><p>A regular favourite for fades and beard trims.</p>
+          <a class="btn btn--line btn--sm" href="https://booksy.com/en-ca/6708_cmoneycuts-barbershop_barbershop_565115_nanaimo">Book Karma</a></div></article>
+        <article class="barber"><div class="portrait">Photo — Caleb at the chair</div>
+          <div class="barber__b"><h3>Caleb</h3><p>Cuts and beard work, with his own menu on Booksy.</p>
+          <a class="btn btn--line btn--sm" href="https://booksy.com/en-ca/6708_cmoneycuts-barbershop_barbershop_565115_nanaimo">Book Caleb</a></div></article>
+      </div>
+      <p class="note">Barber names come from public reviews and the booking menu. The owner confirms who's on the team and supplies photos.</p>
+    </div>
+  </section>
+
+  <section class="s dark">
+    <div class="wrap">
+      <div class="s__head reveal">
+        <div><span class="eyebrow">What people say</span><h2>Six hundred reviews</h2></div>
+        <p>Spread across Booksy, Fresha and Google. This is where they'd live together.</p>
+      </div>
+      <div class="quotes reveal">
+        <figure class="q" style="margin:0"><div class="stars" aria-label="5 stars">★★★★★</div><p>Friendly, knowledgeable, and the fade was perfect.</p><span>Summary of recurring review themes</span><span class="slot">Real quote to go here</span></figure>
+        <figure class="q" style="margin:0"><div class="stars" aria-label="5 stars">★★★★★</div><p>Relaxed shop, fair prices, worth the drive from Ladysmith.</p><span>Summary of recurring review themes</span><span class="slot">Real quote to go here</span></figure>
+        <figure class="q" style="margin:0"><div class="stars" aria-label="5 stars">★★★★★</div><p>Ask for your barber by name. They remember how you like it.</p><span>Summary of recurring review themes</span><span class="slot">Real quote to go here</span></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="visit">
+    <div class="wrap">
+      <div class="s__head reveal">
+        <div><span class="eyebrow">Find us</span><h2>Visit</h2></div>
+      </div>
+      <div class="visit reveal">
+        <div class="panel">
+          <dl>
+            <div><dt>Address</dt><dd>2980 Island Hwy N, Unit #540<br>Nanaimo, BC</dd><span class="slot">Postal code differs between listings. Confirm it.</span></div>
+            <div><dt>Phone</dt><dd><a href="tel:+12505853636">(250) 585‑3636</a></dd></div>
+            <div><dt>Hours</dt><dd>Listed as 10 am – 7 pm</dd><span class="slot">Days open to confirm</span></div>
+            <div><dt>Booking</dt><dd>Appointments recommended. <a href="https://booksy.com/en-ca/6708_cmoneycuts-barbershop_barbershop_565115_nanaimo">Book online</a></dd></div>
+          </dl>
+        </div>
+        <div class="map">Google Maps embed<br>once the address is confirmed</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© Cmoneycuts Barbershop · Nanaimo, BC</span><span>Concept site — not yet live</span></div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn--line" href="tel:+12505853636">Call</a>
+  <a class="btn btn--go" href="https://booksy.com/en-ca/6708_cmoneycuts-barbershop_barbershop_565115_nanaimo">Book a cut</a>
+</div>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

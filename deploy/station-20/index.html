@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Station 20 Barber Boutique</title>
+<meta name="description" content="Station 20 Barber Boutique, Bowen Road, Nanaimo. Classic cuts, fades, hot towel shaves and beard work with Kim. Book online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Manrope:wght@400;500;700&display=swap">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   STATION 20 BARBER BOUTIQUE — concept proposal
+   "Boutique" taken at its word: a small, calm, appointment-led
+   room. Deep navy and warm brass on paper, Fraunces for warmth.
+   Signature: the service menu is sorted by how much time you have,
+   because Setmore already publishes a duration for every service.
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --paper:#F7F4EE; --card:#FFFFFF; --sunk:#EDE8DE;
+  --ink:#16202B; --ink-soft:#4B5562; --ink-faint:#5E6874;
+  --rule:#DDD6C8;
+  --navy:#1D3550; --navy-lift:#284A6E;
+  --brass:#A87B2E; --brass-text:#80591A; --brass-wash:#F5ECDB;
+  --on-navy:#F4F1EA; --on-navy-soft:#BFC8D3;
+  --f-d:'Fraunces',Georgia,serif;
+  --f-b:'Manrope',system-ui,-apple-system,sans-serif;
+  --page:1080px; --gut:clamp(16px,4vw,36px); --sec:clamp(56px,8vw,100px);
+  --r:18px; --ease:cubic-bezier(.2,.7,.25,1);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F141A; --card:#161D25; --sunk:#0A0E12;
+    --ink:#EDEAE3; --ink-soft:#B2BAC4; --ink-faint:#97A0AB;
+    --rule:#26303B;
+    --navy:#2C4B6E; --navy-lift:#3A5F88;
+    --brass:#D7A954; --brass-text:#E2B866; --brass-wash:#2A2316;
+    --on-navy:#F4F1EA; --on-navy-soft:#C3CCD6;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F141A; --card:#161D25; --sunk:#0A0E12;
+  --ink:#EDEAE3; --ink-soft:#B2BAC4; --ink-faint:#97A0AB;
+  --rule:#26303B;
+  --navy:#2C4B6E; --navy-lift:#3A5F88;
+  --brass:#D7A954; --brass-text:#E2B866; --brass-wash:#2A2316;
+  --on-navy:#F4F1EA; --on-navy-soft:#C3CCD6;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-b);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px;border-radius:6px}
+h1,h2,h3{margin:0;font-family:var(--f-d);font-weight:600;line-height:1.08;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:var(--page);margin:0 auto;padding:0 var(--gut)}
+.eyebrow{font-size:.76rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brass-text)}
+
+.proposal{background:var(--navy);color:var(--on-navy-soft);font-size:.82rem;text-align:center;padding:9px var(--gut)}
+.proposal b{color:var(--on-navy)}
+
+header.bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+.bar__in{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:66px}
+.logo{text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo__mark{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--brass);display:grid;place-items:center;font-family:var(--f-d);font-weight:600;color:var(--brass-text);font-size:1rem}
+.logo__t{font-family:var(--f-d);font-weight:600;font-size:1.12rem;line-height:1.05}
+.logo__t small{display:block;font-family:var(--f-b);font-weight:500;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint)}
+.bar nav{display:flex;gap:4px;align-items:center}
+.bar nav a.l{display:none;text-decoration:none;font-weight:500;font-size:.95rem;padding:10px 12px;border-radius:8px;color:var(--ink-soft)}
+.bar nav a.l:hover{color:var(--ink);background:var(--sunk)}
+@media (min-width:760px){.bar nav a.l{display:inline-block}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:999px;font-weight:700;font-size:1rem;text-decoration:none;border:1.5px solid transparent;transition:background .2s var(--ease),transform .2s var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn--main{background:var(--navy);color:var(--on-navy)}
+.btn--main:hover{background:var(--navy-lift)}
+.btn--line{border-color:var(--ink-faint);color:var(--ink)}
+.btn--line:hover{border-color:var(--ink)}
+.btn--sm{min-height:44px;padding:0 18px;font-size:.92rem}
+
+.hero{padding:clamp(52px,9vw,110px) 0 clamp(44px,6vw,80px);text-align:center}
+.hero h1{font-size:clamp(2.6rem,1.6rem+5vw,5rem);margin-top:16px;font-weight:400}
+.hero h1 i{color:var(--brass-text)}
+.hero .lede{margin:22px auto 0;font-size:clamp(1.05rem,1rem+.4vw,1.25rem);color:var(--ink-soft);max-width:44ch}
+.hero .cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:30px}
+.rating{display:inline-flex;align-items:center;gap:12px;margin-top:38px;padding:12px 20px;border:1px solid var(--rule);border-radius:999px;background:var(--card);font-size:.95rem}
+.rating b{font-family:var(--f-d);font-size:1.4rem;font-weight:600}
+.rating .st{color:var(--brass);letter-spacing:2px}
+
+section.s{padding:var(--sec) 0}
+.s__head{text-align:center;margin-bottom:34px}
+.s__head h2{font-size:clamp(2rem,1.4rem+2.6vw,3.2rem);margin-top:10px}
+.s__head p{margin:12px auto 0;color:var(--ink-soft);max-width:48ch}
+
+/* time filter — signature */
+.filter{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:22px}
+.filter button{font:inherit;font-weight:600;font-size:.92rem;min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid var(--rule);background:var(--card);color:var(--ink-soft);cursor:pointer}
+.filter button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:var(--on-navy)}
+.svc{list-style:none;margin:0 auto;padding:0;max-width:760px;background:var(--card);border:1px solid var(--rule);border-radius:var(--r)}
+.svc li{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:18px 22px;border-top:1px solid var(--rule)}
+.svc li:first-child{border-top:0}
+.svc li[hidden]{display:none}
+.svc b{font-weight:700}
+.svc .p{font-family:var(--f-d);font-weight:600;font-size:1.3rem;align-self:center}
+.svc small{color:var(--ink-faint);font-size:.88rem}
+.svc .t{display:inline-block;margin-right:8px;padding:1px 9px;border-radius:999px;background:var(--brass-wash);color:var(--brass-text);font-weight:700;font-size:.78rem}
+.count{text-align:center;margin-top:14px;font-size:.9rem;color:var(--ink-faint)}
+
+/* barber */
+.kim{display:grid;gap:22px;align-items:center}
+@media (min-width:820px){.kim{grid-template-columns:.9fr 1.1fr;gap:48px}}
+.portrait{aspect-ratio:4/5;border-radius:var(--r);background:linear-gradient(170deg,var(--brass-wash),var(--sunk));border:1px solid var(--rule);display:flex;align-items:end;padding:18px;color:var(--ink-faint);font-size:.86rem}
+.kim h2{font-size:clamp(2rem,1.4rem+2.4vw,3rem);margin-top:10px}
+.kim p{margin-top:16px;color:var(--ink-soft);font-size:1.06rem}
+.kim ul{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.kim li{padding-left:22px;position:relative}
+.kim li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:1.5px;background:var(--brass)}
+
+.band{background:var(--navy);color:var(--on-navy)}
+.band .eyebrow{color:var(--brass)}
+.band .s__head p{color:var(--on-navy-soft)}
+.quotes{display:grid;gap:14px}
+@media (min-width:760px){.quotes{grid-template-columns:repeat(3,1fr)}}
+.q{margin:0;border:1px solid color-mix(in srgb,var(--on-navy) 20%,transparent);border-radius:var(--r);padding:22px}
+.q p{font-family:var(--f-d);font-size:1.15rem;line-height:1.4}
+.q span{display:block;margin-top:12px;font-size:.84rem;color:var(--on-navy-soft)}
+.slot{display:inline-block;margin-top:10px;padding:4px 11px;border-radius:999px;font-size:.78rem;border:1px dashed currentColor;opacity:.85}
+
+.visit{display:grid;gap:14px}
+@media (min-width:820px){.visit{grid-template-columns:1fr 1fr}}
+.panel{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:24px}
+.panel dl{margin:0;display:grid;gap:18px}
+.panel dt{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+.panel dd{margin:4px 0 0;font-size:1.06rem}
+.map{min-height:260px;border-radius:var(--r);border:1px dashed var(--rule);background:var(--sunk);display:grid;place-items:center;text-align:center;color:var(--ink-faint);font-size:.92rem;padding:20px}
+
+footer{border-top:1px solid var(--rule);padding:30px 0 110px;font-size:.88rem;color:var(--ink-faint)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--paper);border-top:1px solid var(--rule)}
+.callbar .btn{flex:1}
+@media (min-width:760px){.callbar{display:none}footer{padding-bottom:30px}}
+</style>
+</head>
+<body>
+
+<div class="proposal">Concept proposal for <b>Station 20 Barber Boutique</b> · built from public listings · address, phone and photos to be confirmed</div>
+
+<header class="bar">
+  <div class="wrap bar__in">
+    <a class="logo" href="#top"><span class="logo__mark">20</span><span class="logo__t">Station 20<small>Barber Boutique</small></span></a>
+    <nav aria-label="Main">
+      <a class="l" href="#services">Services</a>
+      <a class="l" href="#kim">Your barber</a>
+      <a class="l" href="#visit">Visit</a>
+      <a class="btn btn--main btn--sm" href="https://station20barberboutique.setmore.com/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Bowen Road · Nanaimo</span>
+      <h1>An unhurried cut,<br><i>done properly.</i></h1>
+      <p class="lede">Classic cuts, fades, hot towel shaves and beard work. By appointment, so the time you book is the time you get.</p>
+      <div class="cta">
+        <a class="btn btn--main" href="https://station20barberboutique.setmore.com/">Book an appointment</a>
+        <a class="btn btn--line" href="#services">See services</a>
+      </div>
+      <div class="rating"><span class="st" aria-hidden="true">★★★★★</span><b>4.99</b><span>from 263 client reviews</span></div>
+    </div>
+  </section>
+
+  <section class="s" id="services" style="padding-top:0">
+    <div class="wrap">
+      <div class="s__head">
+        <span class="eyebrow">Services</span>
+        <h2>How long have you got?</h2>
+        <p>Every service, with its price and how long it takes. Pick the time you've got and see what fits.</p>
+      </div>
+      <div class="filter" role="group" aria-label="Filter by time">
+        <button type="button" data-max="999" aria-pressed="true">Everything</button>
+        <button type="button" data-max="30" aria-pressed="false">30 min or less</button>
+        <button type="button" data-max="45" aria-pressed="false">45 min or less</button>
+        <button type="button" data-min="60" aria-pressed="false">The full hour</button>
+      </div>
+      <ul class="svc" id="svc">
+        <li data-m="30"><b>Classic cut</b><span class="p">$36</span><small><span class="t">30 min</span>Scissor and clipper, finished properly</small></li>
+        <li data-m="45"><b>Classic fade</b><span class="p">$41</span><small><span class="t">45 min</span>Blended fade, styled</small></li>
+        <li data-m="60"><b>Specialty cut</b><span class="p">$41</span><small><span class="t">1 hr</span>Longer or more detailed work</small></li>
+        <li data-m="30"><b>Buzz cut</b><span class="p">$30</span><small><span class="t">30 min</span>One length, clean edges</small></li>
+        <li data-m="45"><b>Buzz fade</b><span class="p">$36</span><small><span class="t">45 min</span>Buzz on top, faded sides</small></li>
+        <li data-m="30"><b>Junior cut</b><span class="p">$28</span><small><span class="t">30 min</span>Ages 11 and under</small></li>
+        <li data-m="30"><b>Beard shaping &amp; line-up</b><span class="p">$22</span><small><span class="t">30 min</span>Shape, edge and tidy</small></li>
+        <li data-m="15"><b>Beard colour</b><span class="p">$15</span><small><span class="t">15 min</span>Add-on</small></li>
+        <li data-m="60"><b>Classic fade + beard trim</b><span class="p">$62</span><small><span class="t">1 hr</span>The full refresh</small></li>
+        <li data-m="60"><b>Classic cut + hot towel shave</b><span class="p">$66</span><small><span class="t">1 hr</span>The one to treat yourself to</small></li>
+      </ul>
+      <p class="count" id="count" aria-live="polite">Showing all 10 services</p>
+    </div>
+  </section>
+
+  <section class="s" id="kim" style="padding-top:0">
+    <div class="wrap kim">
+      <div class="portrait">Photo — Kim at the chair</div>
+      <div>
+        <span class="eyebrow">Your barber</span>
+        <h2>Meet Kim</h2>
+        <p>Reviews keep coming back to the same things: professional, careful with the detail, and worth booking the full hour for.</p>
+        <ul>
+          <li>Precision cuts and fades</li>
+          <li>Hot towel shaves</li>
+          <li>Beard shaping, line-ups and colour</li>
+        </ul>
+        <span class="slot">Kim's own words go here, plus years behind the chair</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="s band">
+    <div class="wrap">
+      <div class="s__head">
+        <span class="eyebrow">Reviews</span>
+        <h2>263 reviews, nearly all five stars</h2>
+        <p>Currently tucked inside the booking page. This puts them on the front door.</p>
+      </div>
+      <div class="quotes">
+        <figure class="q"><p>Professional and detail-oriented, every time.</p><span>Recurring theme in reviews</span><span class="slot">Real quote to go here</span></figure>
+        <figure class="q"><p>Great value for the quality of the cut.</p><span>Recurring theme in reviews</span><span class="slot">Real quote to go here</span></figure>
+        <figure class="q"><p>Takes the time to get it right. Worth booking the longer slot.</p><span>Recurring theme in reviews</span><span class="slot">Real quote to go here</span></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="visit">
+    <div class="wrap">
+      <div class="s__head"><span class="eyebrow">Find us</span><h2>Visit</h2></div>
+      <div class="visit">
+        <div class="panel">
+          <dl>
+            <div><dt>Address</dt><dd>1601 Bowen Rd, Unit #4<br>Nanaimo, BC V9S 1G5</dd><span class="slot">One listing says 1808 Bowen Rd. Confirm it.</span></div>
+            <div><dt>Phone</dt><dd>To confirm</dd><span class="slot">Directories show a number shared with another shop</span></div>
+            <div><dt>Hours</dt><dd>By appointment</dd><span class="slot">Days and hours to confirm</span></div>
+            <div><dt>Booking</dt><dd><a href="https://station20barberboutique.setmore.com/">Book online through Setmore</a></dd></div>
+          </dl>
+        </div>
+        <div class="map">Google Maps embed<br>once the address is confirmed</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© Station 20 Barber Boutique · Nanaimo, BC</span><span>Concept site — not yet live</span></div></footer>
+
+<div class="callbar"><a class="btn btn--main" href="https://station20barberboutique.setmore.com/">Book an appointment</a></div>
+
+<script>
+const btns=document.querySelectorAll('.filter button'),items=document.querySelectorAll('#svc li'),count=document.getElementById('count');
+btns.forEach(b=>b.addEventListener('click',()=>{
+  btns.forEach(x=>x.setAttribute('aria-pressed',x===b));
+  const max=+(b.dataset.max||999),min=+(b.dataset.min||0);let n=0;
+  items.forEach(li=>{const m=+li.dataset.m,show=m<=max&&m>=min;li.hidden=!show;if(show)n++});
+  count.textContent=n===items.length?`Showing all ${n} services`:`${n} service${n===1?'':'s'} fit`;
+}));
+</script>
+</body>
+</html>

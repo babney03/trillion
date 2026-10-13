@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bodhi's Artisan Bakery</title>
+<meta name="description" content="Bodhi's Artisan Bakery, 5299 Rutherford Rd, Nanaimo. Crusty artisan bread, croissants, cinnamon buns and coffee. Open Tuesday to Saturday.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;700&display=swap">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   BODHI'S ARTISAN BAKERY — concept proposal
+   The problem: every listing disagrees on when they close, they're
+   shut Sunday and Monday, and the bread sells out early. So the
+   page opens with one honest answer: open now or not, and come
+   early for bread. Palette: crust, wheat and flour.
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --flour:#FBF7EF; --card:#FFFFFF; --sunk:#F2EADB;
+  --ink:#2A1F16; --ink-soft:#5C4D3E; --ink-faint:#6E604F;
+  --rule:#E6DAC5;
+  --crust:#8F4A1C; --crust-lift:#A65A26; --crust-text:#7A3E16;
+  --wheat:#E3B964; --wheat-wash:#FAF0D9;
+  --sage:#3E6B4C; --sage-wash:#E3EFE5;
+  --shut:#9A3B2E; --shut-wash:#F8E6E2;
+  --oven:#2A1F16; --on-oven:#FBF5EA; --on-oven-soft:#D3C5B1;
+  --f-d:'Young Serif',Georgia,serif;
+  --f-b:'Figtree',system-ui,-apple-system,sans-serif;
+  --page:1100px; --gut:clamp(16px,4vw,36px); --sec:clamp(56px,8vw,100px);
+  --r:20px; --ease:cubic-bezier(.2,.7,.25,1);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --flour:#17120D; --card:#201912; --sunk:#100C08;
+    --ink:#F3EBDD; --ink-soft:#C7B9A5; --ink-faint:#AE9F8A;
+    --rule:#33291E;
+    --crust:#D98A52; --crust-lift:#E59D69; --crust-text:#E9A06C;
+    --wheat:#E3B964; --wheat-wash:#2B2214;
+    --sage:#7DBB8F; --sage-wash:#18271C;
+    --shut:#E58A7C; --shut-wash:#2E1A16;
+    --oven:#0B0805; --on-oven:#FBF5EA; --on-oven-soft:#CDBFAA;
+  }
+}
+:root[data-theme="dark"]{
+  --flour:#17120D; --card:#201912; --sunk:#100C08;
+  --ink:#F3EBDD; --ink-soft:#C7B9A5; --ink-faint:#AE9F8A;
+  --rule:#33291E;
+  --crust:#D98A52; --crust-lift:#E59D69; --crust-text:#E9A06C;
+  --wheat:#E3B964; --wheat-wash:#2B2214;
+  --sage:#7DBB8F; --sage-wash:#18271C;
+  --shut:#E58A7C; --shut-wash:#2E1A16;
+  --oven:#0B0805; --on-oven:#FBF5EA; --on-oven-soft:#CDBFAA;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--flour);color:var(--ink);font-family:var(--f-b);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--crust-lift);outline-offset:3px;border-radius:6px}
+h1,h2,h3{margin:0;font-family:var(--f-d);font-weight:400;line-height:1.08;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:var(--page);margin:0 auto;padding:0 var(--gut)}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--crust-text)}
+
+.proposal{background:var(--oven);color:var(--on-oven-soft);font-size:.82rem;text-align:center;padding:9px var(--gut)}
+.proposal b{color:var(--on-oven)}
+
+header.bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--flour) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+.bar__in{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:66px}
+.logo{font-family:var(--f-d);font-size:1.4rem;text-decoration:none}
+.logo small{font-family:var(--f-b);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-left:6px}
+.bar nav{display:flex;gap:4px;align-items:center}
+.bar nav a.l{display:none;text-decoration:none;font-weight:500;padding:10px 12px;border-radius:8px;color:var(--ink-soft)}
+.bar nav a.l:hover{background:var(--sunk);color:var(--ink)}
+@media (min-width:760px){.bar nav a.l{display:inline-block}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:999px;font-weight:700;font-size:1rem;text-decoration:none;border:1.5px solid transparent;transition:background .2s var(--ease),transform .2s var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn--main{background:var(--crust);color:#FFF8EE}
+.btn--main:hover{background:var(--crust-lift)}
+:root[data-theme="dark"] .btn--main{color:#1B120A}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn--main{color:#1B120A}}
+.btn--line{border-color:var(--ink-faint);color:var(--ink)}
+.btn--line:hover{border-color:var(--ink)}
+.btn--sm{min-height:44px;padding:0 18px;font-size:.92rem}
+
+.hero{padding:clamp(44px,7vw,90px) 0 clamp(36px,5vw,64px)}
+.hero__grid{display:grid;gap:28px;align-items:center}
+@media (min-width:880px){.hero__grid{grid-template-columns:1.15fr .85fr;gap:48px}}
+.hero h1{font-size:clamp(2.7rem,1.6rem+5.4vw,5.4rem);margin-top:14px}
+.hero h1 em{font-style:normal;color:var(--crust-text)}
+.hero .lede{margin-top:20px;font-size:clamp(1.05rem,1rem+.4vw,1.25rem);color:var(--ink-soft);max-width:44ch}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+/* live status — signature */
+.status{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:24px;box-shadow:0 18px 40px -26px rgb(42 31 22 / .45)}
+.status__pill{display:inline-flex;align-items:center;gap:9px;padding:7px 14px;border-radius:999px;font-weight:700;font-size:.95rem}
+.status__pill::before{content:"";width:10px;height:10px;border-radius:50%;background:currentColor}
+.is-open .status__pill{background:var(--sage-wash);color:var(--sage)}
+.is-shut .status__pill{background:var(--shut-wash);color:var(--shut)}
+.status h2{font-size:1.6rem;margin-top:14px}
+.status p{margin-top:8px;color:var(--ink-soft)}
+.tip{margin-top:16px;padding:12px 14px;border-radius:12px;background:var(--wheat-wash);font-size:.94rem;color:var(--ink-soft)}
+.tip b{color:var(--ink)}
+.week{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center;font-size:.8rem}
+.week li{padding:8px 0;border-radius:10px;background:var(--sunk);color:var(--ink-faint);font-weight:600}
+.week li.on{background:var(--wheat-wash);color:var(--ink)}
+.week li.today{outline:2px solid var(--crust);outline-offset:-2px}
+.slot{display:inline-block;margin-top:10px;padding:4px 11px;border-radius:999px;font-size:.78rem;border:1px dashed currentColor;color:var(--ink-faint)}
+
+section.s{padding:var(--sec) 0}
+.s__head{margin-bottom:30px;max-width:640px}
+.s__head h2{font-size:clamp(2rem,1.4rem+2.6vw,3.2rem);margin-top:10px}
+.s__head p{margin-top:12px;color:var(--ink-soft)}
+
+.case{display:grid;gap:14px}
+@media (min-width:640px){.case{grid-template-columns:1fr 1fr}}
+@media (min-width:980px){.case{grid-template-columns:repeat(3,1fr)}}
+.bake{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+.bake__img{aspect-ratio:4/3;background:linear-gradient(150deg,var(--wheat-wash),var(--sunk));display:flex;align-items:end;padding:14px;font-size:.84rem;color:var(--ink-faint)}
+.bake__b{padding:18px 20px 22px}
+.bake__b h3{font-size:1.3rem}
+.bake__b p{margin-top:6px;color:var(--ink-soft);font-size:.96rem}
+.bake__tag{display:inline-block;margin-top:12px;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--crust-text)}
+
+.oven{background:var(--oven);color:var(--on-oven)}
+.oven .eyebrow{color:var(--wheat)}
+.oven .s__head p{color:var(--on-oven-soft)}
+.quotes{display:grid;gap:14px}
+@media (min-width:760px){.quotes{grid-template-columns:repeat(3,1fr)}}
+.q{margin:0;border:1px solid color-mix(in srgb,var(--on-oven) 18%,transparent);border-radius:var(--r);padding:22px}
+.q p{font-family:var(--f-d);font-size:1.15rem;line-height:1.42}
+.q span{display:block;margin-top:12px;font-size:.84rem;color:var(--on-oven-soft)}
+.oven .slot{color:var(--on-oven-soft)}
+
+.visit{display:grid;gap:14px}
+@media (min-width:820px){.visit{grid-template-columns:1fr 1fr}}
+.panel{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:24px}
+.panel dl{margin:0;display:grid;gap:18px}
+.panel dt{font-size:.76rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+.panel dd{margin:4px 0 0;font-size:1.06rem}
+.map{min-height:260px;border-radius:var(--r);border:1px dashed var(--rule);background:var(--sunk);display:grid;place-items:center;text-align:center;color:var(--ink-faint);font-size:.92rem;padding:20px}
+
+footer{border-top:1px solid var(--rule);padding:30px 0 110px;font-size:.88rem;color:var(--ink-faint)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--flour);border-top:1px solid var(--rule)}
+.callbar .btn{flex:1}
+@media (min-width:760px){.callbar{display:none}footer{padding-bottom:30px}}
+</style>
+</head>
+<body>
+
+<div class="proposal">Concept proposal for <b>Bodhi's Artisan Bakery</b> · built from public listings · hours, menu and photos to be confirmed</div>
+
+<header class="bar">
+  <div class="wrap bar__in">
+    <a class="logo" href="#top">Bodhi's<small>Artisan Bakery</small></a>
+    <nav aria-label="Main">
+      <a class="l" href="#bakes">What we bake</a>
+      <a class="l" href="#visit">Visit</a>
+      <a class="btn btn--main btn--sm" href="tel:+12505856015">Call</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div>
+        <span class="eyebrow">Rutherford Road · North Nanaimo</span>
+        <h1>Real bread.<br><em>Come early.</em></h1>
+        <p class="lede">Crusty artisan loaves, croissants, cinnamon buns and savoury danishes, baked here every morning, Tuesday to Saturday. The bread goes first, so don't leave it late.</p>
+        <div class="cta">
+          <a class="btn btn--main" href="#visit">Get directions</a>
+          <a class="btn btn--line" href="tel:+12505856015">(250) 585‑6015</a>
+        </div>
+      </div>
+
+      <aside class="status" id="status" aria-live="polite">
+        <span class="status__pill" id="pill">Checking…</span>
+        <h2 id="headline">Are we open?</h2>
+        <p id="detail">Tuesday to Saturday from 8 am. Closed Sunday and Monday.</p>
+        <ul class="week" id="week" aria-label="Days open">
+          <li>Mon</li><li class="on">Tue</li><li class="on">Wed</li><li class="on">Thu</li><li class="on">Fri</li><li class="on">Sat</li><li>Sun</li>
+        </ul>
+        <div class="tip"><b>Bread sells out.</b> Loaves usually go before the pastries do. Come in the morning for the best choice.</div>
+        <span class="slot">Closing time to confirm. Listings say 2, 3 and 4:30 pm.</span>
+      </aside>
+    </div>
+  </section>
+
+  <section class="s" id="bakes" style="padding-top:0">
+    <div class="wrap">
+      <div class="s__head">
+        <span class="eyebrow">From the oven</span>
+        <h2>What we bake</h2>
+        <p>The things people drive across town for, going by the reviews.</p>
+      </div>
+      <div class="case">
+        <article class="bake"><div class="bake__img">Photo — loaves on the rack, morning light</div><div class="bake__b"><h3>Artisan bread</h3><p>Crusty, properly baked loaves. The reason most people come.</p><span class="bake__tag">Sells out early</span></div></article>
+        <article class="bake"><div class="bake__img">Photo — croissants, close up on the layers</div><div class="bake__b"><h3>Croissants</h3><p>Buttery and flaky. A favourite with regulars.</p></div></article>
+        <article class="bake"><div class="bake__img">Photo — a tray of cinnamon buns</div><div class="bake__b"><h3>Cinnamon buns</h3><p>A regular favourite in the reviews.</p></div></article>
+        <article class="bake"><div class="bake__img">Photo — savoury danishes</div><div class="bake__b"><h3>Savoury danishes</h3><p>For when you want something that isn't sweet.</p></div></article>
+        <article class="bake"><div class="bake__img">Photo — sandwich on fresh bread</div><div class="bake__b"><h3>Sandwiches</h3><p>Made on the bakery's own bread. The bacon sandwich gets a mention.</p></div></article>
+        <article class="bake"><div class="bake__img">Photo — coffee on the counter</div><div class="bake__b"><h3>Coffee &amp; muffins</h3><p>To have with whatever you came in for.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="s oven">
+    <div class="wrap">
+      <div class="s__head">
+        <span class="eyebrow">Reviews</span>
+        <h2>Nearly two hundred reviews say the same thing</h2>
+        <p>Scattered across Tripadvisor and directories right now. Here they'd sit where customers actually look.</p>
+      </div>
+      <div class="quotes">
+        <figure class="q"><p>The crusty bread is the real thing. Get there early or miss out.</p><span>Recurring theme in reviews</span><span class="slot">Real quote to go here</span></figure>
+        <figure class="q"><p>Croissants and cinnamon buns worth the trip.</p><span>Recurring theme in reviews</span><span class="slot">Real quote to go here</span></figure>
+        <figure class="q"><p>Small plaza, easy to miss, very glad we found it.</p><span>Recurring theme in reviews</span><span class="slot">Real quote to go here</span></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="visit">
+    <div class="wrap">
+      <div class="s__head"><span class="eyebrow">Find us</span><h2>Visit</h2><p>In the small plaza by the roundabout on Rutherford Road.</p></div>
+      <div class="visit">
+        <div class="panel">
+          <dl>
+            <div><dt>Address</dt><dd>5299 Rutherford Rd, Suite B<br>Nanaimo, BC V9T 5N9</dd></div>
+            <div><dt>Phone</dt><dd><a href="tel:+12505856015">(250) 585‑6015</a></dd></div>
+            <div><dt>Hours</dt><dd>Tuesday – Saturday, from 8 am<br>Closed Sunday &amp; Monday</dd><span class="slot">Closing time to confirm</span></div>
+            <div><dt>Payment</dt><dd>To confirm</dd><span class="slot">Listings disagree: cash/debit only, or cards too?</span></div>
+          </dl>
+        </div>
+        <div class="map">Google Maps embed<br>5299 Rutherford Rd</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© Bodhi's Artisan Bakery · Nanaimo, BC</span><span>Concept site — not yet live</span></div></footer>
+
+<div class="callbar">
+  <a class="btn btn--line" href="tel:+12505856015">Call</a>
+  <a class="btn btn--main" href="#visit">Directions</a>
+</div>
+
+<script>
+/* One schedule, read everywhere. CLOSE is a placeholder until the owner confirms it. */
+const OPEN=8*60, CLOSE=14*60, DAYS=[2,3,4,5,6]; // Tue–Sat, Vancouver time
+const names=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+function now(){
+  const p=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Vancouver',weekday:'short',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date());
+  const g=t=>p.find(x=>x.type===t).value;
+  return {d:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(g('weekday')),m:+g('hour')*60+ +g('minute')};
+}
+function nextOpen(d){for(let i=1;i<=7;i++){const n=(d+i)%7;if(DAYS.includes(n))return i===1?'tomorrow':names[n];}}
+function render(){
+  const {d,m}=now(),box=document.getElementById('status'),pill=document.getElementById('pill'),h=document.getElementById('headline'),det=document.getElementById('detail');
+  document.querySelectorAll('#week li').forEach((li,i)=>li.classList.toggle('today',(i+1)%7===d));
+  const openDay=DAYS.includes(d);
+  if(openDay&&m>=OPEN&&m<CLOSE){
+    box.className='status is-open';pill.textContent='Open now';
+    h.textContent=m<11*60?'Fresh out of the oven':'Open — bread may be going';
+    det.textContent='Open today from 8 am.';
+  }else{
+    box.className='status is-shut';pill.textContent='Closed right now';
+    if(openDay&&m<OPEN){h.textContent='Opening at 8 am today';det.textContent='Get here early for the best of the bread.';}
+    else{const n=nextOpen(d);h.textContent=`Back ${n==='tomorrow'?'tomorrow':'on '+n} at 8 am`;det.textContent='Open Tuesday to Saturday. Closed Sunday and Monday.';}
+  }
+}
+render();setInterval(render,60000);
+</script>
+</body>
+</html>
