@@ -38,3 +38,12 @@ free.
 
 Each site is one self-contained file. No build step, no dependencies except
 Google Fonts. Any static host serves it as-is.
+
+## Automated (Claude does it)
+
+`deploy/netlify-deploy.py` deploys folders through the Netlify API and records
+each live URL in `deploy/live-sites.json`. It needs `NETLIFY_AUTH_TOKEN` set in
+the cloud environment and `api.netlify.com` allowed in its network access.
+
+    python3 deploy/netlify-deploy.py bees-knees breakfast-nook
+    python3 deploy/netlify-deploy.py --all
