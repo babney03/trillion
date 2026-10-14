@@ -13,13 +13,12 @@ Each folder under deploy/ becomes <folder>-nanaimo.netlify.app (with a numeric
 suffix if that name is taken). Site IDs and live URLs are recorded in
 deploy/live-sites.json, so re-running a folder redeploys to the same URL.
 """
-import io
+import hashlib
 import json
 import os
 import sys
 import urllib.error
 import urllib.request
-import zipfile
 from pathlib import Path
 
 API = "https://api.netlify.com/api/v1"
@@ -39,13 +38,19 @@ def call(method, path, token, body=None, content_type="application/json"):
         return json.loads(resp.read() or b"{}")
 
 
-def zip_folder(folder):
-    buf = io.BytesIO()
-    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
-        for f in sorted(folder.rglob("*")):
-            if f.is_file():
-                z.write(f, f.relative_to(folder).as_posix())
-    return buf.getvalue()
+def deploy_folder(site_id, folder, token):
+    # File-digest deploy: each file is uploaded under its own path. A zip
+    # deploy stored index.html as "/" and Netlify served it as text/plain.
+    files = {"/" + f.relative_to(folder).as_posix(): f
+             for f in sorted(folder.rglob("*")) if f.is_file()}
+    digests = {path: hashlib.sha1(f.read_bytes()).hexdigest() for path, f in files.items()}
+    deploy = call("POST", f"/sites/{site_id}/deploys", token,
+                  json.dumps({"files": digests}).encode())
+    by_sha = {d: p for p, d in digests.items()}
+    for sha in deploy.get("required", []):
+        path = by_sha[sha]
+        call("PUT", f"/deploys/{deploy['id']}/files{path}", token,
+             files[path].read_bytes(), "application/octet-stream")
 
 
 def create_site(slug, token):
@@ -78,8 +83,11 @@ def main():
         if not site:
             created = create_site(slug, token)
             site = {"site_id": created["id"], "url": created["ssl_url"] or created["url"]}
-        call("POST", f"/sites/{site['site_id']}/deploys", token,
-             zip_folder(folder), "application/zip")
+            # Prospects must see the site without a Netlify login, and the
+            # "Powered by Netlify" badge covers the sticky Call button.
+            call("PATCH", f"/sites/{site['site_id']}", token,
+                 json.dumps({"sso_login": False, "built_with_badge_enabled": False}).encode())
+        deploy_folder(site["site_id"], folder, token)
         state[slug] = site
         STATE.write_text(json.dumps(state, indent=2) + "\n")
         print(f"{slug}: {site['url']}")
