@@ -42,8 +42,10 @@ Google Fonts. Any static host serves it as-is.
 ## Automated (Claude does it)
 
 `deploy/netlify-deploy.py` deploys folders through the Netlify API and records
-each live URL in `deploy/live-sites.json`. It needs `NETLIFY_AUTH_TOKEN` set in
-the cloud environment and `api.netlify.com` allowed in its network access.
+each live URL in `deploy/live-sites.json`. It needs a Netlify personal access token
+saved as a network secret (Bearer, allowed website `api.netlify.com`) in the
+cloud environment; the proxy attaches it, so the token never sits in the repo
+or the container.
 
     python3 deploy/netlify-deploy.py bees-knees breakfast-nook
     python3 deploy/netlify-deploy.py --all

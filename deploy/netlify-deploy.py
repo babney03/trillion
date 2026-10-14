@@ -2,8 +2,12 @@
 """Deploy proposal folders to Netlify, one site per business.
 
 Usage:
-    NETLIFY_AUTH_TOKEN=... python3 deploy/netlify-deploy.py bees-knees bodhis
-    NETLIFY_AUTH_TOKEN=... python3 deploy/netlify-deploy.py --all
+    python3 deploy/netlify-deploy.py bees-knees bodhis
+    python3 deploy/netlify-deploy.py --all
+
+Auth: in the cloud environment the token is a network secret, so the proxy adds
+the Authorization header itself. Set NETLIFY_AUTH_TOKEN only when running
+somewhere without that secret.
 
 Each folder under deploy/ becomes <folder>-nanaimo.netlify.app (with a numeric
 suffix if that name is taken). Site IDs and live URLs are recorded in
@@ -27,7 +31,8 @@ SKIP = {"alder-stone", "fieldhouse"}
 
 def call(method, path, token, body=None, content_type="application/json"):
     req = urllib.request.Request(API + path, data=body, method=method)
-    req.add_header("Authorization", f"Bearer {token}")
+    if token:
+        req.add_header("Authorization", f"Bearer {token}")
     if body is not None:
         req.add_header("Content-Type", content_type)
     with urllib.request.urlopen(req, timeout=120) as resp:
@@ -56,8 +61,6 @@ def create_site(slug, token):
 
 def main():
     token = os.environ.get("NETLIFY_AUTH_TOKEN")
-    if not token:
-        sys.exit("NETLIFY_AUTH_TOKEN is not set")
     args = sys.argv[1:]
     if args == ["--all"]:
         args = sorted(p.name for p in ROOT.iterdir()
