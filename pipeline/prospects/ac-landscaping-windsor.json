@@ -1,0 +1,88 @@
+{
+  "name": "A.C. Landscaping & Design",
+  "short": "AC Landscaping",
+  "sub": "& Design Inc. · Windsor",
+  "city": "Windsor",
+  "region": "ON",
+  "areas": [
+    "Windsor",
+    "LaSalle",
+    "Tecumseh",
+    "Lakeshore"
+  ],
+  "phone": "(519) 991-8825",
+  "email": "aclandscaping@hotmail.ca",
+  "rating": 5.0,
+  "reviews": 33,
+  "palette": "harvest",
+  "h1": "Design. Build. Maintain.",
+  "lede": "A family built on 20+ years of hard work, serving Windsor, LaSalle, Tecumseh and Lakeshore since 2006. Custom designs and complete landscape construction.",
+  "services": [
+    {
+      "icon": "build",
+      "label": "Design & build",
+      "title": "Landscape design and construction",
+      "text": "Creative ideas, custom designs, complete construction.",
+      "items": [
+        "Custom landscape design",
+        "Complete construction",
+        "Concrete installations",
+        "Patios and walkways"
+      ],
+      "featured": true,
+      "cta": "Start a project"
+    },
+    {
+      "icon": "lawn",
+      "label": "Maintenance",
+      "title": "Property maintenance",
+      "text": "Keep what we built looking its best.",
+      "items": [
+        "Property maintenance",
+        "Turf care",
+        "Seasonal cleanups",
+        "Commercial and residential"
+      ],
+      "cta": "Ask about maintenance"
+    },
+    {
+      "icon": "stone",
+      "label": "Precast",
+      "title": "Precast concrete products",
+      "text": "In-stock precast landscape supply.",
+      "items": [
+        "Precast concrete steps",
+        "Parking bumpers",
+        "Landscape supply",
+        "Pickup or delivery"
+      ],
+      "cta": "Ask about precast"
+    }
+  ],
+  "trust": [
+    "5.0 stars from 33 Google reviews",
+    "Serving Windsor since 2006"
+  ],
+  "stats": [
+    [
+      "2006",
+      "Serving since"
+    ],
+    [
+      "5.0★",
+      "From 33 Google reviews"
+    ],
+    [
+      "20+",
+      "Years of experience"
+    ],
+    [
+      "4",
+      "Communities served"
+    ]
+  ],
+  "found_via": "came across A.C. Landscaping while looking at landscapers in Windsor",
+  "compliment": "A perfect 5.0 across 33 Google reviews is rare.",
+  "gap": "Your website doesn't show that off. It's an older desktop layout, so on a phone it shrinks to tiny text people have to pinch and zoom to read, and the phone number can't be tapped to call.",
+  "pitch_line": "It leads with design, build and maintain, shows precast products as their own section, and fits a phone properly."
+}

@@ -1,0 +1,86 @@
+{
+  "name": "Barrhaven Landscaping & Snow Removal",
+  "short": "Barrhavens",
+  "sub": "Landscaping & Snow Removal",
+  "city": "Ottawa",
+  "region": "ON",
+  "areas": [
+    "Barrhaven",
+    "Ottawa South"
+  ],
+  "phone": "(613) 799-0300",
+  "email": "info@barrhavens.com",
+  "rating": 4.7,
+  "reviews": 521,
+  "palette": "slate",
+  "h1": "Precision. Punctuality. Professionalism.",
+  "lede": "A contracting business based in Barrhaven, taking a comprehensive approach to every project, from landscape and pool design to lawn care and snow removal.",
+  "services": [
+    {
+      "icon": "build",
+      "label": "Design & build",
+      "title": "Landscape and pool design-build",
+      "text": "Complete projects, managed from the first drawing to the final walkthrough.",
+      "items": [
+        "Landscape design",
+        "Pool design and build",
+        "Patios and hardscape",
+        "Project management"
+      ],
+      "cta": "Start a project"
+    },
+    {
+      "icon": "lawn",
+      "label": "Lawn care",
+      "title": "Lawn care",
+      "text": "Keep the yard looking the way it did on day one.",
+      "items": [
+        "Lawn maintenance",
+        "Seasonal cleanups",
+        "Fertilizing",
+        "Garden care"
+      ],
+      "featured": true,
+      "cta": "Ask about lawn care"
+    },
+    {
+      "icon": "snow",
+      "label": "Snow removal",
+      "title": "Snow removal",
+      "text": "Ottawa winters, handled.",
+      "items": [
+        "Residential snow removal",
+        "Commercial snow removal",
+        "Seasonal contracts",
+        "Driveways and walks"
+      ],
+      "cta": "Book snow removal"
+    }
+  ],
+  "trust": [
+    "4.7 stars from 521 Google reviews",
+    "Free estimates"
+  ],
+  "stats": [
+    [
+      "521",
+      "Google reviews"
+    ],
+    [
+      "4.7★",
+      "Average rating"
+    ],
+    [
+      "3",
+      "Services, one company"
+    ],
+    [
+      "Free",
+      "Estimates"
+    ]
+  ],
+  "found_via": "came across Barrhavens while looking at landscapers in Ottawa",
+  "compliment": "521 Google reviews at 4.7 is a huge reputation for a local company.",
+  "gap": "Your website isn't keeping up with it, though. On a phone, barrhavens.com opens to a small logo on a mostly blank screen, it still says \"©2018 by Barrhavens.ca, created with Wix\" at the bottom, and someone has to scroll to find out what you do.",
+  "pitch_line": "It leads with the 521 reviews, lays out design-build, lawn care and snow removal clearly, and has a free estimate form and a tap-to-call button."
+}

@@ -1,0 +1,67 @@
+{
+  "name": "M.S. Lawn & Garden",
+  "short": "M.S. Lawn & Garden",
+  "sub": "Mississauga · Residential & commercial",
+  "city": "Mississauga",
+  "region": "ON",
+  "areas": [
+    "Mississauga"
+  ],
+  "phone": "(647) 722-8419",
+  "email": "mslawngarden@gmail.com",
+  "rating": 4.6,
+  "reviews": 70,
+  "palette": "slate",
+  "h1": "Enhancing commercial and residential properties.",
+  "lede": "Lawn and garden care for homes and businesses across Mississauga. Regular maintenance, seasonal cleanups and gardens that look after the property's first impression.",
+  "services": [
+    {
+      "icon": "lawn",
+      "label": "Lawn care",
+      "title": "Lawn care",
+      "text": "Regular maintenance that keeps the lawn sharp.",
+      "items": [
+        "Weekly mowing",
+        "Trimming and edging",
+        "Aeration",
+        "Fertilizing"
+      ],
+      "featured": true,
+      "cta": "Book lawn care"
+    },
+    {
+      "icon": "leaf",
+      "label": "Gardens",
+      "title": "Garden care",
+      "text": "Beds and shrubs kept tidy and healthy.",
+      "items": [
+        "Garden bed maintenance",
+        "Shrub and hedge trimming",
+        "Mulching",
+        "Planting"
+      ],
+      "cta": "Ask about gardens"
+    },
+    {
+      "icon": "clean",
+      "label": "Seasonal",
+      "title": "Seasonal cleanups",
+      "text": "Spring and fall, done properly.",
+      "items": [
+        "Spring cleanup",
+        "Fall cleanup",
+        "Leaf removal",
+        "Commercial properties"
+      ],
+      "cta": "Book a cleanup"
+    }
+  ],
+  "trust": [
+    "4.6 stars from 70 Google reviews",
+    "Residential and commercial"
+  ],
+  "found_via": "came across M.S. Lawn & Garden while looking at lawn care in Mississauga",
+  "compliment": "70 Google reviews is a lot of properties looked after.",
+  "gap": "The website link on your Google listing goes to a page of social media buttons, though, so someone ready to hire can't see your services or ask for a quote without clicking off somewhere else.",
+  "pitch_line": "It puts your lawn, garden and cleanup services on one page with a quote form and a tap-to-call button."
+}

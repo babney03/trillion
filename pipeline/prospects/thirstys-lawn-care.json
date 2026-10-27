@@ -1,0 +1,86 @@
+{
+  "name": "Thirsty's Lawn Care",
+  "short": "Thirsty's",
+  "sub": "Lawn Care · Peterborough",
+  "city": "Peterborough",
+  "region": "ON",
+  "areas": [
+    "Peterborough",
+    "Surrounding area"
+  ],
+  "phone": "(705) 931-0204",
+  "email": "thirstyslawncare@gmail.com",
+  "rating": 4.7,
+  "reviews": 84,
+  "palette": "meadow",
+  "h1": "Worry-free lawn care in Peterborough.",
+  "lede": "Proudly serving Peterborough since 2009. Sign up and we set a consistent service day, so your lawn stays well-manicured all season.",
+  "services": [
+    {
+      "icon": "lawn",
+      "label": "Weekly cutting",
+      "title": "Weekly lawn cutting",
+      "text": "One consistent day a week, all season long.",
+      "items": [
+        "Weekly mowing",
+        "Trimming",
+        "Edging",
+        "Clippings cleaned up"
+      ],
+      "featured": true,
+      "cta": "Sign up for the season"
+    },
+    {
+      "icon": "leaf",
+      "label": "Lawn care",
+      "title": "Lawn health",
+      "text": "The extras that keep the grass thick.",
+      "items": [
+        "Spring cleanup",
+        "Aeration",
+        "Overseeding",
+        "Fall cleanup"
+      ],
+      "cta": "Ask about lawn care"
+    },
+    {
+      "icon": "clean",
+      "label": "Property",
+      "title": "Property services",
+      "text": "Worry-free property services, the same reliable crew.",
+      "items": [
+        "Hedge trimming",
+        "Leaf removal",
+        "Yard tidy-ups",
+        "Free estimates"
+      ],
+      "cta": "Get an estimate"
+    }
+  ],
+  "trust": [
+    "Fully insured and WSIB covered",
+    "Peterborough Chamber of Commerce member"
+  ],
+  "stats": [
+    [
+      "2009",
+      "Serving since"
+    ],
+    [
+      "4.7★",
+      "From 84 Google reviews"
+    ],
+    [
+      "WSIB",
+      "Covered and insured"
+    ],
+    [
+      "Weekly",
+      "Consistent service day"
+    ]
+  ],
+  "found_via": "came across Thirsty's while looking at lawn care in Peterborough",
+  "compliment": "84 Google reviews at 4.7 is a lot of happy lawns.",
+  "gap": "Your website buries that. It opens with a numbered list of core values before it ever says you cut lawns, browsers mark it \"Not secure\", and the phone number can't be tapped to call.",
+  "pitch_line": "It leads with weekly lawn cutting and your 84 reviews, keeps the values further down, and has a sign-up form and a tap-to-call button."
+}

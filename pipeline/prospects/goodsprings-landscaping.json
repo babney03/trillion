@@ -1,0 +1,85 @@
+{
+  "name": "Goodsprings Landscaping",
+  "short": "Goodsprings",
+  "sub": "Landscaping · Mississauga",
+  "city": "Mississauga",
+  "region": "ON",
+  "areas": [
+    "Mississauga"
+  ],
+  "phone": "(416) 770-6750",
+  "email": "info@goodsprings.ca",
+  "rating": 5.0,
+  "reviews": 51,
+  "palette": "meadow",
+  "h1": "Mississauga landscaping with a perfect record.",
+  "lede": "Goodsprings Landscaping looks after yards across Mississauga, with fifty-one reviews and every one of them five stars.",
+  "services": [
+    {
+      "icon": "build",
+      "label": "Design & build",
+      "title": "Landscape design and build",
+      "text": "New yards and big changes, planned and built start to finish.",
+      "items": [
+        "Landscape design",
+        "Interlock and patios",
+        "Retaining walls",
+        "Sod and planting"
+      ],
+      "cta": "Start a project"
+    },
+    {
+      "icon": "leaf",
+      "label": "Garden care",
+      "title": "Garden and lawn care",
+      "text": "Keep it looking finished all season.",
+      "items": [
+        "Lawn maintenance",
+        "Garden beds",
+        "Pruning and trimming",
+        "Spring and fall cleanups"
+      ],
+      "featured": true,
+      "cta": "Ask about care"
+    },
+    {
+      "icon": "stone",
+      "label": "Hardscape",
+      "title": "Hardscape",
+      "text": "The structure that makes a yard usable.",
+      "items": [
+        "Walkways",
+        "Steps",
+        "Garden walls",
+        "Edging"
+      ],
+      "cta": "Ask about hardscape"
+    }
+  ],
+  "trust": [
+    "5.0 stars from 51 Google reviews",
+    "Locally owned"
+  ],
+  "stats": [
+    [
+      "5.0★",
+      "Every review"
+    ],
+    [
+      "51",
+      "Google reviews"
+    ],
+    [
+      "Mississauga",
+      "Locally owned"
+    ],
+    [
+      "Free",
+      "Quotes"
+    ]
+  ],
+  "found_via": "came across Goodsprings while looking at landscapers in Mississauga",
+  "compliment": "Fifty-one Google reviews and every one of them five stars. I don't see that often.",
+  "gap": "But anyone who clicks through to goodsprings.ca gets a \"Coming Soon, our website is currently under development\" page, so all that goodwill stops at the door.",
+  "pitch_line": "This one is ready now. It shows your services and your perfect rating, and has a quote form and a tap-to-call button."
+}

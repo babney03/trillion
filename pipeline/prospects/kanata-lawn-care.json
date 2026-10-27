@@ -1,0 +1,68 @@
+{
+  "name": "Kanata Snow Removal and Lawn Care",
+  "short": "Kanata Lawn Care",
+  "sub": "Snow Removal & Lawn Care",
+  "city": "Ottawa",
+  "region": "ON",
+  "areas": [
+    "Kanata",
+    "Ottawa"
+  ],
+  "phone": "(613) 908-9222",
+  "email": "info@kanatalawncare.ca",
+  "rating": 4.8,
+  "reviews": 28,
+  "palette": "meadow",
+  "h1": "Kanata lawns in summer. Kanata driveways in winter.",
+  "lede": "Seasonal lawn care and snow removal for Kanata homes. Sign up for the season once and it's taken care of.",
+  "services": [
+    {
+      "icon": "lawn",
+      "label": "Summer",
+      "title": "Summer lawn care",
+      "text": "A season of lawn care, booked once.",
+      "items": [
+        "Weekly mowing",
+        "Trimming and edging",
+        "Spring cleanup",
+        "Fall cleanup"
+      ],
+      "featured": true,
+      "cta": "Sign up for summer"
+    },
+    {
+      "icon": "snow",
+      "label": "Winter",
+      "title": "Winter snow removal",
+      "text": "Cleared after every snowfall, all season.",
+      "items": [
+        "Driveway clearing",
+        "Walkways",
+        "Seasonal contracts",
+        "Reliable routes"
+      ],
+      "cta": "Sign up for winter"
+    },
+    {
+      "icon": "leaf",
+      "label": "Extras",
+      "title": "Yard extras",
+      "text": "The jobs in between.",
+      "items": [
+        "Aeration",
+        "Overseeding",
+        "Hedge trimming",
+        "Leaf removal"
+      ],
+      "cta": "Ask about extras"
+    }
+  ],
+  "trust": [
+    "4.8 stars from 28 Google reviews",
+    "Seasonal sign-up"
+  ],
+  "found_via": "came across Kanata Lawn Care while looking at lawn and snow services in Ottawa",
+  "compliment": "A 4.8 on Google across both summer and winter work is a good sign.",
+  "gap": "But your homepage is two Sign Up buttons and a promo code. Someone landing on it can't see what's included, where you work or that you've got 28 strong reviews.",
+  "pitch_line": "It keeps the summer and winter sign-ups up front but explains what each includes, and adds your reviews and a tap-to-call button."
+}

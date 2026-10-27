@@ -177,6 +177,11 @@ def main():
             status = "lead" if emails else "no email"
         rows.append({**b, "email": " ".join(emails[:2]), "weaknesses": "; ".join(weak), "score": score, "status": status})
         new += status == "lead"
+    # Another run may have written the file meanwhile; keep its rows too.
+    if LEADS.exists():
+        have = {domain(r["website"]) or r["name"].lower() for r in rows}
+        rows += [r for r in csv.DictReader(LEADS.open())
+                 if (domain(r["website"]) or r["name"].lower()) not in have]
     order = {"lead": 0, "no email": 1, "maybe": 2, "unverified": 3}
     rows.sort(key=lambda r: (order.get(r["status"], 3), -int(r["score"]), -int(r["reviews"])))
     with LEADS.open("w", newline="") as f:

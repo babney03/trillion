@@ -1,0 +1,68 @@
+{
+  "name": "BTrust Landscaping",
+  "short": "BTrust",
+  "sub": "Landscaping · Toronto & Markham",
+  "city": "Markham",
+  "region": "ON",
+  "areas": [
+    "Toronto",
+    "Markham"
+  ],
+  "phone": "(647) 671-8635",
+  "email": "info@btrustlandscaping.ca",
+  "rating": 5.0,
+  "reviews": 32,
+  "palette": "harvest",
+  "h1": "Interlock, patios and landscapes built to last.",
+  "lede": "Residential and commercial landscaping across Toronto and Markham. Interlocking paver stonework is our specialty, from front entrances and driveways to patios and pool surrounds.",
+  "services": [
+    {
+      "icon": "stone",
+      "label": "Interlock",
+      "title": "Interlocking expert",
+      "text": "Paver stonework that looks right and stays level.",
+      "items": [
+        "Interlock driveways",
+        "Patios and steps",
+        "Walkways and front entrances",
+        "Pool surrounds"
+      ],
+      "featured": true,
+      "cta": "Ask about interlock"
+    },
+    {
+      "icon": "build",
+      "label": "Landscaping",
+      "title": "Landscape design and build",
+      "text": "Front and back yards, designed and built.",
+      "items": [
+        "Design and consultations",
+        "Retaining walls",
+        "Garden borders",
+        "Exterior lighting"
+      ],
+      "cta": "Start a project"
+    },
+    {
+      "icon": "fence",
+      "label": "Structures",
+      "title": "Decks, fences and more",
+      "text": "The rest of the outdoor build.",
+      "items": [
+        "Decks",
+        "Fences",
+        "Waterproofing",
+        "Epoxy floors"
+      ],
+      "cta": "Ask about structures"
+    }
+  ],
+  "trust": [
+    "5.0 stars from 32 Google reviews",
+    "Residential and commercial"
+  ],
+  "found_via": "came across BTrust while looking at interlock companies in Markham",
+  "compliment": "A perfect 5.0 across 32 Google reviews is a great reputation for an interlock company.",
+  "gap": "Your website doesn't use https, though, so Chrome and Safari show visitors a \"Not secure\" warning, and the phone number can't be tapped to call.",
+  "pitch_line": "It leads with interlock, shows the full list of services clearly, and has a quote form and a tap-to-call button."
+}

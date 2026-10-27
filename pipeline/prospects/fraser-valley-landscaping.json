@@ -1,0 +1,87 @@
+{
+  "name": "Fraser Valley Landscaping",
+  "short": "Fraser Valley",
+  "sub": "Landscaping · Since 2009",
+  "city": "Langley",
+  "region": "BC",
+  "areas": [
+    "Langley",
+    "Fraser Valley",
+    "Greater Vancouver"
+  ],
+  "phone": "(604) 612-2119",
+  "email": "info@fraservalleylandscaping.com",
+  "rating": 4.4,
+  "reviews": 28,
+  "palette": "cedar",
+  "h1": "From strata maintenance to big hardscape jobs.",
+  "lede": "Serving the Fraser Valley and Greater Vancouver since 2009. Licensed, bonded and insured, with a crew that has well over a decade in landscaping and construction. No job too small.",
+  "services": [
+    {
+      "icon": "leaf",
+      "label": "Landscaping",
+      "title": "Landscaping",
+      "text": "Custom jobs for homeowners, done properly.",
+      "items": [
+        "Garden and yard projects",
+        "Planting",
+        "Sod",
+        "Custom homeowner jobs"
+      ],
+      "cta": "Start a project"
+    },
+    {
+      "icon": "stone",
+      "label": "Construction",
+      "title": "Landscape construction",
+      "text": "Well over a decade of landscape construction experience.",
+      "items": [
+        "Commercial hardscape",
+        "Retaining walls",
+        "Patios and paths",
+        "Grading and drainage"
+      ],
+      "featured": true,
+      "cta": "Ask about construction"
+    },
+    {
+      "icon": "lawn",
+      "label": "Maintenance",
+      "title": "Maintenance",
+      "text": "For strata complexes and homeowners alike.",
+      "items": [
+        "Strata maintenance",
+        "Residential maintenance",
+        "Seasonal cleanups",
+        "Ongoing contracts"
+      ],
+      "cta": "Ask about maintenance"
+    }
+  ],
+  "trust": [
+    "Licensed, bonded and insured",
+    "Serving the Fraser Valley since 2009"
+  ],
+  "stats": [
+    [
+      "2009",
+      "Serving since"
+    ],
+    [
+      "4.4★",
+      "From 28 Google reviews"
+    ],
+    [
+      "Mon–Sat",
+      "6am to 6pm"
+    ],
+    [
+      "No job",
+      "Too small"
+    ]
+  ],
+  "found_via": "came across Fraser Valley Landscaping while looking at landscapers in Langley",
+  "compliment": "Licensed, bonded and insured, with strata contracts and commercial hardscape on the books, is a strong pitch on its own.",
+  "gap": "Your website makes it hard to see, though. On a phone the page is wider than the screen so it slides sideways, and it took about 20 seconds to load when I tried it.",
+  "pitch_line": "It lays out landscaping, construction and maintenance in one clear page that loads fast and fits a phone."
+}

@@ -1,0 +1,87 @@
+{
+  "name": "Maritime Hydroseed",
+  "short": "Maritime Hydroseed",
+  "sub": "Landscape & Erosion Control",
+  "city": "Saint John",
+  "region": "NB",
+  "areas": [
+    "Saint John",
+    "New Brunswick",
+    "Atlantic Canada"
+  ],
+  "phone": "(506) 672-1600",
+  "email": "webmaster@maritimehydroseed.com",
+  "rating": 4.5,
+  "reviews": 11,
+  "palette": "tidewater",
+  "h1": "Forty years of getting ground to grow.",
+  "lede": "A landscape and erosion control contractor serving Atlantic Canada for 40 years. Hydroseeding, erosion and sediment control, and site restoration for commercial, industrial, government and residential work.",
+  "services": [
+    {
+      "icon": "water",
+      "label": "Hydroseeding",
+      "title": "Hydroseeding",
+      "text": "Vegetation established fast, on flat ground or steep banks.",
+      "items": [
+        "Hydroseeding",
+        "Commercial and residential",
+        "Embankments and slopes",
+        "Site restoration"
+      ],
+      "featured": true,
+      "cta": "Ask about hydroseeding"
+    },
+    {
+      "icon": "stone",
+      "label": "Erosion control",
+      "title": "Erosion and sediment control",
+      "text": "Preventative solutions for erosion, sediment, storm water and dust.",
+      "items": [
+        "Shorelines and channel linings",
+        "Storm channels",
+        "Wetlands",
+        "Dust control"
+      ],
+      "cta": "Ask about erosion control"
+    },
+    {
+      "icon": "leaf",
+      "label": "Landscape services",
+      "title": "Landscape services",
+      "text": "Restoring sites to pre-construction condition or better.",
+      "items": [
+        "Landscape services",
+        "Topsoil",
+        "Site restoration",
+        "Financing available"
+      ],
+      "cta": "Ask about a project"
+    }
+  ],
+  "trust": [
+    "40 years serving Atlantic Canada",
+    "Factory-certified staff"
+  ],
+  "stats": [
+    [
+      "40",
+      "Years in Atlantic Canada"
+    ],
+    [
+      "4.5★",
+      "From 11 Google reviews"
+    ],
+    [
+      "4",
+      "Sectors served"
+    ],
+    [
+      "Certified",
+      "Factory-trained staff"
+    ]
+  ],
+  "found_via": "came across Maritime Hydroseed while looking at landscape contractors in New Brunswick",
+  "compliment": "Forty years and factory-certified staff is the kind of track record commercial clients look for.",
+  "gap": "Your website is an older desktop layout, though. On a phone it shrinks to small text, and browsers mark it \"Not secure\" because it doesn't use https.",
+  "pitch_line": "It explains hydroseeding, erosion control and site restoration clearly, fits a phone, and has a quote form."
+}
