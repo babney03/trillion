@@ -10,3 +10,4 @@ pipeline/node_modules/
 pipeline/leads.csv
 pipeline/checks.json
 pipeline/out/
+pipeline/tracker.csv
