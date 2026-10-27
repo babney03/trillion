@@ -1,0 +1,87 @@
+{
+  "name": "Al's Landscaping Services",
+  "short": "Al's Landscaping",
+  "sub": "Regina · Since the 1960s",
+  "city": "Regina",
+  "region": "SK",
+  "areas": [
+    "Regina",
+    "Surrounding area"
+  ],
+  "phone": "(306) 757-6519",
+  "email": "alslandscaping@sasktel.net",
+  "rating": 5.0,
+  "reviews": 15,
+  "palette": "harvest",
+  "h1": "Sixty years of Regina yards.",
+  "lede": "Family owned and now in its second generation. Dirt-grown sod, paving stone, fencing, sprinklers and the supplies to finish the job.",
+  "services": [
+    {
+      "icon": "stone",
+      "label": "Paving & construction",
+      "title": "Build it",
+      "text": "Paving stone is our specialty, with a large selection to choose from.",
+      "items": [
+        "Paving stone installation",
+        "Vinyl fencing",
+        "Yard levelling and grading",
+        "Water features"
+      ],
+      "featured": true,
+      "cta": "Ask about paving stone"
+    },
+    {
+      "icon": "lawn",
+      "label": "Lawn & planting",
+      "title": "Grow it",
+      "text": "Complete lawn makeovers with our dirt-grown sod.",
+      "items": [
+        "Dirt-grown sod layering",
+        "Tree and shrub planting",
+        "Sprinkler install and repair",
+        "Power raking and aerating"
+      ],
+      "cta": "Ask about sod"
+    },
+    {
+      "icon": "snow",
+      "label": "Year-round care",
+      "title": "Keep it",
+      "text": "Residential and commercial care, through to snow season.",
+      "items": [
+        "Fertilizing",
+        "Fall cleanup",
+        "Snow removal",
+        "Commercial services"
+      ],
+      "cta": "Ask about upkeep"
+    }
+  ],
+  "trust": [
+    "60 years in Regina",
+    "Family owned, second generation"
+  ],
+  "stats": [
+    [
+      "60",
+      "Years in Regina"
+    ],
+    [
+      "5.0★",
+      "From 15 Google reviews"
+    ],
+    [
+      "2nd",
+      "Generation, family owned"
+    ],
+    [
+      "Free",
+      "Estimates"
+    ]
+  ],
+  "footer": "Family owned landscaping in Regina for over 60 years. Past landscaper for the Hospital Home Lottery homes.",
+  "found_via": "came across Al's Landscaping while looking at Regina landscapers",
+  "compliment": "Sixty years, a second generation and a perfect 5.0 on Google is a rare thing.",
+  "gap": "Your website isn't showing that off. On a phone the top of the page is a big green button with just the letter \"a\" on it and a mostly empty grey area, and browsers mark the site \"Not secure\".",
+  "pitch_line": "It leads with the 60 years and the family name, shows paving stone, sod and snow removal clearly, and works properly on a phone."
+}

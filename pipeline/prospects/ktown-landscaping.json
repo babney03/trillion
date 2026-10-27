@@ -1,0 +1,70 @@
+{
+  "name": "KTown Landscaping",
+  "short": "KTown Landscaping",
+  "sub": "Kelowna & Central Okanagan",
+  "city": "Kelowna",
+  "region": "BC",
+  "areas": [
+    "Kelowna",
+    "West Kelowna",
+    "Lake Country",
+    "Peachland"
+  ],
+  "phone": "(250) 215-2880",
+  "email": "ktownkleenup@shaw.ca",
+  "rating": 4.9,
+  "reviews": 18,
+  "palette": "slate",
+  "h1": "Landscaping, walls and excavation across the Central Okanagan.",
+  "lede": "Locally owned and fully equipped. From paver patios and block walls to bobcat work, demolition and fire damage clean-up, for homes and businesses.",
+  "services": [
+    {
+      "icon": "stone",
+      "label": "Landscaping",
+      "title": "Landscaping and stonework",
+      "text": "Full landscaping, large or small.",
+      "items": [
+        "Paver stonework and patios",
+        "Block retaining walls",
+        "Walkways and driveways",
+        "Outdoor kitchens"
+      ],
+      "featured": true,
+      "cta": "Start a project"
+    },
+    {
+      "icon": "build",
+      "label": "Excavation",
+      "title": "Excavation and demolition",
+      "text": "Bobcats and excavators for the major projects.",
+      "items": [
+        "Bobcat and excavator work",
+        "Demolition",
+        "Excavation and dumping",
+        "Fire damage clean-up"
+      ],
+      "cta": "Ask about excavation"
+    },
+    {
+      "icon": "water",
+      "label": "Yard features",
+      "title": "Yards and features",
+      "text": "The finishing touches.",
+      "items": [
+        "Irrigation systems",
+        "Water features",
+        "Synthetic lawns",
+        "Lighting displays"
+      ],
+      "cta": "Ask about features"
+    }
+  ],
+  "trust": [
+    "4.9 stars from 18 Google reviews",
+    "Residential and commercial"
+  ],
+  "found_via": "came across KTown while looking at landscapers in Kelowna",
+  "compliment": "A 4.9 on Google and a service list that runs from paver patios to fire damage clean-up says you can handle just about anything.",
+  "gap": "Your website doesn't use https, so Chrome and Safari show visitors a \"Not secure\" warning, and the phone number can't be tapped to call.",
+  "pitch_line": "It shows the full range of work clearly, works properly on a phone, and has a quote form and a tap-to-call button."
+}

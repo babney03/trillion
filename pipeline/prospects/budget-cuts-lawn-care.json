@@ -1,0 +1,69 @@
+{
+  "name": "Budget Cuts Lawn Care",
+  "short": "Budget Cuts",
+  "sub": "Lawn Care · Comox Valley",
+  "city": "Courtenay",
+  "region": "BC",
+  "areas": [
+    "Courtenay",
+    "Comox",
+    "Cumberland"
+  ],
+  "phone": "(250) 703-6576",
+  "email": "info@budgetcuts.ca",
+  "rating": 4.9,
+  "reviews": 17,
+  "palette": "meadow",
+  "h1": "Dependable lawn care that doesn't cost a fortune.",
+  "lede": "Residential and commercial property maintenance across the Comox Valley. Mowing, aeration, hedges, rubbish removal and soil and gravel delivery, at an affordable price.",
+  "services": [
+    {
+      "icon": "lawn",
+      "label": "Lawn care",
+      "title": "Lawn care",
+      "text": "Regular, reliable mowing and lawn health.",
+      "items": [
+        "Lawn mowing",
+        "Aeration",
+        "Fertilizing",
+        "Edging and trimming"
+      ],
+      "featured": true,
+      "cta": "Book lawn care"
+    },
+    {
+      "icon": "tree",
+      "label": "Hedges & yard",
+      "title": "Hedges and yard work",
+      "text": "Shaped, tidied and cleared away.",
+      "items": [
+        "Hedge trimming",
+        "Yard cleanups",
+        "Rubbish removal",
+        "Seasonal tidy-ups"
+      ],
+      "cta": "Ask about yard work"
+    },
+    {
+      "icon": "stone",
+      "label": "Delivery",
+      "title": "Soil and gravel",
+      "text": "Delivered where you need it.",
+      "items": [
+        "Soil delivery",
+        "Gravel delivery",
+        "Residential",
+        "Commercial"
+      ],
+      "cta": "Ask about delivery"
+    }
+  ],
+  "trust": [
+    "4.9 stars from 17 Google reviews",
+    "Free estimates"
+  ],
+  "found_via": "came across Budget Cuts while looking at lawn care in the Comox Valley",
+  "compliment": "A 4.9 on Google for a lawn care company is excellent.",
+  "gap": "Your website hasn't kept up with you, though. It still says \"Copyright 2015\" at the bottom, and the services and estimates sit behind \"click here\" links on a page that's hard to read on a phone.",
+  "pitch_line": "It puts your services and free estimates on one clear page with a tap-to-call button."
+}

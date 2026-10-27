@@ -1,0 +1,87 @@
+{
+  "name": "John Dicks Landscaping & Lawn Care",
+  "short": "John Dicks",
+  "sub": "Landscaping & Lawn Care",
+  "city": "Winnipeg",
+  "region": "MB",
+  "areas": [
+    "Winnipeg"
+  ],
+  "phone": "(204) 291-7778",
+  "email": "landscaspingwinnipeg@shaw.ca",
+  "rating": 4.3,
+  "reviews": 30,
+  "palette": "cedar",
+  "h1": "Winnipeg property care, all year round.",
+  "lede": "Landscaping, lawn care and snow clearing for homes and businesses in Winnipeg. A BBB A+ business with more than 20 years of looking after the city's yards.",
+  "services": [
+    {
+      "icon": "build",
+      "label": "Landscaping",
+      "title": "Landscaping",
+      "text": "Yards built and improved by a crew that's been doing it for decades.",
+      "items": [
+        "Landscaping projects",
+        "Sod and grading",
+        "Planting",
+        "Estimates on site"
+      ],
+      "cta": "Get an estimate"
+    },
+    {
+      "icon": "lawn",
+      "label": "Property care",
+      "title": "Year-round property care",
+      "text": "Residential and commercial maintenance, so the property looks after itself.",
+      "items": [
+        "Lawn care",
+        "Residential maintenance",
+        "Commercial maintenance",
+        "Spring and fall cleanups"
+      ],
+      "featured": true,
+      "cta": "Ask about property care"
+    },
+    {
+      "icon": "snow",
+      "label": "Snow clearing",
+      "title": "Snow clearing",
+      "text": "Winter can be scary. We clear it, so you don't have to.",
+      "items": [
+        "Residential snow clearing",
+        "Commercial snow clearing",
+        "Driveways and walks",
+        "Seasonal contracts"
+      ],
+      "cta": "Book snow clearing"
+    }
+  ],
+  "trust": [
+    "BBB A+ for 22 consecutive years",
+    "2010 BBB Torch Award winner"
+  ],
+  "stats": [
+    [
+      "A+",
+      "BBB, 22 years running"
+    ],
+    [
+      "4.3★",
+      "From 30 Google reviews"
+    ],
+    [
+      "2010",
+      "Torch Award winner"
+    ],
+    [
+      "VIP",
+      "Veterans Affairs cards accepted"
+    ]
+  ],
+  "footer": "Landscaping, lawn care and snow clearing in Winnipeg. Proudly serving Winnipeg's veterans.",
+  "contact": "John",
+  "found_via": "came across John Dicks Landscaping while looking at Winnipeg landscapers",
+  "compliment": "22 straight years of a BBB A+ and a thank-you letter from the Mayor is a track record most companies would kill for.",
+  "gap": "The trouble is your website was built for desktop screens, so on a phone it shrinks to a size nobody can read, and that's where most people look you up now.",
+  "pitch_line": "It puts the BBB record, your three services and both phone lines up front, sized properly for a phone."
+}

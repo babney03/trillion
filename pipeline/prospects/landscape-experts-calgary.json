@@ -1,0 +1,67 @@
+{
+  "name": "Landscape Experts",
+  "short": "Landscape Experts",
+  "sub": "Calgary Landscaping",
+  "city": "Calgary",
+  "region": "AB",
+  "areas": [
+    "Calgary"
+  ],
+  "phone": "(403) 257-3310",
+  "email": "info@landscapeexperts.ca",
+  "rating": 4.6,
+  "reviews": 24,
+  "palette": "slate",
+  "h1": "Calgary yards, built properly and kept that way.",
+  "lede": "Landscape Experts designs, builds and looks after yards across Calgary. Tell us what you've got and what you want, and we'll give you a straight quote.",
+  "services": [
+    {
+      "icon": "build",
+      "label": "Landscape construction",
+      "title": "Build it new",
+      "text": "New yards and big changes, planned and built start to finish.",
+      "items": [
+        "Yard design and planning",
+        "Patios and walkways",
+        "Retaining walls",
+        "Sod and grading"
+      ],
+      "cta": "Start a project"
+    },
+    {
+      "icon": "leaf",
+      "label": "Planting",
+      "title": "Bring it to life",
+      "text": "Beds, trees and shrubs chosen to survive a Calgary winter.",
+      "items": [
+        "Trees and shrubs",
+        "Garden beds",
+        "Mulch and rock",
+        "Seasonal colour"
+      ],
+      "featured": true,
+      "cta": "Ask about planting"
+    },
+    {
+      "icon": "lawn",
+      "label": "Yard care",
+      "title": "Keep it sharp",
+      "text": "Upkeep so the yard still looks finished in August.",
+      "items": [
+        "Spring and fall cleanups",
+        "Lawn care",
+        "Pruning and trimming",
+        "Ongoing maintenance"
+      ],
+      "cta": "Ask about upkeep"
+    }
+  ],
+  "trust": [
+    "Locally owned in Calgary",
+    "Free quotes"
+  ],
+  "found_via": "came across Landscape Experts while looking at landscapers in Calgary",
+  "compliment": "24 Google reviews at 4.6 tells me people are happy with the work.",
+  "gap": "But when someone clicks through to landscapeexperts.ca, there's a logo, one photo and \"©2021\", and nothing about what you do or how to reach you.",
+  "pitch_line": "It lays out your services, has a quote form and a tap-to-call button, and has slots ready for your project photos."
+}

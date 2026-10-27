@@ -1,0 +1,69 @@
+{
+  "name": "Terra Vie Landscaping",
+  "short": "Terra Vie",
+  "sub": "Landscaping · Comox Valley",
+  "city": "Courtenay",
+  "region": "BC",
+  "areas": [
+    "Courtenay",
+    "Comox",
+    "Cumberland"
+  ],
+  "phone": "(250) 207-0599",
+  "email": "info@terravie.ca",
+  "rating": 4.8,
+  "reviews": 13,
+  "palette": "cedar",
+  "h1": "Landscaping for the Comox Valley.",
+  "lede": "Terra Vie has been looking after gardens across the Comox Valley since 2020. Tell us about your yard and we'll come and take a look.",
+  "services": [
+    {
+      "icon": "build",
+      "label": "Landscaping",
+      "title": "Landscaping",
+      "text": "New gardens and changes to the ones you have.",
+      "items": [
+        "Garden design",
+        "Planting",
+        "Beds and borders",
+        "Mulch and soil"
+      ],
+      "cta": "Start a project"
+    },
+    {
+      "icon": "leaf",
+      "label": "Garden care",
+      "title": "Garden care",
+      "text": "Regular care so the garden keeps looking its best.",
+      "items": [
+        "Garden maintenance",
+        "Pruning",
+        "Weeding",
+        "Seasonal cleanups"
+      ],
+      "featured": true,
+      "cta": "Ask about garden care"
+    },
+    {
+      "icon": "lawn",
+      "label": "Lawns",
+      "title": "Lawns",
+      "text": "Healthy grass through wet winters and dry summers.",
+      "items": [
+        "Mowing",
+        "Lawn repair",
+        "Edging",
+        "Fall leaf cleanup"
+      ],
+      "cta": "Ask about lawns"
+    }
+  ],
+  "trust": [
+    "Serving the Comox Valley since 2020",
+    "4.8 stars on Google"
+  ],
+  "found_via": "came across Terra Vie while looking at landscapers in the Comox Valley",
+  "compliment": "A 4.8 on Google after a few years in business means you're doing the work right.",
+  "gap": "Your website is a single line of text and a grid of photos, so anyone who finds it can't see what you do, where you work or how to get a quote.",
+  "pitch_line": "It keeps the photos but adds your services, service area and a quote form, with a tap-to-call button for phones."
+}

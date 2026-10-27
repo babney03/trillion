@@ -1,0 +1,69 @@
+{
+  "name": "Wagler's Landscaping",
+  "short": "Wagler's",
+  "sub": "Landscaping · Nanaimo",
+  "city": "Nanaimo",
+  "region": "BC",
+  "areas": [
+    "Nanaimo",
+    "Lantzville",
+    "Cedar"
+  ],
+  "phone": "(250) 802-4758",
+  "email": "waglerslandscaping@shaw.ca",
+  "rating": 4.3,
+  "reviews": 12,
+  "palette": "meadow",
+  "h1": "Good quality work, and great service.",
+  "lede": "Fully licensed, registered and insured in Nanaimo. We come out, look at the job and make sure you get exactly what you wanted done.",
+  "services": [
+    {
+      "icon": "stone",
+      "label": "Landscaping",
+      "title": "Landscaping",
+      "text": "Patios, paths and yard projects, done properly.",
+      "items": [
+        "Paver patios and paths",
+        "Yard projects",
+        "Grading",
+        "Planting"
+      ],
+      "featured": true,
+      "cta": "Start a project"
+    },
+    {
+      "icon": "lawn",
+      "label": "Maintenance",
+      "title": "Maintenance",
+      "text": "Keep the yard looking finished.",
+      "items": [
+        "Lawn care",
+        "Pruning and trimming",
+        "Cleanups",
+        "Ongoing maintenance"
+      ],
+      "cta": "Ask about maintenance"
+    },
+    {
+      "icon": "build",
+      "label": "Contracting",
+      "title": "Contracting",
+      "text": "The right gear and the know-how for bigger jobs.",
+      "items": [
+        "Site work",
+        "Excavation",
+        "Hauling",
+        "On-site estimates"
+      ],
+      "cta": "Ask about contracting"
+    }
+  ],
+  "trust": [
+    "Fully licensed, registered and insured",
+    "Based in Nanaimo"
+  ],
+  "found_via": "came across Wagler's while looking at landscapers here in Nanaimo",
+  "compliment": "Being fully licensed and insured, with the gear to back it up, is what people look for.",
+  "gap": "Your website is still showing \"©2016\", it doesn't use https so browsers mark it \"Not secure\", and the phone number can't be tapped to call.",
+  "pitch_line": "It's built around the same promise, good work and good service, with a quote form and a tap-to-call button."
+}

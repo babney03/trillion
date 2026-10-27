@@ -1,0 +1,87 @@
+{
+  "name": "Ahlstedt's Landscape Contracting",
+  "short": "Ahlstedt's",
+  "sub": "Landscape Contracting",
+  "city": "Saskatoon",
+  "region": "SK",
+  "areas": [
+    "Saskatoon",
+    "Across Saskatchewan"
+  ],
+  "phone": "(306) 291-9504",
+  "email": "info@ahlstedts.ca",
+  "rating": 4.9,
+  "reviews": 52,
+  "palette": "harvest",
+  "h1": "Full yard development in Saskatoon, start to finish.",
+  "lede": "Jonathan and the Ahlstedt's crew take care of every part of a new or existing yard, from design and concrete to sod, sprinklers and winter maintenance.",
+  "services": [
+    {
+      "icon": "build",
+      "label": "Full yard development",
+      "title": "Build the whole yard",
+      "text": "Every trade coordinated by one company, so the project runs on time.",
+      "items": [
+        "Landscape design",
+        "Concrete and paving stone",
+        "Retaining and brick walls",
+        "Cedar planters"
+      ],
+      "cta": "Start a project"
+    },
+    {
+      "icon": "water",
+      "label": "Lawn & planting",
+      "title": "Grow it in",
+      "text": "The living part of the yard, done properly from the ground up.",
+      "items": [
+        "Sod prep and install",
+        "Sprinkler systems",
+        "Perennial and tree planting",
+        "Landscape lighting"
+      ],
+      "featured": true,
+      "cta": "Ask about sod & sprinklers"
+    },
+    {
+      "icon": "snow",
+      "label": "All-season care",
+      "title": "Look after it",
+      "text": "Maintenance through the growing season and the winter.",
+      "items": [
+        "Landscape maintenance",
+        "Winter maintenance",
+        "Snow service",
+        "Parking lot sanding"
+      ],
+      "cta": "Ask about maintenance"
+    }
+  ],
+  "trust": [
+    "2016 Consumer Choice Award",
+    "Saskatoon landscapers for over a decade"
+  ],
+  "stats": [
+    [
+      "4.9★",
+      "From 52 Google reviews"
+    ],
+    [
+      "2016",
+      "Consumer Choice Award"
+    ],
+    [
+      "10+",
+      "Years in Saskatoon"
+    ],
+    [
+      "1",
+      "Company for the whole yard"
+    ]
+  ],
+  "contact": "Jonathan",
+  "found_via": "came across Ahlstedt's while looking at Saskatoon landscapers",
+  "compliment": "52 Google reviews averaging 4.9 is a serious reputation.",
+  "gap": "Your website doesn't do it justice on a phone, though. It's an older desktop layout, so it shrinks down to tiny text and someone has to pinch and zoom to read what you do.",
+  "pitch_line": "It shows the full yard development offer the way you describe it, with sod, sprinklers and winter work, and a quote form that works on a phone."
+}

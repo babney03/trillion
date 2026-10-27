@@ -5,3 +5,8 @@ node_modules/
 
 # playwright-cli run artifacts (screenshots, snapshots, console logs)
 .playwright-cli/
+pipeline/cache/
+pipeline/node_modules/
+pipeline/leads.csv
+pipeline/checks.json
+pipeline/out/
