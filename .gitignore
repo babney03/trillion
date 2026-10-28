@@ -12,3 +12,4 @@ pipeline/checks.json
 pipeline/out/
 pipeline/tracker.csv
 pipeline/__pycache__/
+.wrangler/
