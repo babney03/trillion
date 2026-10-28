@@ -139,7 +139,7 @@ def render(p):
     nav += '<a href="#work">Our work</a><a href="#area">Service area</a><a href="#faq">FAQ</a>'
 
     trust = [rl] if rl else []
-    trust += p.get("trust", [])[: 3 - len(trust)]
+    trust += [t for t in p.get("trust", []) if t != rl][: 3 - len(trust)]
     trust_html = "".join(f"<span>{TICK}{e(t)}</span>" for t in trust)
 
     lane_html = ""

@@ -22,5 +22,100 @@
   "station-20": {
     "site_id": "2c627cd6-7c34-44d9-8594-c936663b14c5",
     "url": "https://station-20-nanaimo.netlify.app"
+  },
+  "ac-landscaping-windsor": {
+    "host": "cloudflare",
+    "project": "ac-landscaping-windsor",
+    "url": "https://ac-landscaping-windsor.pages.dev"
+  },
+  "ahlstedts-landscape": {
+    "host": "cloudflare",
+    "project": "ahlstedts-landscape",
+    "url": "https://ahlstedts-landscape.pages.dev"
+  },
+  "als-landscaping-regina": {
+    "host": "cloudflare",
+    "project": "als-landscaping-regina",
+    "url": "https://als-landscaping-regina.pages.dev"
+  },
+  "barrhaven-landscaping": {
+    "host": "cloudflare",
+    "project": "barrhaven-landscaping",
+    "url": "https://barrhaven-landscaping.pages.dev"
+  },
+  "btrust-landscaping": {
+    "host": "cloudflare",
+    "project": "btrust-landscaping",
+    "url": "https://btrust-landscaping.pages.dev"
+  },
+  "budget-cuts-lawn-care": {
+    "host": "cloudflare",
+    "project": "budget-cuts-lawn-care",
+    "url": "https://budget-cuts-lawn-care.pages.dev"
+  },
+  "downunder-irrigation": {
+    "host": "cloudflare",
+    "project": "downunder-irrigation",
+    "url": "https://downunder-irrigation.pages.dev"
+  },
+  "fraser-valley-landscaping": {
+    "host": "cloudflare",
+    "project": "fraser-valley-landscaping",
+    "url": "https://fraser-valley-landscaping.pages.dev"
+  },
+  "goodsprings-landscaping": {
+    "host": "cloudflare",
+    "project": "goodsprings-landscaping",
+    "url": "https://goodsprings-landscaping.pages.dev"
+  },
+  "ideal-lawn-care-saskatoon": {
+    "host": "cloudflare",
+    "project": "ideal-lawn-care-saskatoon",
+    "url": "https://ideal-lawn-care-saskatoon.pages.dev"
+  },
+  "john-dicks-landscaping": {
+    "host": "cloudflare",
+    "project": "john-dicks-landscaping",
+    "url": "https://john-dicks-landscaping.pages.dev"
+  },
+  "kanata-lawn-care": {
+    "host": "cloudflare",
+    "project": "kanata-lawn-care",
+    "url": "https://kanata-lawn-care-dm7.pages.dev"
+  },
+  "ktown-landscaping": {
+    "host": "cloudflare",
+    "project": "ktown-landscaping",
+    "url": "https://ktown-landscaping.pages.dev"
+  },
+  "landscape-experts-calgary": {
+    "host": "cloudflare",
+    "project": "landscape-experts-calgary",
+    "url": "https://landscape-experts-calgary.pages.dev"
+  },
+  "maritime-hydroseed": {
+    "host": "cloudflare",
+    "project": "maritime-hydroseed",
+    "url": "https://maritime-hydroseed.pages.dev"
+  },
+  "ms-lawn-garden": {
+    "host": "cloudflare",
+    "project": "ms-lawn-garden",
+    "url": "https://ms-lawn-garden.pages.dev"
+  },
+  "terra-vie-landscaping": {
+    "host": "cloudflare",
+    "project": "terra-vie-landscaping",
+    "url": "https://terra-vie-landscaping.pages.dev"
+  },
+  "thirstys-lawn-care": {
+    "host": "cloudflare",
+    "project": "thirstys-lawn-care",
+    "url": "https://thirstys-lawn-care.pages.dev"
+  },
+  "waglers-landscaping": {
+    "host": "cloudflare",
+    "project": "waglers-landscaping",
+    "url": "https://waglers-landscaping.pages.dev"
   }
 }
