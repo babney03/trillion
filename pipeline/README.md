@@ -35,7 +35,7 @@ find.py ─► leads.csv ─► check.mjs ─► checks.json ─► prospects/<s
    Gmail drafts from `out/*.email.json`. Drafting skips any email still
    showing `[LINK]`.
 
-`tracker.csv` records where each prospect is: built, live, drafted, sent,
+`tracker.csv` (committed, so it outlasts each session) records where each prospect is: built, live, drafted, sent,
 replied, no thanks. A "no thanks" is final.
 
 ## Rules the emails follow
