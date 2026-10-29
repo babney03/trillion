@@ -9,8 +9,8 @@ Auth: in the cloud environment the token is a network secret, so the proxy adds
 the Authorization header itself. Set NETLIFY_AUTH_TOKEN only when running
 somewhere without that secret.
 
-Each folder under deploy/ becomes <folder>-nanaimo.netlify.app (with a numeric
-suffix if that name is taken). Site IDs and live URLs are recorded in
+Each folder under deploy/ becomes <folder>.netlify.app, or <folder>-nanaimo
+(with a numeric suffix) if that name is taken. Site IDs and live URLs are recorded in
 deploy/live-sites.json, so re-running a folder redeploys to the same URL.
 """
 import hashlib
@@ -54,8 +54,9 @@ def deploy_folder(site_id, folder, token):
 
 
 def create_site(slug, token):
-    for n in range(0, 20):
-        name = f"{slug}-nanaimo" + (f"-{n}" if n else "")
+    # The plain slug first: a prospect outside Nanaimo shouldn't see "nanaimo" in their link.
+    names = [slug] + [f"{slug}-nanaimo" + (f"-{n}" if n else "") for n in range(0, 20)]
+    for name in names:
         try:
             return call("POST", "/sites", token, json.dumps({"name": name}).encode())
         except urllib.error.HTTPError as e:
@@ -85,8 +86,17 @@ def main():
             site = {"site_id": created["id"], "url": created["ssl_url"] or created["url"]}
             # Prospects must see the site without a Netlify login, and the
             # "Powered by Netlify" badge covers the sticky Call button.
-            call("PATCH", f"/sites/{site['site_id']}", token,
-                 json.dumps({"sso_login": False, "built_with_badge_enabled": False}).encode())
+            call("PATCH", f"/sites/{site['site_id']}", token, json.dumps({"sso_login": False}).encode())
+            try:
+                call("PATCH", f"/sites/{site['site_id']}", token,
+                     json.dumps({"built_with_badge_enabled": False}).encode())
+            except urllib.error.HTTPError as e:
+                if e.code != 422:  # 422: the free plan no longer lets the badge be removed
+                    raise
+            # Record the site now, so a deploy that fails below can't leave an
+            # untracked site that the next run would duplicate.
+            state[slug] = site
+            STATE.write_text(json.dumps(state, indent=2) + "\n")
         deploy_folder(site["site_id"], folder, token)
         state[slug] = site
         STATE.write_text(json.dumps(state, indent=2) + "\n")

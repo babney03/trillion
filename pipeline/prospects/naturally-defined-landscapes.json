@@ -1,0 +1,82 @@
+{
+  "name": "Naturally Defined Landscapes",
+  "short": "Naturally Defined",
+  "sub": "Landscapes · Guelph since 2014",
+  "city": "Guelph",
+  "region": "ON",
+  "areas": [
+    "Guelph",
+    "Surrounding area"
+  ],
+  "phone": "519-831-8247",
+  "email": "matt@naturallydefinedlandscapes.ca",
+  "contact": "Matt",
+  "rating": 4.8,
+  "reviews": 49,
+  "looks": [
+    [
+      "build",
+      "clay"
+    ],
+    [
+      "garden",
+      "olive"
+    ],
+    [
+      "clear",
+      "slate"
+    ]
+  ],
+  "h1": "Patios, driveways and walls, built in Guelph.",
+  "lede": "Full-service landscape construction since 2014, from design to the last stone. Unilock authorized contractor and Techo-Bloc authorized installer.",
+  "services": [
+    {
+      "icon": "stone",
+      "label": "Stonework",
+      "title": "Interlock and natural stone",
+      "text": "The heart of the business, done to a high standard.",
+      "featured": true,
+      "items": [
+        "Patios and walkways",
+        "Driveways",
+        "Front entrances and steps",
+        "Retaining and garden walls"
+      ],
+      "cta": "Ask about stonework"
+    },
+    {
+      "icon": "build",
+      "label": "Design & build",
+      "title": "The whole property",
+      "text": "We plan it with you, then build it.",
+      "items": [
+        "Landscape design",
+        "Wood structures",
+        "Fences and decks",
+        "Water features"
+      ],
+      "cta": "Start a design"
+    },
+    {
+      "icon": "tree",
+      "label": "Grading & planting",
+      "title": "Finish the yard",
+      "text": "The soft side, and the winter side.",
+      "items": [
+        "Grading and sodding",
+        "Trees and planting",
+        "Commercial work",
+        "Snow plowing"
+      ],
+      "cta": "Ask about planting"
+    }
+  ],
+  "trust": [
+    "Unilock authorized contractor",
+    "Techo-Bloc authorized installer"
+  ],
+  "found_via": "came across Naturally Defined while looking at landscapers in Guelph",
+  "compliment": "49 Google reviews at 4.8, plus Unilock and Techo-Bloc authorizations, puts you in good company.",
+  "gap": "Your website has one problem that costs trust, though. It doesn't use https, so Chrome and Safari show visitors a \"Not secure\" warning, and on a phone the number can't be tapped to call.",
+  "pitch_line": "It leads with your stonework and both authorizations, lays out design, construction and planting clearly, and has a tap-to-call button."
+}

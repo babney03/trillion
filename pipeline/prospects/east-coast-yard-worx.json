@@ -1,0 +1,84 @@
+{
+  "name": "East Coast Yard Worx",
+  "short": "East Coast Yard Worx",
+  "sub": "Property maintenance · Landscape construction",
+  "city": "Hamilton",
+  "region": "ON",
+  "areas": [
+    "Hamilton",
+    "Ancaster",
+    "Burlington",
+    "Brantford",
+    "Oakville"
+  ],
+  "phone": "905-745-6567",
+  "email": "eastcoastyardworx@gmail.com",
+  "rating": 4.8,
+  "reviews": 48,
+  "looks": [
+    [
+      "build",
+      "tidewater"
+    ],
+    [
+      "clear",
+      "slate"
+    ],
+    [
+      "field",
+      "meadow"
+    ]
+  ],
+  "h1": "Interlock, landscaping and lawn care across Hamilton.",
+  "lede": "Residential and commercial property care since 2015, from interlocking driveways and patios to weekly lawn cutting and snow removal.",
+  "services": [
+    {
+      "icon": "stone",
+      "label": "Interlocking stone",
+      "title": "Stonework that adds value",
+      "text": "Solid stone structures built to last.",
+      "featured": true,
+      "items": [
+        "Interlocking driveways",
+        "Walkways",
+        "Backyard patios",
+        "Retaining walls"
+      ],
+      "cta": "Ask about interlock"
+    },
+    {
+      "icon": "build",
+      "label": "Landscape construction",
+      "title": "Outdoor living",
+      "text": "Complete landscaping to deliver the look you want.",
+      "items": [
+        "Backyard living spaces",
+        "Fencing projects",
+        "Garden installs",
+        "Realtor services"
+      ],
+      "cta": "Start a project"
+    },
+    {
+      "icon": "lawn",
+      "label": "Maintenance",
+      "title": "Worry-free upkeep",
+      "text": "For homes and commercial properties, all year.",
+      "items": [
+        "Weekly or bi-weekly grass cutting",
+        "Spring and fall clean-ups",
+        "Hedges, edging and mulching",
+        "Winter snow removal"
+      ],
+      "cta": "Ask about maintenance"
+    }
+  ],
+  "trust": [
+    "Residential and commercial",
+    "Serving Hamilton since 2015"
+  ],
+  "found_via": "came across East Coast Yard Worx while looking at landscapers in Hamilton",
+  "compliment": "A 4.8 across 48 Google reviews, and a customer on your own site calling Craig and the team \"prompt, professional and thorough\", says the service side is right.",
+  "gap": "The website isn't keeping up. On a phone it opens as a desktop layout that's wider than the screen, so the heading and menu run off the right-hand side, the phone number can't be tapped to call, and the footer still says ©2021.",
+  "pitch_line": "It leads with interlock and landscape construction, lays out the maintenance and snow work clearly, and fits a phone with a tap-to-call button."
+}

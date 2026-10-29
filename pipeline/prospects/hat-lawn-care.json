@@ -1,0 +1,78 @@
+{
+  "name": "HAT Lawn Care",
+  "short": "HAT Lawn Care",
+  "sub": "Lawn care · Medicine Hat",
+  "city": "Medicine Hat",
+  "region": "AB",
+  "areas": [
+    "Medicine Hat",
+    "Surrounding area"
+  ],
+  "phone": "403-977-4743",
+  "email": "hatlawncare@gmail.com",
+  "rating": 4.9,
+  "reviews": 47,
+  "looks": [
+    [
+      "clear",
+      "meadow"
+    ],
+    [
+      "field",
+      "harvest"
+    ],
+    [
+      "build",
+      "slate"
+    ]
+  ],
+  "h1": "A healthier lawn in Medicine Hat, on a plan that suits you.",
+  "lede": "Family-owned since 2015. Aeration, fertilizer, power raking and sprinkler care, tailored to your lawn and your budget.",
+  "services": [
+    {
+      "icon": "lawn",
+      "label": "Lawn programs",
+      "title": "Tailored to your lawn",
+      "text": "No scheduling hassle. We keep track of what your lawn needs.",
+      "featured": true,
+      "items": [
+        "Aeration",
+        "Fertilizer and topdressing",
+        "Overseeding",
+        "Weed control"
+      ],
+      "cta": "Ask about a program"
+    },
+    {
+      "icon": "water",
+      "label": "Sprinklers",
+      "title": "Installed and blown out",
+      "text": "Automatic systems put in, and winterized every fall.",
+      "items": [
+        "Sprinkler system installation",
+        "Fall blowouts",
+        "Power raking in early spring"
+      ],
+      "cta": "Book a blowout"
+    },
+    {
+      "icon": "snow",
+      "label": "Snow removal",
+      "title": "Winter covered",
+      "text": "Residential and commercial, through the winter.",
+      "items": [
+        "Residential snow removal",
+        "Commercial snow removal"
+      ],
+      "cta": "Ask about snow"
+    }
+  ],
+  "trust": [
+    "Family-owned since 2015",
+    "Residential and commercial"
+  ],
+  "found_via": "came across HAT Lawn Care while looking at lawn care in Medicine Hat",
+  "compliment": "A 4.9 across 47 Google reviews is a strong record for a lawn care company.",
+  "gap": "Your website doesn't fit a phone, though. It opens as a desktop layout that's wider than the screen, so your logo runs off the right-hand side, and the footer still says ©2015.",
+  "pitch_line": "It leads with tailored lawn programs, explains aeration, sprinklers and snow removal clearly, and fits a phone properly."
+}

@@ -38,6 +38,11 @@ find.py ─► leads.csv ─► check.mjs ─► checks.json ─► prospects/<s
    look alike.
 5. **Deploy.** `python3 deploy/cf-deploy.py --all` (needs
    `CLOUDFLARE_API_TOKEN`; see the top of that file).
+   Cloudflare caps this account at 20 Pages projects, and all 20 are in use.
+   Overflow goes to Netlify (`python3 deploy/netlify-deploy.py <slug>`), whose
+   free plan charges credits per deploy and blocks deploys once they run out
+   for the month. Netlify also pins a badge over the bottom-right corner; the
+   pages lift the call bar above it on netlify.app hosts.
 6. **Build again** so each email picks up its live URL, then Claude creates the
    Gmail drafts from `out/*.email.json`. Drafting skips any email still
    showing `[LINK]`.

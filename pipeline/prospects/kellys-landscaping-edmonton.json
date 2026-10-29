@@ -1,0 +1,114 @@
+{
+  "name": "Kelly's Landscaping Ltd.",
+  "short": "Kelly's",
+  "sub": "Landscaping · Edmonton since 2001",
+  "city": "Edmonton",
+  "region": "AB",
+  "areas": [
+    "Edmonton",
+    "Surrounding area"
+  ],
+  "phone": "780-444-3191",
+  "email": "info@kellyslandscaping.ca",
+  "address": "710 Dalhousie Way, Edmonton, AB",
+  "rating": 4.8,
+  "reviews": 182,
+  "looks": [
+    [
+      "heritage",
+      "cedar"
+    ],
+    [
+      "build",
+      "harvest"
+    ],
+    [
+      "garden",
+      "clay"
+    ]
+  ],
+  "h1": "Custom landscapes for Edmonton yards, start to finish.",
+  "lede": "One company for the plan, the hardscape, the planting and the finishing touches. A large, fully equipped crew gets your project done on time.",
+  "services": [
+    {
+      "icon": "stone",
+      "label": "Hardscaping",
+      "title": "Patios, walls and drives",
+      "text": "The built bones of the yard, laid properly.",
+      "items": [
+        "Paving stone and flagstone patios",
+        "Retaining walls",
+        "Wood and composite decks",
+        "Concrete driveways and borders"
+      ],
+      "cta": "Ask about hardscaping"
+    },
+    {
+      "icon": "tree",
+      "label": "Softscaping",
+      "title": "Planting that suits Edmonton",
+      "text": "Trees, shrubs and perennials chosen by master gardeners for the zone.",
+      "featured": true,
+      "items": [
+        "Custom landscape plans",
+        "Trees, shrubs and perennials",
+        "Irrigation systems",
+        "Landscape lighting"
+      ],
+      "cta": "Start a plan"
+    },
+    {
+      "icon": "fence",
+      "label": "Carpentry & water",
+      "title": "The finishing touches",
+      "text": "Built in-house, from a simple fence to a full water feature.",
+      "items": [
+        "Fencing and garden boxes",
+        "Custom pergolas",
+        "Fountains, waterfalls and streams",
+        "Bubbling rocks"
+      ],
+      "cta": "Ask about a feature"
+    }
+  ],
+  "trust": [
+    "Serving Edmonton since 2001",
+    "Financing with no money down"
+  ],
+  "stats": [
+    [
+      "2001",
+      "Serving Edmonton since"
+    ],
+    [
+      "4.8★",
+      "From 182 Google reviews"
+    ],
+    [
+      "$0",
+      "Down with K-Finance"
+    ],
+    [
+      "1",
+      "Company, plan to planting"
+    ]
+  ],
+  "faq": [
+    [
+      "Can I finance my project?",
+      "Yes. Pre-approved financing is available with no money down. Ask when you call for a quote."
+    ],
+    [
+      "What areas do you cover?",
+      "Edmonton and the surrounding area. Further out, ask and we'll give you a straight answer."
+    ],
+    [
+      "Do you design it too?",
+      "Yes. Bring a single idea or a whole vision and we'll plan it with you, within your budget."
+    ]
+  ],
+  "found_via": "came across Kelly's while looking at landscapers in Edmonton",
+  "compliment": "182 Google reviews at 4.8 and more than twenty years in Edmonton is a reputation most landscapers never get to.",
+  "gap": "Your home page doesn't show it, though. On a phone it's mostly an Instagram feed with nothing about what you build, the phone number can't be tapped to call, and the footer still says ©2021.",
+  "pitch_line": "It lays out your hardscaping, planting, carpentry and water features clearly, puts the no-money-down financing up front, and has a tap-to-call button."
+}

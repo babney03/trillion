@@ -1,0 +1,99 @@
+{
+  "name": "Grand Valley Rocks",
+  "short": "Grand Valley Rocks",
+  "sub": "Landscape depot, design & install",
+  "city": "Cambridge",
+  "region": "ON",
+  "areas": [
+    "Cambridge",
+    "Surrounding area"
+  ],
+  "phone": "519-622-2833",
+  "email": "grandvalleyrocks@rogers.com",
+  "address": "107 Avenue Road, Cambridge, ON",
+  "rating": 4.7,
+  "reviews": 145,
+  "looks": [
+    [
+      "heritage",
+      "harvest"
+    ],
+    [
+      "build",
+      "olive"
+    ],
+    [
+      "garden",
+      "cedar"
+    ]
+  ],
+  "h1": "Natural stone, installed right, in Cambridge since 1993.",
+  "lede": "The largest selection of natural stone in the area, and a family-owned crew that installs everything we sell, guaranteed for a full year.",
+  "services": [
+    {
+      "icon": "stone",
+      "label": "Design & install",
+      "title": "Built from stone",
+      "text": "Every install guaranteed for one full year.",
+      "featured": true,
+      "items": [
+        "Flagstone patios and walkways",
+        "Retaining walls",
+        "Ponds and waterfalls",
+        "Fireplaces and outdoor bars"
+      ],
+      "cta": "Ask about an install"
+    },
+    {
+      "icon": "build",
+      "label": "The yard",
+      "title": "Come and see it",
+      "text": "Pick your stone in person. Delivery and crane service available.",
+      "items": [
+        "Natural stone and granite slabs",
+        "Flagstone and natural steps",
+        "Mulch, soil and gravel",
+        "Feature rocks"
+      ],
+      "cta": "Visit the yard"
+    },
+    {
+      "icon": "snow",
+      "label": "Winter",
+      "title": "Snow removal and salt",
+      "text": "Prompt service for homes and businesses.",
+      "items": [
+        "Residential snow removal",
+        "Commercial snow removal",
+        "Bulk salt"
+      ],
+      "cta": "Ask about snow"
+    }
+  ],
+  "trust": [
+    "Family owned since 1993",
+    "Installs guaranteed for a year"
+  ],
+  "stats": [
+    [
+      "1993",
+      "Family owned since"
+    ],
+    [
+      "4.7★",
+      "From 145 Google reviews"
+    ],
+    [
+      "1 yr",
+      "Guarantee on every install"
+    ],
+    [
+      "Next day",
+      "Delivery when we can"
+    ]
+  ],
+  "found_via": "came across Grand Valley Rocks while looking at landscapers in Cambridge",
+  "compliment": "145 Google reviews and more than thirty years in Cambridge is a serious reputation.",
+  "gap": "Your website is hard to use on a phone, though. The text is very small, the phone number can't be tapped to call, and the footer still says ©2015.",
+  "pitch_line": "It puts your installs and the one-year guarantee up front, shows the yard as its own section, and has a tap-to-call button."
+}

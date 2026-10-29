@@ -117,5 +117,38 @@
     "host": "cloudflare",
     "project": "waglers-landscaping",
     "url": "https://waglers-landscaping.pages.dev"
+  },
+  "kellys-landscaping-edmonton": {
+    "host": "cloudflare",
+    "project": "kellys-landscaping-edmonton",
+    "url": "https://kellys-landscaping-edmonton.pages.dev"
+  },
+  "east-coast-yard-worx": {
+    "site_id": "eb45936a-615e-4eed-9af9-b9f41f3378bc",
+    "url": "https://east-coast-yard-worx.netlify.app"
+  },
+  "mow-value-lawn-care": {
+    "site_id": "33a2bf0a-92a6-4184-83aa-28e2a412a3d7",
+    "url": "https://mow-value-lawn-care.netlify.app"
+  },
+  "naturally-defined-landscapes": {
+    "site_id": "0f7ff327-a35a-4544-9d89-d8795c87bdca",
+    "url": "https://naturally-defined-landscapes.netlify.app"
+  },
+  "cut-rite-lawns": {
+    "site_id": "7e5b415e-adc3-4323-9b3a-b0ee082292b9",
+    "url": "https://cut-rite-lawns.netlify.app"
+  },
+  "hat-lawn-care": {
+    "site_id": "8c32ff02-434c-43fc-b97e-c8374207b02e",
+    "url": "https://hat-lawn-care.netlify.app"
+  },
+  "grand-valley-rocks": {
+    "site_id": "970527b0-e627-4cb9-b9ab-74d9f94309ac",
+    "url": "https://grand-valley-rocks.netlify.app"
+  },
+  "down-under-irrigation-kingston": {
+    "site_id": "284dc880-48c0-4aba-ae19-07b7ef1df747",
+    "url": "https://down-under-irrigation-kingston.netlify.app"
   }
 }

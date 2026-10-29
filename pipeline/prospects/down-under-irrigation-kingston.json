@@ -1,0 +1,98 @@
+{
+  "name": "Sheldon's Property Maintenance / Down Under Irrigation",
+  "short": "Down Under Irrigation",
+  "sub": "Property maintenance · Kingston since 1989",
+  "city": "Kingston",
+  "region": "ON",
+  "areas": [
+    "Kingston",
+    "Surrounding area"
+  ],
+  "phone": "613-561-4237",
+  "email": "info@downunderirrigation.ca",
+  "contact": "Sheldon",
+  "address": "255 Dalton Ave, Kingston, ON",
+  "rating": 5.0,
+  "reviews": 88,
+  "looks": [
+    [
+      "clear",
+      "slate"
+    ],
+    [
+      "heritage",
+      "tidewater"
+    ],
+    [
+      "build",
+      "cedar"
+    ]
+  ],
+  "h1": "Kingston's commercial grounds, irrigation and snow, since 1989.",
+  "lede": "One of Kingston's largest commercial property maintenance and irrigation companies, with the same standard of work from day one.",
+  "services": [
+    {
+      "icon": "snow",
+      "label": "Snow & ice",
+      "title": "Commercial snowplowing",
+      "text": "Busy retail sites that can't afford a slip. Same operators on the same sites.",
+      "featured": true,
+      "items": [
+        "Commercial snowplowing",
+        "Liquid de-icing and anti-icing",
+        "24-hour retail and shopping centres"
+      ],
+      "cta": "Ask about snow"
+    },
+    {
+      "icon": "water",
+      "label": "Irrigation",
+      "title": "Full coverage, on a timer",
+      "text": "Save water and stop dragging hoses.",
+      "items": [
+        "Irrigation systems",
+        "Landscape lighting",
+        "Equipment rentals"
+      ],
+      "cta": "Ask about irrigation"
+    },
+    {
+      "icon": "build",
+      "label": "Landscape",
+      "title": "Construction and upkeep",
+      "text": "Property maintenance for commercial and residential sites.",
+      "items": [
+        "Landscape construction",
+        "Property maintenance",
+        "Commercial grounds"
+      ],
+      "cta": "Ask about maintenance"
+    }
+  ],
+  "trust": [
+    "SIMA and ASCA member",
+    "Landscape Ontario member"
+  ],
+  "stats": [
+    [
+      "1989",
+      "Founded in Kingston"
+    ],
+    [
+      "5.0★",
+      "From 88 Google reviews"
+    ],
+    [
+      "SIMA",
+      "Snow & Ice Management"
+    ],
+    [
+      "ASCA",
+      "Accredited snow contractor"
+    ]
+  ],
+  "found_via": "came across Down Under Irrigation while looking at landscapers in Kingston",
+  "compliment": "A perfect 5.0 across 88 Google reviews, after more than thirty years in business, is rare for a commercial contractor.",
+  "gap": "Your website doesn't use https, though, so Chrome and Safari show visitors a \"Not secure\" warning, and on a phone the number can't be tapped to call.",
+  "pitch_line": "It leads with commercial snow and ice, your SIMA and ASCA memberships, and irrigation, and has a tap-to-call button."
+}

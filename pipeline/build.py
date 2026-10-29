@@ -376,6 +376,7 @@ def render(p, look=0):
 
 <script>
 (function(){{
+  if(/\\.netlify\\.app$/.test(location.hostname))document.documentElement.classList.add('on-netlify');
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(!reduce&&'IntersectionObserver' in window){{
     document.documentElement.classList.add('mo');

@@ -276,3 +276,8 @@ footer.site .mark small{color:color-mix(in srgb,var(--on-deep) 58%,transparent)}
   :root:not([data-theme="light"]) .bar .mark svg{color:var(--water)}}
 :root[data-theme="dark"] .lane:not(.lane--water) .lane__ico,
 :root[data-theme="dark"] .bar .mark svg{color:var(--water)}
+
+/* Netlify's free plan pins a "Powered by Netlify" badge to the bottom-right
+   corner, over the Call button; lift the bar above it on netlify.app hosts */
+.on-netlify .callbar{bottom:62px;border-bottom:1px solid var(--rule)}
+@media(max-width:1059px){.on-netlify body{padding-bottom:140px}}

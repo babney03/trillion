@@ -1,0 +1,112 @@
+{
+  "name": "Mow Value Lawn Care",
+  "short": "Mow Value",
+  "sub": "Lawn care · Red Deer",
+  "city": "Red Deer",
+  "region": "AB",
+  "areas": [
+    "Red Deer"
+  ],
+  "phone": "(403) 598-8826",
+  "email": "mowvalue@gmail.com",
+  "contact": "Stewart",
+  "rating": 4.9,
+  "reviews": 78,
+  "looks": [
+    [
+      "field",
+      "meadow"
+    ],
+    [
+      "heritage",
+      "olive"
+    ],
+    [
+      "clear",
+      "tidewater"
+    ]
+  ],
+  "h1": "Herbicide-free lawn care in Red Deer.",
+  "lede": "Weekly mowing, aeration and clean-ups from a small crew the owner supervises on site. Now in our 17th season.",
+  "services": [
+    {
+      "icon": "lawn",
+      "label": "Weekly care",
+      "title": "Mow, trim and edge",
+      "text": "Edges trimmed every week by someone with 27 years of practice.",
+      "featured": true,
+      "items": [
+        "Weekly mow and trim",
+        "Power edging",
+        "Downspouts lowered, gates closed",
+        "Cuts spaced out in dry weather"
+      ],
+      "cta": "Ask about weekly care"
+    },
+    {
+      "icon": "leaf",
+      "label": "Lawn health",
+      "title": "Without weed killer",
+      "text": "Fertilizer and overseeding for owners who've chosen to stay herbicide-free.",
+      "items": [
+        "Spring and fall aeration",
+        "Seasonal fertilizer and overseed",
+        "Power rake dethatching"
+      ],
+      "cta": "Ask about lawn health"
+    },
+    {
+      "icon": "clean",
+      "label": "Clean-ups",
+      "title": "Spring and fall",
+      "text": "Leaves, nooks and crannies, done until it's tidy.",
+      "items": [
+        "Yard clean-ups",
+        "Leaf blowing clean-up",
+        "Hedge, shrub and tree trimming"
+      ],
+      "cta": "Book a clean-up"
+    }
+  ],
+  "trust": [
+    "17th season in Red Deer",
+    "Herbicide-free",
+    "City licensed, WCB covered"
+  ],
+  "stats": [
+    [
+      "17",
+      "Seasons in Red Deer"
+    ],
+    [
+      "4.9★",
+      "From 78 Google reviews"
+    ],
+    [
+      "27",
+      "Years trimming edges"
+    ],
+    [
+      "0",
+      "Weed killers used"
+    ]
+  ],
+  "faq": [
+    [
+      "Where do you work?",
+      "Within Red Deer city limits."
+    ],
+    [
+      "How do I get a quote?",
+      "Call or text (403) 598-8826 to talk to the owner directly. Texting is fastest during the day."
+    ],
+    [
+      "Do you use weed killer?",
+      "No. We fertilize and overseed, but we only serve owners who've chosen to stay herbicide-free."
+    ]
+  ],
+  "found_via": "came across Mow Value while looking at lawn care in Red Deer",
+  "compliment": "17 seasons, 78 Google reviews at 4.9 and a herbicide-free promise is a real point of difference.",
+  "gap": "Your website doesn't tell people any of that up front. The home page is a logo, your hours and two buttons, it's a free Google Sites page, and the phone number can't be tapped to call.",
+  "pitch_line": "It leads with the herbicide-free promise and your 17 seasons, lays out weekly care, lawn health and clean-ups, and has a tap-to-call button."
+}

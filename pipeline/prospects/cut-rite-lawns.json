@@ -1,0 +1,78 @@
+{
+  "name": "CUT RITE Lawns",
+  "short": "CUT RITE Lawns",
+  "sub": "Lawn & property care · St. Catharines",
+  "city": "St. Catharines",
+  "region": "ON",
+  "areas": [
+    "St. Catharines",
+    "Niagara"
+  ],
+  "phone": "905-902-6071",
+  "email": "daniel@cutritelawns.ca",
+  "contact": "Daniel",
+  "rating": 5.0,
+  "reviews": 42,
+  "looks": [
+    [
+      "field",
+      "meadow"
+    ],
+    [
+      "clear",
+      "tidewater"
+    ],
+    [
+      "heritage",
+      "olive"
+    ]
+  ],
+  "h1": "Lawns cut right in St. Catharines.",
+  "lede": "Mowing, garden maintenance, planting and sodding for homes and commercial properties, with the details looked after from the first call to the last cut.",
+  "services": [
+    {
+      "icon": "lawn",
+      "label": "Lawn mowing",
+      "title": "Cut right, every time",
+      "text": "Regular cutting for residential and commercial properties.",
+      "featured": true,
+      "items": [
+        "Weekly lawn mowing",
+        "Trimming and edging",
+        "Clippings cleaned up"
+      ],
+      "cta": "Ask about mowing"
+    },
+    {
+      "icon": "leaf",
+      "label": "Garden maintenance",
+      "title": "Beds kept tidy",
+      "text": "The rest of the yard, looked after through the season.",
+      "items": [
+        "Garden bed maintenance",
+        "Seasonal clean-ups",
+        "Property maintenance"
+      ],
+      "cta": "Ask about gardens"
+    },
+    {
+      "icon": "tree",
+      "label": "Planting & sodding",
+      "title": "New growth",
+      "text": "New lawns and new planting, put in properly.",
+      "items": [
+        "Sod installation",
+        "Planting",
+        "Landscaping"
+      ],
+      "cta": "Ask about sod"
+    }
+  ],
+  "trust": [
+    "Residential and commercial"
+  ],
+  "found_via": "came across CUT RITE while looking at lawn care in St. Catharines",
+  "compliment": "A perfect 5.0 across 42 Google reviews is something most lawn companies never manage.",
+  "gap": "Your website is a single page, browsers mark it \"Not secure\" because it doesn't use https, and on a phone the number can't be tapped to call.",
+  "pitch_line": "It lays out mowing, garden care and sodding clearly, leads with the 5.0 rating, and has a quote form and a tap-to-call button."
+}
