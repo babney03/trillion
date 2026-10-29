@@ -11,7 +11,6 @@
   "email": "waglerslandscaping@shaw.ca",
   "rating": 4.3,
   "reviews": 12,
-  "palette": "meadow",
   "h1": "Good quality work, and great service.",
   "lede": "Fully licensed, registered and insured in Nanaimo. We come out, look at the job and make sure you get exactly what you wanted done.",
   "services": [
@@ -63,5 +62,19 @@
   "found_via": "came across Wagler's while looking at landscapers here in Nanaimo",
   "compliment": "Being fully licensed and insured, with the gear to back it up, is what people look for.",
   "gap": "Your website is still showing \"©2016\", it doesn't use https so browsers mark it \"Not secure\", and the phone number can't be tapped to call.",
-  "pitch_line": "It's built around the same promise, good work and good service, with a quote form and a tap-to-call button."
+  "pitch_line": "It leads with the same promise, good work and good service, with a quote form and a tap-to-call button.",
+  "looks": [
+    [
+      "field",
+      "cedar"
+    ],
+    [
+      "clear",
+      "clay"
+    ],
+    [
+      "heritage",
+      "olive"
+    ]
+  ]
 }

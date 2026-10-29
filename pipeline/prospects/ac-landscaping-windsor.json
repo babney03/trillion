@@ -14,7 +14,6 @@
   "email": "aclandscaping@hotmail.ca",
   "rating": 5.0,
   "reviews": 33,
-  "palette": "harvest",
   "h1": "Design. Build. Maintain.",
   "lede": "A family built on 20+ years of hard work, serving Windsor, LaSalle, Tecumseh and Lakeshore since 2006. Custom designs and complete landscape construction.",
   "services": [
@@ -84,5 +83,19 @@
   "found_via": "came across A.C. Landscaping while looking at landscapers in Windsor",
   "compliment": "A perfect 5.0 across 33 Google reviews is rare.",
   "gap": "Your website doesn't show that off. It's an older desktop layout, so on a phone it shrinks to tiny text people have to pinch and zoom to read, and the phone number can't be tapped to call.",
-  "pitch_line": "It leads with design, build and maintain, shows precast products as their own section, and fits a phone properly."
+  "pitch_line": "It leads with design, build and maintain, shows precast products as their own section, and fits a phone properly.",
+  "looks": [
+    [
+      "heritage",
+      "clay"
+    ],
+    [
+      "garden",
+      "cedar"
+    ],
+    [
+      "build",
+      "harvest"
+    ]
+  ]
 }

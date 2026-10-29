@@ -12,7 +12,6 @@
   "email": "info@ahlstedts.ca",
   "rating": 4.9,
   "reviews": 52,
-  "palette": "harvest",
   "h1": "Full yard development in Saskatoon, start to finish.",
   "lede": "Jonathan and the Ahlstedt's crew take care of every part of a new or existing yard, from design and concrete to sod, sprinklers and winter maintenance.",
   "services": [
@@ -83,5 +82,19 @@
   "found_via": "came across Ahlstedt's while looking at Saskatoon landscapers",
   "compliment": "52 Google reviews averaging 4.9 is a serious reputation.",
   "gap": "Your website doesn't do it justice on a phone, though. It's an older desktop layout, so it shrinks down to tiny text and someone has to pinch and zoom to read what you do.",
-  "pitch_line": "It shows the full yard development offer the way you describe it, with sod, sprinklers and winter work, and a quote form that works on a phone."
+  "pitch_line": "It shows the full yard development offer the way you describe it, with sod, sprinklers and winter work, and a quote form that works on a phone.",
+  "looks": [
+    [
+      "build",
+      "olive"
+    ],
+    [
+      "heritage",
+      "harvest"
+    ],
+    [
+      "clear",
+      "cedar"
+    ]
+  ]
 }

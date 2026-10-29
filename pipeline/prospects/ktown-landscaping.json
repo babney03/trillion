@@ -14,7 +14,6 @@
   "email": "ktownkleenup@shaw.ca",
   "rating": 4.9,
   "reviews": 18,
-  "palette": "slate",
   "h1": "Landscaping, walls and excavation across the Central Okanagan.",
   "lede": "Locally owned and fully equipped. From paver patios and block walls to bobcat work, demolition and fire damage clean-up, for homes and businesses.",
   "services": [
@@ -66,5 +65,19 @@
   "found_via": "came across KTown while looking at landscapers in Kelowna",
   "compliment": "A 4.9 on Google and a service list that runs from paver patios to fire damage clean-up says you can handle just about anything.",
   "gap": "Your website doesn't use https, so Chrome and Safari show visitors a \"Not secure\" warning, and the phone number can't be tapped to call.",
-  "pitch_line": "It shows the full range of work clearly, works properly on a phone, and has a quote form and a tap-to-call button."
+  "pitch_line": "It shows the full range of work clearly, works properly on a phone, and has a quote form and a tap-to-call button.",
+  "looks": [
+    [
+      "build",
+      "harvest"
+    ],
+    [
+      "clear",
+      "slate"
+    ],
+    [
+      "garden",
+      "meadow"
+    ]
+  ]
 }

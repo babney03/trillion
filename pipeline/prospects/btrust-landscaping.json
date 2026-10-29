@@ -12,7 +12,6 @@
   "email": "info@btrustlandscaping.ca",
   "rating": 5.0,
   "reviews": 32,
-  "palette": "harvest",
   "h1": "Interlock, patios and landscapes built to last.",
   "lede": "Residential and commercial landscaping across Toronto and Markham. Interlocking paver stonework is our specialty, from front entrances and driveways to patios and pool surrounds.",
   "services": [
@@ -64,5 +63,19 @@
   "found_via": "came across BTrust while looking at interlock companies in Markham",
   "compliment": "A perfect 5.0 across 32 Google reviews is a great reputation for an interlock company.",
   "gap": "Your website doesn't use https, though, so Chrome and Safari show visitors a \"Not secure\" warning, and the phone number can't be tapped to call.",
-  "pitch_line": "It leads with interlock, shows the full list of services clearly, and has a quote form and a tap-to-call button."
+  "pitch_line": "It leads with interlock, shows the full list of services clearly, and has a quote form and a tap-to-call button.",
+  "looks": [
+    [
+      "build",
+      "slate"
+    ],
+    [
+      "garden",
+      "clay"
+    ],
+    [
+      "heritage",
+      "harvest"
+    ]
+  ]
 }

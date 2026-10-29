@@ -11,7 +11,6 @@
   "email": "info@budgetcuts.ca",
   "rating": 4.9,
   "reviews": 17,
-  "palette": "meadow",
   "h1": "Dependable lawn care that doesn't cost a fortune.",
   "lede": "Residential and commercial property maintenance across the Comox Valley. Mowing, aeration, hedges, rubbish removal and soil and gravel delivery, at an affordable price.",
   "services": [
@@ -63,5 +62,19 @@
   "found_via": "came across Budget Cuts while looking at lawn care in the Comox Valley",
   "compliment": "A 4.9 on Google for a lawn care company is excellent.",
   "gap": "Your website hasn't kept up with you, though. It still says \"Copyright 2015\" at the bottom, and the services and estimates sit behind \"click here\" links on a page that's hard to read on a phone.",
-  "pitch_line": "It puts your services and free estimates on one clear page with a tap-to-call button."
+  "pitch_line": "It puts your services and free estimates on one clear page with a tap-to-call button.",
+  "looks": [
+    [
+      "field",
+      "harvest"
+    ],
+    [
+      "garden",
+      "cedar"
+    ],
+    [
+      "build",
+      "tidewater"
+    ]
+  ]
 }

@@ -13,7 +13,6 @@
   "email": "webmaster@maritimehydroseed.com",
   "rating": 4.5,
   "reviews": 11,
-  "palette": "tidewater",
   "h1": "Forty years of getting ground to grow.",
   "lede": "A landscape and erosion control contractor serving Atlantic Canada for 40 years. Hydroseeding, erosion and sediment control, and site restoration for commercial, industrial, government and residential work.",
   "services": [
@@ -83,5 +82,19 @@
   "found_via": "came across Maritime Hydroseed while looking at landscape contractors in New Brunswick",
   "compliment": "Forty years and factory-certified staff is the kind of track record commercial clients look for.",
   "gap": "Your website is an older desktop layout, though. On a phone it shrinks to small text, and browsers mark it \"Not secure\" because it doesn't use https.",
-  "pitch_line": "It explains hydroseeding, erosion control and site restoration clearly, fits a phone, and has a quote form."
+  "pitch_line": "It explains hydroseeding, erosion control and site restoration clearly, fits a phone, and has a quote form.",
+  "looks": [
+    [
+      "heritage",
+      "tidewater"
+    ],
+    [
+      "build",
+      "olive"
+    ],
+    [
+      "clear",
+      "cedar"
+    ]
+  ]
 }

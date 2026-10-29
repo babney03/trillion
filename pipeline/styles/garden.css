@@ -1,0 +1,26 @@
+/* garden: design-led gardeners. Soft grotesque, arched hero photo, tinted
+   blocks instead of bordered cards, sentence-case labels. */
+:root{--r:18px;--r-lg:28px;--r-sm:12px}
+h1,h2,h3{font-weight:600;letter-spacing:-.035em;line-height:1.04}
+h1{font-size:clamp(2.45rem,1.3rem+4.4vw,4.1rem)}
+.label{font-family:var(--f-b);text-transform:none;letter-spacing:0;font-size:.95rem;font-weight:600;color:var(--sun-text)}
+.mark .n{font-weight:700;letter-spacing:-.03em;font-size:1.15rem}
+
+.hero::before{background:radial-gradient(70% 60% at 100% 0%,color-mix(in srgb,var(--leaf) 18%,transparent),transparent 70%)}
+.hero h1{max-width:14ch}
+@media(min-width:980px){.hero__top{grid-template-columns:1.1fr .9fr}}
+.shot--hero{border-radius:999px 999px var(--r-lg) var(--r-lg);min-height:clamp(380px,92vw,540px);padding:22px 26px}
+@media(min-width:980px){.shot--hero{min-height:540px}}
+
+.lane{border:0;background:var(--sunk)}
+.lane:nth-child(2){background:color-mix(in srgb,var(--leaf) 16%,var(--card))}
+.lane:hover{border-color:transparent}
+.lane__ico{border-radius:50%;background:var(--card)}
+.strip{border:0;background:var(--sunk);border-radius:var(--r-lg);padding:28px clamp(20px,3vw,36px)}
+.steps div{background:none;border:0;padding:0}
+.steps .num{background:color-mix(in srgb,var(--leaf) 20%,var(--card));color:var(--deep-2)}
+.gal{gap:14px}
+.gal figure:nth-child(odd){border-radius:var(--r-lg) var(--r-lg) var(--r-lg) 6px}
+.rev{border:0;background:var(--card);box-shadow:0 10px 30px rgb(var(--shade)/.07)}
+.faq details{border:0;background:var(--sunk)}
+.form{border:0;box-shadow:0 14px 40px rgb(var(--shade)/.08)}

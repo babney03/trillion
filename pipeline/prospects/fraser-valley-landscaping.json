@@ -13,7 +13,6 @@
   "email": "info@fraservalleylandscaping.com",
   "rating": 4.4,
   "reviews": 28,
-  "palette": "cedar",
   "h1": "From strata maintenance to big hardscape jobs.",
   "lede": "Serving the Fraser Valley and Greater Vancouver since 2009. Licensed, bonded and insured, with a crew that has well over a decade in landscaping and construction. No job too small.",
   "services": [
@@ -72,7 +71,7 @@
       "From 28 Google reviews"
     ],
     [
-      "Mon–Sat",
+      "Mon-Sat",
       "6am to 6pm"
     ],
     [
@@ -83,5 +82,19 @@
   "found_via": "came across Fraser Valley Landscaping while looking at landscapers in Langley",
   "compliment": "Licensed, bonded and insured, with strata contracts and commercial hardscape on the books, is a strong pitch on its own.",
   "gap": "Your website makes it hard to see, though. On a phone the page is wider than the screen so it slides sideways, and it took about 20 seconds to load when I tried it.",
-  "pitch_line": "It lays out landscaping, construction and maintenance in one clear page that loads fast and fits a phone."
+  "pitch_line": "It lays out landscaping, construction and maintenance in one clear page that loads fast and fits a phone.",
+  "looks": [
+    [
+      "clear",
+      "cedar"
+    ],
+    [
+      "build",
+      "harvest"
+    ],
+    [
+      "heritage",
+      "olive"
+    ]
+  ]
 }

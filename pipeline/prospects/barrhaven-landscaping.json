@@ -12,7 +12,6 @@
   "email": "info@barrhavens.com",
   "rating": 4.7,
   "reviews": 521,
-  "palette": "slate",
   "h1": "Precision. Punctuality. Professionalism.",
   "lede": "A contracting business based in Barrhaven, taking a comprehensive approach to every project, from landscape and pool design to lawn care and snow removal.",
   "services": [
@@ -82,5 +81,19 @@
   "found_via": "came across Barrhavens while looking at landscapers in Ottawa",
   "compliment": "521 Google reviews at 4.7 is a huge reputation for a local company.",
   "gap": "Your website isn't keeping up with it, though. On a phone, barrhavens.com opens to a small logo on a mostly blank screen, it still says \"©2018 by Barrhavens.ca, created with Wix\" at the bottom, and someone has to scroll to find out what you do.",
-  "pitch_line": "It leads with the 521 reviews, lays out design-build, lawn care and snow removal clearly, and has a free estimate form and a tap-to-call button."
+  "pitch_line": "It leads with the 521 reviews, lays out design-build, lawn care and snow removal clearly, and has a free estimate form and a tap-to-call button.",
+  "looks": [
+    [
+      "clear",
+      "slate"
+    ],
+    [
+      "heritage",
+      "cedar"
+    ],
+    [
+      "field",
+      "harvest"
+    ]
+  ]
 }

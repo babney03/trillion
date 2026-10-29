@@ -11,7 +11,6 @@
   "email": "landscaspingwinnipeg@shaw.ca",
   "rating": 4.3,
   "reviews": 30,
-  "palette": "cedar",
   "h1": "Winnipeg property care, all year round.",
   "lede": "Landscaping, lawn care and snow clearing for homes and businesses in Winnipeg. A BBB A+ business with more than 20 years of looking after the city's yards.",
   "services": [
@@ -83,5 +82,19 @@
   "found_via": "came across John Dicks Landscaping while looking at Winnipeg landscapers",
   "compliment": "22 straight years of a BBB A+ and a thank-you letter from the Mayor is a track record most companies would kill for.",
   "gap": "The trouble is your website was built for desktop screens, so on a phone it shrinks to a size nobody can read, and that's where most people look you up now.",
-  "pitch_line": "It puts the BBB record, your three services and both phone lines up front, sized properly for a phone."
+  "pitch_line": "It puts the BBB record, your three services and both phone lines up front, sized properly for a phone.",
+  "looks": [
+    [
+      "heritage",
+      "cedar"
+    ],
+    [
+      "clear",
+      "tidewater"
+    ],
+    [
+      "field",
+      "meadow"
+    ]
+  ]
 }

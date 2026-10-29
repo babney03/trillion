@@ -12,7 +12,6 @@
   "email": "alslandscaping@sasktel.net",
   "rating": 5.0,
   "reviews": 15,
-  "palette": "harvest",
   "h1": "Sixty years of Regina yards.",
   "lede": "Family owned and now in its second generation. Dirt-grown sod, paving stone, fencing, sprinklers and the supplies to finish the job.",
   "services": [
@@ -83,5 +82,19 @@
   "found_via": "came across Al's Landscaping while looking at Regina landscapers",
   "compliment": "Sixty years, a second generation and a perfect 5.0 on Google is a rare thing.",
   "gap": "Your website isn't showing that off. On a phone the top of the page is a big green button with just the letter \"a\" on it and a mostly empty grey area, and browsers mark the site \"Not secure\".",
-  "pitch_line": "It leads with the 60 years and the family name, shows paving stone, sod and snow removal clearly, and works properly on a phone."
+  "pitch_line": "It leads with the 60 years and the family name, shows paving stone, sod and snow removal clearly, and works properly on a phone.",
+  "looks": [
+    [
+      "heritage",
+      "harvest"
+    ],
+    [
+      "build",
+      "slate"
+    ],
+    [
+      "garden",
+      "olive"
+    ]
+  ]
 }

@@ -12,7 +12,6 @@
   "email": "downunderirrigationvic@gmail.com",
   "rating": 4.4,
   "reviews": 10,
-  "palette": "tidewater",
   "h1": "Irrigation done by certified technicians.",
   "lede": "Residential and commercial irrigation in Greater Victoria, plus certified CRD backflow testing, LED landscape lighting and power washing.",
   "services": [
@@ -82,5 +81,19 @@
   "found_via": "came across Down Under while looking at irrigation companies in Victoria",
   "compliment": "Certified techs, CRD backflow testing and an Irrigation Association membership are exactly what people want to see.",
   "gap": "But your website barely says any of that. On a phone it's a few lines of text and four water-drop icons, and the email link doesn't show an address.",
-  "pitch_line": "It explains irrigation, backflow testing and lighting properly, with a booking form and a tap-to-call button."
+  "pitch_line": "It explains irrigation, backflow testing and lighting properly, with a booking form and a tap-to-call button.",
+  "looks": [
+    [
+      "clear",
+      "tidewater"
+    ],
+    [
+      "build",
+      "slate"
+    ],
+    [
+      "garden",
+      "meadow"
+    ]
+  ]
 }

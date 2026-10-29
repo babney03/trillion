@@ -12,7 +12,7 @@
 :root{--paper:#F2F5EE;--card:#FFFFFF;--sunk:#E3EADB;--ink:#14211A;--ink-soft:#4A5A50;--ink-faint:#58675D;--rule:#D2DCCA;--deep:#15372E;--deep-2:#1F5444;--water:#2F9A6B;--water-soft:#8DCBAA;--leaf:#3E9A5A;--sun:#F2C230;--sun-lift:#F7D04E;--sun-text:#7A5E00;--on-deep:#EEF2EF;--on-deep-soft:#C3CEC8;--shade:20 30 26;}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0F1612;--card:#16201A;--sunk:#0A0F0C;--ink:#E8EFEA;--ink-soft:#A0AEA5;--ink-faint:#8C9A91;--rule:#24302A;--deep:#0A1A15;--deep-2:#1A4237;--water:#5FC495;--water-soft:#8FD6B3;--leaf:#73C28A;--sun:#F7D04E;--sun-lift:#FADB6E;--sun-text:#F2CF5E;--on-deep:#EEF2EF;--on-deep-soft:#C3CEC8;--shade:0 0 0;}}
 :root[data-theme="dark"]{--paper:#0F1612;--card:#16201A;--sunk:#0A0F0C;--ink:#E8EFEA;--ink-soft:#A0AEA5;--ink-faint:#8C9A91;--rule:#24302A;--deep:#0A1A15;--deep-2:#1A4237;--water:#5FC495;--water-soft:#8FD6B3;--leaf:#73C28A;--sun:#F7D04E;--sun-lift:#FADB6E;--sun-text:#F2CF5E;--on-deep:#EEF2EF;--on-deep-soft:#C3CEC8;--shade:0 0 0;}
-:root{--f-d:'Outfit',system-ui,sans-serif;--f-b:'Source Sans 3',system-ui,-apple-system,sans-serif;
+:root{--intro:unveil;--f-d:'Outfit',system-ui,sans-serif;--f-b:'Source Sans 3',system-ui,-apple-system,sans-serif;
   --page:1160px;--gut:clamp(18px,4vw,38px);--sec:clamp(56px,7vw,100px);--r:16px;--r-lg:26px;--r-sm:12px;--ease:cubic-bezier(.2,.7,.25,1)}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);
@@ -80,7 +80,8 @@ img{display:block;max-width:100%}
 .btn svg{width:17px;height:17px;flex:none}
 
 /* hero */
-.hero{position:relative;overflow:hidden;padding:clamp(36px,5vw,68px) 0 var(--sec)}
+.hero{position:relative;isolation:isolate;overflow:hidden;padding:clamp(36px,5vw,68px) 0 clamp(36px,4vw,56px)}
+.lanes-sec{padding:8px 0 var(--sec)}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:radial-gradient(58% 52% at 8% -6%,color-mix(in srgb,var(--water) 26%,transparent),transparent 64%),
              radial-gradient(46% 42% at 98% 4%,color-mix(in srgb,var(--leaf) 22%,transparent),transparent 62%)}
@@ -92,15 +93,24 @@ img{display:block;max-width:100%}
 .trustline span{display:inline-flex;align-items:center;gap:7px}
 .trustline svg{width:16px;height:16px;color:var(--leaf);flex:none}
 
-.shot{margin:0;min-height:300px;border-radius:var(--r-lg);display:grid;place-content:center;
-  text-align:center;gap:7px;padding:18px;border:1.5px dashed color-mix(in srgb,var(--ink-faint) 42%,transparent);
-  background:linear-gradient(152deg,color-mix(in srgb,var(--water-soft) 46%,var(--sunk)),var(--sunk))}
-.shot--hero{min-height:clamp(280px,34vw,410px)}
-.shot b{font-family:var(--f-d);font-weight:700;font-size:1.02rem}
-.shot span{font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)}
+/* photo placeholders: a quiet landscape in the site's own colours, so the
+   empty slots read as "your photo goes here" rather than a broken page */
+.shot{position:relative;margin:0;min-height:300px;border-radius:var(--r-lg);overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:3px;
+  padding:18px 20px;text-align:left;color:var(--on-deep);
+  background:
+    radial-gradient(130% 62% at 12% 118%,color-mix(in srgb,var(--leaf) 58%,var(--deep)) 0 47%,transparent 47.6%),
+    radial-gradient(120% 58% at 92% 124%,color-mix(in srgb,var(--leaf) 34%,var(--deep-2)) 0 52%,transparent 52.6%),
+    radial-gradient(90% 45% at 55% 112%,color-mix(in srgb,var(--water-soft) 40%,var(--leaf)) 0 50%,transparent 50.6%),
+    linear-gradient(180deg,color-mix(in srgb,var(--water-soft) 46%,var(--paper)),color-mix(in srgb,var(--water-soft) 22%,var(--sunk)))}
+.shot--hero{min-height:clamp(290px,34vw,430px)}
+.shot{background-position:0 100%}
+.shot b,.shot span{text-shadow:0 1px 14px rgb(0 0 0/.45)}
+.shot b{position:relative;font-family:var(--f-d);font-weight:700;font-size:1rem;line-height:1.2}
+.shot span{position:relative;font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;opacity:.82}
 
 /* three lanes */
-.lanes{display:grid;gap:18px;margin-top:44px}
+.lanes{display:grid;gap:18px}
 @media(min-width:900px){.lanes{grid-template-columns:repeat(3,1fr)}}
 .lane{display:flex;flex-direction:column;gap:12px;padding:30px 28px;border-radius:var(--r-lg);
   background:var(--card);border:1px solid var(--rule);
@@ -267,6 +277,81 @@ footer.site .mark small{color:color-mix(in srgb,var(--on-deep) 58%,transparent)}
 @media(max-width:1059px){body{padding-bottom:76px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
+/* layout switcher in the sample banner */
+.proposal{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 14px}
+.opts{display:inline-flex;align-items:center;gap:4px;font-weight:700}
+.opts span{margin-right:4px;opacity:.75;font-weight:600}
+.opts a{display:grid;place-items:center;min-width:30px;height:30px;border-radius:999px;
+  border:1px solid color-mix(in srgb,var(--on-deep) 32%,transparent);color:var(--on-deep)}
+.opts a[aria-current]{background:var(--sun);border-color:var(--sun);color:#1C1305}
+
+/* dark mode: the deep green/blue used for icons and the logo mark vanishes on
+   dark backgrounds, so lift them to the lighter accent */
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .lane:not(.lane--water) .lane__ico,
+  :root:not([data-theme="light"]) .bar .mark svg{color:var(--water)}}
+:root[data-theme="dark"] .lane:not(.lane--water) .lane__ico,
+:root[data-theme="dark"] .bar .mark svg{color:var(--water)}
+
+/* field: the original look. Rounded, friendly, pill buttons. */
+
+/* motion: everything here is skipped for people who ask for reduced motion,
+   and content is only hidden once the script has confirmed it can reveal it
+   (html.mo), so a page without JS still shows everything. */
+@media (prefers-reduced-motion:no-preference){
+
+  /* reading progress along the top edge (browsers with scroll timelines) */
+  @supports (animation-timeline:scroll()){
+    .progress{position:fixed;inset:0 0 auto;height:3px;z-index:70;background:var(--sun);
+      transform-origin:0 50%;transform:scaleX(0);pointer-events:none;
+      animation:grow linear both;animation-timeline:scroll(root)}
+    @keyframes grow{to{transform:scaleX(1)}}
+
+    /* hero photo drifts slower than the page */
+    .shot--hero{background-size:100% 118%;animation:drift linear both;animation-timeline:view();animation-range:exit 0% exit 100%}
+    @keyframes drift{from{background-position:0 100%}to{background-position:0 0}}
+  }
+
+  /* hero text plays in on load */
+  .mo .hero__top>div>*{opacity:0;transform:translateY(18px);
+    animation:rise .8s cubic-bezier(.16,1,.3,1) forwards;animation-delay:calc(var(--n,0) * 90ms + 120ms)}
+  .mo .hero__top>div>:nth-child(2){--n:1}
+  .mo .hero__top>div>:nth-child(3){--n:2}
+  .mo .hero__top>div>:nth-child(4){--n:3}
+  .mo .hero__top>div>:nth-child(5){--n:4}
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  /* hero photo reveal: each look sets --intro to one of these */
+  .mo .shot--hero{animation-name:var(--intro,unveil);animation-duration:1.3s;
+    animation-timing-function:cubic-bezier(.65,0,.15,1);animation-fill-mode:both;animation-delay:.15s}
+  @supports (animation-timeline:scroll()){
+    .mo .shot--hero{animation:var(--intro,unveil) 1.3s cubic-bezier(.65,0,.15,1) .15s both,
+      drift linear both;animation-timeline:auto,view();animation-range:normal,exit 0% exit 100%}
+  }
+  @keyframes unveil{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0)}}
+  @keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
+  @keyframes arch{from{clip-path:inset(60% 12% 0 12% round 999px 999px 0 0);opacity:.2}to{clip-path:inset(0 round 0);opacity:1}}
+  @keyframes settle{from{transform:scale(1.08);filter:saturate(.6)}to{transform:none;filter:none}}
+
+  /* sections rise in as they arrive */
+  .mo .rv{opacity:0;transform:translateY(28px);
+    transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);
+    transition-delay:calc(var(--i,0) * 80ms)}
+  .mo .rv.in{opacity:1;transform:none}
+  /* gallery tiles uncover instead of sliding */
+  .mo .gal .rv{transform:none;clip-path:inset(0 0 100% 0);
+    transition:clip-path 1s cubic-bezier(.65,0,.15,1),opacity .4s;transition-delay:calc(var(--i,0) * 110ms)}
+  .mo .gal .rv.in{clip-path:inset(0)}
+
+  /* phones: service cards pin under the header and stack as you scroll */
+  @media(max-width:899px){
+    .stack .lane{position:sticky;top:calc(84px + var(--k,0) * 14px);
+      box-shadow:0 -10px 30px rgb(var(--shade)/.10)}
+    .stack .lane:nth-child(2){--k:1}
+    .stack .lane:nth-child(3){--k:2}
+  }
+}
+
 .steps{display:grid;gap:16px;counter-reset:s}
 @media(min-width:760px){.steps{grid-template-columns:repeat(3,1fr)}}
 .steps div{background:var(--card);border:1px solid var(--rule);border-radius:var(--r-lg);padding:26px 24px}
@@ -277,7 +362,8 @@ footer.site .mark small{color:color-mix(in srgb,var(--on-deep) 58%,transparent)}
 .info .ii{width:22px;flex:none;color:var(--water);font-size:1.05rem;line-height:1.6;text-align:center}
 </style>
 
-<div class="proposal">Concept proposal for <b>Ideal Lawn Care</b> · built from public information · photos, reviews and details to be supplied by the owner</div>
+<div class="progress" aria-hidden="true"></div>
+<div class="proposal"><span>Sample design for <b>Ideal Lawn Care</b>. Your own photos go in the empty spaces.</span><nav class="opts" aria-label="Layouts"><span>Layout</span><a href="/" aria-current=page>1</a><a href="/2/">2</a><a href="/3/">3</a></nav></div>
 
 <header class="bar"><div class="wrap">
   <nav class="nav">
@@ -300,9 +386,12 @@ footer.site .mark small{color:color-mix(in srgb,var(--on-deep) 58%,transparent)}
       <div class="hero__cta"><a class="btn" href="#quote">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><a class="btn btn--out" href="tel:+13062029626">(306) 202‑9626</a></div>
       <div class="trustline"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>4.7 stars from 14 Google reviews</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Family run since 2012</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Commercial, residential and acreages</span></div>
     </div>
-    <figure class="shot shot--hero"><b>Hero photo</b><span>best finished job · wide · good light</span></figure>
+    <figure class="shot shot--hero"><b>Your photo here</b><span>your best finished job</span></figure>
   </div>
-  <div class="lanes">
+</div></section>
+
+<section class="lanes-sec"><div class="wrap">
+  <div class="lanes stack">
       <div class="lane lane--water" id="s0">
         <span class="lane__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18"/><path d="M5 20c0-4 1-7 2-9M9 20c0-5 1-9 3-12M13 20c0-4 1.5-7 3-9M17 20c.5-3 1.5-5 3-6"/></svg></span>
         <span class="label">Lawn care</span>
@@ -349,11 +438,11 @@ footer.site .mark small{color:color-mix(in srgb,var(--on-deep) 58%,transparent)}
     <p class="lede">Left as placeholders on purpose. The right fix is a live reviews feed so this updates itself.</p></div>
   <div class="revs">
       <div class="rev"><span class="tagx">Placeholder</span><span class="stars" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg></span>
-        <p>A real review goes here, word for word. The strongest ones name the job and how it went.</p><footer><span class="av">—</span><span><cite>Customer name</cite><small>Google review</small></span></footer></div>
+        <p>A real review goes here, word for word. The strongest ones name the job and how it went.</p><footer><span class="av"></span><span><cite>Customer name</cite><small>Google review</small></span></footer></div>
       <div class="rev"><span class="tagx">Placeholder</span><span class="stars" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg></span>
-        <p>Aim for a spread across the services, and one that names the owner.</p><footer><span class="av">—</span><span><cite>Customer name</cite><small>Google review</small></span></footer></div>
+        <p>Aim for a spread across the services, and one that names the owner.</p><footer><span class="av"></span><span><cite>Customer name</cite><small>Google review</small></span></footer></div>
       <div class="rev"><span class="tagx">Placeholder</span><span class="stars" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5 1-4.7 4.5 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.5 6.5-1Z"/></svg></span>
-        <p>Nothing here is ever put in a customer&#x27;s mouth. These get swapped for the real thing.</p><footer><span class="av">—</span><span><cite>Customer name</cite><small>Google review</small></span></footer></div>
+        <p>Nothing here is ever put in a customer&#x27;s mouth. These get swapped for the real thing.</p><footer><span class="av"></span><span><cite>Customer name</cite><small>Google review</small></span></footer></div>
   </div>
 </div></section>
 
@@ -377,7 +466,7 @@ footer.site .mark small{color:color-mix(in srgb,var(--on-deep) 58%,transparent)}
     <div class="row"><div class="f"><label for="n">Name</label><input id="n" name="name" type="text" autocomplete="name" required></div>
       <div class="f"><label for="p">Phone</label><input id="p" name="phone" type="tel" autocomplete="tel" required></div></div>
     <div class="f"><label for="a">Property address</label><input id="a" name="address" type="text" autocomplete="street-address"></div>
-    <div class="f"><label for="s">What do you need?</label><select id="s" name="service"><option>Power raking and vacuuming</option><option>Core aeration</option><option>Tree cutting</option><option>Hedge trimming</option><option>Junk removal</option><option>Window washing</option><option>Not sure yet — need advice</option></select></div>
+    <div class="f"><label for="s">What do you need?</label><select id="s" name="service"><option>Power raking and vacuuming</option><option>Core aeration</option><option>Tree cutting</option><option>Hedge trimming</option><option>Junk removal</option><option>Window washing</option><option>Not sure yet, need advice</option></select></div>
     <div class="f"><label for="m">Tell us a bit more</label><textarea id="m" name="message" placeholder="What you're after, and when you'd like it done…"></textarea>
       <span class="fine">Photos help. Text them to (306) 202‑9626.</span></div>
     <button class="btn btn--wide" type="submit">Request my quote</button>
@@ -393,20 +482,39 @@ footer.site .mark small{color:color-mix(in srgb,var(--on-deep) 58%,transparent)}
     <div><h4>Services</h4><ul><li><a href="#s0">Lawn care</a></li><li><a href="#s1">Trees &amp; hedges</a></li><li><a href="#s2">Property care</a></li></ul></div>
     <div><h4>Get in touch</h4><ul><li><a href="tel:+13062029626">(306) 202‑9626</a></li><li><a href="#area">Saskatoon · Acreages</a></li><li><a href="#quote">Request a quote</a></li></ul></div>
   </div>
-  <div class="fbot"><span>© <span id="yr">2026</span> Ideal Lawn Care</span><span>Concept proposal — not the live site</span></div>
+  <div class="fbot"><span>© <span id="yr">2026</span> Ideal Lawn Care</span><span>Sample design, not the live site</span></div>
 </div></footer>
 
 <div class="callbar"><a class="btn btn--out" href="#quote">Get a quote</a><a class="btn" href="tel:+13062029626">Call now</a></div>
 
 <script>
 (function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce&&'IntersectionObserver' in window){
+    document.documentElement.classList.add('mo');
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;
+      var t=en.target;io.unobserve(t);
+      // gallery tiles start fully clipped, which reads as never visible, so the grid reveals them
+      (t.matches('.gal')?Array.prototype.slice.call(t.children):[t]).forEach(function(x){x.classList.add('in');});
+      if(t.matches('.stat'))count(t.querySelector('b'));});},
+      {rootMargin:'0px 0px -8% 0px',threshold:.12});
+    document.querySelectorAll('.lanes-sec .lane,.head,.strip .stat,.steps>div,.gal figure,.rev,.area,.faq,.quote>*').forEach(function(el){
+      el.classList.add('rv');el.style.setProperty('--i',Array.prototype.indexOf.call(el.parentNode.children,el)%4);
+      if(!el.matches('.gal figure'))io.observe(el);});
+    document.querySelectorAll('.gal').forEach(function(g){io.observe(g);});
+  }
+  // ratings and review counts tick up; years and words are left alone
+  function count(b){var m=/^(\d+(?:\.\d+)?)(.*)$/.exec(b.textContent);if(!m)return;var to=parseFloat(m[1]);if(to>=1900||to<2)return;
+    var dp=(m[1].split('.')[1]||'').length,t0=null;
+    function step(t){t0=t0||t;var k=Math.min(1,(t-t0)/1200);k=1-Math.pow(1-k,3);b.textContent=(to*k).toFixed(dp)+m[2];if(k<1)requestAnimationFrame(step);}
+    requestAnimationFrame(step);}
   var b=document.getElementById('burger'),dr=document.getElementById('dr');
   b.addEventListener('click',function(){var o=dr.hidden;dr.hidden=!o;b.setAttribute('aria-expanded',String(o));b.setAttribute('aria-label',o?'Close menu':'Open menu');});
   dr.addEventListener('click',function(ev){if(ev.target.closest('a')){dr.hidden=true;b.setAttribute('aria-expanded','false');}});
   var f=document.getElementById('qf');
   f.addEventListener('submit',function(ev){if(f.getAttribute('action'))return;ev.preventDefault();if(!f.reportValidity())return;
     var ok=document.getElementById('ok'),btn=f.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Sending…';
-    setTimeout(function(){ok.hidden=false;ok.textContent='Thanks — we’ve got it. We’ll be in touch shortly.';f.reset();btn.disabled=false;btn.textContent='Request my quote';},600);});
+    setTimeout(function(){ok.hidden=false;ok.textContent='Thanks, we’ve got it. We’ll be in touch shortly.';f.reset();btn.disabled=false;btn.textContent='Request my quote';},600);});
   document.getElementById('yr').textContent=new Date().getFullYear();
 })();
 </script>

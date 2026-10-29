@@ -12,7 +12,6 @@
   "email": "idealservices.now@gmail.com",
   "rating": 4.7,
   "reviews": 14,
-  "palette": "meadow",
   "h1": "Saskatoon lawns, done right since 2012.",
   "lede": "A family-run lawn and property care business for homes, commercial properties and acreages. One call for the spring clean-up, the mowing, the trees and the junk run.",
   "services": [
@@ -64,5 +63,19 @@
   "found_via": "came across Ideal Lawn Care while looking at lawn care in Saskatoon",
   "compliment": "14 years of family-run lawn care and a 4.7 on Google is something to be proud of.",
   "gap": "Your website is still on a free Wix address, with a \"Create your own Wix site\" banner across the top and \"©2017\" at the bottom, which undersells you.",
-  "pitch_line": "It puts your services, a quote form and a tap-to-call button front and centre, with no ads on it."
+  "pitch_line": "It puts your services, a quote form and a tap-to-call button front and centre, with no ads on it.",
+  "looks": [
+    [
+      "field",
+      "meadow"
+    ],
+    [
+      "heritage",
+      "harvest"
+    ],
+    [
+      "clear",
+      "olive"
+    ]
+  ]
 }

@@ -32,6 +32,7 @@ LIVE = DEPLOY / "live-sites.json"
 
 SENDER = {"name": "Braxton Abney", "phone": "250-619-6910", "place": "Nanaimo, BC"}
 PRICE, MONTHLY = "$800", "$30"
+WORDS = {2: "two", 3: "three", 4: "four"}
 
 e = html.escape
 
@@ -74,6 +75,35 @@ PALETTES = {
         dict(paper="#0F1612", card="#16201A", sunk="#0A0F0C", ink="#E8EFEA", ink_soft="#A0AEA5",
              ink_faint="#8C9A91", rule="#24302A", deep="#0A1A15", deep_2="#1A4237", water="#5FC495",
              water_soft="#8FD6B3", leaf="#73C28A", sun="#F7D04E", sun_lift="#FADB6E", sun_text="#F2CF5E")),
+    "clay": (
+        dict(paper="#F4F3F1", card="#FFFFFF", sunk="#E9E7E3", ink="#1E1D1C", ink_soft="#55524E",
+             ink_faint="#66625D", rule="#DAD6D0", deep="#2B3236", deep_2="#3E4A50", water="#B4532A",
+             water_soft="#E3A98C", leaf="#7A8F5A", sun="#E07B4C", sun_lift="#E98D61", sun_text="#A2471D"),
+        dict(paper="#141617", card="#1C1F21", sunk="#0E1011", ink="#ECEAE7", ink_soft="#AEAAA5",
+             ink_faint="#9A968F", rule="#2C3033", deep="#0F1214", deep_2="#2E383D", water="#E08A62",
+             water_soft="#EDB197", leaf="#A9BC8A", sun="#E98D61", sun_lift="#F09F77", sun_text="#EE9C73")),
+    "olive": (
+        dict(paper="#F1F2EC", card="#FFFFFF", sunk="#E4E6DC", ink="#1A1D16", ink_soft="#4F5447",
+             ink_faint="#5D6355", rule="#D4D7CA", deep="#2F3A22", deep_2="#45532F", water="#6D7F3E",
+             water_soft="#B5C28E", leaf="#6D7F3E", sun="#D4B04C", sun_lift="#E0BF60", sun_text="#7A6110"),
+        dict(paper="#121410", card="#1A1D17", sunk="#0C0E0A", ink="#ECEEE6", ink_soft="#A9AE9F",
+             ink_faint="#959A8B", rule="#2A2E24", deep="#141A0F", deep_2="#35422A", water="#A9BC7A",
+             water_soft="#C3D19D", leaf="#A9BC7A", sun="#E0BF60", sun_lift="#EACB74", sun_text="#E3C46A")),
+}
+
+# ── looks: type, shape and layout, layered over base.css from styles/<name>.css ──
+# Each prospect lists three [look, palette] pairs under "looks": the owner gets
+# all three (/, /2/, /3/) and picks one. The intro is the hero photo's reveal.
+STYLES = {
+    "field": dict(intro="unveil", fonts="family=Outfit:wght@400;500;600;700;800&family=Source+Sans+3:ital,wght@0,300..700;1,400",
+                  d="'Outfit'", b="'Source Sans 3'", feature=True),
+    "heritage": dict(intro="unveil", fonts="family=Zilla+Slab:wght@500;600;700&family=Libre+Franklin:wght@400;500;600;700",
+                     d="'Zilla Slab',Georgia", b="'Libre Franklin'", feature=False),
+    "build": dict(intro="wipe", fonts="family=Archivo:wdth,wght@62..125,400..900",
+                  d="'Archivo'", b="'Archivo'", feature=True),
+    "garden": dict(intro="arch", fonts="family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:wght@400;500;600;700",
+                   d="'Bricolage Grotesque'", b="'Figtree'", feature=False),
+    "clear": dict(intro="settle", fonts="family=Manrope:wght@400..800", d="'Manrope'", b="'Manrope'", feature=True),
 }
 
 
@@ -129,7 +159,18 @@ def rating_line(p):
     return None
 
 
-def render(p):
+def looks(p):
+    return p.get("looks") or [[p.get("style", "field"), p.get("palette", "tidewater")]]
+
+
+def option_path(i):
+    return "/" if i == 0 else f"/{i + 1}/"
+
+
+def render(p, look=0):
+    style_name, palette = looks(p)[look]
+    style = STYLES[style_name]
+    n_looks = len(looks(p))
     name, short, sub = p["name"], p.get("short", p["name"]), p.get("sub", "Landscaping")
     phone, ph = p["phone"], tel(p["phone"])
     areas = p.get("areas") or [p["city"]]
@@ -139,12 +180,13 @@ def render(p):
     nav += '<a href="#work">Our work</a><a href="#area">Service area</a><a href="#faq">FAQ</a>'
 
     trust = [rl] if rl else []
-    trust += [t for t in p.get("trust", []) if t != rl][: 3 - len(trust)]
+    # skip trust items that restate the rating in other words ("4.8 stars on Google")
+    trust += [t for t in p.get("trust", []) if not (rl and t.startswith(f'{p["rating"]} stars'))][: 3 - len(trust)]
     trust_html = "".join(f"<span>{TICK}{e(t)}</span>" for t in trust)
 
     lane_html = ""
     for i, l in enumerate(lanes):
-        feat = l.get("featured")
+        feat = l.get("featured") and style["feature"]
         items = "".join(f"<li>{e(x)}</li>" for x in l["items"])
         lane_html += f'''
       <div class="lane{' lane--water' if feat else ''}" id="s{i}">
@@ -180,7 +222,7 @@ def render(p):
     rev_head = f'{p["rating"]} stars from {p["reviews"]} reviews' if rl else "What customers say"
     rev = "".join(f'''
       <div class="rev"><span class="tagx">Placeholder</span><span class="stars" aria-label="5 out of 5">{STAR*5}</span>
-        <p>{e(t)}</p><footer><span class="av">—</span><span><cite>Customer name</cite><small>{e(p.get("review_source", "Google"))} review</small></span></footer></div>'''
+        <p>{e(t)}</p><footer><span class="av"></span><span><cite>Customer name</cite><small>{e(p.get("review_source", "Google"))} review</small></span></footer></div>'''
                   for t in ["A real review goes here, word for word. The strongest ones name the job and how it went.",
                             "Aim for a spread across the services, and one that names the owner.",
                             "Nothing here is ever put in a customer's mouth. These get swapped for the real thing."])
@@ -193,7 +235,7 @@ def render(p):
     ]
     faq_html = "".join(f'<details{" open" if i == 0 else ""}><summary>{e(q)}</summary><div class="ans">{e(a)}</div></details>'
                        for i, (q, a) in enumerate(faqs))
-    options = "".join(f"<option>{e(x)}</option>" for l in lanes for x in l["items"][:2]) + "<option>Not sure yet — need advice</option>"
+    options = "".join(f"<option>{e(x)}</option>" for l in lanes for x in l["items"][:2]) + "<option>Not sure yet, need advice</option>"
 
     info = f'<li><span class="ii">☎</span><span><b>Call or text</b><a href="tel:{ph}">{nbsp_phone(phone)}</a></span></li>'
     if p.get("address"):
@@ -207,7 +249,11 @@ def render(p):
     if rl:
         schema["aggregateRating"] = {"@type": "AggregateRating", "ratingValue": str(p["rating"]), "reviewCount": str(p["reviews"])}
 
-    css = (ROOT / "base.css").read_text()
+    switch = ""
+    if n_looks > 1:
+        switch = '<nav class="opts" aria-label="Layouts"><span>Layout</span>' + "".join(
+            f'<a href="{option_path(i)}"{" aria-current=page" if i == look else ""}>{i + 1}</a>' for i in range(n_looks)) + "</nav>"
+    css = (ROOT / "base.css").read_text() + "\n" + (ROOT / "styles" / f"{style_name}.css").read_text() + "\n" + (ROOT / "motion.css").read_text()
     return f'''<!doctype html>
 <html lang="en">
 <meta charset="utf-8">
@@ -216,11 +262,11 @@ def render(p):
 <meta name="description" content="{e(p["lede"])}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Source+Sans+3:ital,wght@0,300..700;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?{style["fonts"]}&display=swap">
 <script type="application/ld+json">{json.dumps(schema)}</script>
 <style>
-{palette_css(p.get("palette", "tidewater"))}
-:root{{--f-d:'Outfit',system-ui,sans-serif;--f-b:'Source Sans 3',system-ui,-apple-system,sans-serif;
+{palette_css(palette)}
+:root{{--intro:{style["intro"]};--f-d:{style["d"]},system-ui,sans-serif;--f-b:{style["b"]},system-ui,-apple-system,sans-serif;
   --page:1160px;--gut:clamp(18px,4vw,38px);--sec:clamp(56px,7vw,100px);--r:16px;--r-lg:26px;--r-sm:12px;--ease:cubic-bezier(.2,.7,.25,1)}}
 {css}
 .steps{{display:grid;gap:16px;counter-reset:s}}
@@ -233,7 +279,8 @@ def render(p):
 .info .ii{{width:22px;flex:none;color:var(--water);font-size:1.05rem;line-height:1.6;text-align:center}}
 </style>
 
-<div class="proposal">Concept proposal for <b>{e(name)}</b> · built from public information · photos, reviews and details to be supplied by the owner</div>
+<div class="progress" aria-hidden="true"></div>
+<div class="proposal"><span>Sample design for <b>{e(name)}</b>. Your own photos go in the empty spaces.</span>{switch}</div>
 
 <header class="bar"><div class="wrap">
   <nav class="nav">
@@ -256,9 +303,12 @@ def render(p):
       <div class="hero__cta"><a class="btn" href="#quote">Get a quote {ARROW}</a><a class="btn btn--out" href="tel:{ph}">{nbsp_phone(phone)}</a></div>
       <div class="trustline">{trust_html}</div>
     </div>
-    <figure class="shot shot--hero"><b>Hero photo</b><span>best finished job · wide · good light</span></figure>
+    <figure class="shot shot--hero"><b>Your photo here</b><span>your best finished job</span></figure>
   </div>
-  <div class="lanes">{lane_html}
+</div></section>
+
+<section class="lanes-sec"><div class="wrap">
+  <div class="lanes{' stack' if style["feature"] or style_name == "garden" else ''}">{lane_html}
   </div>
 </div></section>
 
@@ -319,20 +369,39 @@ def render(p):
     <div><h4>Services</h4><ul>{"".join(f'<li><a href="#s{i}">{e(l["label"])}</a></li>' for i, l in enumerate(lanes))}</ul></div>
     <div><h4>Get in touch</h4><ul><li><a href="tel:{ph}">{nbsp_phone(phone)}</a></li><li><a href="#area">{e(" · ".join(areas[:3]))}</a></li><li><a href="#quote">Request a quote</a></li></ul></div>
   </div>
-  <div class="fbot"><span>© <span id="yr">2026</span> {e(name)}</span><span>Concept proposal — not the live site</span></div>
+  <div class="fbot"><span>© <span id="yr">2026</span> {e(name)}</span><span>Sample design, not the live site</span></div>
 </div></footer>
 
 <div class="callbar"><a class="btn btn--out" href="#quote">Get a quote</a><a class="btn" href="tel:{ph}">Call now</a></div>
 
 <script>
 (function(){{
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce&&'IntersectionObserver' in window){{
+    document.documentElement.classList.add('mo');
+    var io=new IntersectionObserver(function(es){{es.forEach(function(en){{if(!en.isIntersecting)return;
+      var t=en.target;io.unobserve(t);
+      // gallery tiles start fully clipped, which reads as never visible, so the grid reveals them
+      (t.matches('.gal')?Array.prototype.slice.call(t.children):[t]).forEach(function(x){{x.classList.add('in');}});
+      if(t.matches('.stat'))count(t.querySelector('b'));}});}},
+      {{rootMargin:'0px 0px -8% 0px',threshold:.12}});
+    document.querySelectorAll('.lanes-sec .lane,.head,.strip .stat,.steps>div,.gal figure,.rev,.area,.faq,.quote>*').forEach(function(el){{
+      el.classList.add('rv');el.style.setProperty('--i',Array.prototype.indexOf.call(el.parentNode.children,el)%4);
+      if(!el.matches('.gal figure'))io.observe(el);}});
+    document.querySelectorAll('.gal').forEach(function(g){{io.observe(g);}});
+  }}
+  // ratings and review counts tick up; years and words are left alone
+  function count(b){{var m=/^(\\d+(?:\\.\\d+)?)(.*)$/.exec(b.textContent);if(!m)return;var to=parseFloat(m[1]);if(to>=1900||to<2)return;
+    var dp=(m[1].split('.')[1]||'').length,t0=null;
+    function step(t){{t0=t0||t;var k=Math.min(1,(t-t0)/1200);k=1-Math.pow(1-k,3);b.textContent=(to*k).toFixed(dp)+m[2];if(k<1)requestAnimationFrame(step);}}
+    requestAnimationFrame(step);}}
   var b=document.getElementById('burger'),dr=document.getElementById('dr');
   b.addEventListener('click',function(){{var o=dr.hidden;dr.hidden=!o;b.setAttribute('aria-expanded',String(o));b.setAttribute('aria-label',o?'Close menu':'Open menu');}});
   dr.addEventListener('click',function(ev){{if(ev.target.closest('a')){{dr.hidden=true;b.setAttribute('aria-expanded','false');}}}});
   var f=document.getElementById('qf');
   f.addEventListener('submit',function(ev){{if(f.getAttribute('action'))return;ev.preventDefault();if(!f.reportValidity())return;
     var ok=document.getElementById('ok'),btn=f.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Sending…';
-    setTimeout(function(){{ok.hidden=false;ok.textContent='Thanks — we’ve got it. We’ll be in touch shortly.';f.reset();btn.disabled=false;btn.textContent='Request my quote';}},600);}});
+    setTimeout(function(){{ok.hidden=false;ok.textContent='Thanks, we’ve got it. We’ll be in touch shortly.';f.reset();btn.disabled=false;btn.textContent='Request my quote';}},600);}});
   document.getElementById('yr').textContent=new Date().getFullYear();
 }})();
 </script>
@@ -342,17 +411,22 @@ def render(p):
 def email(p, url):
     hi = f"Hi {p['contact']}," if p.get("contact") else "Hi there,"
     found = p.get("found_via", "came across your business online")
+    n = len(looks(p))
+    link = lambda i: (url if i == 0 else url.rstrip("/") + option_path(i)) if url else "[LINK]"
+    links = "\n".join(f"Layout {i + 1}: {link(i)}" for i in range(n))
     body = f"""{hi}
 
 My name is {SENDER['name']}. I build websites for trades and service businesses, and I {found}. {p['compliment']} {p['gap']}
 
-So I built you a website. It's finished, and you can look at it right now:
+So I put together a sample website for you. {p['pitch_line']} It's built for a phone first, because that's where most people will find you.
 
-{url or '[LINK]'}
+I made it in {WORDS.get(n, n)} different layouts so you can pick the one you like best:
 
-{p['pitch_line']} It's built for a phone first, because that's where most people will find you.
+{links}
 
-No catch and nothing to sign up for. If you want it, I'll put in your real photos, reviews and details and have it live within a week. It's {PRICE}, one time. Hosting, domain and changes after that are {MONTHLY} a month if you want me to handle them. If it's not for you, just ignore this and I won't chase you.
+They're samples, so some things are left out on purpose. I didn't copy your photos or reviews, because I didn't want to use your work without asking. The name, services and contact details are what's already public. The empty photo spaces are where your own pictures go. Once you've picked a layout and sent me some photos, I'll adjust the colours and design around them until you like it, so the finished site can look quite different from these.
+
+No catch and nothing to sign up for. If you want one, it's {PRICE}, one time, and I'll have it live within a week. Hosting, domain and changes after that are {MONTHLY} a month if you want me to handle them. If it's not for you, just ignore this and I won't chase you.
 
 If you'd rather not hear from me again, reply "no thanks" and I'll take you off my list.
 
@@ -370,7 +444,10 @@ def main():
         p.setdefault("slug", slug)
         d = DEPLOY / slug
         d.mkdir(parents=True, exist_ok=True)
-        (d / "index.html").write_text(render(p), encoding="utf-8")
+        for i in range(len(looks(p))):
+            o = d / option_path(i).strip("/")
+            o.mkdir(parents=True, exist_ok=True)
+            (o / "index.html").write_text(render(p, i), encoding="utf-8")
         url = (live.get(slug) or {}).get("url")
         if p.get("email"):
             (OUT / f"{slug}.email.json").write_text(json.dumps(email(p, url), indent=2, ensure_ascii=False) + "\n")

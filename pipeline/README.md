@@ -28,7 +28,14 @@ find.py ─► leads.csv ─► check.mjs ─► checks.json ─► prospects/<s
    business says about itself (`cache/<domain>.txt`, the check text). Only
    real facts: services they list, areas they name, rating and review count.
    See any existing file for the fields.
-4. **Build.** `python3 pipeline/build.py` writes `deploy/<slug>/index.html`.
+4. **Build.** `python3 pipeline/build.py` writes three layouts per prospect:
+   `deploy/<slug>/index.html`, `2/index.html` and `3/index.html`. Each comes
+   from the `looks` list in the prospect file, as `[look, palette]` pairs. The
+   looks are `field`, `heritage`, `build`, `garden` and `clear`
+   (`pipeline/styles/`), shared scroll motion lives in `motion.css`, and the
+   palettes are at the top of `build.py`. Give each prospect three different
+   looks, and avoid repeating a neighbour's exact trio, so samples don't all
+   look alike.
 5. **Deploy.** `python3 deploy/cf-deploy.py --all` (needs
    `CLOUDFLARE_API_TOKEN`; see the top of that file).
 6. **Build again** so each email picks up its live URL, then Claude creates the

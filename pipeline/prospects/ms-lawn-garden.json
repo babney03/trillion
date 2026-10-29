@@ -11,7 +11,6 @@
   "email": "mslawngarden@gmail.com",
   "rating": 4.6,
   "reviews": 70,
-  "palette": "slate",
   "h1": "Enhancing commercial and residential properties.",
   "lede": "Lawn and garden care for homes and businesses across Mississauga. Regular maintenance, seasonal cleanups and gardens that look after the property's first impression.",
   "services": [
@@ -63,5 +62,19 @@
   "found_via": "came across M.S. Lawn & Garden while looking at lawn care in Mississauga",
   "compliment": "70 Google reviews is a lot of properties looked after.",
   "gap": "The website link on your Google listing goes to a page of social media buttons, though, so someone ready to hire can't see your services or ask for a quote without clicking off somewhere else.",
-  "pitch_line": "It puts your lawn, garden and cleanup services on one page with a quote form and a tap-to-call button."
+  "pitch_line": "It puts your lawn, garden and cleanup services on one page with a quote form and a tap-to-call button.",
+  "looks": [
+    [
+      "garden",
+      "clay"
+    ],
+    [
+      "field",
+      "meadow"
+    ],
+    [
+      "build",
+      "cedar"
+    ]
+  ]
 }

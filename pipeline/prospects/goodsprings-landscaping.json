@@ -11,7 +11,6 @@
   "email": "info@goodsprings.ca",
   "rating": 5.0,
   "reviews": 51,
-  "palette": "meadow",
   "h1": "Mississauga landscaping with a perfect record.",
   "lede": "Goodsprings Landscaping looks after yards across Mississauga, with fifty-one reviews and every one of them five stars.",
   "services": [
@@ -81,5 +80,19 @@
   "found_via": "came across Goodsprings while looking at landscapers in Mississauga",
   "compliment": "Fifty-one Google reviews and every one of them five stars. I don't see that often.",
   "gap": "But anyone who clicks through to goodsprings.ca gets a \"Coming Soon, our website is currently under development\" page, so all that goodwill stops at the door.",
-  "pitch_line": "This one is ready now. It shows your services and your perfect rating, and has a quote form and a tap-to-call button."
+  "pitch_line": "This one is ready now. It shows your services and your perfect rating, and has a quote form and a tap-to-call button.",
+  "looks": [
+    [
+      "garden",
+      "meadow"
+    ],
+    [
+      "clear",
+      "slate"
+    ],
+    [
+      "heritage",
+      "clay"
+    ]
+  ]
 }

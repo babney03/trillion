@@ -1,0 +1,54 @@
+/* build: hardscape, construction and excavation crews. Condensed uppercase
+   type, a dark hero band with the photo breaking out of it, sharp corners. */
+:root{--r:2px;--r-lg:2px;--r-sm:2px}
+h1,h2,h3{font-stretch:76%;font-weight:800;text-transform:uppercase;letter-spacing:0;line-height:.98}
+h1{font-size:clamp(2.6rem,1.5rem+4.6vw,4.5rem)}
+h2{font-size:clamp(1.9rem,1.3rem+2.4vw,3rem)}
+h3{font-stretch:82%;font-size:1.3rem}
+.label{font-stretch:100%;letter-spacing:.17em}
+.btn{border-radius:2px;text-transform:uppercase;letter-spacing:.07em;font-size:.84rem;font-weight:700}
+.btn--sm{font-size:.78rem}
+.mark .n{font-stretch:80%;text-transform:uppercase;font-size:1.22rem;letter-spacing:.01em}
+
+/* dark header and hero */
+.proposal{background:var(--deep-2)}
+.bar{background:var(--deep);border-bottom-color:color-mix(in srgb,var(--on-deep) 12%,transparent);color:var(--on-deep)}
+.mark svg{color:var(--sun)}
+.mark small{color:var(--on-deep-soft)}
+.links a{color:var(--on-deep-soft)}
+.links a:hover{color:var(--on-deep)}
+.navend .btn--out,.hero .btn--out{color:var(--on-deep);border-color:color-mix(in srgb,var(--on-deep) 34%,transparent)}
+.navend .btn--out:hover,.hero .btn--out:hover{background:color-mix(in srgb,var(--on-deep) 10%,transparent)}
+.burger{background:none;border-radius:2px;color:var(--on-deep);border-color:color-mix(in srgb,var(--on-deep) 30%,transparent)}
+.drawer{border-top-color:color-mix(in srgb,var(--on-deep) 14%,transparent)}
+.drawer a{border-bottom-color:color-mix(in srgb,var(--on-deep) 14%,transparent)}
+
+.hero{background:var(--deep);color:var(--on-deep);padding-bottom:0;overflow:visible}
+.hero::before{display:none}
+.hero .label{color:var(--sun)}
+.hero .lede{color:var(--on-deep-soft)}
+.trustline{color:var(--on-deep-soft)}
+.trustline svg{color:var(--sun)}
+.shot{border-radius:0}
+.shot--hero{margin-bottom:-56px;z-index:1;box-shadow:0 22px 50px rgb(var(--shade)/.22)}
+@media(min-width:980px){.hero__top{align-items:end}.shot--hero{margin-bottom:-80px}}
+.lanes-sec{padding-top:calc(56px + clamp(40px,5vw,64px))}
+@media(min-width:980px){.lanes-sec{padding-top:calc(80px + 64px)}}
+
+/* services: flat blocks with a heavy top rule */
+.lane{border:0;border-top:4px solid var(--sun);border-radius:0;background:var(--card);
+  box-shadow:0 1px 0 var(--rule)}
+.lane:hover{transform:none;box-shadow:0 1px 0 var(--rule)}
+.lane--water{border-top-color:var(--sun);background:var(--deep)}
+.lane__ico{border-radius:0;width:auto;height:auto;background:none;justify-content:start;color:var(--deep-2)}
+.lane--water .lane__ico{background:none}
+.lane__ico svg{width:30px;height:30px}
+.lane li::before{border-radius:0}
+
+.strip{border-top:4px solid var(--ink);border-bottom:0}
+.stat b{font-stretch:75%;font-size:2.5rem;color:var(--ink)}
+.steps div{border-radius:0}
+.steps .num{border-radius:0;background:var(--sun);color:#1C1305}
+.rev,.rev .tagx,.area,.mapslot,.chip,.form,.faq details,.f input,.f select,.f textarea{border-radius:0}
+.rev .av{border-radius:0}
+.faq summary{font-stretch:90%}

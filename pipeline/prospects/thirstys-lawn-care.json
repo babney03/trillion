@@ -12,7 +12,6 @@
   "email": "thirstyslawncare@gmail.com",
   "rating": 4.7,
   "reviews": 84,
-  "palette": "meadow",
   "h1": "Worry-free lawn care in Peterborough.",
   "lede": "Proudly serving Peterborough since 2009. Sign up and we set a consistent service day, so your lawn stays well-manicured all season.",
   "services": [
@@ -82,5 +81,19 @@
   "found_via": "came across Thirsty's while looking at lawn care in Peterborough",
   "compliment": "84 Google reviews at 4.7 is a lot of happy lawns.",
   "gap": "Your website buries that. It opens with a numbered list of core values before it ever says you cut lawns, browsers mark it \"Not secure\", and the phone number can't be tapped to call.",
-  "pitch_line": "It leads with weekly lawn cutting and your 84 reviews, keeps the values further down, and has a sign-up form and a tap-to-call button."
+  "pitch_line": "It leads with weekly lawn cutting and your 84 reviews, keeps the values further down, and has a sign-up form and a tap-to-call button.",
+  "looks": [
+    [
+      "field",
+      "tidewater"
+    ],
+    [
+      "garden",
+      "meadow"
+    ],
+    [
+      "clear",
+      "clay"
+    ]
+  ]
 }

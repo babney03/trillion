@@ -64,7 +64,8 @@ img{display:block;max-width:100%}
 .btn svg{width:17px;height:17px;flex:none}
 
 /* hero */
-.hero{position:relative;overflow:hidden;padding:clamp(36px,5vw,68px) 0 var(--sec)}
+.hero{position:relative;isolation:isolate;overflow:hidden;padding:clamp(36px,5vw,68px) 0 clamp(36px,4vw,56px)}
+.lanes-sec{padding:8px 0 var(--sec)}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:radial-gradient(58% 52% at 8% -6%,color-mix(in srgb,var(--water) 26%,transparent),transparent 64%),
              radial-gradient(46% 42% at 98% 4%,color-mix(in srgb,var(--leaf) 22%,transparent),transparent 62%)}
@@ -76,15 +77,24 @@ img{display:block;max-width:100%}
 .trustline span{display:inline-flex;align-items:center;gap:7px}
 .trustline svg{width:16px;height:16px;color:var(--leaf);flex:none}
 
-.shot{margin:0;min-height:300px;border-radius:var(--r-lg);display:grid;place-content:center;
-  text-align:center;gap:7px;padding:18px;border:1.5px dashed color-mix(in srgb,var(--ink-faint) 42%,transparent);
-  background:linear-gradient(152deg,color-mix(in srgb,var(--water-soft) 46%,var(--sunk)),var(--sunk))}
-.shot--hero{min-height:clamp(280px,34vw,410px)}
-.shot b{font-family:var(--f-d);font-weight:700;font-size:1.02rem}
-.shot span{font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)}
+/* photo placeholders: a quiet landscape in the site's own colours, so the
+   empty slots read as "your photo goes here" rather than a broken page */
+.shot{position:relative;margin:0;min-height:300px;border-radius:var(--r-lg);overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:3px;
+  padding:18px 20px;text-align:left;color:var(--on-deep);
+  background:
+    radial-gradient(130% 62% at 12% 118%,color-mix(in srgb,var(--leaf) 58%,var(--deep)) 0 47%,transparent 47.6%),
+    radial-gradient(120% 58% at 92% 124%,color-mix(in srgb,var(--leaf) 34%,var(--deep-2)) 0 52%,transparent 52.6%),
+    radial-gradient(90% 45% at 55% 112%,color-mix(in srgb,var(--water-soft) 40%,var(--leaf)) 0 50%,transparent 50.6%),
+    linear-gradient(180deg,color-mix(in srgb,var(--water-soft) 46%,var(--paper)),color-mix(in srgb,var(--water-soft) 22%,var(--sunk)))}
+.shot--hero{min-height:clamp(290px,34vw,430px)}
+.shot{background-position:0 100%}
+.shot b,.shot span{text-shadow:0 1px 14px rgb(0 0 0/.45)}
+.shot b{position:relative;font-family:var(--f-d);font-weight:700;font-size:1rem;line-height:1.2}
+.shot span{position:relative;font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;opacity:.82}
 
 /* three lanes */
-.lanes{display:grid;gap:18px;margin-top:44px}
+.lanes{display:grid;gap:18px}
 @media(min-width:900px){.lanes{grid-template-columns:repeat(3,1fr)}}
 .lane{display:flex;flex-direction:column;gap:12px;padding:30px 28px;border-radius:var(--r-lg);
   background:var(--card);border:1px solid var(--rule);
@@ -250,3 +260,19 @@ footer.site .mark small{color:color-mix(in srgb,var(--on-deep) 58%,transparent)}
 @media(min-width:1060px){.callbar{display:none}}
 @media(max-width:1059px){body{padding-bottom:76px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* layout switcher in the sample banner */
+.proposal{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 14px}
+.opts{display:inline-flex;align-items:center;gap:4px;font-weight:700}
+.opts span{margin-right:4px;opacity:.75;font-weight:600}
+.opts a{display:grid;place-items:center;min-width:30px;height:30px;border-radius:999px;
+  border:1px solid color-mix(in srgb,var(--on-deep) 32%,transparent);color:var(--on-deep)}
+.opts a[aria-current]{background:var(--sun);border-color:var(--sun);color:#1C1305}
+
+/* dark mode: the deep green/blue used for icons and the logo mark vanishes on
+   dark backgrounds, so lift them to the lighter accent */
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .lane:not(.lane--water) .lane__ico,
+  :root:not([data-theme="light"]) .bar .mark svg{color:var(--water)}}
+:root[data-theme="dark"] .lane:not(.lane--water) .lane__ico,
+:root[data-theme="dark"] .bar .mark svg{color:var(--water)}

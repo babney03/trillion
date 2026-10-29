@@ -11,7 +11,6 @@
   "email": "info@terravie.ca",
   "rating": 4.8,
   "reviews": 13,
-  "palette": "cedar",
   "h1": "Landscaping for the Comox Valley.",
   "lede": "Terra Vie has been looking after gardens across the Comox Valley since 2020. Tell us about your yard and we'll come and take a look.",
   "services": [
@@ -63,5 +62,19 @@
   "found_via": "came across Terra Vie while looking at landscapers in the Comox Valley",
   "compliment": "A 4.8 on Google after a few years in business means you're doing the work right.",
   "gap": "Your website is a single line of text and a grid of photos, so anyone who finds it can't see what you do, where you work or how to get a quote.",
-  "pitch_line": "It keeps the photos but adds your services, service area and a quote form, with a tap-to-call button for phones."
+  "pitch_line": "It keeps your work front and centre, with room for the photos you already have, and adds your services, service area and a quote form, with a tap-to-call button for phones.",
+  "looks": [
+    [
+      "garden",
+      "olive"
+    ],
+    [
+      "heritage",
+      "tidewater"
+    ],
+    [
+      "build",
+      "clay"
+    ]
+  ]
 }

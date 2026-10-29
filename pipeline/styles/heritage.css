@@ -1,0 +1,55 @@
+/* heritage: long-standing family firms. Slab serif, square corners, ruled
+   sections instead of cards, framed hero photo. */
+:root{--r:3px;--r-lg:4px;--r-sm:3px}
+h1,h2,h3{font-weight:600;letter-spacing:-.012em;line-height:1.06}
+h1{font-weight:700;font-size:clamp(2.35rem,1.4rem+3.8vw,3.8rem)}
+.label{font-family:var(--f-b);font-weight:600;letter-spacing:.2em;font-size:.7rem}
+.mark .n{font-weight:700;font-size:1.18rem;letter-spacing:0}
+.mark small{font-family:var(--f-b)}
+.links a,.btn,.f label,.faq summary,.rev cite,.steps b{font-family:var(--f-b)}
+.btn{border-radius:3px;font-weight:600;letter-spacing:.01em}
+.burger{border-radius:3px}
+
+.hero::before{display:none}
+.hero{border-bottom:1px solid var(--rule)}
+.hero h1{max-width:15ch}
+.shot{border-radius:2px}
+.shot::before{content:"";position:absolute;inset:10px;border:1px solid color-mix(in srgb,var(--on-deep) 55%,transparent);pointer-events:none}
+.shot b,.shot span{margin-left:4px}
+
+/* services: three ruled columns, no cards */
+.lanes-sec{padding-top:clamp(40px,5vw,64px)}
+.lanes{gap:0;border-top:2px solid var(--ink)}
+.lane{background:transparent;border:0;border-bottom:1px solid var(--rule);border-radius:0;padding:28px 0 30px}
+.lane:hover{transform:none;box-shadow:none;border-color:var(--rule)}
+@media(min-width:900px){
+  .lane{border-bottom:0;border-left:1px solid var(--rule);padding:32px 30px 8px}
+  .lane:first-child{border-left:0;padding-left:0}}
+.lane__ico{width:auto;height:auto;background:none;justify-content:start;color:var(--sun-text)}
+.lane__ico svg{width:28px;height:28px}
+.lane h3{font-size:1.5rem}
+.lane li::before{border-radius:0;width:7px;height:1.5px;margin-top:12px;background:var(--sun-text)}
+.lane .btn{background:none;box-shadow:none;color:var(--ink);padding:0;min-height:44px;border-radius:0;
+  border-bottom:1.5px solid var(--sun);align-self:flex-start}
+.lane .btn:hover{transform:none;background:none;color:var(--sun-text)}
+
+.stat b{font-family:var(--f-d);font-weight:700;font-size:2.3rem;color:var(--ink)}
+.stat span{font-family:var(--f-b);font-weight:600}
+
+.steps div{background:none;border:0;border-top:1px solid var(--ink);border-radius:0;padding:20px 0 0}
+.steps .num{width:auto;height:auto;background:none;border-radius:0;justify-content:start;
+  color:var(--sun-text);font-family:var(--f-d);font-size:1.7rem;margin-bottom:8px}
+
+.gal{gap:10px}
+.rev{border-radius:2px}
+.rev .tagx{border-radius:2px}
+.area{border-radius:2px}
+.mapslot{border-radius:2px}
+.chip{border-radius:2px}
+.faq{gap:0;border-top:1px solid var(--rule)}
+.faq details{border:0;border-bottom:1px solid var(--rule);border-radius:0;background:none}
+.faq details[open]{border-color:var(--rule)}
+.faq summary{padding:20px 2px}
+.faq .ans{padding:0 2px 20px}
+.form{border-radius:2px}
+.f input,.f select,.f textarea{border-radius:2px}
