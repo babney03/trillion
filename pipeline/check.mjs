@@ -40,7 +40,10 @@ console.log(`${todo.length} sites to check (${leads.length - todo.length} alread
 const EMAIL = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g;
 const JUNK = /example\.|sentry|wixpress|domain\.com|email\.com|yourname|@2x|\.png|\.jpg|\.webp|godaddy|squarespace|wordpress|schema\.org|jquery|mysite\.com/i;
 
-const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+// Cloud sessions ship a Chromium at a versioned path that changes between images;
+// /opt/pw-browsers/chromium always links to the current one.
+const CHROME = process.env.CHROME_PATH || ['/opt/pw-browsers/chromium'].find(p => existsSync(p));
+const browser = await chromium.launch(CHROME ? { executablePath: CHROME } : {});
 
 async function check(r) {
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1, isMobile: true, hasTouch: true,
