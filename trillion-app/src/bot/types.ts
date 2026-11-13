@@ -92,7 +92,6 @@ export interface BotState {
   lastTickAt: number
   lastTickMs: number
   ticks: number
-  lock: number
   incidents: Incident[]
   lessons: Lesson[]
   curve: { t: number; v: number }[]

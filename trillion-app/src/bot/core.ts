@@ -79,7 +79,6 @@ export function initState(now: number, seed: Seed = {}): BotState {
     lastTickAt: 0,
     lastTickMs: 0,
     ticks: 0,
-    lock: 0,
     incidents: [],
     lessons: [],
     curve: [{ t: now, v: BOT.startEquity }],
@@ -250,24 +249,6 @@ export async function runTick(state: BotState, journal: JournalEntry[], deps: De
     state.markets[market] = { source, lastBarT: last.t, lastClose: last.c, lastOkAt: started, failures: 0 }
   })
 
-  // Weekly re-tune: at most one track per cycle so a cycle never runs long.
-  if (deps.history) {
-    const due = Object.values(state.tracks)
-      .filter((t) => started - t.lastRetuneAt >= BOT.retuneEveryMs)
-      .sort((a, b) => a.lastRetuneAt - b.lastRetuneAt)[0]
-    if (due) {
-      due.lastRetuneAt = started
-      try {
-        const hist = sanitize(await deps.history(due.market, BOT.retuneDays), BOT.tfMs, started).candles
-        const res = tune(hist, due.strategy, due.params, cfgFor(due.market))
-        if (res.adopt) due.params = res.params
-        lessons(state, [{ t: started, track: due.id, kind: 'retune', msg: `Weekly re-tune, ${STRATEGIES[due.strategy].name} on ${due.market}: ${res.msg}.` }])
-      } catch (e) {
-        incident(state, started, 'warn', `Re-tune of ${due.id} skipped: ${e instanceof Error ? e.message : String(e)}. Will retry next week.`, true)
-      }
-    }
-  }
-
   const lastPt = state.curve[state.curve.length - 1]
   if (!lastPt || started - lastPt.t >= 3_600_000) state.curve.push({ t: started, v: state.equity })
   if (state.curve.length > 3000) state.curve.splice(0, state.curve.length - 3000)
@@ -277,3 +258,28 @@ export async function runTick(state: BotState, journal: JournalEntry[], deps: De
   state.ticks++
   return { bars, trades }
 }
+
+/**
+ * Weekly re-tune of one track, the one that has waited longest. Kept separate
+ * from the trading cycle so slow history downloads can never delay a trade.
+ */
+export async function maybeRetune(state: BotState, deps: Deps): Promise<boolean> {
+  if (!deps.history) return false
+  const now = deps.now()
+  const due = Object.values(state.tracks)
+    .filter((t) => now - t.lastRetuneAt >= BOT.retuneEveryMs)
+    .sort((a, b) => a.lastRetuneAt - b.lastRetuneAt)[0]
+  if (!due) return false
+  due.lastRetuneAt = now
+  try {
+    const hist = sanitize(await deps.history(due.market, BOT.retuneDays), BOT.tfMs, now).candles
+    const res = tune(hist, due.strategy, due.params, cfgFor(due.market))
+    if (res.adopt) due.params = res.params
+    lessons(state, [{ t: now, track: due.id, kind: 'retune', msg: `Weekly re-tune, ${STRATEGIES[due.strategy].name} on ${due.market}: ${res.msg}.` }])
+  } catch (e) {
+    incident(state, now, 'warn', `Re-tune of ${due.id} skipped: ${e instanceof Error ? e.message : String(e)}. Will retry next week.`, true)
+  }
+  return true
+}
+
+export { incident as logIncident }

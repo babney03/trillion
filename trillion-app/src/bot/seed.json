@@ -1,0 +1,55 @@
+{
+  "asOf": "2026-11-13",
+  "days": 365,
+  "source": "Binance BTCUSDT and PAXGUSDT, 5m",
+  "tracks": {
+    "BTC:liquidity": {
+      "expR": 0.046,
+      "n": 91,
+      "winRate": 0.341,
+      "netPct": 1.829,
+      "oosExpR": 0.594,
+      "oosN": 25
+    },
+    "BTC:ict": {
+      "expR": -0.184,
+      "n": 77,
+      "winRate": 0.338,
+      "netPct": -7.01,
+      "oosExpR": -0.454,
+      "oosN": 21
+    },
+    "BTC:scalper": {
+      "expR": -0.237,
+      "n": 159,
+      "winRate": 0.321,
+      "netPct": -17.487,
+      "oosExpR": -0.31,
+      "oosN": 23
+    },
+    "GOLD:liquidity": {
+      "expR": 0.013,
+      "n": 128,
+      "winRate": 0.336,
+      "netPct": 1.885,
+      "oosExpR": 0.022,
+      "oosN": 33
+    },
+    "GOLD:ict": {
+      "expR": -0.092,
+      "n": 72,
+      "winRate": 0.347,
+      "netPct": -2.816,
+      "oosExpR": -0.14,
+      "oosN": 19
+    },
+    "GOLD:scalper": {
+      "expR": -0.112,
+      "n": 1269,
+      "winRate": 0.341,
+      "netPct": -50.831,
+      "oosExpR": -0.196,
+      "oosN": 361
+    }
+  }
+}

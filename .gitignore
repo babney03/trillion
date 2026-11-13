@@ -5,3 +5,7 @@ node_modules/
 
 # playwright-cli run artifacts (screenshots, snapshots, console logs)
 .playwright-cli/
+
+# Trillion app
+.netlify/
+.cache/
