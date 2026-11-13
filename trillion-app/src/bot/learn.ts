@@ -33,16 +33,17 @@ export function verdict(rs: number[], minN: number): 'negative' | 'positive' | '
 const fmt = (e: Evidence) => `last ${e.n} results average ${e.mean >= 0 ? '+' : ''}${e.mean.toFixed(2)}R (±${e.se.toFixed(2)})`
 const label = (t: Track) => `${STRATEGIES[t.strategy].name} on ${t.market}`
 
-const BUCKET_NAMES: Record<string, string> = {
-  'session:asia': 'the Asian session',
-  'session:london': 'the London session',
-  'session:newyork': 'the New York session',
-  'session:late': 'late New York hours',
-  'vol:low': 'quiet markets',
-  'vol:normal': 'normal volatility',
-  'vol:high': 'high volatility',
-  'side:long': 'longs',
-  'side:short': 'shorts',
+/** [short name for tables, what the track stops or resumes doing] */
+const BUCKETS: Record<string, [string, string]> = {
+  'session:asia': ['Asian session', 'trading the Asian session'],
+  'session:london': ['London session', 'trading the London session'],
+  'session:newyork': ['New York session', 'trading the New York session'],
+  'session:late': ['late New York hours', 'trading late New York hours'],
+  'vol:low': ['quiet markets', 'trading quiet markets'],
+  'vol:normal': ['normal volatility', 'trading in normal volatility'],
+  'vol:high': ['high volatility', 'trading in high volatility'],
+  'side:long': ['longs', 'taking longs'],
+  'side:short': ['shorts', 'taking shorts'],
 }
 
 export function bucketsOf(t: Trade): string[] {
@@ -51,7 +52,8 @@ export function bucketsOf(t: Trade): string[] {
   return keys
 }
 
-export const bucketName = (k: string) => BUCKET_NAMES[k] ?? k
+export const bucketName = (k: string) => BUCKETS[k]?.[0] ?? k
+const bucketVerb = (k: string) => BUCKETS[k]?.[1] ?? `trading ${k}`
 
 /** Record a result (live or shadow) and re-apply the evidence rules. Returns anything the bot learned. */
 export function learn(track: Track, trade: Trade, now: number): Lesson[] {
@@ -92,10 +94,10 @@ export function learn(track: Track, trade: Trade, now: number): Lesson[] {
     const bv = verdict(b, BOT.bucketMinN)
     if (!track.benchedBuckets[k] && bv === 'negative') {
       track.benchedBuckets[k] = { since: now, why: fmt(evidence(b)) }
-      out.push({ t: now, track: track.id, kind: 'context-off', msg: `${label(track)} stops trading ${bucketName(k)}: ${fmt(evidence(b))}.` })
+      out.push({ t: now, track: track.id, kind: 'context-off', msg: `${label(track)} stops ${bucketVerb(k)}: ${fmt(evidence(b))}.` })
     } else if (track.benchedBuckets[k] && bv === 'positive') {
       delete track.benchedBuckets[k]
-      out.push({ t: now, track: track.id, kind: 'context-on', msg: `${label(track)} resumes trading ${bucketName(k)}: ${fmt(evidence(b))}.` })
+      out.push({ t: now, track: track.id, kind: 'context-on', msg: `${label(track)} resumes ${bucketVerb(k)}: ${fmt(evidence(b))}.` })
     }
   }
   return out

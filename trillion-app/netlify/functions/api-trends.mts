@@ -47,8 +47,15 @@ const loaders: Record<string, () => Promise<unknown>> = {
   },
   trending: async () => pools(await fetchJson(`${GT}/networks/trending_pools?include=base_token&duration=1h`)),
   solana: async () => pools(await fetchJson(`${GT}/networks/solana/trending_pools?include=base_token&duration=1h`)),
-  fresh: async () =>
-    pools(await fetchJson(`${GT}/networks/solana/new_pools?include=base_token`)).filter((p: any) => (p.liquidity ?? 0) >= 20_000 && (p.vol.h1 ?? 0) >= 5_000),
+  // Young pools that already have real activity: Solana pools under three days old from the wider trending list.
+  fresh: async () => {
+    const pages = await Promise.all([1, 2, 3].map((n) => fetchJson(`${GT}/networks/solana/trending_pools?include=base_token&duration=6h&page=${n}`).catch(() => null)))
+    if (pages.every((p) => !p)) throw new Error('GeckoTerminal did not respond')
+    const seen = new Set<string>()
+    return pages
+      .flatMap((p) => (p ? pools(p) : []))
+      .filter((p: any) => p.createdAt && Date.now() - p.createdAt < 3 * 86_400_000 && (p.liquidity ?? 0) >= 20_000 && !seen.has(p.pool) && seen.add(p.pool))
+  },
 }
 
 const TTL = 5 * 60_000

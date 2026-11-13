@@ -12,7 +12,7 @@ const fomoLink = (mint: string) => `https://fomo.family/tokens/solana/${mint}`
 
 function Pools({ pools, now }: { pools: Pool[]; now: number }) {
   const rows = pools.map((p) => ({ p, r: readTrend(p, now) })).sort((a, b) => b.r.score - a.r.score)
-  if (!rows.length) return <div className="empty panel"><strong>Nothing clears the bar right now.</strong>New pools are only listed once they hold $20k of liquidity and $5k of hourly volume.</div>
+  if (!rows.length) return <div className="empty panel"><strong>Nothing clears the bar right now.</strong>New pools are only listed once they are trending and hold at least $20k of liquidity.</div>
   return (
     <div className="table-wrap">
       <table>
@@ -75,9 +75,9 @@ export function Trends() {
           <section className="section">
             <div className="section-head">
               <h2>On-chain pools</h2>
-              <span style={{ display: 'inline-flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
+              <span className="cluster">
                 {sec && <Stale t={sec.t} why={sec.stale} />}
-                <Seg label="Pools" value={view} onChange={setView} options={[['solana', 'Trending on Solana'], ['trending', 'All chains'], ['fresh', 'New on Solana']]} />
+                <Seg label="Pools" value={view} onChange={setView} options={[['solana', 'Trending on Solana'], ['trending', 'All chains'], ['fresh', 'Under 3 days old']]} />
               </span>
             </div>
             {sec?.data ? <Pools pools={sec.data} now={now} /> : <Notice bad>Pool data is unavailable{sec?.stale ? ` (${sec.stale})` : ''}.</Notice>}

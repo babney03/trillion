@@ -46,7 +46,7 @@ function botLine(b: BotPayload | null, now: number): string {
   const pos = open.length
     ? `It holds ${open.map((t) => `a ${t.sim.position!.side} on ${t.market}`).join(' and ')}.`
     : 'It has no open positions.'
-  return `Paper equity is ${money(s.equity)}, ${pct(total)} overall and ${today >= 0 ? 'up' : 'down'} ${say(Math.abs(today), 2)} dollars today. ${pos} ${s.paused ? 'The bot is paused.' : s.day.halted ? 'It hit the daily loss limit and is standing aside until tomorrow.' : health}`
+  return `Paper equity is ${money(s.equity)}, ${Math.abs(total) < 0.005 ? 'unchanged' : pct(total)} overall and ${Math.abs(today) < 0.005 ? 'flat' : `${today > 0 ? 'up' : 'down'} ${say(Math.abs(today), 2)} dollars`} today. ${pos} ${s.paused ? 'The bot is paused.' : s.day.halted ? 'It hit the daily loss limit and is standing aside until tomorrow.' : health}`
 }
 
 function nextEvents(i: IntelPayload | null, now: number, n = 2): string {

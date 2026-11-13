@@ -217,7 +217,7 @@ export function Backtest() {
           {busy && (
             <div style={{ display: 'grid', gap: 6 }} role="status">
               <span className="small muted">{phase.note}</span>
-              <div className="progress"><i style={{ width: `${Math.round(phase.pct * 100)}%` }} /></div>
+              <div className="progress"><i style={{ transform: `scaleX(${Math.max(0.02, phase.pct).toFixed(3)})` }} /></div>
             </div>
           )}
           {error && <Notice bad>{error}</Notice>}

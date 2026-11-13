@@ -68,7 +68,9 @@ export function CandleChart({ candles, live, decimals, lines = [], height = 420 
     if (!s) return
     s.applyOptions({ priceFormat: { type: 'price', precision: decimals, minMove: 1 / 10 ** decimals } })
     s.setData(candles.map((b) => ({ time: local(b.t), open: b.o, high: b.h, low: b.l, close: b.c })))
-    if (candles.length) chart.current?.timeScale().setVisibleLogicalRange({ from: Math.max(0, candles.length - 140), to: candles.length + 4 })
+    // Show as many bars as the width can render legibly: about one per 9px.
+    const fit = Math.round(Math.max(48, Math.min(160, (el.current?.clientWidth ?? 900) / 9)))
+    if (candles.length) chart.current?.timeScale().setVisibleLogicalRange({ from: Math.max(0, candles.length - fit), to: candles.length + 3 })
   }, [candles, decimals])
 
   useEffect(() => {

@@ -203,6 +203,7 @@ select {
   max-width: 1320px;
   margin: 0 auto;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 28px;
 }
 .page-head {
@@ -296,6 +297,7 @@ select {
 }
 .section {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 12px;
   min-width: 0;
 }
@@ -305,6 +307,20 @@ select {
   align-items: baseline;
   justify-content: space-between;
   gap: 6px 16px;
+}
+.section-head > *,
+.page-head > *,
+.toolbar > * {
+  min-width: 0;
+  max-width: 100%;
+}
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  max-width: 100%;
 }
 .cols {
   display: grid;
@@ -386,11 +402,15 @@ select {
 .field {
   display: grid;
   gap: 6px;
+  min-width: 0;
   font-size: 0.8125rem;
   color: var(--text-2);
 }
 .field select,
 .field input {
+  width: 100%;
+  min-width: 0;
+  text-overflow: ellipsis;
   min-height: 40px;
   padding: 0 12px;
   border-radius: var(--r-ctl);
@@ -754,7 +774,7 @@ dl {
 .form-grid {
   display: grid;
   gap: 14px;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
   align-items: end;
 }
 .progress {
@@ -767,7 +787,8 @@ dl {
   display: block;
   height: 100%;
   background: var(--accent);
-  transition: width 200ms linear;
+  transform-origin: left;
+  transition: transform 200ms linear;
 }
 details.more > summary {
   cursor: pointer;

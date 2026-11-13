@@ -6,7 +6,7 @@ const gnews = (q: string) => `https://news.google.com/rss/search?q=${encodeURICo
 
 const FEEDS: Record<string, [string, string][]> = {
   markets: [
-    ['MarketWatch', 'https://feeds.content.dowjones.io/public/rss/mw_topstories'],
+    ['MarketWatch', 'https://feeds.content.dowjones.io/public/rss/mw_marketpulse'],
     ['investingLive', 'https://investinglive.com/feed/news'],
     ['Google News', gnews('gold price OR "S&P 500" OR Nasdaq OR "Federal Reserve"')],
   ],

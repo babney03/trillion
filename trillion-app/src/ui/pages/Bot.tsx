@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react'
-import { evidence } from '../../bot/learn'
-import { bucketName } from '../../bot/learn'
+import { bucketName, evidence } from '../../bot/learn'
 import { MARKETS } from '../../data/candles'
 import { STRATEGIES } from '../../engine/strategies'
 import { Notice, Seg, Skeleton } from '../bits'
@@ -57,7 +56,7 @@ export function Bot() {
           <h1>Paper bot</h1>
           <p>Scalps gold and bitcoin on 5-minute bars with simulated money. Nothing here is a real order.</p>
         </div>
-        <span style={{ display: 'inline-flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
+        <span className="cluster">
           <span className="small faint">{s.lastTickAt ? `last cycle ${ago(s.lastTickAt, now)}` : 'first cycle pending'}</span>
           <span className={`tag ${status.cls}`}><i className={`dot${status.cls === 'ok' ? ' live' : ''}`} />{status.text}</span>
         </span>
@@ -140,7 +139,7 @@ export function Bot() {
                       <span className="tiny faint" style={{ display: 'block', marginTop: 3 }}>{t.statusWhy}</span>
                     </td>
                     <td className={`num r ${tone(t.seed.expR)}`}>{t.seed.n ? fmtR(t.seed.expR) : '—'}<span className="tiny faint" style={{ display: 'block' }}>{t.seed.n} trades</span></td>
-                    <td className={`num r ${tone(e.n ? e.mean : 0)}`}>{e.n ? fmtR(e.mean) : '—'}<span className="tiny faint" style={{ display: 'block' }}>{t.n} results</span></td>
+                    <td className={`num r ${tone(e.n ? e.mean : 0)}`}>{e.n ? fmtR(e.mean) : '—'}<span className="tiny faint" style={{ display: 'block' }}>{t.n} {t.n === 1 ? 'result' : 'results'}</span></td>
                     <td className={`num r ${tone(t.takenPnl)}`}>{t.takenN ? fmtSigned(t.takenPnl) : '—'}</td>
                     <td className="small muted wrap">{off.length ? off.map(bucketName).join(', ') : '—'}</td>
                   </tr>
