@@ -245,7 +245,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
     }
   }, [live])
 
-  const bot = usePoll<BotPayload>(() => api('/api/bot'), 30_000)
+  const bot = usePoll<BotPayload>(() => api('/api/bot'), 60_000)
   const intel = usePoll<IntelPayload>(() => api('/api/intel'), 5 * 60_000)
   const trends = usePoll<TrendsPayload>(() => api('/api/trends'), 3 * 60_000)
   const movers = usePoll<Mover[]>(loadMovers, 60_000)

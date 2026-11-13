@@ -1,6 +1,15 @@
 # trillion
 
-Website work for local businesses.
+Two things live here: website work for local businesses, and **Trillion**, a
+trading command centre.
+
+## Trillion (`trillion-app/`)
+
+Live markets, market intel, on-chain trends, a paper-trading bot for gold and
+bitcoin, and a backtester, as an installable web app. Paper trading only.
+See [`trillion-app/README.md`](trillion-app/README.md).
+
+# Website work for local businesses
 
 ## What's in here right now
 
