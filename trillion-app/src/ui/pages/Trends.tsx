@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Notice, Seg, Skeleton, Stale } from '../bits'
 import { useData, useNow, type Pool } from '../data'
 import { ago, fmtAuto, fmtCompact, fmtPct, fmtUsd, shortAddr, tone } from '../format'
-import { IconExternal } from '../icons'
 import { ageLabel, readTrend } from '../trend'
 
 type PoolView = 'trending' | 'solana' | 'fresh'
@@ -19,15 +18,18 @@ function Pools({ pools, now }: { pools: Pool[]; now: number }) {
         <thead>
           <tr>
             <th>Token</th><th className="r">Score</th><th className="r">Price</th><th className="r">1h</th><th className="r">24h</th>
-            <th className="r">Buyers / sellers, 1h</th><th className="r">Volume, 1h</th><th className="r">Liquidity</th><th className="r">Age</th><th>Watch for</th><th />
+            <th className="r">Buyers / sellers, 1h</th><th className="r">Volume, 1h</th><th className="r">Liquidity</th><th className="r">Age</th><th>Watch for</th>
           </tr>
         </thead>
         <tbody>
           {rows.map(({ p, r }) => (
             <tr key={p.network + p.pool}>
               <td>
-                <span style={{ fontWeight: 580 }}>{p.symbol}</span>
-                <span className="tiny faint" style={{ display: 'block' }}>{p.name.slice(0, 28)} · {p.network}</span>
+                <a href={poolLink(p)} target="_blank" rel="noreferrer noopener" style={{ fontWeight: 580 }}>{p.symbol}</a>
+                <span className="tiny faint" style={{ display: 'block' }}>
+                  {p.name.slice(0, 28)} · {p.network}
+                  {p.network === 'solana' && p.token && <> · <a href={fomoLink(p.token)} target="_blank" rel="noreferrer noopener">open on fomo</a></>}
+                </span>
               </td>
               <td className="num r" style={{ fontWeight: 600, color: r.score >= 60 ? 'var(--accent-strong)' : undefined }}>{r.score}</td>
               <td className="num r">${fmtAuto(p.price)}</td>
@@ -38,12 +40,6 @@ function Pools({ pools, now }: { pools: Pool[]; now: number }) {
               <td className="num r">{fmtCompact(p.liquidity)}</td>
               <td className="num r">{ageLabel(r.ageH)}</td>
               <td className="small">{r.flags.length ? <span className="down">{r.flags.join(', ')}</span> : <span className="faint">—</span>}</td>
-              <td>
-                <span style={{ display: 'inline-flex', gap: 12 }}>
-                  {p.network === 'solana' && p.token && <a className="small" href={fomoLink(p.token)} target="_blank" rel="noreferrer noopener">fomo</a>}
-                  <a className="small" href={poolLink(p)} target="_blank" rel="noreferrer noopener" aria-label={`Open ${p.symbol} chart`}><IconExternal size={15} /></a>
-                </span>
-              </td>
             </tr>
           ))}
         </tbody>
