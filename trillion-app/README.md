@@ -67,8 +67,19 @@ Environment variables on the Netlify site:
 | `TRILLION_PIN` | Enables Pause / Resume on the Bot screen. Without it the bot is read-only from the app. |
 | `BITQUERY_TOKEN` | Switches on the fomo wallet tracker. Optional. |
 
+New sites on this Netlify account are private by default: visitors are sent
+to a Netlify login until the owner presses **Make public** in the Netlify
+toolbar shown on the site. The bot runs either way, because the scheduler
+does not go through the login wall.
+
 Netlify's free plan is metered in credits and each production deploy costs
 credits, so deploy deliberately rather than on every small change.
+
+To check the live bot from a terminal without opening the app:
+
+```bash
+netlify blobs:get trillion bot/state
+```
 
 ## What to know before trusting the numbers
 
