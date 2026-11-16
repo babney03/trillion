@@ -84,7 +84,7 @@ bar, stop 1.5 ATR, target 2 × risk.
 - If a bar touches both stop and target, the stop is assumed first.
 - On the entry bar only the stop is checked, unless the bar closes beyond target.
 - Costs: 4.5 bps fee per side, plus 1 bp slippage on market and stop fills. Adjustable.
-- Size: 0.5% of equity risked per trade, notional capped at 5× equity.
+- Size: 1% of equity risked per trade in the bot (raised from 0.5% on 2026-11-16 at the owner's request), notional capped at 5× equity.
 - Time stop: 96 bars (8h).
 
 ## Backtest output
@@ -98,7 +98,7 @@ check that tunes on one window and scores on the next.
 ## Bot
 
 - Runs every 5 minutes. Six tracks: three strategies × gold and BTC.
-- $10,000 paper equity, 0.5% risk per trade, one position per market,
+- $10,000 paper equity, 1% risk per trade, one position per market,
   daily loss limit 2%, three losses in a row pauses that track for 2h.
 - **Self-healing**: every tick is idempotent and replays any bars it missed;
   candles are validated (gaps, order, staleness) and the bot falls back to a

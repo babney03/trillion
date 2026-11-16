@@ -65,7 +65,7 @@ export function Backtest() {
   const [days, setDays] = useState(180)
   const [strategy, setStrategy] = useState<StrategyId>('liquidity')
   const [costs, setCosts] = useState<CostPresetId>('futures')
-  const [risk, setRisk] = useState(0.5)
+  const [risk, setRisk] = useState(1)
   const [params, setParams] = useState<Params>({})
   const [phase, setPhase] = useState<{ kind: 'idle' | 'loading' | 'running' | 'walking'; pct: number; note?: string }>({ kind: 'idle', pct: 0 })
   const [error, setError] = useState('')

@@ -15,7 +15,7 @@ export const BOT_COSTS: Record<BotMarket, CostPresetId> = { BTC: 'perp', GOLD: '
 export const BOT = {
   tfMs: 300_000,
   startEquity: 10_000,
-  riskPct: 0.005,
+  riskPct: 0.01,
   /** Bars loaded each tick. Must comfortably exceed the longest strategy warm-up. */
   window: 3000,
   minBars: 1800,
