@@ -8,7 +8,7 @@ import { IconMic, IconSend } from '../icons'
 import { Orb, type OrbState } from '../Orb'
 import { canListen, canSpeak, listen, speak } from '../voice'
 
-const PROMPTS = ['Market brief', 'How is the bot doing?', 'Next news event', 'What did the bot learn?', 'Trending coins', 'Top movers']
+const PROMPTS = ['Market brief', 'How is the bot doing?', 'Price of oil', 'Oil news', 'Next news event', 'What did the bot learn?', 'Trending coins']
 
 export function Command({ go }: { go: (tab: TabId, market?: MarketId) => void }) {
   const d = useData()
@@ -73,7 +73,7 @@ export function Command({ go }: { go: (tab: TabId, market?: MarketId) => void })
 
   const bot = d.bot.data?.state
   const events = (d.intel.data?.sections.calendar?.data ?? []).filter((e) => e.t > now && e.currency === 'USD' && e.impact === 'High').slice(0, 3)
-  const headlines = (['markets', 'crypto', 'ai', 'defense'] as const)
+  const headlines = (['markets', 'energy', 'crypto', 'ai', 'defense'] as const)
     .flatMap((k) => (d.intel.data?.sections[k]?.data ?? []).slice(0, 2))
     .sort((a, b) => b.t - a.t)
     .slice(0, 5)

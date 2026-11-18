@@ -37,7 +37,10 @@ export function makeTrack(market: BotMarket, strategy: StrategyId, now: number, 
   const id = `${market}:${strategy}`
   const def = STRATEGIES[strategy]
   const s = seed[id] ?? { expR: 0, n: 0 }
-  const active = !def.trial && (s.n === 0 || s.expR > 0)
+  // The owner's strategy starts on paper money on every market they asked for; the evidence
+  // decides only for the others, which otherwise earn their place in shadow.
+  const owner = strategy === 'liquidity'
+  const active = !def.trial && (owner || (s.n > 0 && s.expR > 0))
   const evidence = s.n
     ? `one-year backtest: ${s.expR >= 0 ? '+' : ''}${s.expR.toFixed(2)}R per trade over ${s.n} trades after costs`
     : 'no backtest evidence yet'
@@ -48,7 +51,7 @@ export function makeTrack(market: BotMarket, strategy: StrategyId, now: number, 
     status: active ? 'active' : 'benched',
     trial: def.trial || undefined,
     statusSince: now,
-    statusWhy: def.trial ? `on trial, shadow only; ${evidence}` : evidence,
+    statusWhy: def.trial ? `on trial, shadow only; ${evidence}` : owner && s.n > 0 && s.expR <= 0 ? `on paper at your request; ${evidence}` : evidence,
     seed: s,
     params: { ...def.defaults },
     sim: emptyTrack(),
@@ -70,6 +73,7 @@ export function makeTrack(market: BotMarket, strategy: StrategyId, now: number, 
 export function ensureTracks(state: BotState, now: number, seed: Seed = {}): string[] {
   const added: string[] = []
   for (const market of BOT_MARKETS) {
+    state.markets[market] ??= { source: null, lastBarT: 0, lastClose: 0, lastOkAt: 0, failures: 0 }
     for (const strategy of STRATEGY_IDS) {
       const id = `${market}:${strategy}`
       if (state.tracks[id]) continue
@@ -92,7 +96,7 @@ export function initState(now: number, seed: Seed = {}): BotState {
     paused: false,
     day: { key: Math.floor(now / DAY), startEquity: BOT.startEquity, halted: false },
     tracks,
-    markets: { BTC: feed(), GOLD: feed() },
+    markets: { BTC: feed(), GOLD: feed(), OIL: feed() },
     lastTickAt: 0,
     lastTickMs: 0,
     ticks: 0,
@@ -110,7 +114,9 @@ export function isValidState(s: any): s is BotState {
     Number.isFinite(s.equity) &&
     s.equity > 0 &&
     typeof s.tracks === 'object' &&
-    BOT_MARKETS.every((m) => s.markets?.[m] && s.tracks[`${m}:liquidity`]?.sim) &&
+    typeof s.markets === 'object' &&
+    !!s.markets &&
+    !!s.tracks['BTC:liquidity']?.sim &&
     Object.values(s.tracks).every((t: any) => t?.sim && STRATEGIES[t.strategy as StrategyId])
   )
 }
@@ -132,7 +138,7 @@ async function loadMarket(state: BotState, market: BotMarket, deps: Deps): Promi
   const now = deps.now()
   const newest = Math.floor(now / BOT.tfMs) * BOT.tfMs - BOT.tfMs
   const errors: string[] = []
-  for (const source of SOURCES) {
+  for (const source of SOURCES[market]) {
     try {
       const s = sanitize(await deps.candles(market, source, BOT.window), BOT.tfMs, now)
       const c = s.candles
@@ -198,6 +204,7 @@ export async function runTick(state: BotState, journal: JournalEntry[], deps: De
   let bars = 0
   let trades = 0
 
+  ensureTracks(state, started)
   const loaded = await Promise.all(BOT_MARKETS.map((m) => loadMarket(state, m, deps)))
   BOT_MARKETS.forEach((market, mi) => {
     const feed = state.markets[market]

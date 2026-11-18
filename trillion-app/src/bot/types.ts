@@ -3,14 +3,14 @@ import type { TrackState } from '../engine/sim'
 import type { StrategyId } from '../engine/strategies'
 import type { CostPresetId } from '../engine/types'
 
-export type BotMarket = 'BTC' | 'GOLD'
-export const BOT_MARKETS: BotMarket[] = ['BTC', 'GOLD']
-export type SourceId = 'hyperliquid' | 'binance'
+export type BotMarket = 'BTC' | 'GOLD' | 'OIL'
+export const BOT_MARKETS: BotMarket[] = ['BTC', 'GOLD', 'OIL']
+export type SourceId = 'hyperliquid' | 'binance' | 'mexc'
 /** Preferred source first. */
-export const SOURCES: SourceId[] = ['hyperliquid', 'binance']
+export const SOURCES: Record<BotMarket, SourceId[]> = { BTC: ['hyperliquid', 'binance'], GOLD: ['hyperliquid', 'binance'], OIL: ['hyperliquid', 'mexc'] }
 
 /** Cost model each market is paper-traded under. */
-export const BOT_COSTS: Record<BotMarket, CostPresetId> = { BTC: 'perp', GOLD: 'futures' }
+export const BOT_COSTS: Record<BotMarket, CostPresetId> = { BTC: 'perp', GOLD: 'futures', OIL: 'perp' }
 
 export const BOT = {
   tfMs: 300_000,
@@ -22,7 +22,7 @@ export const BOT = {
   dailyLossPct: 0.02,
   lossStreak: 3,
   cooldownMs: 2 * 3_600_000,
-  maxOpen: 2,
+  maxOpen: 3,
   recentN: 40,
   bucketN: 30,
   trackMinN: 15,

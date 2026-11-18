@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { bucketName, evidence } from '../../bot/learn'
 import { MARKETS } from '../../data/candles'
+import { BOT_MARKETS } from '../../bot/types'
 import { STRATEGIES } from '../../engine/strategies'
 import { Notice, Seg, Skeleton } from '../bits'
 import { LineChart, type Line } from '../Chart'
@@ -54,7 +55,7 @@ export function Bot() {
       <div className="page-head">
         <div>
           <h1>Paper bot</h1>
-          <p>Scalps gold and bitcoin on 5-minute bars with simulated money. Nothing here is a real order.</p>
+          <p>Scalps gold, bitcoin and oil on 5-minute bars with simulated money. Nothing here is a real order.</p>
         </div>
         <span className="cluster">
           <span className="small faint">{s.lastTickAt ? `last cycle ${ago(s.lastTickAt, now)}` : 'first cycle pending'}</span>
@@ -169,8 +170,9 @@ export function Bot() {
         <section className="section">
           <div className="section-head"><h2>Health</h2></div>
           <div className="list">
-            {(['BTC', 'GOLD'] as const).map((m) => {
+            {BOT_MARKETS.map((m) => {
               const f = s.markets[m]
+              if (!f) return null
               const ok = f.failures === 0 && f.lastBarT > 0
               return (
                 <div className="row" key={m}>
@@ -227,7 +229,7 @@ export function Bot() {
         <div className="section-head"><h2>Assumptions</h2></div>
         <div className="prose small" style={{ display: 'grid', gap: 8 }}>
           <p>Risk per trade is {(config.riskPct * 100).toFixed(1)}% of equity, with a {(config.dailyLossPct * 100).toFixed(0)}% daily loss limit and one position per market.</p>
-          <p>Costs: bitcoin is charged as a {config.costs.BTC?.label.toLowerCase()}; gold as a {config.costs.GOLD?.label.toLowerCase()}. A trade is skipped when its worst-case costs exceed {Math.round((config.costs.BTC?.maxCostR ?? 0.25) * 100)}% of its risk. If you will trade gold somewhere dearer, these results flatter it.</p>
+          <p>Costs: {BOT_MARKETS.map((m) => `${MARKETS[m].name.toLowerCase()} as a ${config.costs[m]?.label.toLowerCase() ?? 'perp'}`).join('; ')}. A trade is skipped when its worst-case costs exceed {Math.round((config.costs.BTC?.maxCostR ?? 0.25) * 100)}% of its risk. If you will trade somewhere dearer, these results flatter it.</p>
           <p>Starting status of each track comes from a {config.seed.days}-day backtest ({config.seed.source}, to {config.seed.asOf}). Fills are simulated from 5-minute bars: if a bar touches both stop and target, the stop is assumed first.</p>
         </div>
         {config.controls && (

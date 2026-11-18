@@ -91,3 +91,9 @@ export const IconPlay = (p: P) => (
     <path d="M8 5.500v13l10.500-6.500z" />
   </Icon>
 )
+export const IconJournal = (p: P) => (
+  <Icon {...p}>
+    <rect x="4.500" y="5" width="15" height="14.500" rx="2.500" />
+    <path d="M4.500 9.500h15M9 3v4M15 3v4M8.500 13.500h2M13.500 13.500h2M8.500 16.500h2" />
+  </Icon>
+)

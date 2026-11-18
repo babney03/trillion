@@ -1,6 +1,6 @@
 import type { Candle } from '../engine/types'
 
-export type MarketId = 'BTC' | 'GOLD' | 'SP500' | 'NAS100'
+export type MarketId = 'BTC' | 'GOLD' | 'OIL' | 'SP500' | 'NAS100'
 
 export interface Market {
   id: MarketId
@@ -11,6 +11,8 @@ export interface Market {
   /** Binance spot pair with deep history, where one exists. */
   binance?: string
   binanceNote?: string
+  /** MEXC perpetual with deeper history, for markets Binance does not list. */
+  mexc?: string
   decimals: number
 }
 
@@ -18,6 +20,7 @@ export const MARKETS: Record<MarketId, Market> = {
   SP500: { id: 'SP500', name: 'S&P 500', short: 'S&P', hl: 'xyz:SP500', decimals: 1 },
   NAS100: { id: 'NAS100', name: 'Nasdaq 100', short: 'NAS', hl: 'xyz:XYZ100', decimals: 1 },
   GOLD: { id: 'GOLD', name: 'Gold', short: 'GOLD', hl: 'xyz:GOLD', binance: 'PAXGUSDT', binanceNote: 'PAXG, tokenised gold', decimals: 1 },
+  OIL: { id: 'OIL', name: 'Crude oil (WTI)', short: 'OIL', hl: 'xyz:CL', mexc: 'USOIL_USDT', decimals: 2 },
   BTC: { id: 'BTC', name: 'Bitcoin', short: 'BTC', hl: 'BTC', binance: 'BTCUSDT', decimals: 0 },
 }
 
@@ -69,6 +72,43 @@ export async function binanceCandles(
     if (rows.length < 1000) break
   }
   return out
+}
+
+const MEXC = 'https://contract.mexc.com/api/v1/contract/kline'
+const MEXC_IV: Record<string, string> = { '1m': 'Min1', '5m': 'Min5', '15m': 'Min15', '1h': 'Min60', '4h': 'Hour4', '1d': 'Day1' }
+
+/**
+ * History from MEXC's public futures API, paged backwards (it returns at most ~2,000 bars
+ * per request, the newest in the window). Server-side only: MEXC does not allow browser calls.
+ */
+export async function mexcCandles(
+  symbol: string,
+  interval: string,
+  startMs: number,
+  endMs = Date.now(),
+  onProgress?: (fraction: number) => void,
+): Promise<Candle[]> {
+  const step = (TF_MS[interval] ?? 300_000) * 1990
+  const pages: Candle[][] = []
+  let hi = endMs
+  while (hi > startMs) {
+    const lo = Math.max(startMs, hi - step)
+    const j = await getJson(`${MEXC}/${symbol}?interval=${MEXC_IV[interval] ?? 'Min5'}&start=${Math.floor(lo / 1000)}&end=${Math.floor(hi / 1000)}`)
+    const d = j?.data
+    if (!j?.success || !Array.isArray(d?.time)) throw new Error('MEXC returned no candles')
+    pages.push(d.time.map((t: number, k: number) => ({ t: t * 1000, o: +d.open[k], h: +d.high[k], l: +d.low[k], c: +d.close[k], v: +d.vol[k] })))
+    onProgress?.(Math.min(1, (endMs - lo) / (endMs - startMs)))
+    if (!d.time.length && lo <= startMs) break
+    hi = lo
+  }
+  return pages.reverse().flat()
+}
+
+/** Deepest available 5-minute history for a market, from whichever source has it. */
+export async function deepHistory(market: Market, startMs: number, endMs = Date.now(), onProgress?: (f: number) => void): Promise<Candle[]> {
+  if (market.binance) return binanceCandles(market.binance, '5m', startMs, endMs, onProgress)
+  if (market.mexc) return mexcCandles(market.mexc, '5m', startMs, endMs, onProgress)
+  throw new Error(`no deep history source for ${market.name}`)
 }
 
 export interface Sanitized {

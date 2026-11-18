@@ -3,12 +3,15 @@ import { Notice, Seg, Skeleton, Stale } from '../bits'
 import { useData, useNow, type CalEvent, type Ipo, type NewsItem, type Section } from '../data'
 import { ago, clock, dayLabel, until } from '../format'
 
-type View = 'calendar' | 'ipos' | 'markets' | 'crypto' | 'ai' | 'defense'
-const VIEWS: [View, string][] = [['calendar', 'Calendar'], ['ipos', 'IPOs'], ['markets', 'Markets'], ['crypto', 'Crypto'], ['ai', 'AI & tech'], ['defense', 'Defense']]
+type View = 'calendar' | 'ipos' | 'markets' | 'energy' | 'crypto' | 'ai' | 'defense'
+const VIEWS: [View, string][] = [['calendar', 'Calendar'], ['ipos', 'IPOs'], ['markets', 'Markets'], ['energy', 'Oil & energy'], ['crypto', 'Crypto'], ['ai', 'AI & tech'], ['defense', 'Defense']]
 
 function Calendar({ sec, now }: { sec: Section<CalEvent[]>; now: number }) {
-  const [filter, setFilter] = useState<'high' | 'usd' | 'all'>('high')
-  const events = (sec.data ?? []).filter((e) => (filter === 'all' ? true : e.currency === 'USD' && (filter === 'usd' || e.impact === 'High')))
+  const [filter, setFilter] = useState<'high' | 'usd' | 'oil' | 'all'>('high')
+  const isOil = (e: CalEvent) => /crude|oil|opec|natural gas|gasoline|rig count|petroleum/i.test(e.title)
+  const events = (sec.data ?? []).filter((e) =>
+    filter === 'all' ? true : filter === 'oil' ? isOil(e) : e.currency === 'USD' && (filter === 'usd' || e.impact === 'High'),
+  )
   const days = useMemo(() => {
     const m = new Map<string, CalEvent[]>()
     for (const e of events) {
@@ -21,7 +24,7 @@ function Calendar({ sec, now }: { sec: Section<CalEvent[]>; now: number }) {
   return (
     <section className="section">
       <div className="section-head">
-        <Seg label="Filter" value={filter} onChange={setFilter} options={[['high', 'US high impact'], ['usd', 'All US'], ['all', 'All currencies']]} />
+        <Seg label="Filter" value={filter} onChange={setFilter} options={[['high', 'US high impact'], ['usd', 'All US'], ['oil', 'Oil'], ['all', 'All currencies']]} />
         <span className="small muted">Times are in your local time zone.</span>
       </div>
       {!days.length && <div className="empty panel"><strong>Nothing matches this filter this week.</strong>Switch to “All US” or “All currencies” to see lower-impact releases.</div>}

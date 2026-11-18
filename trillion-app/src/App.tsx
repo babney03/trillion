@@ -3,21 +3,23 @@ import type { MarketId } from './data/candles'
 import type { TabId } from './ui/assistant'
 import { DataProvider, useData } from './ui/data'
 import { fmtPct, fmtUsd, tone } from './ui/format'
-import { IconBacktest, IconBot, IconCommand, IconIntel, IconMarkets, IconTrends, Mark } from './ui/icons'
+import { IconBacktest, IconBot, IconCommand, IconIntel, IconJournal, IconMarkets, IconTrends, Mark } from './ui/icons'
 import { Backtest } from './ui/pages/Backtest'
 import { Bot } from './ui/pages/Bot'
 import { Command } from './ui/pages/Command'
 import { Intel } from './ui/pages/Intel'
+import { Journal } from './ui/pages/Journal'
 import { Markets } from './ui/pages/Markets'
 import { Trends } from './ui/pages/Trends'
 
-const TABS: { id: TabId; label: string; icon: ReactNode }[] = [
-  { id: 'command', label: 'Command', icon: <IconCommand /> },
+const TABS: { id: TabId; label: string; short?: string; icon: ReactNode }[] = [
+  { id: 'command', label: 'Command', short: 'Home', icon: <IconCommand /> },
   { id: 'markets', label: 'Markets', icon: <IconMarkets /> },
   { id: 'intel', label: 'Intel', icon: <IconIntel /> },
   { id: 'trends', label: 'Trends', icon: <IconTrends /> },
   { id: 'bot', label: 'Bot', icon: <IconBot /> },
-  { id: 'backtest', label: 'Backtest', icon: <IconBacktest /> },
+  { id: 'trades', label: 'My trades', short: 'Trades', icon: <IconJournal /> },
+  { id: 'backtest', label: 'Backtest', short: 'Tests', icon: <IconBacktest /> },
 ]
 const isTab = (x: string): x is TabId => TABS.some((t) => t.id === x)
 
@@ -65,7 +67,8 @@ function Shell() {
         {TABS.map((t) => (
           <button key={t.id} type="button" className="nav-btn" aria-current={tab === t.id ? 'page' : undefined} onClick={() => go(t.id)}>
             {t.icon}
-            <span>{t.label}</span>
+            <span className="nav-long">{t.label}</span>
+            <span className="nav-short">{t.short ?? t.label}</span>
           </button>
         ))}
         <div className="rail-foot">
@@ -85,6 +88,7 @@ function Shell() {
           {tab === 'trends' && <Trends />}
           {tab === 'bot' && <Bot />}
           {tab === 'backtest' && <Backtest />}
+          {tab === 'trades' && <Journal />}
         </main>
       </div>
     </div>

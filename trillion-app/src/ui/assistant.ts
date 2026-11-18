@@ -2,7 +2,7 @@ import type { BotPayload, IntelPayload, Mover, Quote, TrendsPayload } from './da
 import { MARKETS, type MarketId } from '../data/candles'
 import { STRATEGIES } from '../engine/strategies'
 
-export type TabId = 'command' | 'markets' | 'intel' | 'trends' | 'bot' | 'backtest'
+export type TabId = 'command' | 'markets' | 'intel' | 'trends' | 'bot' | 'backtest' | 'trades'
 
 export interface Snapshot {
   quotes: Partial<Record<MarketId, Quote>>
@@ -26,6 +26,7 @@ const money = (x: number) => `${x < 0 ? 'minus ' : ''}${say(Math.abs(x), 2)} dol
 const MARKET_WORDS: [MarketId, RegExp][] = [
   ['GOLD', /\b(gold|xau|xauusd|bullion)\b/],
   ['BTC', /\b(bitcoin|btc)\b/],
+  ['OIL', /\b(oil|crude|wti|usoil)\b/],
   ['SP500', /(s\s?&\s?p|s and p|\bsp ?500\b|\bspx\b|\bes\b|standard and poor)/],
   ['NAS100', /\b(nasdaq|nas|nq|nas ?100|tech index)\b/],
 ]
@@ -66,14 +67,14 @@ export function answer(input: string, s: Snapshot): Reply {
   const q = input.toLowerCase().replace(/[?.!,]/g, ' ').replace(/\s+/g, ' ').trim()
   if (!q) return { text: 'I did not catch that.' }
 
-  const nav = q.match(/\b(open|show|go to|switch to|take me to)\b.*\b(command|home|markets?|charts?|intel|news|calendar|trends?|bot|backtest(ing)?)\b/)
+  const nav = q.match(/\b(open|show|go to|switch to|take me to)\b.*\b(command|home|markets?|charts?|intel|news|calendar|trends?|bot|backtest(ing)?|journal|my trades)\b/)
   if (nav) {
     const w = nav[2]
-    const go: TabId = /market|chart/.test(w) ? 'markets' : /intel|news|calendar/.test(w) ? 'intel' : /trend/.test(w) ? 'trends' : /backtest/.test(w) ? 'backtest' : w === 'bot' ? 'bot' : 'command'
+    const go: TabId = /journal|my trades/.test(w) ? 'trades' : /market|chart/.test(w) ? 'markets' : /intel|news|calendar/.test(w) ? 'intel' : /trend/.test(w) ? 'trends' : /backtest/.test(w) ? 'backtest' : w === 'bot' ? 'bot' : 'command'
     return { text: `Opening ${go}.`, go }
   }
   if (/\b(help|what can you do|commands)\b/.test(q)) {
-    return { text: 'Ask me for a market brief, the price of gold, bitcoin, the S and P or the Nasdaq, how the bot is doing, what it has learned, the next news event, upcoming IPOs, top movers, or trending coins. I can also open any tab.' }
+    return { text: 'Ask me for a market brief, the price of gold, oil, bitcoin, the S and P or the Nasdaq, oil news, how the bot is doing, what it has learned, the next news event, upcoming IPOs, top movers, or trending coins. I can also open any tab.' }
   }
   if (/\b(learn|learned|learnt|lesson|mistake|benched?)\b/.test(q)) {
     const l = s.bot?.state.lessons ?? []
@@ -107,14 +108,14 @@ export function answer(input: string, s: Snapshot): Reply {
     return { text: m.length ? `Biggest moves: ${m.map((x) => `${x.name} ${pct(x.chg)}`).join('; ')}.` : 'I have no movers data right now.', go: 'markets' }
   }
   if (/\b(headlines?|news)\b/.test(q)) {
-    const key = /\b(ai|tech)\b/.test(q) ? 'ai' : /\b(defen[cs]e|military)\b/.test(q) ? 'defense' : /\bcrypto\b/.test(q) ? 'crypto' : 'markets'
+    const key = /\b(ai|tech)\b/.test(q) ? 'ai' : /\b(defen[cs]e|military)\b/.test(q) ? 'defense' : /\bcrypto\b/.test(q) ? 'crypto' : /\b(oil|crude|energy|opec)\b/.test(q) ? 'energy' : 'markets'
     const items = (s.intel?.sections[key]?.data ?? []).slice(0, 3)
-    return { text: items.length ? `Latest ${key === 'ai' ? 'AI and tech' : key} headlines. ${items.map((i) => i.title).join('. ')}.` : 'I have no headlines right now.', go: 'intel' }
+    return { text: items.length ? `Latest ${key === 'ai' ? 'AI and tech' : key === 'energy' ? 'oil and energy' : key} headlines. ${items.map((i) => i.title).join('. ')}.` : 'I have no headlines right now.', go: 'intel' }
   }
   const named = MARKET_WORDS.filter(([, re]) => re.test(q)).map(([id]) => id)
   if (named.length) return { text: named.map((id) => quoteLine(id, s.quotes[id])).join(' '), market: named[0] }
   if (/\b(brief|briefing|markets?|overview|summary|update|status|good morning|what'?s up)\b/.test(q)) {
-    const lines = (['SP500', 'NAS100', 'GOLD', 'BTC'] as MarketId[]).map((id) => quoteLine(id, s.quotes[id]))
+    const lines = (['SP500', 'NAS100', 'GOLD', 'OIL', 'BTC'] as MarketId[]).map((id) => quoteLine(id, s.quotes[id]))
     return { text: `${lines.join(' ')} ${botLine(s.bot, s.now)} ${nextEvents(s.intel, s.now, 1)}` }
   }
   return { text: "I don't have an answer for that yet. Try: market brief, price of gold, bot status, next event, or trending coins." }

@@ -19,6 +19,21 @@ const PARAM_LABELS: Record<string, string> = {
   slow: 'Slow EMA',
 }
 const cache = new Map<string, Candle[]>()
+
+/** Markets without browser-friendly history (oil) are fetched through Trillion's server, 60 days at a time. */
+async function serverHistory(market: MarketId, start: number, end: number, onProgress: (f: number) => void): Promise<Candle[]> {
+  const chunk = 60 * 86_400_000
+  const out: Candle[] = []
+  for (let a = start; a < end; a += chunk) {
+    const b = Math.min(end, a + chunk)
+    const r = await fetch(`/api/history?market=${market}&start=${a}&end=${b}`)
+    const j = await r.json().catch(() => null)
+    if (!r.ok || !j?.candles) throw new Error(j?.error ?? `History request failed (${r.status})`)
+    for (const [t, o, h, l, c, v] of j.candles as number[][]) out.push({ t, o, h, l, c, v })
+    onProgress((b - start) / (end - start))
+  }
+  return out
+}
 const M5 = 300_000
 
 const pf = (x: number) => (Number.isFinite(x) ? x.toFixed(2) : '∞')
@@ -76,13 +91,13 @@ export function Backtest() {
   const job = useRef(0)
 
   const def = STRATEGIES[strategy]
-  const hasDeep = !!MARKETS[market].binance
+  const hasDeep = !!(MARKETS[market].binance || MARKETS[market].mexc)
   const src: Source = hasDeep ? source : 'hyperliquid'
   const cfg = useMemo(() => ({ ...withCosts(costs, DEFAULT_CFG), riskPct: risk / 100 }), [costs, risk])
   const busy = phase.kind !== 'idle'
 
   useEffect(() => {
-    setCosts(market === 'BTC' ? 'perp' : 'futures')
+    setCosts(market === 'GOLD' || market === 'SP500' || market === 'NAS100' ? 'futures' : 'perp')
   }, [market])
   useEffect(() => setParams({}), [strategy])
   useEffect(() => () => worker.current?.terminate(), [])
@@ -113,13 +128,22 @@ export function Backtest() {
   const load = async (): Promise<{ candles: Candle[]; label: string }> => {
     const m = MARKETS[market]
     const key = `${src}:${market}:${days}`
-    const label = src === 'binance' ? `${m.binance}${m.binanceNote ? ` (${m.binanceNote})` : ''}, ${days} days, Binance` : `${m.hl}, about 17 days, Hyperliquid`
+    const label =
+      src !== 'binance'
+        ? `${m.hl}, about 17 days, Hyperliquid`
+        : m.binance
+          ? `${m.binance}${m.binanceNote ? ` (${m.binanceNote})` : ''}, ${days} days, Binance`
+          : `${m.mexc} (MEXC, history from Jan 2026), up to ${days} days`
     let c = cache.get(key)
     if (!c) {
       const end = Math.floor(Date.now() / M5) * M5
-      const raw = src === 'binance'
-        ? await binanceCandles(m.binance!, '5m', end - days * 86_400_000, end, (f) => setPhase({ kind: 'loading', pct: f, note: 'Downloading 5-minute history' }))
-        : await hlCandles(m.hl, '5m', end - 18 * 86_400_000, end)
+      const progress = (f: number) => setPhase({ kind: 'loading', pct: f, note: 'Downloading 5-minute history' })
+      const raw =
+        src !== 'binance'
+          ? await hlCandles(m.hl, '5m', end - 18 * 86_400_000, end)
+          : m.binance
+            ? await binanceCandles(m.binance, '5m', end - days * 86_400_000, end, progress)
+            : await serverHistory(market, end - days * 86_400_000, end, progress)
       c = sanitize(raw, M5).candles
       if (c.length < def.warmup + 500) throw new Error(`Only ${c.length} bars came back; this strategy needs at least ${def.warmup + 500}.`)
       cache.set(key, c)
@@ -176,7 +200,7 @@ export function Backtest() {
           <div className="form-grid">
             <label className="field">Market
               <select value={market} onChange={(e) => setMarket(e.target.value as MarketId)}>
-                {(['GOLD', 'BTC', 'SP500', 'NAS100'] as MarketId[]).map((id) => <option key={id} value={id}>{MARKETS[id].name}</option>)}
+                {(['GOLD', 'BTC', 'OIL', 'SP500', 'NAS100'] as MarketId[]).map((id) => <option key={id} value={id}>{MARKETS[id].name}</option>)}
               </select>
             </label>
             <label className="field">Strategy
@@ -202,7 +226,7 @@ export function Backtest() {
             </label>
             <button className="btn primary" type="button" onClick={run} disabled={busy}><IconPlay size={16} />{busy ? 'Working…' : 'Run backtest'}</button>
           </div>
-          <p className="small muted prose">{def.blurb}{!hasDeep && ' Only about 17 days of history exist for this contract, which is too short to trust; treat it as a smoke test.'}{market === 'GOLD' && src === 'binance' && ' Deep gold history uses PAXG, a gold-backed token that tracks spot gold and trades 24/7.'}</p>
+          <p className="small muted prose">{def.blurb}{!hasDeep && ' Only about 17 days of history exist for this contract, which is too short to trust; treat it as a smoke test.'}{market === 'GOLD' && src === 'binance' && ' Deep gold history uses PAXG, a gold-backed token that tracks spot gold and trades 24/7.'}{market === 'OIL' && src === 'binance' && ' Oil history is the MEXC WTI perpetual, which only goes back to January 2026.'}</p>
           <details className="more">
             <summary><IconChevron size={14} />Strategy settings</summary>
             <div className="form-grid" style={{ marginTop: 12 }}>

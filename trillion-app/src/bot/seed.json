@@ -1,7 +1,7 @@
 {
   "asOf": "2026-11-18",
   "days": 365,
-  "source": "Binance BTCUSDT and PAXGUSDT, 5m",
+  "source": "Binance BTCUSDT and PAXGUSDT, MEXC USOIL (about 295 days), 5m",
   "tracks": {
     "BTC:liquidity": {
       "expR": 0.32,
@@ -66,6 +66,38 @@
       "netPct": -59.774,
       "oosExpR": -0.219,
       "oosN": 376
+    },
+    "OIL:liquidity": {
+      "expR": -0.184,
+      "n": 36,
+      "winRate": 0.306,
+      "netPct": -6.73,
+      "oosExpR": -0.158,
+      "oosN": 8
+    },
+    "OIL:tap": {
+      "expR": -0.626,
+      "n": 5,
+      "winRate": 0.2,
+      "netPct": -3.108,
+      "oosExpR": -1.201,
+      "oosN": 2
+    },
+    "OIL:ict": {
+      "expR": -0.137,
+      "n": 71,
+      "winRate": 0.338,
+      "netPct": -9.886,
+      "oosExpR": -0.265,
+      "oosN": 19
+    },
+    "OIL:scalper": {
+      "expR": -0.304,
+      "n": 376,
+      "winRate": 0.287,
+      "netPct": -69.219,
+      "oosExpR": -0.109,
+      "oosN": 39
     }
   }
 }

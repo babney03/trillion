@@ -7,7 +7,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { cfgFor } from '../src/bot/core'
 import { BOT_MARKETS } from '../src/bot/types'
-import { binanceCandles, MARKETS, sanitize } from '../src/data/candles'
+import { deepHistory, MARKETS, sanitize } from '../src/data/candles'
 import { runBacktest } from '../src/engine/backtest'
 import { STRATEGY_IDS } from '../src/engine/strategies'
 import type { Candle } from '../src/engine/types'
@@ -18,11 +18,11 @@ mkdirSync(cacheDir, { recursive: true })
 const now = Math.floor(Date.now() / 86_400_000) * 86_400_000
 const tracks: Record<string, { expR: number; n: number; winRate: number; netPct: number; oosExpR: number; oosN: number }> = {}
 for (const market of BOT_MARKETS) {
-  const sym = MARKETS[market].binance!
+  const sym = MARKETS[market].binance ?? MARKETS[market].mexc!
   const f = join(cacheDir, `${sym}-${days}d-${now}.json`)
   const c: Candle[] = existsSync(f)
     ? JSON.parse(readFileSync(f, 'utf8'))
-    : sanitize(await binanceCandles(sym, '5m', now - days * 86_400_000, now), 300_000).candles
+    : sanitize(await deepHistory(MARKETS[market], now - days * 86_400_000, now), 300_000).candles
   if (!existsSync(f)) writeFileSync(f, JSON.stringify(c))
   for (const id of STRATEGY_IDS) {
     const r = runBacktest(c, id, {}, cfgFor(market))
@@ -37,6 +37,6 @@ for (const market of BOT_MARKETS) {
     }
   }
 }
-const out = { asOf: new Date(now).toISOString().slice(0, 10), days, source: 'Binance BTCUSDT and PAXGUSDT, 5m', tracks }
+const out = { asOf: new Date(now).toISOString().slice(0, 10), days, source: 'Binance BTCUSDT and PAXGUSDT, MEXC USOIL (about 295 days), 5m', tracks }
 writeFileSync('src/bot/seed.json', JSON.stringify(out, null, 2) + '\n')
 console.log(JSON.stringify(out, null, 1))

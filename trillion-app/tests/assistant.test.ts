@@ -58,3 +58,16 @@ describe('assistant', () => {
     expect(answer('sing me a song', snap).text).toMatch(/don't have an answer/)
   })
 })
+
+describe('assistant: oil', () => {
+  const withOil = { ...snap, quotes: { ...snap.quotes, OIL: { px: 82.32, prev: 80.1, chg: 2.77, volume: 1e8, funding: 0, t: now } } }
+  it('answers the price of oil', () => {
+    const r = answer('price of oil', withOil)
+    expect(r.text).toBe('Crude oil (WTI) is at 82.32, up 2.77 percent on the day.')
+    expect(r.market).toBe('OIL')
+  })
+  it('reads oil headlines from the energy section', () => {
+    const s = { ...withOil, intel: { now, sections: { energy: { t: now, data: [{ title: 'OPEC+ extends cuts', link: 'https://x', t: now, source: 'x' }] } } } }
+    expect(answer('oil news', s).text).toBe('Latest oil and energy headlines. OPEC+ extends cuts.')
+  })
+})

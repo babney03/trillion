@@ -2,7 +2,7 @@ import { getStore } from '@netlify/blobs'
 import { ensureTracks, initState, isValidState, logIncident, maybeRetune, runTick, type Deps, type Seed } from '../../src/bot/core'
 import seed from '../../src/bot/seed.json'
 import { BOT, type BotMarket, type BotState, type JournalEntry, type SourceId } from '../../src/bot/types'
-import { binanceCandles, hlCandles, MARKETS } from '../../src/data/candles'
+import { binanceCandles, deepHistory, hlCandles, MARKETS, mexcCandles } from '../../src/data/candles'
 
 export const store = () => getStore({ name: 'trillion', consistency: 'strong' })
 type Store = ReturnType<typeof store>
@@ -68,8 +68,10 @@ const liveDeps = (): Deps => {
     candles: (market: BotMarket, source: SourceId, bars: number) =>
       source === 'hyperliquid'
         ? hlCandles(MARKETS[market].hl, '5m', from(bars))
-        : binanceCandles(MARKETS[market].binance!, '5m', from(bars)),
-    history: (market: BotMarket, days: number) => binanceCandles(MARKETS[market].binance!, '5m', Date.now() - days * 86_400_000),
+        : source === 'mexc'
+          ? mexcCandles(MARKETS[market].mexc!, '5m', from(bars))
+          : binanceCandles(MARKETS[market].binance!, '5m', from(bars)),
+    history: (market: BotMarket, days: number) => deepHistory(MARKETS[market], Date.now() - days * 86_400_000),
   }
 }
 

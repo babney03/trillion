@@ -7,7 +7,7 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { cfgFor } from '../src/bot/core'
 import { BOT, BOT_MARKETS } from '../src/bot/types'
-import { binanceCandles, MARKETS, sanitize } from '../src/data/candles'
+import { deepHistory, MARKETS, sanitize } from '../src/data/candles'
 import { runBacktest } from '../src/engine/backtest'
 import type { Candle } from '../src/engine/types'
 
@@ -16,9 +16,9 @@ const now = Math.floor(Date.now() / 86_400_000) * 86_400_000
 const f = (n: number, d = 1) => n.toFixed(d)
 console.log('bot settings', JSON.stringify({ riskPct: BOT.riskPct, dailyLossPct: BOT.dailyLossPct, lossStreak: BOT.lossStreak, cooldownH: BOT.cooldownMs / 3_600_000, maxOpen: BOT.maxOpen }))
 for (const m of BOT_MARKETS) {
-  const sym = MARKETS[m].binance!
+  const sym = MARKETS[m].binance ?? MARKETS[m].mexc!
   const file = join(cache, `${sym}-365d-${now}.json`)
-  const c: Candle[] = existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : sanitize(await binanceCandles(sym, '5m', now - 365 * 86_400_000, now), 300_000).candles
+  const c: Candle[] = existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : sanitize(await deepHistory(MARKETS[m], now - 365 * 86_400_000, now), 300_000).candles
   if (!existsSync(file)) writeFileSync(file, JSON.stringify(c))
   for (const risk of [0.005, 0.01, 0.02]) {
     const cfg = { ...cfgFor(m), riskPct: risk }

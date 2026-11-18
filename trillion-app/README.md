@@ -1,7 +1,8 @@
 # Trillion
 
 A trading command centre: live markets, market intel, on-chain trends, a
-paper-trading bot for gold and bitcoin, and a backtester. Installable as an
+paper-trading bot for gold, bitcoin and oil, a backtester, and a private
+trading journal with a calendar. Installable as an
 app from the browser (Add to Home Screen). **Paper trading only: no real
 orders are ever placed.**
 
@@ -14,8 +15,9 @@ Design and exact strategy rules: [`../docs/superpowers/specs/2026-11-13-trillion
 | `src/engine/` | The trading engine: indicators, swing / break-of-structure / fair-value-gap / liquidity-sweep detection, strategies, bar simulator, metrics, walk-forward. Pure TypeScript, no I/O. |
 | `src/bot/` | The paper bot: state, the 5-minute cycle, evidence rules for benching and restoring, weekly re-tune. `seed.json` is each track's starting evidence. |
 | `src/data/` | Candle fetchers (Hyperliquid, Binance public archive) and the live websocket. |
-| `src/ui/` | The React interface: Command, Markets, Intel, Trends, Bot, Backtest. |
-| `netlify/functions/` | `bot-tick` (scheduled every 5 min), `api-bot`, `api-intel`, `api-trends`, `fomo-track` (scheduled, off without a key). |
+| `src/journal/` | The journal's data model: trades you log yourself, daily notes, summaries. |
+| `src/ui/` | The React interface: Command, Markets, Intel, Trends, Bot, My trades, Backtest. |
+| `netlify/functions/` | `bot-tick` (scheduled every 5 min), `api-bot`, `api-intel`, `api-trends`, `api-journal` (PIN-protected), `api-history` (oil history from MEXC), `fomo-track` (scheduled, off without a key). |
 | `tests/` | Engine, bot and assistant tests. |
 | `scripts/` | `backtest.ts`, `diagnose.ts`, `seed.ts`, `replay.ts`. |
 
@@ -64,7 +66,7 @@ Environment variables on the Netlify site:
 
 | Name | Purpose |
 | --- | --- |
-| `TRILLION_PIN` | Enables Pause / Resume on the Bot screen. Without it the bot is read-only from the app. |
+| `TRILLION_PIN` | Unlocks the My trades journal and Pause / Resume on the Bot screen. Without it both are locked. |
 | `BITQUERY_TOKEN` | Switches on the fomo wallet tracker. Optional. |
 
 New sites on this Netlify account are private by default: visitors are sent
@@ -87,6 +89,8 @@ netlify blobs:get trillion bot/state
   contracts that track the underlying. They are close to, but not, the
   official exchange prints.
 - Deep gold history for backtests is PAXG (tokenised gold) on Binance.
+- Oil trades on Hyperliquid's WTI perpetual (`xyz:CL`), with MEXC's WTI perpetual
+  as the fallback and the source of history. MEXC history starts in January 2026.
 - Costs decide everything on a 5-minute chart. Bitcoin is modelled as a crypto
   perp (maker 1.5 / taker 4.5 bps); gold as a futures/CFD account (0.5 bps per
   side). Change `BOT_COSTS` in `src/bot/types.ts` to match where you would

@@ -21,6 +21,12 @@ const FEEDS: Record<string, [string, string][]> = {
     ['Ars Technica', 'https://feeds.arstechnica.com/arstechnica/technology-lab'],
     ['Google News', gnews('Nvidia OR OpenAI OR Anthropic OR "AI stocks" OR semiconductor')],
   ],
+  energy: [
+    ['OilPrice.com', 'https://oilprice.com/rss/main'],
+    ['Rigzone', 'https://www.rigzone.com/news/rss/rigzone_latest.aspx'],
+    ['EIA', 'https://www.eia.gov/rss/todayinenergy.xml'],
+    ['Google News', gnews('"oil prices" OR "crude oil" OR OPEC OR "WTI crude" OR "Brent crude" OR "oil market" OR "Strait of Hormuz"')],
+  ],
   defense: [
     ['Defense News', 'https://www.defensenews.com/arc/outboundfeeds/rss/?outputType=xml'],
     ['Breaking Defense', 'https://breakingdefense.com/feed/'],
@@ -68,6 +74,11 @@ async function ipos() {
   return out.filter((r) => r.company && !seen.has(r.status + r.company) && seen.add(r.status + r.company))
 }
 
+const ENERGY = /\b(oil|crude oil|opec|barrels?|wti|brent crude|lng|natural gas|refin\w*|pipelines?|hormuz|tankers?|energy|gasoline|diesel|drill\w*|rigs?|shale|petro\w*|fuel)\b/i
+
+const ENERGY_SITES = new Set(['OilPrice.com', 'Rigzone', 'EIA'])
+const NOT_ENERGY = /\b(coconut|olive|palm|essential|cooking|cbd|hair|skin)\s+oils?\b/i
+
 const TTL = 10 * 60_000
 
 export default async () => {
@@ -76,7 +87,13 @@ export default async () => {
   const loaders: Record<string, () => Promise<unknown>> = {
     calendar,
     ipos,
-    ...Object.fromEntries(Object.entries(FEEDS).map(([k, feeds]) => [k, async () => (await newsFrom(feeds)).items])),
+    ...Object.fromEntries(Object.entries(FEEDS).map(([k, feeds]) => [k, async () => (await newsFrom(feeds, k === 'energy' ? 60 : 30)).items])),
+    // Dedicated energy outlets are kept as they are. The general Google search also catches stray
+    // uses of words like "crude" and "Brent", so its stories must be about energy.
+    energy: async () =>
+      (await newsFrom(FEEDS.energy, 80)).items
+        .filter((i) => ENERGY_SITES.has(i.source) || (ENERGY.test(i.title) && !NOT_ENERGY.test(i.title)))
+        .slice(0, 30),
   }
   const due = Object.keys(loaders).filter((k) => !cache?.[k] || cache[k].stale || Date.now() - cache[k].t > TTL)
   let sections = cache ?? {}

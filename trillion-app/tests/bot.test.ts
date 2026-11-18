@@ -10,7 +10,7 @@ import { M5, randomWalk, T0 } from './helpers'
 
 const N = 4200
 const START = 1800
-const series: Record<BotMarket, Candle[]> = { BTC: randomWalk(N, 11, 60_000), GOLD: randomWalk(N, 23, 3_900) }
+const series: Record<BotMarket, Candle[]> = { BTC: randomWalk(N, 11, 60_000), GOLD: randomWalk(N, 23, 3_900), OIL: randomWalk(N, 37, 80) }
 
 interface World {
   now: number
@@ -25,7 +25,7 @@ function world(startBars = START): World {
   const w: World = {
     now: T0 + startBars * M5 + 1_000,
     down: new Set<string>(),
-    scale: { hyperliquid: 1, binance: 1 },
+    scale: { hyperliquid: 1, binance: 1, mexc: 1 },
     advance(barsForward = 1) {
       w.now += barsForward * M5
     },
@@ -59,7 +59,7 @@ describe('bot cycle', () => {
     expect(state.markets.GOLD.lastBarT).toBe(series.GOLD[START - 1].t)
 
     await run(w, N - START, 1, state, journal)
-    for (const market of ['GOLD', 'BTC'] as const) {
+    for (const market of ['GOLD', 'BTC', 'OIL'] as const) {
       for (const id of STRATEGY_IDS) {
         const def = STRATEGIES[id]
         const bt = simulate(series[market], def.prepare(series[market], def.defaults, M5), cfgFor(market), { from: START, to: N })
@@ -95,7 +95,7 @@ describe('bot cycle', () => {
   it('never holds two paper positions in one market at once', async () => {
     const w = world()
     const { journal } = await run(w, 1200)
-    for (const market of ['BTC', 'GOLD']) {
+    for (const market of ['BTC', 'GOLD', 'OIL']) {
       const t = journal.filter((j) => j.taken && j.market === market).sort((a, b) => a.entryT - b.entryT)
       for (let i = 1; i < t.length; i++) expect(t[i].entryT).toBeGreaterThanOrEqual(t[i - 1].exitT)
     }
@@ -103,6 +103,20 @@ describe('bot cycle', () => {
 })
 
 describe('upgrades', () => {
+  it('adds a new market to a state saved before it existed', async () => {
+    const w = world()
+    const state = initState(w.now)
+    for (const k of Object.keys(state.tracks)) if (k.startsWith('OIL:')) delete state.tracks[k]
+    delete (state.markets as Partial<typeof state.markets>).OIL
+    expect(isValidState(state)).toBe(true)
+    await runTick(state, [], w.deps)
+    expect(state.tracks['OIL:liquidity']).toBeTruthy()
+    expect(state.markets.OIL.source).toBe('hyperliquid')
+  })
+  it('without backtest evidence only the owner strategy starts on paper money', () => {
+    const t = initState(T0).tracks
+    expect([t['OIL:liquidity'].status, t['OIL:ict'].status, t['OIL:scalper'].status, t['OIL:tap'].status]).toEqual(['active', 'benched', 'benched', 'benched'])
+  })
   it('adds tracks for new strategies to an existing state without touching the others', () => {
     const state = initState(T0)
     delete state.tracks['GOLD:tap']
@@ -169,11 +183,11 @@ describe('self-healing', () => {
     const w = world()
     const { state, journal } = await run(w, 2)
     const lastBar = state.markets.GOLD.lastBarT
-    w.down.add('hyperliquid').add('binance')
+    w.down.add('hyperliquid').add('binance').add('mexc')
     await run(w, 4, 1, state, journal)
     expect(state.markets.GOLD.failures).toBe(4)
     expect(state.markets.GOLD.lastBarT).toBe(lastBar)
-    expect(state.incidents.filter((i) => i.level === 'error' && !i.healed)).toHaveLength(2) // one per market, repeats collapsed
+    expect(state.incidents.filter((i) => i.level === 'error' && !i.healed)).toHaveLength(3) // one per market, repeats collapsed
     w.down.clear()
     await run(w, 1, 1, state, journal)
     expect(state.markets.GOLD.failures).toBe(0)

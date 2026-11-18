@@ -104,7 +104,7 @@ export interface Ipo {
 }
 export interface IntelPayload {
   now: number
-  sections: { calendar?: Section<CalEvent[]>; ipos?: Section<Ipo[]>; markets?: Section<NewsItem[]>; crypto?: Section<NewsItem[]>; ai?: Section<NewsItem[]>; defense?: Section<NewsItem[]> }
+  sections: { calendar?: Section<CalEvent[]>; ipos?: Section<Ipo[]>; markets?: Section<NewsItem[]>; energy?: Section<NewsItem[]>; crypto?: Section<NewsItem[]>; ai?: Section<NewsItem[]>; defense?: Section<NewsItem[]> }
 }
 export interface TrendCoin {
   id: string
