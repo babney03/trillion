@@ -108,6 +108,19 @@ function prepareLiquidity(c: Candle[], p: Params, tfMs = M5): SignalFn {
     ...htfSwingLevels(h1, p.htfPivot, '1h-swing'),
     ...dayLevels(c, (t) => Math.floor(t / 86_400_000), 'prev-day'),
   ]
+  // Daily bias from the previous day's high and low (UTC days):
+  // a close beyond yesterday's range sets the direction; a run on one side that closes back
+  // inside points the other way; anything else is neutral (no trades).
+  const d1 = aggregate(c, 86_400_000, tfMs)
+  const dBias = new Int8Array(d1.candles.length)
+  for (let k = 1; k < d1.candles.length; k++) {
+    const y = d1.candles[k]
+    const pv = d1.candles[k - 1]
+    if (y.c > pv.h) dBias[k] = 1
+    else if (y.c < pv.l) dBias[k] = -1
+    else if (y.h > pv.h && y.c < pv.h && !(y.l < pv.l)) dBias[k] = -1
+    else if (y.l < pv.l && y.c > pv.l && !(y.h > pv.h)) dBias[k] = 1
+  }
   const core: SweepCore = {
     c,
     atr: a,
@@ -121,6 +134,10 @@ function prepareLiquidity(c: Candle[], p: Params, tfMs = M5): SignalFn {
     if (k1 < 0 || k15 < 0) return null
     const bias = s1h.trend[k1]
     if (bias === 0 || s15.trend[k15] !== bias) return null
+    if (p.dailyBias) {
+      const kd = d1.lastComplete[i]
+      if (kd < 0 || dBias[kd] !== bias) return null
+    }
     return sweepBosFvg(core, i, bias as 1 | -1, p, 'liq')
   }
 }
@@ -205,7 +222,7 @@ export const STRATEGIES: Record<StrategyId, StrategyDef> = {
   liquidity: {
     id: 'liquidity',
     name: 'Trillion Liquidity',
-    blurb: '1h bias, 15m confirmation, 5m liquidity sweep, break of structure and fair value gap entry. Target 2.5R.',
+    blurb: 'Daily bias from the previous day\'s high and low, agreeing 1h and 15m structure, then a 5m liquidity sweep, break of structure and fair value gap entry. Target 2.5R.',
     defaults: {
       htfPivot: 2,
       mtfPivot: 3,
@@ -218,6 +235,7 @@ export const STRATEGIES: Record<StrategyId, StrategyDef> = {
       maxStopAtr: 4,
       rr: 2.5,
       expiryBars: 12,
+      dailyBias: 1,
     },
     grid: { rr: [2, 2.5, 3], fvgEntry: [0, 0.5], sweepLookback: [24, 36] },
     warmup: 1500,

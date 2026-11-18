@@ -102,6 +102,16 @@ describe('bot cycle', () => {
   })
 })
 
+describe('upgrades', () => {
+  it('a track saved before a rule was added picks up its default', async () => {
+    const w = world()
+    const state = initState(w.now)
+    delete (state.tracks['GOLD:liquidity'].params as Record<string, number>).dailyBias
+    await runTick(state, [], w.deps)
+    expect(state.tracks['GOLD:liquidity'].params.dailyBias).toBe(1)
+  })
+})
+
 describe('self-healing', () => {
   it('falls back to the second source, records it, and returns to the first when it recovers', async () => {
     const w = world()

@@ -210,6 +210,8 @@ export async function runTick(state: BotState, journal: JournalEntry[], deps: De
     const cfg = cfgFor(market)
     const ctx = contextFn(c)
     const tracks = Object.values(state.tracks).filter((t) => t.market === market)
+    // Keys added to a strategy after a track was created take the strategy's current default.
+    for (const t of tracks) t.params = { ...STRATEGIES[t.strategy].defaults, ...t.params }
     const signals = tracks.map((t) => STRATEGIES[t.strategy].prepare(c, t.params, BOT.tfMs))
     for (let i = from; i < c.length; i++) {
       tracks.forEach((track, k) => {

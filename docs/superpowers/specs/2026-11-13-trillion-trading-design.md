@@ -52,6 +52,11 @@ All trade the 5-minute chart. Shared definitions:
 Enter at the first bar, exit at the last. The baseline every result is shown against.
 
 ### 2. Trillion Liquidity (owner's strategy)
+0. **Daily bias** (added 2026-11-18 at the owner's request): from the last completed UTC
+   day against the day before it. A close above the prior day's high is bullish, below its
+   low bearish; a run above the prior high that closes back inside is bearish, a run below
+   the prior low that closes back inside is bullish; anything else is neutral and blocks
+   trades. The 1h bias must agree with it.
 1. **Bias (1h)**: latest 1h break of structure sets long-only or short-only.
 2. **Confirmation (15m)**: 15m structure must point the same way.
 3. **Setup (5m)**, for longs (shorts mirrored):
