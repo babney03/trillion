@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { cfgFor, initState, isValidState, runTick, type Deps } from '../src/bot/core'
+import { cfgFor, ensureTracks, initState, isValidState, runTick, type Deps } from '../src/bot/core'
 import { evidence, learn, verdict } from '../src/bot/learn'
 import { tune } from '../src/bot/tune'
 import type { BotMarket, JournalEntry, SourceId } from '../src/bot/types'
@@ -103,6 +103,20 @@ describe('bot cycle', () => {
 })
 
 describe('upgrades', () => {
+  it('adds tracks for new strategies to an existing state without touching the others', () => {
+    const state = initState(T0)
+    delete state.tracks['GOLD:tap']
+    const before = JSON.stringify(state.tracks['GOLD:liquidity'])
+    expect(isValidState(state)).toBe(true)
+    expect(ensureTracks(state, T0)).toEqual(['GOLD:tap'])
+    expect(state.tracks['GOLD:tap']).toMatchObject({ status: 'benched', trial: true })
+    expect(JSON.stringify(state.tracks['GOLD:liquidity'])).toBe(before)
+  })
+  it('a trial track is never restored to paper money, however well it does', () => {
+    const track = initState(T0).tracks['BTC:tap']
+    for (let k = 0; k < 40; k++) learn(track, { side: 'long', setup: 't', entryT: T0, exitT: T0 + M5, entry: 100, exit: 102.5, stop: 99, target: 102.5, qty: 0, pnl: 0, fees: 0, r: 2.5, reason: 'target', bars: 1, taken: false, ctx: { session: 'asia', vol: 'normal' } }, T0)
+    expect(track.status).toBe('benched')
+  })
   it('a track saved before a rule was added picks up its default', async () => {
     const w = world()
     const state = initState(w.now)

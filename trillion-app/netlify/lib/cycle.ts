@@ -1,5 +1,5 @@
 import { getStore } from '@netlify/blobs'
-import { initState, isValidState, logIncident, maybeRetune, runTick, type Deps, type Seed } from '../../src/bot/core'
+import { ensureTracks, initState, isValidState, logIncident, maybeRetune, runTick, type Deps, type Seed } from '../../src/bot/core'
 import seed from '../../src/bot/seed.json'
 import { BOT, type BotMarket, type BotState, type JournalEntry, type SourceId } from '../../src/bot/types'
 import { binanceCandles, hlCandles, MARKETS } from '../../src/data/candles'
@@ -30,7 +30,13 @@ export interface Loaded {
 export async function loadBot(s: Store, now = Date.now()): Promise<Loaded> {
   const [raw, journalRaw] = await Promise.all([readJson<BotState>(s, STATE), readJson<JournalEntry[]>(s, JOURNAL)])
   const journal = Array.isArray(journalRaw) ? journalRaw : []
-  if (isValidState(raw)) return { state: raw, journal, good: structuredClone(raw) }
+  if (isValidState(raw)) {
+    const good = structuredClone(raw)
+    for (const id of ensureTracks(raw, now, (seed as { tracks: Seed }).tracks)) {
+      raw.lessons.push({ t: now, track: id, kind: 'guard', msg: `Added ${id.replace(':', ' ')} as a new strategy track.` })
+    }
+    return { state: raw, journal, good }
+  }
 
   const backup = await readJson<BotState>(s, BACKUP)
   if (isValidState(backup)) {

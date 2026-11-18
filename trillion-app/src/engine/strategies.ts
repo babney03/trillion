@@ -15,7 +15,7 @@ import {
 } from './structure'
 import { nyClock } from './time'
 
-export type StrategyId = 'liquidity' | 'ict' | 'scalper'
+export type StrategyId = 'liquidity' | 'tap' | 'ict' | 'scalper'
 
 export interface StrategyDef {
   id: StrategyId
@@ -26,6 +26,8 @@ export interface StrategyDef {
   grid: Record<string, number[]>
   /** Bars of history the strategy needs before its signals are trustworthy. */
   warmup: number
+  /** Trial strategies trade in shadow only: the bot never puts paper money on them automatically. */
+  trial?: boolean
   prepare(c: Candle[], p: Params, tfMs?: number): SignalFn
 }
 
@@ -142,6 +144,55 @@ function prepareLiquidity(c: Candle[], p: Params, tfMs = M5): SignalFn {
   }
 }
 
+/**
+ * Trial: the same setup as Trillion Liquidity, but instead of resting a limit order in the gap,
+ * wait for price to tap the gap and then break a 1-bar swing in the trade direction, and enter
+ * at market on that close. Stop and 2.5R target as in the base strategy.
+ */
+function prepareTap(c: Candle[], p: Params, tfMs = M5): SignalFn {
+  const base = prepareLiquidity(c, p, tfMs)
+  const a = atr(c)
+  const micro = findSwings(c, 1)
+  const highs = micro.filter((s) => s.kind === 'high')
+  const lows = micro.filter((s) => s.kind === 'low')
+  /** Newest 1-bar swing of a kind confirmed by bar k whose bar index is above `after`. */
+  const newest = (list: typeof micro, k: number, after: number): number => {
+    let lo = 0
+    let hi = list.length - 1
+    let at = -1
+    while (lo <= hi) {
+      const mid = (lo + hi) >> 1
+      if (list[mid].confirmedAt <= k) {
+        at = mid
+        lo = mid + 1
+      } else hi = mid - 1
+    }
+    return at >= 0 && list[at].i > after ? list[at].price : NaN
+  }
+  return (i) => {
+    for (let j = i - 1; j >= Math.max(0, i - p.expiryBars); j--) {
+      const o = base(j)
+      if (!o) continue
+      const dir = o.side === 'long' ? 1 : -1
+      let tapK = -1
+      for (let k = j + 1; k <= i; k++) {
+        if (dir === 1 ? c[k].l <= o.stop : c[k].h >= o.stop) return null
+        if (tapK < 0 && (dir === 1 ? c[k].l <= o.entry : c[k].h >= o.entry)) tapK = k
+        if (tapK < 0) continue
+        const lvl = newest(dir === 1 ? highs : lows, k, Math.max(j, tapK - 6))
+        if (!(Number.isFinite(lvl) && (dir === 1 ? c[k].c > lvl : c[k].c < lvl))) continue
+        if (k < i) return null // confirmed on an earlier bar: that was the entry
+        const px = c[i].c
+        const risk = (px - o.stop) * dir
+        if (!(risk > 0) || risk > p.maxStopAtr * a[i]) return null
+        return { side: o.side, type: 'market', entry: px, stop: o.stop, target: px + dir * p.rr * risk, expiryBars: 1, setup: `${o.setup}:tap` }
+      }
+      return null
+    }
+    return null
+  }
+}
+
 /** ICT session model: killzone only, session liquidity, MSS + FVG, 2R. */
 function prepareICT(c: Candle[], p: Params): SignalFn {
   const a = atr(c)
@@ -240,6 +291,29 @@ export const STRATEGIES: Record<StrategyId, StrategyDef> = {
     grid: { rr: [2, 2.5, 3], fvgEntry: [0, 0.5], sweepLookback: [24, 36] },
     warmup: 1500,
     prepare: prepareLiquidity,
+  },
+  tap: {
+    id: 'tap',
+    name: 'Liquidity, tap entry (trial)',
+    blurb: 'Same setup as Trillion Liquidity, but enters only after price taps the fair value gap and breaks a small swing back in the trade direction. Target 2.5R. On trial: shadow only.',
+    defaults: {
+      htfPivot: 2,
+      mtfPivot: 3,
+      ltfPivot: 2,
+      sweepLookback: 36,
+      fvgEntry: 0.5,
+      minFvgAtr: 0.1,
+      stopBufAtr: 0.1,
+      minStopAtr: 0.5,
+      maxStopAtr: 4,
+      rr: 2.5,
+      expiryBars: 12,
+      dailyBias: 1,
+    },
+    grid: { rr: [2, 2.5, 3], sweepLookback: [24, 36] },
+    warmup: 1500,
+    trial: true,
+    prepare: prepareTap,
   },
   ict: {
     id: 'ict',

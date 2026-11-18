@@ -68,6 +68,12 @@ Enter at the first bar, exit at the last. The baseline every result is shown aga
 6. **Target**: 2.5 × risk.
 7. Skipped if the stop is tighter than 0.5 ATR or wider than 4 ATR.
 
+### 2b. Liquidity, tap entry (trial, added 2026-11-18)
+Same setup as Trillion Liquidity. Instead of a resting limit order, wait for price to tap
+the gap, then enter at market on the first close that breaks a 1-bar swing back in the
+trade direction. Same stop, 2.5R target. Shadow only: the bot never restores a trial
+track to paper money on its own. Two years, six markets: 103 trades, +0.03R per trade.
+
 ### 3. ICT (session model)
 1. Only during the London (02:00–05:00 New York) and New York AM
    (08:30–11:00 New York) windows.

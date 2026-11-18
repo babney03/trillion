@@ -51,6 +51,8 @@ export interface Track {
   market: BotMarket
   strategy: StrategyId
   status: 'active' | 'benched'
+  /** Trial track: shadow only, never restored to paper money automatically. */
+  trial?: boolean
   statusSince: number
   statusWhy: string
   /** One-year backtest at this market's costs: the evidence the track started with. */

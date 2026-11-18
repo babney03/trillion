@@ -80,7 +80,7 @@ export function answer(input: string, s: Snapshot): Reply {
     if (!s.bot) return { text: "I can't reach the bot right now.", go: 'bot' }
     const benched = Object.values(s.bot.state.tracks).filter((t) => t.status === 'benched')
     const latest = l[l.length - 1]
-    const bench = benched.length ? `${benched.length} of 6 strategy tracks are benched and trading in shadow: ${benched.map((t) => `${STRATEGIES[t.strategy].name} on ${t.market}`).join(', ')}.` : 'Every strategy track is active.'
+    const bench = benched.length ? `${benched.length} of ${Object.keys(s.bot.state.tracks).length} strategy tracks are benched and trading in shadow: ${benched.map((t) => `${STRATEGIES[t.strategy].name} on ${t.market}`).join(', ')}.` : 'Every strategy track is active.'
     return { text: `${bench} ${latest ? `Latest note: ${latest.msg}` : 'No new lessons from live trades yet.'}`, go: 'bot' }
   }
   if (/\b(open (trades?|positions?)|any trades?|positions?)\b/.test(q)) {

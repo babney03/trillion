@@ -80,7 +80,7 @@ export function learn(track: Track, trade: Trade, now: number): Lesson[] {
     track.statusSince = now
     track.statusWhy = fmt(evidence(track.recent))
     out.push({ t: now, track: track.id, kind: 'bench', msg: `Benched ${label(track)}: ${track.statusWhy}. It keeps trading in shadow and returns if it recovers.` })
-  } else if (track.status === 'benched' && v === 'positive') {
+  } else if (track.status === 'benched' && v === 'positive' && !track.trial) {
     track.status = 'active'
     track.statusSince = now
     track.statusWhy = fmt(evidence(track.recent))

@@ -11,6 +11,14 @@
       "oosExpR": 1.249,
       "oosN": 13
     },
+    "BTC:tap": {
+      "expR": 0.005,
+      "n": 5,
+      "winRate": 0.4,
+      "netPct": -0.023,
+      "oosExpR": 1.647,
+      "oosN": 2
+    },
     "BTC:ict": {
       "expR": -0.157,
       "n": 75,
@@ -34,6 +42,14 @@
       "netPct": 9.118,
       "oosExpR": 0.047,
       "oosN": 17
+    },
+    "GOLD:tap": {
+      "expR": 0.055,
+      "n": 8,
+      "winRate": 0.375,
+      "netPct": 0.356,
+      "oosExpR": -0.459,
+      "oosN": 2
     },
     "GOLD:ict": {
       "expR": -0.078,

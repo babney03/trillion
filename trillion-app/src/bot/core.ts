@@ -33,39 +33,56 @@ const DAY = 86_400_000
 
 export const cfgFor = (market: BotMarket): SimCfg => ({ ...withCosts(BOT_COSTS[market], DEFAULT_CFG), riskPct: BOT.riskPct, tfMs: BOT.tfMs })
 
-export function initState(now: number, seed: Seed = {}): BotState {
-  const tracks: Record<string, Track> = {}
+export function makeTrack(market: BotMarket, strategy: StrategyId, now: number, seed: Seed = {}): Track {
+  const id = `${market}:${strategy}`
+  const def = STRATEGIES[strategy]
+  const s = seed[id] ?? { expR: 0, n: 0 }
+  const active = !def.trial && (s.n === 0 || s.expR > 0)
+  const evidence = s.n
+    ? `one-year backtest: ${s.expR >= 0 ? '+' : ''}${s.expR.toFixed(2)}R per trade over ${s.n} trades after costs`
+    : 'no backtest evidence yet'
+  return {
+    id,
+    market,
+    strategy,
+    status: active ? 'active' : 'benched',
+    trial: def.trial || undefined,
+    statusSince: now,
+    statusWhy: def.trial ? `on trial, shadow only; ${evidence}` : evidence,
+    seed: s,
+    params: { ...def.defaults },
+    sim: emptyTrack(),
+    recent: [],
+    buckets: {},
+    benchedBuckets: {},
+    lossStreak: 0,
+    cooldownUntil: 0,
+    n: 0,
+    wins: 0,
+    sumR: 0,
+    takenN: 0,
+    takenPnl: 0,
+    lastRetuneAt: now,
+  }
+}
+
+/** Add tracks for strategies introduced after this state was created. Returns the ids added. */
+export function ensureTracks(state: BotState, now: number, seed: Seed = {}): string[] {
+  const added: string[] = []
   for (const market of BOT_MARKETS) {
     for (const strategy of STRATEGY_IDS) {
       const id = `${market}:${strategy}`
-      const s = seed[id] ?? { expR: 0, n: 0 }
-      const active = s.n === 0 || s.expR > 0
-      tracks[id] = {
-        id,
-        market,
-        strategy,
-        status: active ? 'active' : 'benched',
-        statusSince: now,
-        statusWhy: s.n
-          ? `one-year backtest: ${s.expR >= 0 ? '+' : ''}${s.expR.toFixed(2)}R per trade over ${s.n} trades after costs`
-          : 'no backtest evidence yet',
-        seed: s,
-        params: { ...STRATEGIES[strategy].defaults },
-        sim: emptyTrack(),
-        recent: [],
-        buckets: {},
-        benchedBuckets: {},
-        lossStreak: 0,
-        cooldownUntil: 0,
-        n: 0,
-        wins: 0,
-        sumR: 0,
-        takenN: 0,
-        takenPnl: 0,
-        lastRetuneAt: now,
-      }
+      if (state.tracks[id]) continue
+      state.tracks[id] = makeTrack(market, strategy, now, seed)
+      added.push(id)
     }
   }
+  return added
+}
+
+export function initState(now: number, seed: Seed = {}): BotState {
+  const tracks: Record<string, Track> = {}
+  for (const market of BOT_MARKETS) for (const strategy of STRATEGY_IDS) tracks[`${market}:${strategy}`] = makeTrack(market, strategy, now, seed)
   const feed = () => ({ source: null, lastBarT: 0, lastClose: 0, lastOkAt: 0, failures: 0 })
   return {
     v: 1,
@@ -93,7 +110,8 @@ export function isValidState(s: any): s is BotState {
     Number.isFinite(s.equity) &&
     s.equity > 0 &&
     typeof s.tracks === 'object' &&
-    BOT_MARKETS.every((m) => s.markets?.[m] && STRATEGY_IDS.every((id: StrategyId) => s.tracks[`${m}:${id}`]?.sim))
+    BOT_MARKETS.every((m) => s.markets?.[m] && s.tracks[`${m}:liquidity`]?.sim) &&
+    Object.values(s.tracks).every((t: any) => t?.sim && STRATEGIES[t.strategy as StrategyId])
   )
 }
 

@@ -228,7 +228,7 @@ describe('strategies', () => {
         expect((o.target - o.entry) * dir).toBeGreaterThan(0)
         if (o.type === 'limit') expect((c[i].c - o.entry) * dir).toBeGreaterThan(0)
       }
-      expect(n).toBeGreaterThan(3)
+      expect(n).toBeGreaterThan(def.trial ? 0 : 3) // the trial entry is rare by design
     })
     it(`${id}: has no lookahead (a signal never changes when later bars are added)`, () => {
       const full = def.prepare(c, def.defaults, M5)
