@@ -3,6 +3,7 @@ import { contextFn } from '../engine/context'
 import { emptyTrack, stepBar, type StepHooks } from '../engine/sim'
 import { STRATEGIES, STRATEGY_IDS, type StrategyId } from '../engine/strategies'
 import { DEFAULT_CFG, withCosts, type Candle, type SimCfg } from '../engine/types'
+import { ALERT_FRESH_MS, type AlertEvent } from './alerts'
 import { learn } from './learn'
 import { tune } from './tune'
 import {
@@ -197,7 +198,8 @@ function openTaken(state: BotState, market?: BotMarket, except?: string): number
  * through each strategy track, book results, and apply what was learned.
  * Safe to call at any time and any number of times.
  */
-export async function runTick(state: BotState, journal: JournalEntry[], deps: Deps): Promise<{ bars: number; trades: number }> {
+export async function runTick(state: BotState, journal: JournalEntry[], deps: Deps): Promise<{ bars: number; trades: number; events: AlertEvent[] }> {
+  const events: AlertEvent[] = []
   const started = deps.now()
   const dayKey = Math.floor(started / DAY)
   if (state.day.key !== dayKey) state.day = { key: dayKey, startEquity: state.equity, halted: false }
@@ -257,8 +259,16 @@ export async function runTick(state: BotState, journal: JournalEntry[], deps: De
           },
         }
         const r = stepBar(track.sim, c, i, signals[k], cfg, hooks)
+        const fresh = c[i].t >= started - ALERT_FRESH_MS
+        if (fresh && r.placed) {
+          const o = r.placed
+          events.push({ kind: 'setup', t: c[i].t, track: track.id, market, strategy: track.strategy, side: o.side, taken: o.taken, type: o.type, entry: o.entry, stop: o.stop, target: o.target })
+        }
         if (!r.closed) return
         const t = r.closed
+        if (fresh) {
+          events.push({ kind: 'closed', t: t.exitT, track: track.id, market, strategy: track.strategy, side: t.side, taken: t.taken, entry: t.entry, stop: t.stop, target: t.target, exit: t.exit, r: t.r, pnl: t.pnl, reason: t.reason })
+        }
         trades++
         if (t.taken) {
           state.equity += t.pnl
@@ -283,7 +293,7 @@ export async function runTick(state: BotState, journal: JournalEntry[], deps: De
   state.lastTickAt = started
   state.lastTickMs = deps.now() - started
   state.ticks++
-  return { bars, trades }
+  return { bars, trades, events }
 }
 
 /**

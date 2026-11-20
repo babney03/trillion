@@ -8,6 +8,7 @@ import { LineChart, type Line } from '../Chart'
 import { useData, useNow } from '../data'
 import { ago, fmtPct, fmtPx, fmtR, fmtSigned, fmtUsd, stamp, tone } from '../format'
 import { IconCheck } from '../icons'
+import { AlertsPanel } from '../Alerts'
 
 export function Bot() {
   const d = useData()
@@ -223,6 +224,11 @@ export function Bot() {
         ) : (
           <div className="empty panel"><strong>No {filter === 'all' ? '' : filter + ' '}trades closed yet.</strong>Every closed trade lands here with its result in R, its exit and the session it was taken in.</div>
         )}
+      </section>
+
+      <section className="section">
+        <div className="section-head"><h2>Phone alerts</h2></div>
+        <AlertsPanel />
       </section>
 
       <section className="section">

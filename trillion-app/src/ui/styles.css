@@ -1029,3 +1029,36 @@ button.row.jtrade:hover {
     display: inline;
   }
 }
+
+/* ---------- Alerts ---------- */
+.alert-prefs {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.alert-prefs legend {
+  margin-bottom: 4px;
+}
+.check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9375rem;
+  cursor: pointer;
+}
+.check input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+}
+.pin-input {
+  width: 110px;
+  min-height: 34px;
+  padding: 0 10px;
+  border-radius: var(--r-ctl);
+  border: 1px solid var(--line);
+  background: var(--bg);
+  caret-color: var(--accent);
+}

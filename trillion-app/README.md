@@ -17,7 +17,7 @@ Design and exact strategy rules: [`../docs/superpowers/specs/2026-11-13-trillion
 | `src/data/` | Candle fetchers (Hyperliquid, Binance public archive) and the live websocket. |
 | `src/journal/` | The journal's data model: trades you log yourself, daily notes, summaries. |
 | `src/ui/` | The React interface: Command, Markets, Intel, Trends, Bot, My trades, Backtest. |
-| `netlify/functions/` | `bot-tick` (scheduled every 5 min), `api-bot`, `api-intel`, `api-trends`, `api-journal` (PIN-protected), `api-history` (oil history from MEXC), `fomo-track` (scheduled, off without a key). |
+| `netlify/functions/` | `bot-tick` (scheduled every 5 min), `api-bot`, `api-intel`, `api-trends`, `api-journal` (PIN-protected), `api-history` (oil history from MEXC), `api-alerts` (phone alert sign-up, PIN-protected), `fomo-track` (scheduled, off without a key). |
 | `tests/` | Engine, bot and assistant tests. |
 | `scripts/` | `backtest.ts`, `diagnose.ts`, `seed.ts`, `replay.ts`. |
 
@@ -68,6 +68,7 @@ Environment variables on the Netlify site:
 | --- | --- |
 | `TRILLION_PIN` | Unlocks the My trades journal and Pause / Resume on the Bot screen. Without it both are locked. |
 | `BITQUERY_TOKEN` | Switches on the fomo wallet tracker. Optional. |
+| `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT` | Signing keys for phone alerts (web push). The private key is a production-only secret. |
 
 New sites on this Netlify account are private by default: visitors are sent
 to a Netlify login until the owner presses **Make public** in the Netlify

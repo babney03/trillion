@@ -83,6 +83,8 @@ export async function cycle(opts: { retune?: boolean } = {}) {
   const deps = liveDeps()
   const res = await runTick(loaded.state, loaded.journal, deps)
   await saveBot(s, loaded)
+  // Alerts go out after the state is safely saved; a push failure can never cost a trade.
+  await import('./push').then((m) => m.sendAlerts(res.events)).catch((e) => console.error('alerts failed', e))
   // Trading is saved first. The re-tune downloads weeks of history and must never put a cycle at risk.
   if (opts.retune && Date.now() - started < 9_000 && (await maybeRetune(loaded.state, deps))) await saveBot(s, loaded)
   return { ...res, ms: Date.now() - started, equity: loaded.state.equity, loaded }
