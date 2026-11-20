@@ -82,6 +82,11 @@ in front of the nearest untouched 1h swing or daily high/low that is 1.5R to 8R 
 level, no trade. Shadow only. Two years, six markets: 537 trades, +0.08R per trade; last
 year gold +0.67R over 61 trades, bitcoin -0.34R over 23, oil -0.37R over 32.
 
+### 2d. PB session opens (trial, added 2026-11-20)
+The PB inversion entry, taken only in the 90 minutes after the 9:30 New York open and the
+8pm New York Asia open (PB Blake's Judas-swing and Asia-session timing), with a 2R target.
+Shadow only. Two years, six markets: 178 trades, +0.11R per trade, worst drawdown 8R.
+
 ### 3. ICT (session model)
 1. Only during the London (02:00–05:00 New York) and New York AM
    (08:30–11:00 New York) windows.

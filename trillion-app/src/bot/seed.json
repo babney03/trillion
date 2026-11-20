@@ -27,6 +27,14 @@
       "oosExpR": 0.346,
       "oosN": 4
     },
+    "BTC:pbopen": {
+      "expR": 0.033,
+      "n": 12,
+      "winRate": 0.5,
+      "netPct": 0.313,
+      "oosExpR": 1.174,
+      "oosN": 4
+    },
     "BTC:ict": {
       "expR": -0.2,
       "n": 75,
@@ -67,6 +75,14 @@
       "oosExpR": 0.674,
       "oosN": 12
     },
+    "GOLD:pbopen": {
+      "expR": 0.772,
+      "n": 10,
+      "winRate": 0.8,
+      "netPct": 7.819,
+      "oosExpR": 1.34,
+      "oosN": 3
+    },
     "GOLD:ict": {
       "expR": -0.107,
       "n": 70,
@@ -106,6 +122,14 @@
       "netPct": -11.414,
       "oosExpR": -1.135,
       "oosN": 4
+    },
+    "OIL:pbopen": {
+      "expR": 0.55,
+      "n": 10,
+      "winRate": 0.5,
+      "netPct": 5.548,
+      "oosExpR": 0.309,
+      "oosN": 2
     },
     "OIL:ict": {
       "expR": -0.137,

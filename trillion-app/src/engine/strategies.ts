@@ -15,7 +15,7 @@ import {
 } from './structure'
 import { nyClock } from './time'
 
-export type StrategyId = 'liquidity' | 'tap' | 'pb' | 'ict' | 'scalper'
+export type StrategyId = 'liquidity' | 'tap' | 'pb' | 'pbopen' | 'ict' | 'scalper'
 
 export interface StrategyDef {
   id: StrategyId
@@ -109,8 +109,10 @@ function ifvgEntry(k: SweepCore, i: number, dir: 1 | -1, p: Params): OrderIntent
   if (p.ifvgKz) {
     const m = nyClock(c[i].t).min
     const london = m >= 120 && m < 300
-    const nyam = m >= 570 && m < 690
-    if (!((p.ifvgKz & 1 && london) || (p.ifvgKz & 2 && nyam))) return null
+    // New York AM from the 9:30 open; Asia from the 8pm New York open. kzLen shortens both windows.
+    const nyam = m >= 570 && m < (p.kzLen ? 570 + p.kzLen : 690)
+    const asia = m >= 1200 && m < (p.kzLen ? 1200 + p.kzLen : 1320)
+    if (!((p.ifvgKz & 1 && london) || (p.ifvgKz & 2 && nyam) || (p.ifvgKz & 4 && asia))) return null
   }
   const sw = latestIn(dir === 1 ? k.lows : k.highs, i - p.sweepLookback, i)
   if (!sw) return null
@@ -431,6 +433,34 @@ export const STRATEGIES: Record<StrategyId, StrategyDef> = {
       tgtMaxAge: 2016,
     },
     grid: { minRR: [1.5, 2], sweepLookback: [24, 36] },
+    warmup: 1500,
+    trial: true,
+    prepare: prepareLiquidity,
+  },
+  pbopen: {
+    id: 'pbopen',
+    name: 'PB session opens (trial)',
+    blurb: "PB Trading's inversion entry with your daily bias, taken only in the 90 minutes after the 9:30 New York open and the 8pm New York Asia open. Target 2R. On trial: shadow only.",
+    defaults: {
+      htfPivot: 2,
+      mtfPivot: 3,
+      ltfPivot: 2,
+      sweepLookback: 36,
+      fvgEntry: 0.5,
+      minFvgAtr: 0.1,
+      stopBufAtr: 0.1,
+      minStopAtr: 0.5,
+      maxStopAtr: 4,
+      rr: 2,
+      expiryBars: 12,
+      dailyBias: 1,
+      ifvg: 1,
+      ifvgWithin: 12,
+      ifvgLeg: 24,
+      ifvgKz: 6,
+      kzLen: 90,
+    },
+    grid: { rr: [1.5, 2, 2.5], sweepLookback: [24, 36] },
     warmup: 1500,
     trial: true,
     prepare: prepareLiquidity,
