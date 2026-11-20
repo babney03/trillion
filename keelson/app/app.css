@@ -827,10 +827,11 @@
   gap: 10px;
 }
 .cadence__table {
-  width: 100%;
+  width: auto;
+  justify-self: start;
   border-collapse: separate;
   border-spacing: 3px;
-  table-layout: fixed;
+  table-layout: auto;
 }
 .cadence__table th {
   font-size: var(--t-micro);
@@ -841,7 +842,13 @@
 }
 .cadence__table thead th:first-child,
 .cadence__table tbody th {
-  width: 34%;
+  width: 12rem;
+  min-width: 12rem;
+}
+.cadence__table thead th:not(:first-child),
+.cadence__table td {
+  width: 36px;
+  min-width: 36px;
 }
 .cadence__table tbody th {
   text-align: left;
@@ -852,26 +859,78 @@
   padding-right: 6px;
   line-height: 1.2;
 }
-.cadence__table td {
-  height: 30px;
+.cadence__table td,
+.cadence__key .cell {
+  position: relative;
   border: 1px solid var(--ink-3);
   border-radius: 3px;
   background: var(--sheet);
 }
+.cadence__table td {
+  height: 32px;
+}
+@media (max-width: 620px) {
+  .cadence__table {
+    width: 100%;
+    table-layout: fixed;
+  }
+  .cadence__table thead th:first-child,
+  .cadence__table tbody th {
+    width: 34%;
+    min-width: 0;
+  }
+  .cadence__table thead th:not(:first-child),
+  .cadence__table td {
+    width: auto;
+    min-width: 0;
+  }
+}
+/* Held: green with a drawn tick */
 .cadence__table td.done,
 .cadence__key .cell.done {
   background: var(--life);
   border-color: var(--life);
 }
+.cadence__table td.done::after,
+.cadence__key .cell.done::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 9px;
+  height: 5px;
+  border: solid var(--sheet);
+  border-width: 0 0 2px 2px;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+/* Due soon: yellow with an ink outline */
 .cadence__table td.soon,
 .cadence__key .cell.soon {
   background: var(--caution);
   border-color: var(--ink);
 }
+/* Overdue: red with a drawn cross */
 .cadence__table td.overdue,
 .cadence__key .cell.overdue {
   background: var(--fire);
   border-color: var(--fire);
+}
+.cadence__table td.overdue::before,
+.cadence__table td.overdue::after,
+.cadence__key .cell.overdue::before,
+.cadence__key .cell.overdue::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 11px;
+  height: 2px;
+  background: var(--sheet);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.cadence__table td.overdue::after,
+.cadence__key .cell.overdue::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 .cadence__key {
   display: flex;
@@ -882,10 +941,8 @@
 }
 .cadence__key .cell {
   display: inline-block;
-  width: 14px;
-  height: 14px;
-  border: 1px solid var(--ink-3);
-  border-radius: 3px;
+  width: 18px;
+  height: 18px;
 }
 
 .print-only {

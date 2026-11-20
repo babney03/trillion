@@ -192,7 +192,7 @@ Plain SVG geometry: hull profile, waterline, station ticks, wheelhouse, plus ISO
 
 ### Status rows
 - **Due list:** each row is a status mark, a title and a detail line; things logged today stay in the list struck through (2px ink line, Ink 3 text) with a Done mark.
-- **Drill cadence:** a twelve-month table, one row per drill; cells are green when a drill was held that month, and the current month turns yellow (due soon) or red (overdue).
+- **Drill cadence:** a twelve-month table, one row per drill, sized to its content. Held months are green with a drawn tick, the current month turns yellow with an ink outline (due soon) or red with a drawn cross (overdue). Colour never carries status alone, and every cell has a spoken name ("Fire drill, September 2026: held").
 
 ### Notices
 The sample-vessel banner is the sheet ground with a 2px caution-yellow rule and a leading yellow square, in both palettes.

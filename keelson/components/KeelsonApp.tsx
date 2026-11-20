@@ -1017,10 +1017,11 @@ function DrillCadence({ state, vessel }: { state: KeelsonState; vessel: Vessel }
                   const done = doneMonths.has(key(m));
                   const last = i === months.length - 1;
                   const cls = done ? "done" : last && status === "overdue" ? "overdue" : last && status === "soon" ? "soon" : "";
-                  const label = done ? "drill held" : cls === "overdue" ? "overdue" : cls === "soon" ? "due soon" : "no drill";
+                  const label = done ? "held" : cls === "overdue" ? "overdue" : cls === "soon" ? "due soon" : "no drill";
+                  const month = m.toLocaleDateString("en-CA", { month: "long", year: "numeric" });
                   return (
                     <td key={key(m)} className={cls}>
-                      <span className="sr">{label}</span>
+                      <span className="sr">{`${k} drill, ${month}: ${label}`}</span>
                     </td>
                   );
                 })}
