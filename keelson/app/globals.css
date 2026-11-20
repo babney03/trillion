@@ -1,0 +1,443 @@
+@import "@fontsource-variable/archivo/wdth.css";
+
+/* Keelson — a vessel safety plan, drawn up.
+   Drafting-film ground, ink linework, and colour only where a safety plan
+   uses it: fire red, lifesaving green, caution yellow, mandatory blue. */
+
+:root {
+  --film: #f4f5f2;
+  --sheet: #ffffff;
+  --ink: #111416;
+  --ink-2: #3a4145;
+  --ink-3: #59626a;
+  --rule: #cdd2cf;
+  --rule-soft: #e3e6e3;
+  --fire: #c41e1c;
+  --fire-wash: #fbe9e8;
+  --life: #08703f;
+  --life-wash: #e4f2ea;
+  --caution: #f2c200;
+  --caution-wash: #fff6cc;
+  --mandatory: #1a5aa6;
+  --mandatory-wash: #e7eef8;
+  --select: #f2c20066;
+
+  --f: "Archivo Variable", "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --step--1: clamp(0.82rem, 0.79rem + 0.12vw, 0.9rem);
+  --step-0: clamp(1.05rem, 1rem + 0.2vw, 1.15rem);
+  --step-1: clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem);
+  --step-2: clamp(1.6rem, 1.35rem + 1vw, 2.15rem);
+  --step-3: clamp(2.1rem, 1.6rem + 2.2vw, 3.6rem);
+  --gut: clamp(16px, 4vw, 40px);
+  --page: 1240px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --r: 4px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="day"]) {
+    /* Wheelhouse at night: low glare, lines stay readable. */
+    --film: #0d1113;
+    --sheet: #13181b;
+    --ink: #e7ebe8;
+    --ink-2: #bcc4c1;
+    --ink-3: #96a09c;
+    --rule: #34403f;
+    --rule-soft: #222b2c;
+    --fire: #ff6b5e;
+    --fire-wash: #3a1614;
+    --life: #4fd08c;
+    --life-wash: #0f2e20;
+    --caution: #f2c200;
+    --caution-wash: #33290a;
+    --mandatory: #7fb0ec;
+    --mandatory-wash: #142236;
+    --select: #f2c20055;
+    color-scheme: dark;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scrollbar-color: var(--ink-3) var(--film);
+}
+
+body {
+  margin: 0;
+  background: var(--film);
+  color: var(--ink);
+  font-family: var(--f);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  caret-color: var(--mandatory);
+}
+
+::selection {
+  background: var(--select);
+  color: var(--ink);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  font-weight: 760;
+  font-stretch: 112%;
+}
+
+h1 {
+  font-size: var(--step-3);
+}
+h2 {
+  font-size: var(--step-2);
+}
+h3 {
+  font-size: var(--step-1);
+  font-stretch: 104%;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--mandatory);
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1.5px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--mandatory);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.wrap {
+  width: min(100% - 2 * var(--gut), var(--page));
+  margin-inline: auto;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ── Wordmark ── */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 800;
+  font-stretch: 125%;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.brand svg {
+  width: 30px;
+  height: 30px;
+}
+
+/* ── Lettering conventions from drawing sheets ─────────────────────── */
+.label {
+  font-size: 0.72rem;
+  font-weight: 640;
+  font-stretch: 78%;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  line-height: 1.2;
+}
+
+.lead {
+  font-size: var(--step-1);
+  line-height: 1.45;
+  color: var(--ink-2);
+  max-width: 34ch;
+  font-stretch: 98%;
+}
+
+.muted {
+  color: var(--ink-3);
+}
+
+/* ── Buttons ───────────────────────────────────────────────────────── */
+.btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 22px;
+  border: 2px solid var(--ink);
+  border-radius: var(--r);
+  background: var(--sheet);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  font-stretch: 104%;
+  font-size: 1.02rem;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 160ms var(--ease), color 160ms var(--ease), transform 120ms var(--ease),
+    box-shadow 160ms var(--ease);
+  touch-action: manipulation;
+}
+.btn:hover {
+  background: var(--rule-soft);
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+.btn--ink {
+  background: var(--ink);
+  color: var(--sheet);
+}
+.btn--ink:hover {
+  background: var(--ink-2);
+  border-color: var(--ink-2);
+}
+.btn--small {
+  min-height: 44px;
+  padding: 0 14px;
+  font-size: 0.95rem;
+}
+.btn--quiet {
+  border-color: transparent;
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  padding-inline: 8px;
+}
+.btn--quiet:hover {
+  background: var(--rule-soft);
+}
+.btn--danger {
+  border-color: var(--fire);
+  color: var(--fire);
+}
+
+.arrow {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+
+/* ── Inputs ────────────────────────────────────────────────────────── */
+.field {
+  display: grid;
+  gap: 6px;
+}
+.field > span {
+  font-size: 0.92rem;
+  font-weight: 640;
+  color: var(--ink-2);
+}
+.field small {
+  color: var(--ink-3);
+  font-size: 0.85rem;
+}
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 11px 13px;
+  border: 1.5px solid var(--ink-3);
+  border-radius: var(--r);
+  background: var(--sheet);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.05rem;
+}
+textarea {
+  min-height: 108px;
+  resize: vertical;
+  line-height: 1.5;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--ink);
+  outline: 3px solid var(--mandatory);
+  outline-offset: 1px;
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--ink-3);
+}
+
+/* Segmented choice: big targets for a thumb on deck */
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.choice {
+  position: relative;
+}
+.choice input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.choice span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 0 15px;
+  border: 1.5px solid var(--ink-3);
+  border-radius: var(--r);
+  background: var(--sheet);
+  font-weight: 600;
+  font-size: 0.98rem;
+  transition: background-color 140ms var(--ease), border-color 140ms var(--ease), color 140ms var(--ease);
+}
+.choice input:checked + span {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--sheet);
+}
+.choice input:focus-visible + span {
+  outline: 3px solid var(--mandatory);
+  outline-offset: 2px;
+}
+.choice:hover input:not(:checked) + span {
+  border-color: var(--ink);
+}
+
+/* ── Status marks: safety-sign colour semantics ────────────────────── */
+.mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 9px 3px 7px;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-stretch: 86%;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.mark::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  background: currentColor;
+}
+.mark--overdue {
+  background: var(--fire-wash);
+  color: var(--fire);
+}
+.mark--soon {
+  background: var(--caution-wash);
+  color: var(--ink);
+}
+.mark--soon::before {
+  background: var(--caution);
+  outline: 1px solid var(--ink);
+}
+.mark--ok {
+  background: var(--life-wash);
+  color: var(--life);
+}
+.mark--info {
+  background: var(--mandatory-wash);
+  color: var(--mandatory);
+}
+
+/* ── Title block: the drawing sheet's own table ────────────────────── */
+.tb {
+  display: grid;
+  border: 2px solid var(--ink);
+  background: var(--sheet);
+}
+.tb__row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+}
+.tb__row + .tb__row {
+  border-top: 1px solid var(--ink);
+}
+.tb__cell {
+  padding: 7px 10px 8px;
+  min-width: 0;
+}
+.tb__cell + .tb__cell {
+  border-left: 1px solid var(--ink);
+}
+.tb__cell .label {
+  display: block;
+  margin-bottom: 2px;
+}
+.tb__val {
+  font-weight: 700;
+  font-stretch: 100%;
+  font-size: 1rem;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+.tb__val--big {
+  font-size: 1.35rem;
+  font-stretch: 112%;
+}
+
+/* ── Drawing callout balloon ───────────────────────────────────────── */
+.balloon {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  background: var(--sheet);
+  font-size: 0.82rem;
+  font-weight: 760;
+  flex: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

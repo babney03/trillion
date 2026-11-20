@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-20T00:00:00Z",
+  "title": "Design System: Keelson",
+  "extensions": {
+    "colorMeta": {
+      "ink": { "role": "primary", "displayName": "Ink", "canonical": "#111416" },
+      "drafting-film": { "role": "neutral", "displayName": "Drafting Film", "canonical": "#f4f5f2" },
+      "fire-red": { "role": "semantic", "displayName": "Fire Red", "canonical": "#c41e1c" },
+      "lifesaving-green": { "role": "semantic", "displayName": "Lifesaving Green", "canonical": "#08703f" },
+      "caution-yellow": { "role": "semantic", "displayName": "Caution Yellow", "canonical": "#f2c200" },
+      "mandatory-blue": { "role": "semantic", "displayName": "Mandatory Blue", "canonical": "#1a5aa6" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page headlines, expanded width." },
+      "label": { "displayName": "Sheet label", "purpose": "Title-block cells and table heads only." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "All state transitions." },
+      { "name": "plot", "value": "stroke-dashoffset 1 to 0, 1.5s", "purpose": "Vessel drawing plots in once." }
+    ],
+    "breakpoints": [
+      { "name": "phone", "value": "560px" },
+      { "name": "tablet", "value": "900px" },
+      { "name": "hero-stack", "value": "980px" }
+    ],
+    "narrative": {
+      "northStar": "The safety plan on the wheelhouse wall.",
+      "rules": [
+        { "section": "Colors", "name": "The Safety Sign Rule", "body": "Colour appears only with its ISO safety meaning: fire red for overdue, danger and fire equipment; lifesaving green for done, on track and lifesaving equipment; caution yellow for due soon and the deadline highlight; mandatory blue for links and focus. Never use them decoratively." },
+        { "section": "Colors", "name": "The Yellow Needs Ink Rule", "body": "Caution yellow always sits with ink text or an ink outline, never white text." }
+      ]
+    }
+  }
+}

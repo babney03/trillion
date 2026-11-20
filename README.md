@@ -2,6 +2,10 @@
 
 Website work for local businesses.
 
+## Keelson (new business)
+
+`keelson/` is a separate venture: compliance software for small Canadian commercial vessel operators, built around Transport Canada's 2027 safety-management deadline. Start with [`keelson/PLAYBOOK.md`](keelson/PLAYBOOK.md) (how to run it) and [`keelson/research/market.md`](keelson/research/market.md) (the evidence). It's a Next.js app; see [`keelson/README.md`](keelson/README.md).
+
 ## What's in here right now
 
 ### `showcase/surface-catalogue.html`
