@@ -214,21 +214,24 @@ describe('metrics', () => {
 
 describe('strategies', () => {
   const c = randomWalk(6000, 42)
+  // Trial entries are rare by design (some fire only in short session windows), so they get a longer series.
+  const long = randomWalk(40_000, 42)
   for (const id of STRATEGY_IDS) {
     const def = STRATEGIES[id]
     it(`${id}: produces orders with stop and target on the correct sides`, () => {
-      const sig = def.prepare(c, def.defaults, M5)
+      const series = def.trial ? long : c
+      const sig = def.prepare(series, def.defaults, M5)
       let n = 0
-      for (let i = 0; i < c.length; i++) {
+      for (let i = 0; i < series.length; i++) {
         const o = sig(i)
         if (!o) continue
         n++
         const dir = o.side === 'long' ? 1 : -1
         expect((o.entry - o.stop) * dir).toBeGreaterThan(0)
         expect((o.target - o.entry) * dir).toBeGreaterThan(0)
-        if (o.type === 'limit') expect((c[i].c - o.entry) * dir).toBeGreaterThan(0)
+        if (o.type === 'limit') expect((series[i].c - o.entry) * dir).toBeGreaterThan(0)
       }
-      expect(n).toBeGreaterThan(def.trial ? 0 : 3) // the trial entry is rare by design
+      expect(n).toBeGreaterThan(def.trial ? 0 : 3)
     })
     it(`${id}: has no lookahead (a signal never changes when later bars are added)`, () => {
       const full = def.prepare(c, def.defaults, M5)
