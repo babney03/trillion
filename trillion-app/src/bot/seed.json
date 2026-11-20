@@ -1,15 +1,15 @@
 {
-  "asOf": "2026-11-18",
+  "asOf": "2026-11-20",
   "days": 365,
   "source": "Binance BTCUSDT and PAXGUSDT, MEXC USOIL (about 295 days), 5m",
   "tracks": {
     "BTC:liquidity": {
-      "expR": 0.32,
-      "n": 44,
-      "winRate": 0.432,
-      "netPct": 14.357,
-      "oosExpR": 1.249,
-      "oosN": 13
+      "expR": 0.289,
+      "n": 45,
+      "winRate": 0.422,
+      "netPct": 13.124,
+      "oosExpR": 1.083,
+      "oosN": 14
     },
     "BTC:tap": {
       "expR": 0.005,
@@ -19,21 +19,29 @@
       "oosExpR": 1.647,
       "oosN": 2
     },
+    "BTC:pb": {
+      "expR": -0.344,
+      "n": 23,
+      "winRate": 0.348,
+      "netPct": -7.768,
+      "oosExpR": 0.346,
+      "oosN": 4
+    },
     "BTC:ict": {
-      "expR": -0.157,
+      "expR": -0.2,
       "n": 75,
-      "winRate": 0.347,
-      "netPct": -11.769,
-      "oosExpR": -0.308,
-      "oosN": 21
+      "winRate": 0.333,
+      "netPct": -14.502,
+      "oosExpR": -0.348,
+      "oosN": 22
     },
     "BTC:scalper": {
-      "expR": -0.268,
-      "n": 155,
-      "winRate": 0.31,
-      "netPct": -34.979,
-      "oosExpR": -0.273,
-      "oosN": 26
+      "expR": -0.273,
+      "n": 149,
+      "winRate": 0.309,
+      "netPct": -34.417,
+      "oosExpR": -0.196,
+      "oosN": 27
     },
     "GOLD:liquidity": {
       "expR": 0.053,
@@ -51,29 +59,37 @@
       "oosExpR": -0.459,
       "oosN": 2
     },
+    "GOLD:pb": {
+      "expR": 0.672,
+      "n": 61,
+      "winRate": 0.508,
+      "netPct": 47.566,
+      "oosExpR": 0.674,
+      "oosN": 12
+    },
     "GOLD:ict": {
-      "expR": -0.078,
-      "n": 71,
-      "winRate": 0.352,
-      "netPct": -2.251,
+      "expR": -0.107,
+      "n": 70,
+      "winRate": 0.343,
+      "netPct": -4.148,
       "oosExpR": -0.086,
       "oosN": 18
     },
     "GOLD:scalper": {
-      "expR": -0.121,
-      "n": 1272,
-      "winRate": 0.338,
-      "netPct": -59.774,
-      "oosExpR": -0.219,
-      "oosN": 376
+      "expR": -0.113,
+      "n": 1265,
+      "winRate": 0.341,
+      "netPct": -56.474,
+      "oosExpR": -0.204,
+      "oosN": 380
     },
     "OIL:liquidity": {
       "expR": -0.184,
       "n": 36,
       "winRate": 0.306,
       "netPct": -6.73,
-      "oosExpR": -0.158,
-      "oosN": 8
+      "oosExpR": -0.019,
+      "oosN": 7
     },
     "OIL:tap": {
       "expR": -0.626,
@@ -82,6 +98,14 @@
       "netPct": -3.108,
       "oosExpR": -1.201,
       "oosN": 2
+    },
+    "OIL:pb": {
+      "expR": -0.37,
+      "n": 32,
+      "winRate": 0.25,
+      "netPct": -11.414,
+      "oosExpR": -1.135,
+      "oosN": 4
     },
     "OIL:ict": {
       "expR": -0.137,

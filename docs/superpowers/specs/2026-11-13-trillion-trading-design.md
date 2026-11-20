@@ -74,6 +74,14 @@ the gap, then enter at market on the first close that breaks a 1-bar swing back 
 trade direction. Same stop, 2.5R target. Shadow only: the bot never restores a trial
 track to paper money on its own. Two years, six markets: 103 trades, +0.03R per trade.
 
+### 2c. PB inversion (trial, added 2026-11-20)
+From PB Trading's (Blake) videos: after a liquidity sweep, with the daily and 1h bias
+agreeing, enter at market on the first close straight back through the opposing fair value
+gap left by the move into the sweep (an inversion). Stop past the sweep extreme. Target just
+in front of the nearest untouched 1h swing or daily high/low that is 1.5R to 8R away; no
+level, no trade. Shadow only. Two years, six markets: 537 trades, +0.08R per trade; last
+year gold +0.67R over 61 trades, bitcoin -0.34R over 23, oil -0.37R over 32.
+
 ### 3. ICT (session model)
 1. Only during the London (02:00–05:00 New York) and New York AM
    (08:30–11:00 New York) windows.
