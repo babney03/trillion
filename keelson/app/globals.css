@@ -300,6 +300,20 @@ textarea::placeholder {
   color: var(--ink-3);
 }
 
+.q {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.q legend {
+  padding: 0;
+  margin-bottom: 8px;
+  font-weight: 640;
+  font-size: 0.95rem;
+  color: var(--ink-2);
+}
+
 /* Segmented choice: big targets for a thumb on deck */
 .choices {
   display: flex;
@@ -417,6 +431,13 @@ textarea::placeholder {
 .tb__val--big {
   font-size: 1.35rem;
   font-stretch: 112%;
+  white-space: nowrap;
+}
+@media (max-width: 560px) {
+  .tb__val--big {
+    font-size: 1.15rem;
+    font-stretch: 100%;
+  }
 }
 
 /* ── Drawing callout balloon ───────────────────────────────────────── */

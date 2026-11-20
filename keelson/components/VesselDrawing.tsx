@@ -14,7 +14,7 @@ export function kindForUse(use: Use): Kind {
 function Fire({ x, y }: { x: number; y: number }) {
   return (
     <g transform={`translate(${x} ${y})`} className="sym">
-      <rect width="22" height="22" rx="2" fill="var(--fire)" />
+      <rect width="22" height="22" rx="2" fill="#c41e1c" />
       <rect x="8" y="7" width="7" height="12" rx="2" fill="#fff" />
       <path d="M11.5 7 V4.5 H16" stroke="#fff" strokeWidth="1.6" fill="none" />
     </g>
@@ -24,7 +24,7 @@ function Fire({ x, y }: { x: number; y: number }) {
 function Buoy({ x, y }: { x: number; y: number }) {
   return (
     <g transform={`translate(${x} ${y})`} className="sym">
-      <rect width="22" height="22" rx="2" fill="var(--life)" />
+      <rect width="22" height="22" rx="2" fill="#08703f" />
       <circle cx="11" cy="11" r="6.2" stroke="#fff" strokeWidth="3" fill="none" />
     </g>
   );
@@ -33,7 +33,7 @@ function Buoy({ x, y }: { x: number; y: number }) {
 function Aid({ x, y }: { x: number; y: number }) {
   return (
     <g transform={`translate(${x} ${y})`} className="sym">
-      <rect width="22" height="22" rx="2" fill="var(--life)" />
+      <rect width="22" height="22" rx="2" fill="#08703f" />
       <path d="M9 5h4v4h4v4h-4v4H9v-4H5V9h4z" fill="#fff" />
     </g>
   );
@@ -154,6 +154,12 @@ export default function VesselDrawing({ kind }: { kind: Kind }) {
           </g>
         );
       })}
+
+      <g className="ghost" aria-hidden="true">
+        {kind === "work" && <Work />}
+        {kind === "passenger" && <Passenger />}
+        {kind === "tug" && <Tug />}
+      </g>
 
       <g key={kind} className="plot">
         {kind === "work" && (

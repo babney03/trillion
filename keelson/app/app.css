@@ -171,8 +171,7 @@
 /* Panels: a sheet with a heavy rule, not a floating card */
 .panel {
   background: var(--sheet);
-  border: 1.5px solid var(--ink);
-  border-top-width: 3px;
+  border: 2px solid var(--ink);
   border-radius: var(--r);
   padding: clamp(16px, 2.6vw, 26px);
   display: grid;
@@ -625,7 +624,7 @@
   content: "";
   width: 8px;
   height: 4px;
-  border: solid #fff;
+  border: solid var(--sheet);
   border-width: 0 0 2px 2px;
   transform: rotate(-45deg) translate(1px, -1px);
 }
@@ -723,8 +722,8 @@
 }
 .doc__policy {
   font-size: 1.08rem;
-  border-left: 1px solid var(--ink);
-  padding-left: 16px;
+  border: 1px solid var(--ink);
+  padding: 14px 16px;
 }
 .sig {
   color: var(--ink-2);

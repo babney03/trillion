@@ -5,3 +5,7 @@ node_modules/
 
 # playwright-cli run artifacts (screenshots, snapshots, console logs)
 .playwright-cli/
+
+# Local tool settings written by `npx impeccable update`
+.claude/settings.local.json
+.codex/
