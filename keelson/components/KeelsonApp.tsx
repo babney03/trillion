@@ -17,6 +17,7 @@ import {
   emptyState,
   hazardsFor,
   dueItems,
+  drillKeysFor,
   formatDate,
   today,
   uid,
@@ -294,6 +295,7 @@ function Activities({ value, onChange }: { value: ActivityKey[]; onChange: (a: A
 
 function Today({ state, vessel, onAction }: { state: KeelsonState; vessel: Vessel; onAction: (tab: string, kind?: RecordKind, preset?: string) => void }) {
   const items = useMemo(() => dueItems(state, vessel), [state, vessel]);
+  const doneToday = state.records.filter((r) => r.vesselId === vessel.id && r.date === today());
   const cls = vesselClass(vessel);
   const rev = state.revisions[state.revisions.length - 1];
   const [days, setDays] = useState<number | null>(null);
@@ -350,6 +352,17 @@ function Today({ state, vessel, onAction }: { state: KeelsonState; vessel: Vesse
                   {i.action.kind === "drill" ? "Log drill" : i.action.kind === "familiarization" ? "Sign off" : i.action.kind === "review" ? "Start review" : i.action.tab === "manual" ? "Open manual" : "Open"}
                 </button>
               )}
+            </li>
+          ))}
+          {doneToday.map((r) => (
+            <li key={r.id} className="due__item due__item--done">
+              <div className="due__text">
+                <span className="mark mark--ok">Done</span>
+                <b>
+                  <s>{r.kind === "drill" ? `${r.title} drill` : r.kind === "familiarization" ? `Familiarize ${r.title}` : r.title}</s>
+                </b>
+                <span className="muted">Logged today · signed {r.signedBy || "—"}</span>
+              </div>
             </li>
           ))}
         </ul>
@@ -881,6 +894,8 @@ function Records({
         )}
       </div>
 
+      {kind === "drill" && <DrillCadence state={state} vessel={vessel} />}
+
       {open && <RecordForm key={kind + (preset ?? "")} kind={kind} preset={preset} state={state} vessel={vessel} onSave={save} onCancel={() => setOpen(false)} />}
 
       <section className="records" aria-label={kindLabels[kind]}>
@@ -963,6 +978,62 @@ function Records({
         ))}
       </section>
     </>
+  );
+}
+
+function DrillCadence({ state, vessel }: { state: KeelsonState; vessel: Vessel }) {
+  const now = new Date();
+  const months = Array.from({ length: 12 }, (_, i) => new Date(now.getFullYear(), now.getMonth() - 11 + i, 1));
+  const due = dueItems(state, vessel);
+  const key = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+  const drills = state.records.filter((r) => r.vesselId === vessel.id && r.kind === "drill");
+
+  return (
+    <section className="cadence" aria-labelledby="cadence-h">
+      <h2 id="cadence-h" className="block__h2">
+        Last 12 months
+      </h2>
+      <table className="cadence__table">
+        <thead>
+          <tr>
+            <th scope="col">
+              <span className="sr">Drill</span>
+            </th>
+            {months.map((m) => (
+              <th scope="col" key={key(m)} abbr={m.toLocaleDateString("en-CA", { month: "long", year: "numeric" })}>
+                {m.toLocaleDateString("en-CA", { month: "narrow" })}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {drillKeysFor(vessel).map((k) => {
+            const doneMonths = new Set(drills.filter((r) => r.title === k).map((r) => r.date.slice(0, 7)));
+            const status = due.find((d) => d.id === `drill-${k}`)?.level;
+            return (
+              <tr key={k}>
+                <th scope="row">{k}</th>
+                {months.map((m, i) => {
+                  const done = doneMonths.has(key(m));
+                  const last = i === months.length - 1;
+                  const cls = done ? "done" : last && status === "overdue" ? "overdue" : last && status === "soon" ? "soon" : "";
+                  const label = done ? "drill held" : cls === "overdue" ? "overdue" : cls === "soon" ? "due soon" : "no drill";
+                  return (
+                    <td key={key(m)} className={cls}>
+                      <span className="sr">{label}</span>
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      <p className="cadence__key muted">
+        <span className="cell done" aria-hidden="true" /> Held <span className="cell soon" aria-hidden="true" /> Due soon{" "}
+        <span className="cell overdue" aria-hidden="true" /> Overdue
+      </p>
+    </section>
   );
 }
 

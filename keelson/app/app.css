@@ -24,7 +24,7 @@
   position: static;
 }
 .bar .brand {
-  font-size: 1rem;
+  font-size: var(--step-0);
 }
 .bar .brand svg {
   width: 26px;
@@ -52,7 +52,7 @@
 }
 .bar__class {
   flex: none;
-  font-size: 0.75rem;
+  font-size: var(--t-micro);
   font-weight: 760;
   font-stretch: 86%;
   letter-spacing: 0.05em;
@@ -124,7 +124,7 @@
     gap: 3px;
     min-height: 60px;
     padding: 6px 2px;
-    font-size: 0.78rem;
+    font-size: var(--t-small);
     font-weight: 700;
   }
   .tab .ico {
@@ -140,8 +140,18 @@
   gap: 16px;
   flex-wrap: wrap;
   padding: 10px var(--gut);
-  background: var(--caution-wash);
-  border-bottom: 1px solid var(--ink);
+  background: var(--sheet);
+  border-bottom: 2px solid var(--caution);
+}
+.sample > span::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 9px;
+  vertical-align: -1px;
+  background: var(--caution);
+  outline: 1px solid var(--ink);
 }
 
 .screen {
@@ -178,7 +188,7 @@
   gap: 18px;
 }
 .panel h2 {
-  font-size: 1.3rem;
+  font-size: var(--step-1);
   font-stretch: 106%;
 }
 .panel__h2 {
@@ -223,7 +233,7 @@
   gap: 10px 12px;
 }
 .small {
-  font-size: 0.9rem;
+  font-size: var(--t-small);
 }
 
 /* Activity checkboxes: big tick boxes */
@@ -291,7 +301,7 @@
 .act small {
   display: block;
   color: var(--ink-3);
-  font-size: 0.86rem;
+  font-size: var(--t-small);
   line-height: 1.35;
   margin-top: 2px;
 }
@@ -320,7 +330,7 @@
 
 /* Today */
 .head-tb .tb__val {
-  font-size: 1.1rem;
+  font-size: var(--step-0);
 }
 .block {
   display: grid;
@@ -334,7 +344,7 @@
   font-size: var(--step-2);
 }
 .block__h2 {
-  font-size: 1.25rem;
+  font-size: var(--step-1);
 }
 .due {
   list-style: none;
@@ -357,10 +367,15 @@
   min-width: 0;
 }
 .due__text b {
-  font-size: 1.08rem;
+  font-size: var(--step-0);
 }
 .due__item .btn {
   flex: none;
+}
+.due__item--done s {
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--ink);
+  color: var(--ink-3);
 }
 .due__item--ok {
   opacity: 0.82;
@@ -454,7 +469,7 @@
 }
 .hz-item__title {
   font-weight: 700;
-  font-size: 1.08rem;
+  font-size: var(--step-0);
 }
 .hz-item[open] summary {
   border-bottom: 1px dashed var(--rule);
@@ -464,6 +479,10 @@
   gap: 14px;
   padding: 16px 4px 20px;
   justify-items: stretch;
+}
+.hz-item__body textarea {
+  field-sizing: content;
+  min-height: 3lh;
 }
 .hz-item__body > .btn {
   justify-self: start;
@@ -482,7 +501,7 @@
   padding: 0;
   margin-bottom: 6px;
   font-weight: 640;
-  font-size: 0.92rem;
+  font-size: var(--t-ui);
   color: var(--ink-2);
 }
 .scale__row {
@@ -591,7 +610,7 @@
   color: var(--ink-2);
 }
 .rec__head b {
-  font-size: 1.05rem;
+  font-size: var(--step-0);
 }
 .rec__items {
   list-style: none;
@@ -600,7 +619,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 4px 16px;
-  font-size: 0.93rem;
+  font-size: var(--t-ui);
 }
 .rec__items li {
   display: flex;
@@ -612,7 +631,7 @@
   height: 16px;
   flex: none;
   border: 1.5px solid var(--ink-3);
-  border-radius: 2px;
+  border-radius: 3px;
   display: grid;
   place-items: center;
 }
@@ -639,7 +658,7 @@
   grid-template-columns: max-content 1fr;
   gap: 4px 14px;
   margin: 0;
-  font-size: 0.95rem;
+  font-size: var(--t-ui);
 }
 .rec__nc dt {
   color: var(--ink-3);
@@ -655,7 +674,7 @@
   flex-wrap: wrap;
   padding-top: 8px;
   border-top: 1px solid var(--rule-soft);
-  font-size: 0.92rem;
+  font-size: var(--t-ui);
   color: var(--ink-2);
 }
 .rec__btns {
@@ -673,7 +692,7 @@
   padding: clamp(18px, 4vw, 48px);
   display: grid;
   gap: 30px;
-  font-size: 1rem;
+  font-size: var(--step-0);
   line-height: 1.6;
 }
 .doc__cover {
@@ -702,13 +721,13 @@
   gap: 12px;
 }
 .doc h2 {
-  font-size: 1.35rem;
+  font-size: var(--step-1);
   font-stretch: 108%;
   padding-bottom: 6px;
   border-bottom: 1px solid var(--ink);
 }
 .doc h3 {
-  font-size: 1.05rem;
+  font-size: var(--step-0);
   font-stretch: 100%;
   font-weight: 760;
 }
@@ -721,7 +740,7 @@
   padding-left: 1.3em;
 }
 .doc__policy {
-  font-size: 1.08rem;
+  font-size: var(--step-0);
   border: 1px solid var(--ink);
   padding: 14px 16px;
 }
@@ -751,7 +770,7 @@
 .grid {
   border-collapse: collapse;
   width: 100%;
-  font-size: 0.94rem;
+  font-size: var(--t-ui);
 }
 .grid th,
 .grid td {
@@ -761,7 +780,7 @@
   vertical-align: top;
 }
 .grid thead th {
-  font-size: 0.72rem;
+  font-size: var(--t-micro);
   font-weight: 700;
   font-stretch: 80%;
   text-transform: uppercase;
@@ -780,7 +799,7 @@
   break-inside: avoid;
 }
 .doc__foot {
-  font-size: 0.82rem;
+  font-size: var(--t-small);
   color: var(--ink-3);
   border-top: 1px solid var(--rule);
   padding-top: 12px;
@@ -802,6 +821,73 @@
   }
 }
 
+/* Drill cadence: twelve months, one row per drill */
+.cadence {
+  display: grid;
+  gap: 10px;
+}
+.cadence__table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 3px;
+  table-layout: fixed;
+}
+.cadence__table th {
+  font-size: var(--t-micro);
+  font-weight: 700;
+  font-stretch: 80%;
+  color: var(--ink-3);
+  text-align: center;
+}
+.cadence__table thead th:first-child,
+.cadence__table tbody th {
+  width: 34%;
+}
+.cadence__table tbody th {
+  text-align: left;
+  font-size: var(--t-small);
+  font-stretch: 92%;
+  color: var(--ink);
+  font-weight: 640;
+  padding-right: 6px;
+  line-height: 1.2;
+}
+.cadence__table td {
+  height: 30px;
+  border: 1px solid var(--ink-3);
+  border-radius: 3px;
+  background: var(--sheet);
+}
+.cadence__table td.done,
+.cadence__key .cell.done {
+  background: var(--life);
+  border-color: var(--life);
+}
+.cadence__table td.soon,
+.cadence__key .cell.soon {
+  background: var(--caution);
+  border-color: var(--ink);
+}
+.cadence__table td.overdue,
+.cadence__key .cell.overdue {
+  background: var(--fire);
+  border-color: var(--fire);
+}
+.cadence__key {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  font-size: var(--t-small);
+}
+.cadence__key .cell {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--ink-3);
+  border-radius: 3px;
+}
+
 .print-only {
   display: none;
 }
@@ -811,9 +897,12 @@
     margin: 16mm 14mm;
   }
   :root {
-    --film: #fff;
-    --sheet: #fff;
-    --ink: #000;
+    --film: #ffffff;
+    --sheet: #ffffff;
+    --ink: #111416;
+    --ink-2: #3a4145;
+    --ink-3: #59626a;
+    --rule: #cdd2cf;
   }
   body {
     background: #fff;
@@ -847,6 +936,6 @@
     break-after: avoid;
   }
   .rec {
-    border-color: #000;
+    border-color: var(--ink);
   }
 }

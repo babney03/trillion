@@ -100,7 +100,7 @@ function Passenger() {
   );
 }
 
-function Tug() {
+function Tug({ hatchId }: { hatchId: string }) {
   return (
     <g className="profile">
       <path pathLength={1} className="ln ln--heavy" d="M110 156 L520 140 Q566 130 586 100 L566 196 Q546 214 492 216 L124 216 Q104 200 110 156 Z" />
@@ -116,12 +116,13 @@ function Tug() {
       <path pathLength={1} className="ln ln--heavy" d="M196 154 V128 M214 154 V128 M190 132 H220" />
       <path pathLength={1} className="ln ln--dash" d="M205 130 Q120 150 22 176" />
       {/* snap-back zone, hatched */}
-      <path d="M118 124 L250 124 L250 152 L118 156 Z" fill="url(#hatch)" stroke="var(--fire)" strokeWidth="1" strokeDasharray="4 3" />
+      <path d="M118 124 L250 124 L250 152 L118 156 Z" fill={`url(#${hatchId})`} stroke="var(--fire)" strokeWidth="1" strokeDasharray="4 3" />
     </g>
   );
 }
 
-export default function VesselDrawing({ kind }: { kind: Kind }) {
+export default function VesselDrawing({ kind, compact = false }: { kind: Kind; compact?: boolean }) {
+  const hatchId = compact ? "hatch-c" : "hatch";
   const caption =
     kind === "tug"
       ? "Towboat profile with towing bitt, snap-back zone, fire extinguisher and lifebuoy"
@@ -130,16 +131,21 @@ export default function VesselDrawing({ kind }: { kind: Kind }) {
         : "Workboat profile with wheelhouse, hauler davit, stern ladder, extinguisher and lifebuoy";
 
   return (
-    <svg className="drawing" viewBox="0 0 640 270" role="img" aria-label={caption}>
+    <svg
+      className={compact ? "drawing drawing--compact" : "drawing"}
+      viewBox={compact ? "0 18 640 214" : "0 0 640 270"}
+      role={compact ? undefined : "img"}
+      aria-label={compact ? undefined : caption}
+    >
       <defs>
-        <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <pattern id={hatchId} width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
           <line x1="0" y1="0" x2="0" y2="7" stroke="var(--fire)" strokeWidth="1.2" />
         </pattern>
       </defs>
 
       {/* waterline, baseline and stations */}
       <line x1="10" y1="196" x2="630" y2="196" className="ln ln--dash" />
-      <text x="626" y="190" textAnchor="end" className="dim">
+      <text x="626" y="190" textAnchor="end" className="dim" fontSize="10">
         DWL
       </text>
       <line x1="10" y1="236" x2="630" y2="236" className="ln ln--thin" />
@@ -148,7 +154,7 @@ export default function VesselDrawing({ kind }: { kind: Kind }) {
         return (
           <g key={i}>
             <line x1={x} y1="230" x2={x} y2="242" className="ln ln--thin" />
-            <text x={x} y="258" textAnchor="middle" className="dim">
+            <text x={x} y="258" textAnchor="middle" className="dim" fontSize="10">
               {i}
             </text>
           </g>
@@ -158,7 +164,7 @@ export default function VesselDrawing({ kind }: { kind: Kind }) {
       <g className="ghost" aria-hidden="true">
         {kind === "work" && <Work />}
         {kind === "passenger" && <Passenger />}
-        {kind === "tug" && <Tug />}
+        {kind === "tug" && <Tug hatchId={hatchId} />}
       </g>
 
       <g key={kind} className="plot">
@@ -187,7 +193,7 @@ export default function VesselDrawing({ kind }: { kind: Kind }) {
         )}
         {kind === "tug" && (
           <>
-            <Tug />
+            <Tug hatchId={hatchId} />
             <Fire x={420} y={120} />
             <Buoy x={300} y={118} />
             <Callout n={1} x={130} y={60} tx={160} ty={138} />

@@ -27,7 +27,10 @@
   --step-0: clamp(1.05rem, 1rem + 0.2vw, 1.15rem);
   --step-1: clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem);
   --step-2: clamp(1.6rem, 1.35rem + 1vw, 2.15rem);
-  --step-3: clamp(2.1rem, 1.6rem + 2.2vw, 3.6rem);
+  --step-3: clamp(2.05rem, 1.45rem + 2.3vw, 3.3rem);
+  --t-micro: 0.72rem;
+  --t-small: 0.875rem;
+  --t-ui: 0.95rem;
   --gut: clamp(16px, 4vw, 40px);
   --page: 1240px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -125,7 +128,7 @@ a {
 :focus-visible {
   outline: 3px solid var(--mandatory);
   outline-offset: 2px;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 .wrap {
@@ -151,7 +154,7 @@ a {
   text-decoration: none;
   font-weight: 800;
   font-stretch: 125%;
-  font-size: 1.15rem;
+  font-size: var(--step-1);
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -162,7 +165,7 @@ a {
 
 /* ── Lettering conventions from drawing sheets ─────────────────────── */
 .label {
-  font-size: 0.72rem;
+  font-size: var(--t-micro);
   font-weight: 640;
   font-stretch: 78%;
   letter-spacing: 0.06em;
@@ -199,7 +202,7 @@ a {
   font: inherit;
   font-weight: 700;
   font-stretch: 104%;
-  font-size: 1.02rem;
+  font-size: var(--step-0);
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
@@ -213,8 +216,12 @@ a {
 .btn:active {
   transform: translateY(1px);
 }
-.btn[disabled] {
-  opacity: 0.45;
+.btn[disabled],
+.btn--ink[disabled] {
+  background: var(--sheet);
+  color: var(--ink-3);
+  border-color: var(--ink-3);
+  border-style: dashed;
   cursor: not-allowed;
   transform: none;
 }
@@ -229,7 +236,7 @@ a {
 .btn--small {
   min-height: 44px;
   padding: 0 14px;
-  font-size: 0.95rem;
+  font-size: var(--t-ui);
 }
 .btn--quiet {
   border-color: transparent;
@@ -258,13 +265,13 @@ a {
   gap: 6px;
 }
 .field > span {
-  font-size: 0.92rem;
+  font-size: var(--t-ui);
   font-weight: 640;
   color: var(--ink-2);
 }
 .field small {
   color: var(--ink-3);
-  font-size: 0.85rem;
+  font-size: var(--t-small);
 }
 input[type="text"],
 input[type="email"],
@@ -281,7 +288,7 @@ textarea {
   background: var(--sheet);
   color: var(--ink);
   font: inherit;
-  font-size: 1.05rem;
+  font-size: var(--step-0);
 }
 textarea {
   min-height: 108px;
@@ -310,7 +317,7 @@ textarea::placeholder {
   padding: 0;
   margin-bottom: 8px;
   font-weight: 640;
-  font-size: 0.95rem;
+  font-size: var(--t-ui);
   color: var(--ink-2);
 }
 
@@ -339,7 +346,7 @@ textarea::placeholder {
   border-radius: var(--r);
   background: var(--sheet);
   font-weight: 600;
-  font-size: 0.98rem;
+  font-size: var(--t-ui);
   transition: background-color 140ms var(--ease), border-color 140ms var(--ease), color 140ms var(--ease);
 }
 .choice input:checked + span {
@@ -362,7 +369,7 @@ textarea::placeholder {
   gap: 7px;
   padding: 3px 9px 3px 7px;
   border-radius: 3px;
-  font-size: 0.8rem;
+  font-size: var(--t-small);
   font-weight: 700;
   font-stretch: 86%;
   letter-spacing: 0.03em;
@@ -371,8 +378,8 @@ textarea::placeholder {
 }
 .mark::before {
   content: "";
-  width: 9px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
   background: currentColor;
 }
 .mark--overdue {
@@ -424,18 +431,18 @@ textarea::placeholder {
 .tb__val {
   font-weight: 700;
   font-stretch: 100%;
-  font-size: 1rem;
+  font-size: var(--step-0);
   line-height: 1.2;
   overflow-wrap: anywhere;
 }
 .tb__val--big {
-  font-size: 1.35rem;
+  font-size: var(--step-1);
   font-stretch: 112%;
   white-space: nowrap;
 }
 @media (max-width: 560px) {
   .tb__val--big {
-    font-size: 1.15rem;
+    font-size: var(--step-1);
     font-stretch: 100%;
   }
 }
@@ -449,7 +456,7 @@ textarea::placeholder {
   border: 1.5px solid var(--ink);
   border-radius: 50%;
   background: var(--sheet);
-  font-size: 0.82rem;
+  font-size: var(--t-small);
   font-weight: 760;
   flex: none;
 }

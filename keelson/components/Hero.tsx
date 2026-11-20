@@ -74,6 +74,9 @@ export default function Hero() {
         <div className="hero__grid">
           <div className="hero__copy">
             <h1 id="hero-h">Your boat’s safety management system, drawn up and kept.</h1>
+            <div className="hero__strip" aria-hidden="true">
+              <VesselDrawing kind={kind} compact />
+            </div>
             <p className="lead">
               Transport Canada now requires a documented SMS on most small commercial vessels. Keelson asks plain questions, drafts the manual, and
               keeps the records on your phone, even with no signal.

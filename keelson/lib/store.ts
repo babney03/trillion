@@ -238,6 +238,12 @@ export function formatDate(iso: string): string {
   return d.toLocaleDateString("en-CA", { year: "numeric", month: "short", day: "numeric" });
 }
 
+export function drillKeysFor(vessel: Vessel): string[] {
+  const keys = ["Person overboard", "Fire", "Abandon vessel", "Flooding"];
+  if (vessel.activities.includes("passengers") || vessel.activities.includes("fishingGuests")) keys.push("Passenger evacuation");
+  return keys;
+}
+
 export interface DueItem {
   id: string;
   level: "overdue" | "soon" | "ok";
@@ -273,9 +279,7 @@ export function dueItems(s: KeelsonState, vessel: Vessel | undefined, now = new 
   }
 
   // Drills on a rotating cycle
-  const drillKeys = ["Person overboard", "Fire", "Abandon vessel", "Flooding"];
-  if (vessel.activities.includes("passengers") || vessel.activities.includes("fishingGuests")) drillKeys.push("Passenger evacuation");
-  for (const k of drillKeys) {
+  for (const k of drillKeysFor(vessel)) {
     const last = recs.filter((r) => r.kind === "drill" && r.title === k).sort((a, b) => b.date.localeCompare(a.date))[0];
     if (!last) {
       const adopted = s.revisions.length > 0;
