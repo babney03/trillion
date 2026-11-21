@@ -1,0 +1,5 @@
+# Keelson on Netlify: site "keelson-sms" (https://keelson-sms.netlify.app)
+# If the site is ever linked to this Git repo, set the base directory to "keelson".
+[build]
+  command = "npm run build"
+  publish = "out"

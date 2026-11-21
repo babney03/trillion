@@ -32,7 +32,25 @@ Open http://localhost:3000. To build the static site (output in `out/`):
 npm run build
 ```
 
-Any static host can serve `out/`. On Netlify: build command `npm run build`, publish directory `out`, base directory `keelson`.
+Any static host can serve `out/`.
+
+## Live site
+
+**https://keelson-sms.netlify.app** (Netlify site `keelson-sms`, free version, no accounts or payments yet).
+
+To redeploy after changes, build and upload `out/`:
+
+```bash
+npm run build
+```
+
+```bash
+npx netlify-cli deploy --dir=out --prod --site=keelson-sms
+```
+
+Or drag the `out` folder onto the site's Deploys page in Netlify. `netlify.toml` holds the build settings if the site is later linked to this repo (base directory `keelson`).
+
+Note: new sites on this Netlify team default to "team login required". Keelson's site has it switched off so anyone with the link can open it.
 
 ## Status
 
