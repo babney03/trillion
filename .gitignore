@@ -11,3 +11,5 @@ cartoons/**/out/
 cartoons/pilots/
 cartoons/ai-pilot/*.mp4
 cartoons/**/*.sheet.png
+cartoons/release/
+cartoons/branding/.build-*/

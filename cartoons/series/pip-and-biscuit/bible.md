@@ -10,7 +10,7 @@ in under 60 seconds, with music and almost no words.
 
 - **Audience:** ages 2-6, watched with or near a parent. Made for Kids on YouTube.
 - **Promise of every episode:** something goes wrong → a kind fix → a happy, musical payoff.
-- **Language load:** at most 2 short spoken/bubble lines per episode. The story must read with the sound off.
+- **Language load:** a narrator tells the story in short sentences; Pip speaks 3-6 short lines (counting and calling out loud count as speaking). No reading is needed: no speech bubbles, and big words like BONK! are decoration only.
 
 ## Characters
 
@@ -52,14 +52,25 @@ BISCUIT: a chubby tan puppy with floppy brown ears, a white muzzle and a red col
 
 - **Reference frame:** generate one "master frame" per set with `gpt_image_2_6` (about 1 credit), then pass it as
   `start_image` (and the original pilot frame as an `image_reference`) for every clip, so faces and outfits stay locked.
-- Pilot master frame (playroom): `cartoons/ai-pilot/pip-frame.png` (Higgsfield job `f222bec7-9cd6-4a82-b8cd-0f145daa78fc`).
+- Pilot master frame (playroom): `cartoons/ai-pilot/pip-frame.png` (Higgsfield job `f222bec7-9cd6-4a82-b8cd-0f145daa78fc`). Note: the AI route draws Pip in 3D, which doesn't match the kit's 2D look. Pick one look per channel.
 - Reject and regenerate any clip where Pip's hair, dress or Biscuit's collar changes, or a hand or paw morphs.
 
-## Code-route kit (animation-studio engine)
-- Pip: `Ch.kid(ctx, { ..., style: Ch.KID_STYLES.pip })` from `cartoons/pip-biscuit-tower/kid.js`.
-- Biscuit: `Ch.dog(ctx, { color: '#D9A066', ear: '#8A5A33', s: 1.55 })` plus the red collar and bell drawn in `film.js` (`drawDog`).
-- Playroom background: `drawBg` in `cartoons/pip-biscuit-tower/film.js`. Copy, don't redraw.
-- Music identity: C major, 128 BPM, plucked "ukulele" off-beats, marimba for Pip's actions, pizzicato and yips for Biscuit.
+## Code-route kit (`cartoons/kit`), the free way we make episodes
+- The characters, sets, props, effects, music and voices all live in the kit. An episode is one `score.js` (see `cartoons/kit/README.md`).
+- **Pip:** `kit/lib/pip.js`, clean modern-2D, with lip-sync, 14 faces, walk/jump and 16 gestures.
+- **Biscuit:** `kit/lib/biscuit.js`, with sit/stand/trot/leap/flop/beg, swinging ears, wagging tail and eyebrow acting. The brown patch over his right eye is his mark: never drop it.
+- **Sets:** playroom, kitchen (with an optional table) and backyard (with Biscuit's doghouse).
+- **Voices (free, Kokoro):**
+  - narrator `af_heart`: warm, speed 0.94
+  - Pip `af_bella` pitched up 4 semitones (≈267 Hz, a 5-year-old's range)
+  - Grandma `bf_isabella`
+  - Milo `am_puck` +7
+  - Biscuit never speaks: yips, barks and whimpers only.
+- **Music identity:**
+  - the Pip & Biscuit theme (2 bars, C major) on music box in intros and outros, and on brass in the party;
+  - plucked off-beat "ukulele";
+  - marimba for Pip's actions, pizzicato for Biscuit's.
+- **Every episode** runs the clarity check (Whisper hears every line), the sync check and the QA gate before upload.
 
 ## Episode rules
 1. **Hook in the first second:** something moves or pops on frame 1. No slow fades in.

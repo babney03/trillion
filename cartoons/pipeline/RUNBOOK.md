@@ -6,7 +6,7 @@
 ## Config
 - SERIES: `pip-and-biscuit`
 - EPISODES_PER_RUN: 2
-- ROUTE: `code` for both, except every 4th episode, which uses `ai` (a hero episode)
+- ROUTE: `code` (the free kit). Use `ai` only when there is a Higgsfield credit budget.
 - AI_CREDIT_BUDGET_PER_RUN: 70 (one 15s clip). Never exceed it; check `balance` and `estimate_video_cost` first.
 - MODE: `review` (render + package only) | `auto` (also upload as scheduled-private)
 - PUBLISH_SLOTS (UTC): 16:00 and 22:00, starting the day after the run
@@ -19,9 +19,11 @@
    at most 3 per premise).
 3. For each of the next EPISODES_PER_RUN `idea` items:
    a. Write `episodes/NNN-slug.json` in the shape of `001-wobbly-tower.json`. Title by the playbook formulas.
-   b. Render by ROUTE (see PIPELINE.md 2a/2b). For the code route, reuse `kid.js` and the playroom, dog and block helpers;
-      run `render.js verify` and fix any ✗ in `score.js`.
-   c. AI route: `pipeline/assemble.sh` the clips. Both routes: `pipeline/qa.sh`. Read the contact sheet;
+   b. Code route (default, free):
+      - `node cartoons/kit/tools/new-episode.js NNN "Title" --set <set> --lesson "<lesson>"`, then fill in the 8 beats from the spec (see `cartoons/kit/README.md`).
+      - Run `node cartoons/kit/tools/build.js cartoons/episodes/NNN-slug --sheet`, read the sheet and fix what reads wrong.
+      - Then run it again with `--asr` for the final MP4. It must pass the voice check, sync check and QA gate.
+   c. AI route (only with a credit budget): see PIPELINE.md 2b and `pipeline/assemble.sh`. Read the contact sheet;
       if a face, hand, paw or outfit glitches, regenerate once, then mark the item `needs_review` and move on.
    d. `python3 pipeline/package.py <spec> --publish-at <next free slot>`.
    e. MODE=auto: `python3 pipeline/upload_youtube.py <mp4> <meta>` and append the ledger row. MODE=review: send the

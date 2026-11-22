@@ -1,15 +1,16 @@
 {
   "episode": "PB001",
-  "title": "Biscuit Knocked It Over! 😮🧱 Let's Build It Together #forkids",
-  "description": "Pip builds a super tall tower... and Biscuit wants to help! Uh-oh! Can they build it again, together? A tiny lesson about teamwork for little ones.\n\nNew Pip & Biscuit cartoons every week.\n\n#forkids #kidscartoon #shorts #teamwork #preschool",
+  "title": "Biscuit Knocked It Over! 😮🧱 Let's Count & Build Together #forkids",
+  "description": "Pip builds a super tall tower... and Biscuit wants to help! BONK! Uh-oh! Can they build it again, together? Count to eight with Pip and Biscuit in this little story about teamwork.\n\nNew Pip & Biscuit cartoons every week.\n\n#forkids #kidscartoon #shorts #teamwork #counting #preschool",
   "snippet": {
-    "title": "Biscuit Knocked It Over! 😮🧱 Let's Build It Together #forkids",
-    "description": "Pip builds a super tall tower... and Biscuit wants to help! Uh-oh! Can they build it again, together? A tiny lesson about teamwork for little ones.\n\nNew Pip & Biscuit cartoons every week.\n\n#forkids #kidscartoon #shorts #teamwork #preschool",
+    "title": "Biscuit Knocked It Over! 😮🧱 Let's Count & Build Together #forkids",
+    "description": "Pip builds a super tall tower... and Biscuit wants to help! BONK! Uh-oh! Can they build it again, together? Count to eight with Pip and Biscuit in this little story about teamwork.\n\nNew Pip & Biscuit cartoons every week.\n\n#forkids #kidscartoon #shorts #teamwork #counting #preschool",
     "tags": [
       "kids cartoon",
       "cartoon for kids",
       "preschool",
       "teamwork for kids",
+      "counting to 8",
       "toddler learning",
       "pip and biscuit",
       "shorts",
@@ -21,9 +22,8 @@
     "defaultAudioLanguage": "en"
   },
   "status": {
-    "privacyStatus": "private",
+    "privacyStatus": "public",
     "selfDeclaredMadeForKids": true,
-    "containsSyntheticMedia": false,
-    "publishAt": "2026-11-25T16:00:00Z"
+    "containsSyntheticMedia": false
   }
 }

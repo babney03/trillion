@@ -1,0 +1,9 @@
+# generated per build by kit/tools/build.js (only score.js / custom.js are source)
+*/engine/
+*/kit/
+*/out/
+*/index.html
+*/song.js
+*/voice-lengths.js
+*/build.log
+_cast/
