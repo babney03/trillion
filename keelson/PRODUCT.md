@@ -45,7 +45,7 @@ Built for the Canadian small-vessel classes (4B and 5) and their actual obligati
 ## Evidence on Hand
 
 - Transport Canada Small Commercial Vessel Registry (open data, updated Jan 2026): 19,076 vessels; BC 5,570, ON 4,104, QC 3,274, NL 2,289. Analysis in research/.
-- The founder is based in Nanaimo, on Vancouver Island (the parent repository's prospect work is in Nanaimo), so in-person set-up help "at the dock on Vancouver Island" is a real service offer.
+- The founder is based out of Calgary, Alberta (confirmed by the founder, November 2026). Set-up help is offered by phone or video call; the landing page says "based out of Calgary". Do not promise in-person dock visits.
 - No customers, testimonials, partners or endorsements exist yet. Do not invent any. Demo vessels and records must be labelled as samples.
 
 ## Product Principles

@@ -15,8 +15,8 @@ This is your operating manual. Read it top to bottom once, then use it as a chec
 **Why you can win:**
 
 - **No real competitor in Canada.** Today it's consultants quoting by the job, a $1,099 PDF, or an app built for New Zealand.
-- **Biggest fleet, home turf.** BC has more of these vessels (5,570) than any other province, and you live in the middle of it.
-- **Old-school buyers.** They're best reached on the dock, not online. That protects you from copycats who only know how to build software.
+- **Big fleets, reachable from Calgary.** BC has more of these vessels (5,570) than any other province, and it's a phone call or short flight away. Alberta has 995 of its own, close to home.
+- **Old-school buyers.** They're best reached by phone and in person, not with online ads. That protects you from copycats who only know how to build software.
 
 **The honest risks** (and what to do about each) are in section 9.
 
@@ -31,7 +31,7 @@ This is your operating manual. Read it top to bottom once, then use it as a chec
 | **Draft** | Class finder and full draft manual, preview only | Free |
 | **Keeper** | Issue and print the manual, all records, reminders, annual review | **$390 / vessel / year** |
 | **Fleet** | Keeper for 3+ vessels under one ship manager | **$290 / vessel / year** |
-| **Set-up help** | You tailor it with them, by phone or at the dock | **$490 once** |
+| **Set-up help** | You tailor it with them, step by step, by phone or video call | **$490 once** |
 | **Founding operator** | First 25 vessels only, for feedback and (with permission) a quote | **$195 first year**, then normal price |
 
 **Why annual:** boats are seasonal, and operators already pay insurance and licences yearly. Annual billing kills winter cancellations.
@@ -95,7 +95,7 @@ The prototype in this folder works: class finder, vessel setup, hazard register,
 6. **French** before you sell in Quebec (3,274 registered vessels).
 7. **Later:** photos on records, signature capture on the phone, crew sign-off on their own phones.
 
-**Deploy now anyway.** Put the free version live (Netlify is already connected; ask me) so you can show it on the dock and collect interest.
+**The free version is live** at https://keelson-sms.netlify.app. Send it to operators and use it on calls to collect interest while the rest is built.
 
 ---
 
@@ -103,7 +103,11 @@ The prototype in this folder works: class finder, vessel setup, hazard register,
 
 Don't guess what they need. Go and ask. Aim for 15 real conversations in the first three weeks.
 
-**Where:** public docks and harbours on Vancouver Island, such as Nanaimo, Ladysmith, Cowichan Bay, Comox, Campbell River, Port Hardy, Tofino/Ucluelet and Victoria. Look for workboats, aquaculture crew boats, water taxis, whale-watching and fishing-charter boats, and small tugs. Early morning and late afternoon are when skippers are at the boat but not rushing.
+**How, from Calgary:**
+
+- **By phone first.** Most small operators list a business phone on Google Maps or their website. Search BC coastal towns (Vancouver Island, the Sunshine Coast, the Lower Mainland, the North Coast) for water taxis, whale-watching and fishing charters, tour boats, aquaculture services, marine contractors and small tug companies. Call mid-morning or mid-afternoon, not when they're likely on the water.
+- **Close to home.** Alberta has 995 small commercial vessels on Transport Canada's register: lake tour and charter boats, workboats for construction, survey and environmental work, and others. These are the operators you can meet in person.
+- **Planned trips to the coast.** Once you've booked a few calls, plan a 2–3 day trip to one BC region and walk the harbours there (early morning and late afternoon are when skippers are at the boat but not rushing). The spring before the July 2027 deadline is the best time.
 
 **What to ask** (listen more than you talk):
 
@@ -122,23 +126,25 @@ Write notes after every conversation: boat type, class, status, pain, price reac
 
 ### Channels, in the order to try them
 
-1. **Dock walks and direct conversations (Vancouver Island first).** The slowest channel, but the one that teaches you the most. Carry a phone with the class finder open. Leave a one-page flyer with a QR code to the free draft.
+1. **Direct calls, plus planned trips to the coast.** The slowest channel, but the one that teaches you the most. Call operators, send the live link, and walk them through the class finder. On harbour trips, carry a phone with the class finder open and leave a one-page flyer with a QR code to the free draft.
 2. **Small-vessel training schools.** Every new commercial operator takes courses like SVOP and MED. Offer schools a free draft for every student, with a discount code that pays the school a referral fee. Students go straight from the course into your product.
 3. **Associations.** Shellfish growers, salmon farmers, sport-fishing, whale-watching, tug and towing, and wilderness tourism groups all have members facing this deadline. Offer a free 20-minute talk at a meeting ("What the SMS rules mean for your boat") plus a member discount.
 4. **Marine consultants.** Don't fight them; supply them. Give consultants a wholesale price so they deliver faster with Keelson and keep the client relationship. Transport Canada publishes a list of SMS consultants; that list is your partner pipeline.
 5. **Marine insurance brokers.** Insurers want safer clients. Ask brokers to recommend Keelson to small commercial policyholders, and offer them a referral fee or co-branded flyers.
-6. **Content.** Write plain answers to the questions operators search for: "Do I need an SMS for my water taxi?" or "What is a Class 5 vessel?" The free class finder is your best lead magnet. Short videos filmed on the dock work well for this audience.
+6. **Content.** Write plain answers to the questions operators search for: "Do I need an SMS for my water taxi?" or "What is a Class 5 vessel?" The free class finder is your best lead magnet. Short, plain videos (a screen recording of the class finder, or a clip filmed on a boat during a trip) work well for this audience.
 7. **Transport Canada's own meetings.** Transport Canada holds regional Canadian Marine Advisory Council (CMAC) meetings where operators discuss regulations. Attend and listen; that's where your buyers' worries are spoken out loud.
 
 **Not yet:** paid ads. Don't spend on ads until you have 25 paying vessels and know which message works.
 
 ### Scripts (skeletons; say them your way)
 
-**On the dock:**
+**On the phone:**
 
-> "Morning. Quick one: have you sorted out the new safety management system rules for the boat yet? … I built a tool that works out your class and deadline in about thirty seconds. Want to see what it says for yours?"
+> "Hi, is this [business]? My name's [you], I'm calling from Calgary about the new safety management system rules for small commercial boats. Quick one: have you sorted that out for your boats yet? … I built a free tool that works out your class and deadline in about thirty seconds. Can I text you the link?"
 
-Then hand them the phone. Let the class finder do the talking.
+Then text the link and stay on the line while they try it. Let the class finder do the talking.
+
+**In person (on a harbour trip):** same opener, then hand them your phone with the class finder open.
 
 **Email to an operator** (published business address only, and always relevant to their business):
 
@@ -146,16 +152,16 @@ Then hand them the phone. Let the class finder do the talking.
 >
 > Hi [Name],
 >
-> I'm [you], based in Nanaimo. Under Transport Canada's Marine Safety Management System Regulations, [boat type] like yours need a documented safety management system by July 2, 2027, and it has to be kept up with drills and records after that.
+> I'm [you], based out of Calgary. Under Transport Canada's Marine Safety Management System Regulations, [boat type] like yours need a documented safety management system by July 2, 2027, and it has to be kept up with drills and records after that.
 >
 > I built Keelson to make that simple: it drafts the manual from a few questions and keeps the records on your phone, even offline. The draft is free: [link].
 >
-> If it's useful, I'm happy to set it up with you at the dock.
+> If it's useful, I'm happy to set it up with you on a call, step by step.
 >
 > [Name] · [phone] · [business name, address]
 > Reply "no thanks" and I won't email again.
 
-**Canada's anti-spam law (CASL):** B2B email to a publicly listed business address is generally allowed when it's relevant to their work and they haven't said "no unsolicited messages". Every email must name you and your business, include a mailing address, and offer a working way to opt out. Keep a do-not-contact list and honour it. Phone calls and dock visits aren't covered by CASL.
+**Canada's anti-spam law (CASL):** B2B email to a publicly listed business address is generally allowed when it's relevant to their work and they haven't said "no unsolicited messages". Every email must name you and your business, include a mailing address, and offer a working way to opt out. Keep a do-not-contact list and honour it. Phone calls and in-person visits aren't covered by CASL, but honour any "don't call me" request and check the National Do Not Call List rules before calling numbers that may be personal.
 
 ### Objections and answers
 
@@ -166,7 +172,7 @@ Then hand them the phone. Let the class finder do the talking.
 | "I'm too small for this." | "Class 5 is exactly the small boats: 15 tonnes or less. That's who the 2027 deadline is for." |
 | "Is this approved by Transport Canada?" | "No software is. Transport Canada doesn't approve SMS tools or consultants. Keelson is built on their own guide, and you review and sign it." |
 | "I run a fishing boat." | "Then these rules probably don't cover you; fishing vessels under 24.4 m are excluded. Unless you take paying guests: then it's a passenger vessel." |
-| "I'm not good with phones." | "That's what set-up help is for. We'll do it together at the dock, and you can print everything for the binder." |
+| "I'm not good with phones." | "That's what set-up help is for. We'll do it together on a call, one step at a time, and you can print everything for the binder." |
 
 **Never exaggerate.** Don't invent inspections, fines or deadlines. Fear sells once; trust sells for years in a small community where everyone talks.
 
@@ -192,7 +198,7 @@ Then hand them the phone. Let the class finder do the talking.
 | When | What |
 | --- | --- |
 | Monday | Review the pipeline: who you talked to, who's trying the draft, who needs a nudge. |
-| Tuesday–Thursday | Selling and onboarding: dock visits, calls, partner meetings, set-ups. |
+| Tuesday–Thursday | Selling and onboarding: calls, video set-ups, partner meetings; harbour visits on planned trips. |
 | Friday | Product and content: fix what customers complained about, publish one useful post or video. |
 | Monthly | Review the numbers below. Back up everything. |
 | Quarterly | Regulation watch: check Transport Canada's Ship Safety Bulletins and TP 15566 for changes, and update the content. |
@@ -213,7 +219,7 @@ Then hand them the phone. Let the class finder do the talking.
 | Risk | What to do |
 | --- | --- |
 | **Content is wrong and someone relies on it.** | Expert review before launch, clear "draft, you're responsible" language, terms of service, liability insurance. |
-| **You're not a mariner, so skippers don't trust you.** | Put your expert reviewer's name and credentials on the product. Show up on the dock in person. Consider making a respected local mariner a paid advisor or partner. |
+| **You're not a mariner, so skippers don't trust you.** | Put your expert reviewer's name and credentials on the product. Get on the phone, and show up in person on planned trips to the coast. Consider making a respected BC mariner a paid advisor or partner. |
 | **Transport Canada publishes free templates.** | Templates were never your product. Records, reminders, inspection-ready printouts and your help are. |
 | **The rush ends after July 2, 2027.** | Annual subscriptions; about 1,300–1,800 new vessels register every year and each needs an SMS within 6 months; then expand to new segments (section 10). |
 | **Records lost with a phone.** | Cloud sync is priority #2 in section 4. Until then, teach backups at every set-up. |
@@ -224,7 +230,7 @@ Then hand them the phone. Let the class finder do the talking.
 
 ## 10. How it scales when money comes in
 
-**Stage 1: 0 → 100 vessels (you, Vancouver Island).** You do everything. Goal: prove people pay and keep using it. Finish section 4's top three items.
+**Stage 1: 0 → 100 vessels (you, from Calgary: BC by phone and planned trips, Alberta in person).** You do everything. Goal: prove people pay and keep using it. Finish section 4's top three items.
 
 **Stage 2: 100 → 500 vessels (all of BC, plus partners elsewhere).** Triggers and moves:
 - Onboarding takes more than 10 hours a week → hire a part-time onboarding person. A semi-retired mariner is ideal: instant trust.
@@ -264,9 +270,9 @@ Then hand them the phone. Let the class finder do the talking.
 
 - [ ] Read this playbook and `research/market.md` once.
 - [ ] Check the Keelson name and domain (section 3, step 1).
-- [ ] Ask me to deploy the free version to Netlify so you have a link to show.
+- [ ] Send the live link (https://keelson-sms.netlify.app) to yourself and open it on your phone.
 - [ ] Open the app with the sample vessel and click through every screen on your phone.
-- [ ] Visit two harbours and have your first 5 conversations (section 5).
+- [ ] Have your first 5 operator conversations by phone, plus any Alberta operators you can meet in person (section 5).
 - [ ] Find and contact two marine consultants about reviewing the content (section 4, item 1).
 - [ ] Register the business name and open a bank account (section 3).
 

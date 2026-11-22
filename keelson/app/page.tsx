@@ -288,7 +288,7 @@ export default function Home() {
                 </tr>
                 <tr>
                   <td className="plan">Set-up help</td>
-                  <td>We tailor your system with you, by phone or at the dock on Vancouver Island.</td>
+                  <td>We tailor your system with you, step by step, by phone or video call.</td>
                   <td className="amt">
                     $490<small>once</small>
                   </td>
@@ -357,6 +357,7 @@ export default function Home() {
 
       <footer className="foot">
         <div className="wrap foot__in">
+          <p>Keelson is based out of Calgary, Alberta, and works with operators anywhere in Canada.</p>
           <p>
             Keelson is an independent product. It is not affiliated with or endorsed by Transport Canada. Content is general guidance, not legal advice.
           </p>

@@ -83,7 +83,7 @@ The first three rows, **about 10,400 vessels (3,900 in BC)**, are the core marke
 | Shared commercial-kitchen marketplace | The Food Corridor, Giggster and Peerspace already list BC kitchens. |
 | BC fishing-regulation alerts app | The official FishingBC app is free. |
 
-**The pattern:** in 2026 AI makes software cheap to build, so any niche you can find from a desk using public data fills up fast. Keelson is protected by things code can't copy: a hard legal deadline, buyers who are old-school and best reached on the dock, trust in a small marine community, and a home base (Nanaimo) inside the biggest fleet in the country.
+**The pattern:** in 2026 AI makes software cheap to build, so any niche you can find from a desk using public data fills up fast. Keelson is protected by things code can't copy: a hard legal deadline, buyers who are old-school and best reached on the dock, trust in a small marine community, and a founder who reaches them directly by phone and in person. The founder is based out of Calgary: BC (5,570 vessels) is a phone call or short flight away, and Alberta has 995 registered vessels of its own.
 
 ## Sources
 
