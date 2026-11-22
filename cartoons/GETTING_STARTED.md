@@ -32,26 +32,35 @@ Everything below is free. It takes about an hour on day 1, then 10 minutes a day
   - Tags: `kids cartoon, cartoon for kids, preschool, toddler learning, pip and biscuit`
 - When you upload, answer **"Altered or synthetic content": No.** The label is for realistic footage; cartoons don't need it.
 
-## Day 1: your first two uploads (15 minutes)
+## Day 1: your first uploads (15 minutes)
 
-Upload the two finished episodes (sent with this guide):
+The channel's look is the **3D style** (Higgsfield). Upload these three, one per day:
 
 | file | title |
 |---|---|
-| `pb001-wobbly-tower.mp4` | Biscuit Knocked It Over! 😮🧱 Let's Count & Build Together #forkids |
-| `pb002-my-turn-your-turn.mp4` | Pip Won't Share Her Ball! 🔴🐶 Taking Turns for Kids #forkids |
+| `release/3d/pb-3d-ep1-tower.mp4` (15s) | Biscuit Knocked Over Pip's Tower! 😮🧱 Let's Build It Together #forkids |
+| `release/3d/pb-3d-ep2-turns.mp4` (15s) | Pip Won't Share Her Ball! 🔴🐶 Taking Turns #forkids |
+| `release/3d/pb-3d-ep3-bubbles.mp4` (10s) | Bubbles on Biscuit's Nose! 🫧🐶 Scrub Scrub Scrub #forkids |
 
-How to upload:
+Descriptions are in `ai-episodes/manifest.json`. How to upload:
 - Use YouTube Studio on a computer, or the YouTube app's **+** button.
 - Vertical videos under 3 minutes automatically become Shorts.
-- Paste the title. Use the description template above with a sentence about the episode. Set **Made for kids: Yes**.
-- In the app you can pick the cover frame: choose one with both characters and a big expression.
-- **Don't upload the old test videos** (the pencil-style pilot and the 3D AI clip). They don't match the new look, and a channel needs one consistent style.
+- Set **Made for kids: Yes**, and answer **No** to altered/synthetic content (it's a cartoon).
+- In the app, pick a cover frame with both characters and a big expression.
+- **Don't mix styles:** the 2D kit episodes and the two old test videos don't match the 3D look. Keep them off this channel.
+
+## Making more 3D episodes (Higgsfield credits)
+
+Your Starter plan refills **200 credits about once a month** (around Nov 30 next), and unused credits are wiped at each refill.
+- **Cost:** a 15-second episode costs about 67.5 credits, so that's **about 3 episodes a month**.
+- **Ready to go:** five episodes are prepared, each with its opening frame made and its prompt written in `ai-episodes/manifest.json`. Apple sharing, bedtime, crosswalk safety, umbrella kindness and scooter "never give up" just need video credits.
+- **Optional fix:** episode 3's full "All clean!" ending can be added later for about 22.5 credits.
+- **Spend before each refill.** Credits left over are lost.
+- **For more volume:** at 3 a month, post 2–3 a week to start. When the channel shows traction, a bigger plan or credit packs buy more episodes. The free 2D kit stays available if you ever start a second, 2D-style show.
 
 ## Days 2–14: the rhythm
 
-- **Post one episode a day at the same time.** Late afternoon in your country is a good default.
-  Consistency matters more than volume in week one. Scheduled publishing keeps it regular.
+- **Post at the same time each time**: late afternoon in your country is a good default. With 3D episodes limited by credits, start with 2–3 a week and keep it steady.
 - **Ask me for new episodes.** For example: *"make episodes 3, 4 and 5 from the backlog"*, or *"make an episode where Biscuit is scared of the vacuum"*.
   - Each episode is one score file built from the kit.
   - It renders in about 4 minutes.

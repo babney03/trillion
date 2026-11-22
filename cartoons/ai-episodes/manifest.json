@@ -1,0 +1,31 @@
+{
+  "_about": "Pip & Biscuit 3D episodes made with Higgsfield (Grok Video 1.5, 720p, 15 s, about 67.5 credits each). Frames are Higgsfield image job IDs: pass one as start_image (it can't be combined with reference images). New frames: gpt_image_2_6, 9:16, quality medium, with the playroom frame as image_references (1 credit each).",
+  "character_reference_frame": "f222bec7-9cd6-4a82-b8cd-0f145daa78fc",
+  "episodes": [
+    { "n": 1, "slug": "tower", "file": "release/3d/pb-3d-ep1-tower.mp4", "frame": "f222bec7-9cd6-4a82-b8cd-0f145daa78fc", "video_job": "dc48cf2f-80c4-4de3-96a1-f9b4f0b80726", "length_s": 15.1,
+      "heard": "Hey, Biscuit! Let's build it together! ... Hey, we did it!",
+      "title": "Biscuit Knocked Over Pip's Tower! 😮🧱 Let's Build It Together #forkids",
+      "description": "Pip builds a super tall block tower... and Biscuit wants to help! Uh-oh! Can they build it again, together? A tiny lesson about teamwork for little ones.\n\n#forkids #kidscartoon #shorts #teamwork #preschool" },
+    { "n": 2, "slug": "turns", "file": "release/3d/pb-3d-ep2-turns.mp4", "frame": "b77e6538-f531-4e00-93b3-5c4ed6e63e7a", "video_job": "c4dddd5a-fb7b-4d3e-b8b5-c0c33ff7055d", "length_s": 15.1,
+      "heard": "Let's take turns, Biscuit! Good boy!",
+      "title": "Pip Won't Share Her Ball! 🔴🐶 Taking Turns #forkids",
+      "description": "Pip has a bouncy red ball and Biscuit wants to play too! Can Pip learn to share? A little story about taking turns for toddlers and preschoolers.\n\n#forkids #kidscartoon #shorts #sharing #takingturns #preschool" },
+    { "n": 3, "slug": "bubbles", "file": "release/3d/pb-3d-ep3-bubbles.mp4", "frame": "5bb04264-6ded-4829-81f0-b9a7be83a296", "video_job": "1b4bad7b-4679-4717-a434-6e23229700b4", "length_s": 10.2,
+      "heard": "Scrub, scrub, scrub!",
+      "note": "Cut at 9.2 s with a 1 s hold on the last frame: in the generated clip the mud came back after 9.5 s (the model ignored 'all clean'). To restore the full ending, generate a 5 s clip (22.5 credits) from a still of the raw clip at 9.0 s showing the hands rinsed clean and Pip saying 'All clean!', then join the two with pipeline/assemble.sh.",
+      "title": "Bubbles on Biscuit's Nose! 🫧🐶 Scrub Scrub Scrub #forkids",
+      "description": "Muddy hands and muddy paws! Pip and Biscuit wash up with lots and lots of bubbles. Scrub, scrub, scrub! A bubbly little lesson about washing hands for toddlers and preschoolers.\n\n#forkids #kidscartoon #shorts #washyourhands #preschool" }
+  ],
+  "next": [
+    { "slug": "apple-share", "lesson": "sharing (apples are dog-safe; chocolate cookies are not)", "frame": "54d95ef6-b864-43cd-ae45-17d15f0a91bb",
+      "prompt": "Bright 3D animated preschool cartoon, same characters and kitchen as the start frame, vertical 9:16, camera mostly locked off. 0-4s: Pip crunches an apple slice happily, crunch crunch; Biscuit begs with big puppy eyes and a tiny whimper. 4-8s: Pip looks at her plate, then at Biscuit, thinks, and smiles: \"Let's share, Biscuit!\" 8-15s: she gives Biscuit an apple slice, he crunches it with a happy tail wag, they each eat one together, both laugh, little hearts. Gentle ukulele kids music, crunchy sounds, puppy yips, giggles. Smooth expressive animation, consistent character design, no text." },
+    { "slug": "bedtime", "lesson": "bedtime routine", "frame": "10e4524b-a771-4a37-b812-f4a6c3e4aba6",
+      "prompt": "Bright 3D animated preschool cartoon, same characters and cozy night bedroom as the start frame, vertical 9:16, slow gentle push-in. 0-4s: Pip yawns a big yawn; Biscuit yawns too. 4-9s: Pip hugs her teddy, climbs into bed and pulls up the star blanket; Biscuit curls up in his dog bed. 9-15s: Pip whispers \"Goodnight, Biscuit!\", turns off the lamp, the moon smiles in the window, stars twinkle, both fall asleep peacefully. Soft music-box lullaby, gentle yawns, a tiny puppy sigh. Smooth gentle animation, consistent character design, no text." },
+    { "slug": "crosswalk", "lesson": "road safety: wait for the green light", "frame": "f5103088-6858-406e-b18d-a48dff1f1e53",
+      "prompt": "Bright 3D animated preschool cartoon, same characters and sunny crosswalk as the start frame, vertical 9:16, camera mostly locked off. 0-4s: Biscuit wiggles and wants to run across the street; Pip holds his leash and says: \"Wait, Biscuit! Red means stop!\" 4-8s: they wait together on the curb, a toy-like car passes slowly. 8-15s: the light turns to a green walking person, Pip says \"Green means go!\", they look both ways and cross the zebra crossing together happily. Upbeat ukulele kids music, a soft car whoosh, a beeping crossing signal, puppy yips. Smooth expressive animation, consistent character design, no text." },
+    { "slug": "umbrella", "lesson": "kindness: sharing your umbrella", "frame": "b7a80830-16a1-460a-a664-c8673ef6226c",
+      "prompt": "Bright 3D animated preschool cartoon, same characters and rainy path as the start frame, vertical 9:16, camera mostly locked off. 0-4s: rain starts, Biscuit's ears get wet and he shivers. 4-8s: Pip notices and moves her big red umbrella over him: \"Come here, Biscuit!\" 8-15s: snug under the umbrella together they jump in a puddle, splash!, the rain stops and a big rainbow appears, they both laugh. Playful music, pitter-patter rain, a big puddle splash, puppy yips, giggles. Smooth expressive animation, consistent character design, no text." },
+    { "slug": "scooter", "lesson": "never give up", "frame": "ad0ed7a6-72f0-46d4-b987-74d95a3559fe",
+      "prompt": "Bright 3D animated preschool cartoon, same characters and sunny park as the start frame, vertical 9:16, camera follows gently. 0-4s: Pip tries her red scooter, wobbles and plops onto the soft grass, oops! 4-7s: Biscuit licks her cheek and wags encouragingly; Pip gets up: \"I can do it!\" 7-15s: she tries again, wobbles less, then zooms smoothly along the path while Biscuit runs happily beside her, she cheers \"I did it!\" Upbeat ukulele kids music, a soft bump, puppy barks, cheering. Smooth expressive animation, consistent character design, no text." }
+  ]
+}
