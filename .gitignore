@@ -5,3 +5,9 @@ node_modules/
 
 # playwright-cli run artifacts (screenshots, snapshots, console logs)
 .playwright-cli/
+
+# cartoon renders (large binaries; regenerate from source)
+cartoons/**/out/
+cartoons/pilots/
+cartoons/ai-pilot/*.mp4
+cartoons/**/*.sheet.png

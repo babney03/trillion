@@ -1,0 +1,43 @@
+{
+  "id": "PB001",
+  "series": "pip-and-biscuit",
+  "slug": "wobbly-tower",
+  "lane": "story",
+  "lesson": "teamwork",
+  "length_s": 29,
+  "set": "playroom",
+  "logline": "Pip stacks a tall tower, Biscuit knocks it over trying to help, so they rebuild it together and it spells TOGETHER.",
+  "beats": [
+    { "at_s": 0.0,  "shot": "wide playroom", "action": "Title stamps in letter by letter; Pip waves, Biscuit bounces.", "sound": "glockenspiel note per letter" },
+    { "at_s": 4.0,  "shot": "wide", "action": "Pip tosses blocks A-F onto a tower, one per beat.", "sound": "marimba scale up, one note per block (the gimmick)" },
+    { "at_s": 7.3,  "shot": "wide", "action": "Biscuit crouches and leaps to help, bonks the tower.", "sound": "slide whistle, boing + thud" },
+    { "at_s": 8.7,  "shot": "wide", "action": "The tower wobbles and tumbles; blocks bounce across the rug.", "sound": "marimba scale down, one bonk per block" },
+    { "at_s": 10.6, "shot": "slow push-in on Pip, blue tint", "action": "Pip: hands on head. Bubble: 'Uh-oh!' Biscuit slumps.", "sound": "record scratch, sad trombone, music box in A minor", "text": "Uh-oh!" },
+    { "at_s": 12.4, "shot": "close", "action": "Pip thinks (hand on chin), then lightbulb pops.", "sound": "ding + sparkle" },
+    { "at_s": 13.4, "shot": "wide", "action": "Bubble: 'Let's build it together!' Biscuit yips.", "text": "Let's build it together!" },
+    { "at_s": 15.3, "shot": "wide", "action": "Taking turns: Pip tosses on the downbeat, Biscuit carries a block in his mouth and tosses on beat 3. The tower grows taller than before.", "sound": "call and response: marimba (Pip) / pizzicato (Biscuit), climbing" },
+    { "at_s": 22.5, "shot": "wide", "action": "An 8th of silence, Pip throws the star on top.", "sound": "silence then crash + sub boom" },
+    { "at_s": 22.8, "shot": "wide, sunburst, confetti", "action": "Party. The tower letters light up top-down: T-O-G-E-T-H-E-R, stamped across the top.", "sound": "bells spell the word, brass hook" },
+    { "at_s": 26.5, "shot": "wide", "action": "End line: 'it's better together!' Pip waves goodbye.", "sound": "music box reprise, fade", "text": "it's better together!" }
+  ],
+  "ai_route": {
+    "model": "grok_video_v15",
+    "duration_s": 15,
+    "credits": 68.25,
+    "master_frame_job": "f222bec7-9cd6-4a82-b8cd-0f145daa78fc",
+    "video_job": "dc48cf2f-80c4-4de3-96a1-f9b4f0b80726",
+    "prompt": "Bright 3D animated preschool cartoon, same characters and playroom as the start frame, camera locked off with a gentle slow push-in, vertical 9:16. 0-3s: Pip happily places one more block on top of the tall tower; each block lands with a cheerful xylophone note. 3-6s: Biscuit the puppy wiggles with excitement, jumps up to help and bumps the tower with his paws; the tower wobbles and tumbles down in a clattering cartoon cascade of bouncing colorful blocks, record-scratch sound. 6-8s: Pip gasps with big surprised eyes, Biscuit lowers his ears looking sorry. 8-11s: Pip smiles warmly, pats Biscuit on the head and says in a cute little-girl voice: \"It's okay, Biscuit! Let's build it together!\" 11-15s: they rebuild side by side, Biscuit carefully carries a block in his mouth and sets it down, Pip stacks blocks, the tower grows tall again, they both cheer, sparkles. Soft upbeat ukulele and xylophone kids music, playful puppy barks, giggles. Smooth expressive squash-and-stretch animation, consistent character design, no text."
+  },
+  "code_route": {
+    "project": "cartoons/pip-biscuit-tower",
+    "credits": 0
+  },
+  "publish": {
+    "title": "Biscuit Knocked It Over! 😮🧱 Let's Build It Together #forkids",
+    "description": "Pip builds a super tall tower... and Biscuit wants to help! Uh-oh! Can they build it again, together? A tiny lesson about teamwork for little ones.\n\nNew Pip & Biscuit cartoons every week.\n\n#forkids #kidscartoon #shorts #teamwork #preschool",
+    "tags": ["kids cartoon", "cartoon for kids", "preschool", "teamwork for kids", "toddler learning", "pip and biscuit", "shorts"],
+    "made_for_kids": true,
+    "category_id": "1"
+  },
+  "status": "rendered"
+}
